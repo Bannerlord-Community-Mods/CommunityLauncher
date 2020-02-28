@@ -1,0 +1,139 @@
+<Prefab>
+  <Constants>
+    <Constant Name="ButtonBrush.Width" BrushLayer="Default" BrushName="ButtonBrush4" BrushValueType="Width" />
+    <Constant Name="ButtonBrush.Height" BrushLayer="Default" BrushName="ButtonBrush4" BrushValueType="Height" />
+
+    <Constant Name="SPOptions.GameKeysgroup.ExpandIndicator.Width" BrushLayer="Default" BrushName="SPOptions.GameKeysgroup.ExpandIndicator" BrushValueType="Width" />
+    <Constant Name="SPOptions.GameKeysgroup.ExpandIndicator.Height" BrushLayer="Default" BrushName="SPOptions.GameKeysgroup.ExpandIndicator" BrushValueType="Height" />
+  </Constants>
+  <Window>
+    <Widget Id="OptionsInnerPanel" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="10" MarginBottom="10" LayoutImp.LayoutMethod="VerticalBottomToTop">
+      <Children>
+
+        <OptionsGamepadCategoryWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" CurrentGamepadType="@CurrentGamepadType" PlaystationLayoutParentWidget="PlaystationParent" PSVitaLayoutParentWidget="PSVitaParent" XboxLayoutParentWidget="XboxParent">
+          <Children>
+
+            <!--Xbox-->
+            <Widget Id="XboxParent" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren">
+              <Children>
+
+                <!--Gamepad Image-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="1443" SuggestedHeight="712" HorizontalAlignment="Center" Sprite="xbox_layout">
+                  <Children>
+
+                    <OptionsGamepadVisualWidget DataSource="{Keys}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+                      <ItemTemplate>
+
+                        <OptionsGamepadOptionItemWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" KeyId="@KeyId">
+                          <Children>
+                            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="150" Text="@Action" Brush="Stage.Selection.Description.Text" Brush.TextHorizontalAlignment="Left"/>
+                          </Children>
+                        </OptionsGamepadOptionItemWidget>
+
+                      </ItemTemplate>
+                    </OptionsGamepadVisualWidget>
+
+                    <!--ControllerLStick-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="230" NormalPositionXOffset="397" NormalPositionYOffset="410" />   <!--Sprite="BlankWhiteSquare_9" Brush.Color="#FF00FFFF"-->
+
+                    <!--ControllerRStick-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="231" NormalPositionXOffset="870" NormalPositionYOffset="573" />
+
+                    <!--ControllerLStickUp-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="232" NormalPositionXOffset="400" NormalPositionYOffset="354" />
+
+                    <!--ControllerLStickDown-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="233" NormalPositionXOffset="400" NormalPositionYOffset="457" />
+
+                    <!--ControllerLStickLeft-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="234" NormalPositionXOffset="342" NormalPositionYOffset="411" />
+
+                    <!--ControllerLStickRight-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="235" NormalPositionXOffset="454" NormalPositionYOffset="414" />
+
+                    <!--ControllerRStickUp-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="236" NormalPositionXOffset="875" NormalPositionYOffset="518" />
+
+                    <!--ControllerRStickDown-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="237" NormalPositionXOffset="875" NormalPositionYOffset="617" />
+
+                    <!--ControllerRStickLeft-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="238" NormalPositionXOffset="822" NormalPositionYOffset="571" />
+
+                    <!--ControllerRStickRight-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="239" NormalPositionXOffset="930" NormalPositionYOffset="573" />
+
+                    <!--ControllerLUp-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="240" NormalPositionXOffset="561" NormalPositionYOffset="468" />
+
+                    <!--ControllerLDown-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="241" NormalPositionXOffset="565" NormalPositionYOffset="592" />
+
+                    <!--ControllerLLeft-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="242" NormalPositionXOffset="483" NormalPositionYOffset="534" />
+
+                    <!--ControllerLRight-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="243" NormalPositionXOffset="645" NormalPositionYOffset="539" />
+
+                    <!--ControllerRUp-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="244" NormalPositionXOffset="1038" NormalPositionYOffset="300" />
+
+                    <!--ControllerRDown-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="245" NormalPositionXOffset="1030" NormalPositionYOffset="443" />
+
+                    <!--ControllerRLeft-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="246" NormalPositionXOffset="948" NormalPositionYOffset="375" />
+
+                    <!--ControllerRRight-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="247" NormalPositionXOffset="1120" NormalPositionYOffset="359" />
+
+                    <!--ControllerLBumper-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="248" NormalPositionXOffset="430" NormalPositionYOffset="143" />
+
+                    <!--ControllerRBumper-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="249" NormalPositionXOffset="994" NormalPositionYOffset="146" />
+
+                    <!--ControllerLOption-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="250" NormalPositionXOffset="629" NormalPositionYOffset="374" />
+
+                    <!--ControllerROption-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="251" NormalPositionXOffset="807" NormalPositionYOffset="374" />
+
+                    <!--ControllerLThumb-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="252" NormalPositionXOffset="29" NormalPositionYOffset="691" /> 
+
+                    <!--ControllerRThumb-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="253" NormalPositionXOffset="29" NormalPositionYOffset="605" /> 
+
+                    <!--ControllerLTrigger-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="254" NormalPositionXOffset="375" NormalPositionYOffset="63" /> 
+
+                    <!--ControllerRTrigger-->
+                    <OptionsGamepadKeyLocationWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" KeyID="255" NormalPositionXOffset="1051" NormalPositionYOffset="63" />
+
+                  </Children>
+                </Widget>
+
+              </Children>
+            </Widget>
+
+            <!--Playstation-->
+            <Widget Id="PlaystationParent" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren">
+
+            </Widget>
+
+            <!--PSVita-->
+            <Widget Id="PSVitaParent" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren">
+
+            </Widget>
+
+          </Children>
+        </OptionsGamepadCategoryWidget>
+
+
+
+      </Children>
+    </Widget>
+
+  </Window>
+</Prefab>

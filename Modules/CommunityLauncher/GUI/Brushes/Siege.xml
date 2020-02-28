@@ -1,0 +1,73 @@
+<Brushes>
+  <Brush Name="SiegeMachineButtonBrush">
+    <Layers>
+      <BrushLayer Name="Default" Color="#FFFFFFFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1.0" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.5" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ValueFactor="-20" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.2" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" ColorFactor="2.0" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="SiegeMachineNotCompletedBrush">
+    <Layers>
+      <BrushLayer Name="Default" Color="#FFFFFFFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" SaturationFactor="-100" ValueFactor="-50" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" SaturationFactor="-100" ValueFactor="-50" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" SaturationFactor="-100" ValueFactor="-50" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" SaturationFactor="-100" ValueFactor="-50" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" SaturationFactor="-100" ValueFactor="-50" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="SiegeMachineBaseBrush">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Frame1_canvas_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="GameMenu.Siege.MachineGroup.Text" Font="ProximaNovaCond-Light">
+    <Styles>
+      <Style Name="Default" FontColor="#F2A961FF" TextAlphafactor="0.9" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.001" TextGlowRadius="0" TextBlur="0" FontSize="32" />
+    </Styles>
+  </Brush>
+</Brushes>

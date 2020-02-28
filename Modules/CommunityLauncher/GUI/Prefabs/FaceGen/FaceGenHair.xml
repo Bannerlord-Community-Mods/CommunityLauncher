@@ -1,0 +1,15 @@
+<Window>
+  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalBottomToTop">
+    <Children>
+
+      <FaceGenColorSelector DataSource="{HairColorSelector}" MarginTop="10" />
+
+      <Widget WidthSizePolicy="Fixed" SuggestedWidth="581" HeightSizePolicy="Fixed" SuggestedHeight="14" HorizontalAlignment="Center" Sprite="CharacterCreation\stone_divider" />
+      <FaceGenGrid WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="3" Parameter.GridDataSource="{HairTypes}" />
+
+      <Widget WidthSizePolicy="Fixed" SuggestedWidth="580" HeightSizePolicy="Fixed" SuggestedHeight="11" HorizontalAlignment="Center" Brush="FaceGen.Divider.Thin" />
+      <FaceGenGrid WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="3" IsHidden="@IsFemale" Parameter.GridDataSource="{BeardTypes}" />
+
+    </Children>
+  </ListPanel>
+</Window>

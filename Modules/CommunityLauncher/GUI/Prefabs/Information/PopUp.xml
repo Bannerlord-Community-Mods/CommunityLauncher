@@ -1,0 +1,224 @@
+<Prefab>
+  <Variables>
+  </Variables>
+  <Constants>
+    <Constant Name="Popup.CloseButton.Width" BrushLayer="Default" BrushName="Popup.CloseButton" BrushValueType="Width" />
+    <Constant Name="Popup.CloseButton.Height" BrushLayer="Default" BrushName="Popup.CloseButton" BrushValueType="Height" />
+  </Constants>
+  <Parameters>
+  </Parameters>
+  <VisualDefinitions>
+  </VisualDefinitions>
+  <Window>
+    <Widget Id="PopupParentWidget" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@IsShown">
+      <Children>
+
+        <!--Single Query-->
+        <DimensionSyncWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="512" HorizontalAlignment="Center" VerticalAlignment="Center" PositionYOffset="-50" DimensionToSync="Vertical" IsVisible="@IsSingleQueryShown" WidgetToCopyHeightFrom="SingleQueryContentList">
+          <Children>
+
+            <DimensionSyncWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="512" ClipContents="true" DimensionToSync="Vertical" WidgetToCopyHeightFrom="..\SingleQueryContentList">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="512" SuggestedHeight="645" HorizontalAlignment="Center" VerticalAlignment="Top" Sprite="StdAssets\Popup\canvas" />
+              </Children>
+            </DimensionSyncWidget>
+
+            <ListPanel Id="SingleQueryContentList" WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="512" LayoutImp.LayoutMethod="VerticalBottomToTop" MaxHeight="645">
+              <Children>
+
+                <!--Title-->
+                <AutoHideRichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginLeft="30" MarginRight="30" MarginTop="10" Brush="Popup.Title.Text" MinHeight="50" Text="@TitleText" WidgetToHideIfEmpty="..\TitleDivider" />
+
+                <!--Divider-->
+                <Widget Id="TitleDivider" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="23" Sprite="StdAssets\Popup\divider" />
+
+                <!--Description-->
+                <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginLeft="30" MarginRight="30" MarginTop="20" MarginBottom="20" Brush="Popup.Description.Text" MaxHeight="480" MinHeight="10" Text="@PopUpLabel" />
+
+                <!--Control Buttons-->
+                <ListPanel WidthSizePolicy="CoverChildren" SuggestedHeight="70" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginLeft="35" MarginRight="35" LayoutImp.LayoutMethod="HorizontalLeftToRight">
+                  <Children>
+
+                    <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="251" SuggestedHeight="64" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Popup.Cancel.Button" Command.Click="ExecuteCancelProcess" IsVisible="@IsButtonCancelShown">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Button.Text" Text="@ButtonCancelLabel" />
+                      </Children>
+                    </ButtonWidget>
+
+                    <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="251" SuggestedHeight="64" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Popup.Done.Button" Command.Click="ExecuteProcess" IsVisible="@IsButtonOkShown">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Button.Text" Text="@ButtonOkLabel" />
+                      </Children>
+                    </ButtonWidget>
+
+                  </Children>
+                </ListPanel>
+
+              </Children>
+            </ListPanel>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="StdAssets\Popup\canvas_gradient" IsEnabled="false" />
+
+            <!--Frame Border-->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Frame" IsEnabled="false" />
+
+          </Children>
+        </DimensionSyncWidget>
+
+        <!--MultiSelection Query-->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="512" SuggestedHeight="645" HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="@IsMultiSelectionQueryShown">
+          <Children>
+
+            <!--Background Canvas-->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Top" Sprite="StdAssets\Popup\canvas" />
+
+            <ListPanel Id="MultiSelectionContentList" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalBottomToTop">
+              <Children>
+
+                <!--Title-->
+                <AutoHideRichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginLeft="30" MarginRight="30" MarginTop="10" Brush="Popup.Title.Text" MinHeight="50" Text="@TitleText" WidgetToHideIfEmpty="..\TitleDivider" />
+
+                <!--Divider-->
+                <!--<Widget Id="TitleDivider" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="23" Sprite="StdAssets\Popup\divider" />-->
+
+                <!--Description-->
+                <AutoHideRichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginLeft="15" MarginRight="15" MarginTop="10" MarginBottom="10" Brush="Popup.Description.Text" MaxHeight="480" MinHeight="10" Text="@PopUpLabel" WidgetToHideIfEmpty="..\DescriptionDivider" />
+
+                <!--Divider-->
+                <Widget Id="DescriptionDivider" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="23" Sprite="StdAssets\Popup\divider" />
+
+                <ListPanel WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="465" MarginBottom="100" HorizontalAlignment="Center" Sprite="scrollable_field_9">
+                  <Children>
+
+                    <ScrollablePanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" VerticalAlignment="Bottom" AutoHideScrollBars="true" ClipRect="ClipRect" InnerPanel="ClipRect\InquiryElementsList" VerticalScrollbar="..\Scrollbar\Scrollbar">
+                      <Children>
+
+                        <MultiSelectionElementsWidget Id="ClipRect" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="15" ClipContents="true" DoneButtonWidget="..\..\..\..\DoneButtonWidget" ForceOneSelection="@ForceOneSelection">
+                          <Children>
+
+                            <ListPanel Id="InquiryElementsList" DataSource="{InquiryElements}" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" LayoutImp.LayoutMethod="VerticalBottomToTop">
+                              <ItemTemplate>
+
+                                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="447" SuggestedHeight="65" HorizontalAlignment="Center" VerticalAlignment="Center" MarginBottom="5" Brush="Popup.SelectionElement.Tuple" IsSelected="@IsSelected" UpdateChildrenStates="true">
+                                  <Children>
+
+                                    <!--Inquiry Element Tuple-->
+                                    <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.SelectionElement.Tuple" IsEnabled="@IsEnabled" IsSelected="@IsSelected" UpdateChildrenStates="true" ButtonType="Toggle">
+                                      <Children>
+                                        <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" MarginLeft="20" UpdateChildrenStates="true">
+                                          <Children>
+                                            <!--Visual Background-->
+                                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="86" SuggestedHeight="63" Sprite="StdAssets\Popup\tuple_portrait_slot" UpdateChildrenStates="true">
+                                              <Children>
+                                                <ImageIdentifierWidget DataSource="{ImageIdentifier}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="4" MarginRight="4" MarginTop="4" MarginBottom="4" AdditionalArgs="@AdditionalArgs" ImageId="@Id" ImageTypeCode="@ImageTypeCode" />
+                                              </Children>
+                                            </Widget>
+                                            <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" MarginLeft="8" Brush="Popup.Tuple.Text" Text="@Text" />
+                                          </Children>
+                                        </ListPanel>
+
+                                        <HintWidget DataSource="{Hint}" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+                                      </Children>
+                                    </ButtonWidget>
+
+                                    <HintWidget DataSource="{Hint}" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+                                  </Children>
+                                </Widget>
+
+                              </ItemTemplate>
+                            </ListPanel>
+
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="108" VerticalAlignment="Bottom" MarginLeft="4" MarginRight="4" Sprite="StdAssets\Popup\scrollable_field_gradient" IsEnabled="false" />
+                          </Children>
+                        </MultiSelectionElementsWidget>
+
+                      </Children>
+                    </ScrollablePanel>
+
+                    <Standard.VerticalScrollbar Id="Scrollbar" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" IsVisible="false" />
+
+                  </Children>
+                </ListPanel>
+
+              </Children>
+            </ListPanel>
+
+            <!--Done Button-->
+            <ButtonWidget Id="DoneButtonWidget" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="251" SuggestedHeight="64" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="10" Brush="Popup.Done.Button" Command.Click="ExecuteProcess" IsVisible="true">
+              <Children>
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Button.Text" Text="@ButtonOkLabel" />
+              </Children>
+            </ButtonWidget>
+
+            <!--Frame Border-->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Frame" IsEnabled="false" />
+
+          </Children>
+        </Widget>
+
+        <!--Text Query-->
+        <DimensionSyncWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="512" HorizontalAlignment="Center" VerticalAlignment="Center" PositionYOffset="-50" DimensionToSync="Vertical" IsVisible="@IsTextQueryShown" WidgetToCopyHeightFrom="TextQueryContentList">
+          <Children>
+
+            <DimensionSyncWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="512" ClipContents="true" DimensionToSync="Vertical" WidgetToCopyHeightFrom="..\TextQueryContentList">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="512" SuggestedHeight="645" HorizontalAlignment="Center" VerticalAlignment="Top" Sprite="StdAssets\Popup\canvas" />
+              </Children>
+            </DimensionSyncWidget>
+
+            <ListPanel Id="TextQueryContentList" WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="512" LayoutImp.LayoutMethod="VerticalBottomToTop" MaxHeight="645">
+              <Children>
+
+                <!--Title-->
+                <AutoHideRichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginLeft="30" MarginRight="30" MarginTop="10" Brush="Popup.Title.Text" MinHeight="50" Text="@TitleText" WidgetToHideIfEmpty="..\TitleDivider" />
+
+                <!--Divider-->
+                <Widget Id="TitleDivider" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="23" Sprite="StdAssets\Popup\divider" />
+
+                <!--Description-->
+                <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginLeft="30" MarginRight="30" MarginTop="20" MarginBottom="20" Brush="Popup.Description.Text" MaxHeight="480" MinHeight="10" Text="@PopUpLabel" />
+
+                <!--Text Input-->
+                <Widget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="410" SuggestedHeight="70" MarginLeft="40" Sprite="CharacterCreation\name_input_area" HorizontalAlignment="Center">
+                  <Children>
+                    <EditableTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="10" MarginRight="10" MarginTop="12" MarginBottom="12" Brush="Review.NameInput.Text" RealText="@InputText" IsObfuscationEnabled="@IsInputObfuscated"/>
+                  </Children>
+                </Widget>
+
+                <!--Control Buttons-->
+                <ListPanel WidthSizePolicy="CoverChildren" SuggestedHeight="70" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginLeft="35" MarginRight="35" LayoutImp.LayoutMethod="HorizontalLeftToRight">
+                  <Children>
+
+                    <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="251" SuggestedHeight="64" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Popup.Cancel.Button" Command.Click="ExecuteCancelProcess" IsVisible="@IsButtonCancelShown" >
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Button.Text" Text="@ButtonCancelLabel" />
+                      </Children>
+                    </ButtonWidget>
+
+                    <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="251" SuggestedHeight="64" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Popup.Done.Button" Command.Click="ExecuteProcess" IsVisible="@IsButtonOkShown" IsEnabled="@IsButtonOkEnabled">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Button.Text" Text="@ButtonOkLabel" />
+                      </Children>
+                    </ButtonWidget>
+
+                  </Children>
+                </ListPanel>
+
+              </Children>
+            </ListPanel>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="StdAssets\Popup\canvas_gradient" IsEnabled="false" />
+
+            <!--Frame Border-->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Frame" IsEnabled="false" />
+
+          </Children>
+        </DimensionSyncWidget>
+
+        <!--Close MultiSelection Button-->
+        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Popup.CloseButton.Width" SuggestedHeight="!Popup.CloseButton.Height" HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="500" MarginBottom="620" Brush="Popup.CloseButton" Command.Click="ExecuteCancelProcess" IsVisible="@IsClosePopupButtonShown" />
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

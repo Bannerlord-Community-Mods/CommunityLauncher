@@ -1,0 +1,332 @@
+<Brushes>
+
+  <Brush Name="GameMenu.Button" FontColor="#FAF4DEFF" TransitionDuration="0.070">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontSize="25">
+        <BrushLayer Name="Default" AlphaFactor="0" Color="#00213BFF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="0.5" Color="#00213BFF" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="0.7" Color="#00213BFF" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.1" Color="#CCCCCCFF" />
+      </Style>
+    </Styles>
+  </Brush>
+  
+  <Brush Name="GameMenu.Gradient.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SettlementLeftPanelFilter_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0.65" Color="#00213BFF" />
+      </Style>
+    </Styles>
+  </Brush>
+  
+  <Brush Name="GameMenu.Tableau.Background.Party">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#c6700022"/>
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="0.1" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.2" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" ColorFactor="0.6" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Tableau.Background.Character">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#A9A10022"/>
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="0.3" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.2" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" ColorFactor="0.6" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.InfoText" BaseBrush="Info.Text" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" FontSize="22" TextBlur="0" TextGlowColor="#000000FF" TextGlowRadius="0" TextOutlineAmount="0" TextOutlineColor="#FFFFFF00" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenuItemProgressBarBrush">
+    <Layers>
+      <BrushLayer Name="EmptyFill" Sprite="HintBG@2x_9" Color="#80808099" ColorFactor="0.8" />
+      <BrushLayer Name="DefaultFill" Sprite="HintBG@2x_9" Color="#FFFFFF99" ColorFactor="1" />
+      <BrushLayer Name="ChangeFill" Sprite="HintBG@2x_9" Color="#00FFAA99" ColorFactor="1.5" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Border">
+    <Layers>
+      <BrushLayer Name="Default" />
+      <BrushLayer Name="Frame" Sprite="Frame1_frame" ExtendBottom="32" ExtendLeft="32" ExtendRight="32" ExtendTop="31" OverlayMethod="CoverWithTexture" OverlaySprite="stone_texture_overlay" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Frame" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.LeaveType">
+    <Layers>
+      <BrushLayer Name="Default" Brush="GameMenu.Icons" Sprite="" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Mission" Sprite="GameMenu\mission_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="SubMenu" Sprite="GameMenu\submenu_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="BribeAndEscape" Sprite="GameMenu\bribeandescape_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Escape" Sprite="GameMenu\escape_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Craft" Sprite="GameMenu\craft_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="ForceToGiveGoods" Sprite="GameMenu\forcetogivegoods_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="ForceToGiveTroops" Sprite="GameMenu\forcetogivetroops_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="RansomAndBribe" Sprite="GameMenu\ransomandbribe_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="LeaveTroopsAndFlee" Sprite="GameMenu\leavetroopsandflee_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="OrderTroopsToAttack" Sprite="GameMenu\ordertroopstoattack_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Raid" Sprite="GameMenu\raid_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="HostileAction" Sprite="GameMenu\hostileaction_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Recruit" Sprite="GameMenu\recruit_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Trade" Sprite="GameMenu\trade_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Wait" Sprite="GameMenu\wait_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Leave" Sprite="GameMenu\leave_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Continue" Sprite="GameMenu\continue_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Manage" Sprite="GameMenu\manage_town_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="WaitQuest" Sprite="GameMenu\waiting_for_quest_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Surrender" Sprite="GameMenu\retreat_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="Conversation" Sprite="GameMenu\conversation_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+      <BrushLayer Name="DefendAction" Sprite="GameMenu\defend_icon" Color="#FFFFFFFF" ColorFactor="0.8" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" IsHidden="true" />
+      </Style>
+      <Style Name="Mission" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Mission" IsHidden="false" />
+      </Style>
+      <Style Name="SubMenu" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="SubMenu" IsHidden="false" />
+      </Style>
+      <Style Name="BribeAndEscape" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="BribeAndEscape" IsHidden="false" />
+      </Style>
+      <Style Name="Escape" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Escape" IsHidden="false" />
+      </Style>
+      <Style Name="Craft" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Craft" IsHidden="false" />
+      </Style>
+      <Style Name="ForceToGiveGoods" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="ForceToGiveGoods" IsHidden="false" />
+      </Style>
+      <Style Name="ForceToGiveTroops" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="ForceToGiveTroops" IsHidden="false" />
+      </Style>
+      <Style Name="RansomAndBribe" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="RansomAndBribe" IsHidden="false" />
+      </Style>
+      <Style Name="LeaveTroopsAndFlee" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="LeaveTroopsAndFlee" IsHidden="false" />
+      </Style>
+      <Style Name="OrderTroopsToAttack" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="OrderTroopsToAttack" IsHidden="false" />
+      </Style>
+      <Style Name="Raid" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Raid" IsHidden="false" />
+      </Style>
+      <Style Name="HostileAction" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="HostileAction" IsHidden="false" />
+      </Style>
+      <Style Name="Recruit" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Recruit" IsHidden="false" />
+      </Style>
+      <Style Name="Trade" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Trade" IsHidden="false" />
+      </Style>
+      <Style Name="Wait" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Wait" IsHidden="false" />
+      </Style>
+      <Style Name="Leave" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Leave" IsHidden="false" />
+      </Style>
+      <Style Name="Continue" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Continue" IsHidden="false" />
+      </Style>
+      <Style Name="Manage" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Manage" IsHidden="false" />
+      </Style>
+      <Style Name="WaitQuest" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="WaitQuest" IsHidden="false" />
+      </Style>
+      <Style Name="Surrender" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Surrender" IsHidden="false" />
+      </Style>
+      <Style Name="Conversation" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="Conversation" IsHidden="false" />
+      </Style>
+      <Style Name="DefendAction" BaseBrush="GameMenu.Icons">
+        <BrushLayer Name="DefendAction" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.QuestType">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="" IsHidden="true" />
+      <BrushLayer Name="Available" Sprite="Icons\icon_quest_available" IsHidden="true" />
+      <BrushLayer Name="Active" Sprite="Icons\icon_quest_active" IsHidden="true" />
+      <BrushLayer Name="Completed" Sprite="Icons\icon_quest_done" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" IsHidden="true" />
+      </Style>
+      <Style Name="Available">
+        <BrushLayer Name="Available" IsHidden="false" />
+      </Style>
+      <Style Name="Active">
+        <BrushLayer Name="Active" IsHidden="false" />
+      </Style>
+      <Style Name="Completed">
+        <BrushLayer Name="Completed" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Text" Font="Galahad" FontColor="#EEE0C7FF" FontSize="22" TextHorizontalAlignment="Center">
+     <Layers>
+	 </Layers>
+	<Styles>
+      <Style Name="Default" FontColor="#EEE0C7FF" TextBlur="0" TextGlowColor="#EEE0C7FF" TextGlowRadius="0" TextOutlineAmount="0" TextOutlineColor="#EEE0C7FF" />
+	</Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Icons" Color="#EEE0C7FF">
+     <Layers>
+	 </Layers>
+	<Styles>
+      <Style Name="Default" AlphaFactor="0.8" Color="#EEE0C7FF" />
+      <Style Name="Hovered" AlphaFactor="1" Color="#FFFF00FF" />
+      <Style Name="Pressed" AlphaFactor="0.5" Color="#FFFF00FF" />
+      <Style Name="Disabled" AlphaFactor="0.3" Color="#EEE0C7FF" />
+	</Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Items.Text.Default" Font="Galahad" FontSize="24" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+	<Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextAlphaFactor="1" TextBlur="0" TextGlowColor="#EEE0C7FF" TextGlowRadius="0" TextOutlineAmount="0" TextOutlineColor="#EEE0C7FF" />
+	</Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Items.Text.Hovered" Font="Galahad" FontSize="24" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#EEE0C7FF" TextAlphaFactor="1" TextBlur="0" TextColorFactor="1.2" TextGlowColor="#EEE0C7FF" TextGlowRadius="0" TextOutlineAmount="0" TextOutlineColor="#EEE0C7FF" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Items.Text.Pressed" Font="Galahad" FontSize="24" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#EEE0C7FF" TextAlphaFactor="0.5" TextBlur="0" TextColorFactor="1.4" TextGlowColor="#EEE0C7FF" TextGlowRadius="0" TextOutlineAmount="0" TextOutlineColor="#EEE0C7FF" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Items.Text.Disabled" Font="Galahad" FontSize="24" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#EEE0C7FF" TextAlphaFactor="0.3" TextBlur="0" TextColorFactor="1.4" TextGlowColor="#EEE0C7FF" TextGlowRadius="0" TextOutlineAmount="0" TextOutlineColor="#EEE0C7FF" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Siege.Title" Font="Galahad" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FACA85FF" FontSize="30" TextBlur="0" TextGlowColor="#000000FF" TextGlowRadius="0" TextOutlineAmount="0" TextOutlineColor="#FFFFFF00" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.SiegeFormationControl.Tuple" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" FontSize="18" TextBlur="0" TextGlowRadius="0" TextOutlineAmount="0" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.IssueType">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="" IsHidden="true" />
+      <BrushLayer Name="Available" Sprite="Icons\icon_issue_available" IsHidden="true" />
+      <BrushLayer Name="Active" Sprite="Icons\icon_issue_active" IsHidden="true" />
+      <BrushLayer Name="Completed" Sprite="Icons\icon_issue_done" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" IsHidden="true" />
+      </Style>
+      <Style Name="Available">
+        <BrushLayer Name="Available" IsHidden="false" />
+      </Style>
+      <Style Name="Active">
+        <BrushLayer Name="Active" IsHidden="false" />
+      </Style>
+      <Style Name="Completed">
+        <BrushLayer Name="Completed" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Leaderboard.Entry.Name.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Left" BaseBrush="Info.Text">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" FontSize="27" TextBlur="0" TextGlowRadius="0" TextOutlineAmount="0" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="GameMenu.Leaderboard.Entry.Name.Player.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" FontSize="27" TextBlur="0" TextGlowRadius="0" TextOutlineAmount="0" />
+      <Style Name="Link" FontColor="#00CCFFFF" TextGlowColor="#111111FF" />
+      <Style Name="Link.MouseOver" FontColor="#00FF00BB" TextGlowColor="#111111FF" />
+      <Style Name="Link.MouseDown" FontColor="#00AA00FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Hero" TextColorFactor="1" FontColor="#8CDBC4FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Hero.MouseOver" TextColorFactor="1.5" FontColor="#4FD1ABBB" TextGlowColor="#111111FF" />
+      <Style Name="Link.Hero.MouseDown" TextColorFactor="0.7" FontColor="#4FD1ABFF" TextGlowColor="#111111FF" />
+    </Styles>
+  </Brush>
+  
+
+</Brushes>

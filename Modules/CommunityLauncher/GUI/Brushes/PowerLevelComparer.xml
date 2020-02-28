@@ -1,0 +1,22 @@
+<Brushes>
+  <Brush Name="PowerLevelComparer.LeftBar.Battle">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="power_bar_fill_left_9" />
+    </Layers>
+  </Brush>
+  <Brush Name="PowerLevelComparer.RightBar.Battle">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="power_bar_fill_right_9" />
+    </Layers>
+  </Brush>
+  <Brush Name="PowerLevelComparer.LeftBar.Encounter">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="battle_header_bar_left_9" OverlayMethod="CoverWithTexture" OverlaySprite="stone_texture_overlay" />
+    </Layers>
+  </Brush>
+  <Brush Name="PowerLevelComparer.RightBar.Encounter">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="battle_header_bar_right_9" OverlayMethod="CoverWithTexture" OverlaySprite="stone_texture_overlay" />
+    </Layers>
+  </Brush>
+</Brushes>

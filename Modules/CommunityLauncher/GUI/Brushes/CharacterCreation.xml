@@ -1,0 +1,535 @@
+<Brushes>
+  <Brush Name="Stage.Text" FontColor="#FFFFFFFF">
+    <Animations>
+      <Animation Name="FontHoverAnimation" Duration="0.1">
+      </Animation>
+      <Animation Name="FontPressedAnimation" Duration="0.05">
+      </Animation>
+      <Animation Name="FontDefaultAnimation" Duration="0.1">
+      </Animation>
+    </Animations>
+    <Layers>
+      <BrushLayer Name="Default" Color="#FFFFFFFF" />
+      <BrushLayer Name="HoverLayer" Color="#FFFF00FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#FFFFFF11" TextGlowRadius="0.1" AnimationToPlayOnBegin="FontDefaultAnimation" FontSize="36">
+        <BrushLayer Name="Default" FontColor="#FFFFFFFF" />
+      </Style>
+      <Style Name="Hovered" FontColor="#F3C697FF" TextGlowColor="#F3C69711" AnimationToPlayOnBegin="FontHoverAnimation">
+        <BrushLayer Name="HoverLayer" FontColor="#F3C697FF" />
+      </Style>
+      <Style Name="Pressed" FontColor="#B57F5CFF" TextGlowColor="#B57F5C11" AnimationToPlayOnBegin="FontPressedAnimation">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Disabled" TextGlowColor="#00000000" TextAlphaFactor="0.35">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Selected" FontColor="#F3C697FF" TextGlowColor="#AA8A6955" TextGlowRadius="0.01">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+    
+  <Brush Name="CharacterCreation.Culture.Banner" TransitionDuration="0.1" >
+    <Layers>
+      <BrushLayer Name="Default" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0.7" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="0.9" ColorFactor="1.0"/>
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="0.6" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1"  />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.5" SaturationFactor="-50" ValueFactor="-50" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="CharacterCreation.Culture.Big.Banner" >
+    <Layers>
+      <BrushLayer Name="Default" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0.8" />
+      </Style>
+    </Styles>
+  </Brush>
+  
+  <Brush Name="Generic.Button.Text" FontColor="#FFFFFFFF" Font="ProximaNovaCond-Light">
+    <Animations>
+      <Animation Name="FontHoverAnimation" Duration="0.1">
+      </Animation>
+      <Animation Name="FontPressedAnimation" Duration="0.05">
+      </Animation>
+      <Animation Name="FontDefaultAnimation" Duration="0.1">
+      </Animation>
+    </Animations>
+    <Layers>
+      <BrushLayer Name="Default" Color="#FFFFFFFF" />
+      <BrushLayer Name="HoverLayer" Color="#FFFF00FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFF00" TextGlowColor="#FFFFFF00" TextAlphaFactor="0.9" TextGlowRadius="0.05" AnimationToPlayOnBegin="FontDefaultAnimation" FontSize="32">
+        <BrushLayer Name="Default" FontColor="#FFFFFFFF" />
+      </Style>
+      <Style Name="Hovered" FontColor="#F3C697FF" TextGlowColor="#F3C69700" TextBlur="0.1" AnimationToPlayOnBegin="FontHoverAnimation">
+        <BrushLayer Name="HoverLayer" FontColor="#F3C697FF" />
+      </Style>
+      <Style Name="Pressed" FontColor="#B57F5CFF" TextGlowColor="#B57F5C00" TextBlur="0.1" AnimationToPlayOnBegin="FontPressedAnimation">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Disabled" FontColor="#FFFFFFFF" TextGlowColor="#00000000" TextAlphaFactor="0.35">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Selected" FontColor="#F3C697FF" TextGlowColor="#AA8A6000" TextGlowRadius="0" TextBlur="0">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Culture.Text">
+    <Animations>
+      <Animation Name="FontHoverAnimation" Duration="0.1">
+      </Animation>
+      <Animation Name="FontPressedAnimation" Duration="0.05">
+      </Animation>
+      <Animation Name="FontDefaultAnimation" Duration="0.1">
+      </Animation>
+    </Animations>
+    <Layers>
+      <BrushLayer Name="Default" Color="#FFFFFFFF" />
+      <BrushLayer Name="HoverLayer" Color="#FFFF00FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E0C293FF" TextGlowColor="#FFFFFF11" TextAlphaFactor="0.65" TextGlowRadius="0.1" FontSize="26" AnimationToPlayOnBegin="FontDefaultAnimation">
+        <BrushLayer Name="Default" FontColor="#FFFFFFFF" />
+      </Style>
+      <Style Name="Hovered" TextGlowColor="#F3C69711" TextAlphaFactor="0.85" AnimationToPlayOnBegin="FontHoverAnimation">
+        <BrushLayer Name="HoverLayer" FontColor="#F3C697FF" />
+      </Style>
+      <Style Name="Pressed" TextGlowColor="#B57F5C11" AnimationToPlayOnBegin="FontPressedAnimation">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Disabled" FontColor="#FFFFFFFF" TextGlowColor="#00000000" TextAlphaFactor="0.35">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Selected" FontColor="#FEBE5BFF" TextGlowColor="#AA8A6955" TextGlowRadius="0.01">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Culture.Banner.Icon">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\culture_flag_small" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0.7" ColorFactor="1" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="0.9" ColorFactor="1.2" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="0.8" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.5" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Stages.Bar.Full.Button">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\creation_progress_stone_full" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="1" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="1.2" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.5" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Stages.Bar.FullCurrent.Button">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\creation_progress_stone_full" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="1.5" HueFactor="-8" ValueFactor="20" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="1.5" HueFactor="-8" ValueFactor="20" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="1.5" HueFactor="-8" ValueFactor="20" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="1.5" HueFactor="-8" ValueFactor="20" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.5" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Stages.Bar.Empty.Button">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\creation_progress_stone_empty" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="1" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="1" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.5" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Creation.ButtonLargeCard">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\card_large_gender" />
+      <BrushLayer Name="Selected" Sprite="CharacterCreation\card_large_gender_selected" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1" />
+        <BrushLayer Name="Selected" IsHidden="true" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.2" />
+        <BrushLayer Name="Selected" IsHidden="true" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" />
+        <BrushLayer Name="Selected" IsHidden="true" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" IsHidden="true" />
+        <BrushLayer Name="Selected" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.5" />
+        <BrushLayer Name="Selected" IsHidden="true" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Creation.ColorCard">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\color_box" ExtendLeft="4" ExtendRight="4" ExtendTop="4" ExtendBottom="4" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1" AlphaFactor="0.8" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.2" AlphaFactor="1" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" AlphaFactor="1" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="3" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.5" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Creation.NumericLeftArrow">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\switcher_arrow_left" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1" AlphaFactor="0.8" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.2" AlphaFactor="1" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" AlphaFactor="1" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.5" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Creation.NumericRightArrow">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\switcher_arrow_left" HorizontalFlip="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1" AlphaFactor="0.8" HorizontalFlip="true" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.2" AlphaFactor="1" HorizontalFlip="true" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" AlphaFactor="1" HorizontalFlip="true" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1" HorizontalFlip="true" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.5" HorizontalFlip="true" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Creation.ColorCard.Selection">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\color_box_selection" ExtendLeft="8" ExtendRight="7" ExtendTop="7" ExtendBottom="8" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" IsHidden="true" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" IsHidden="true" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" IsHidden="true" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" IsHidden="true" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="RandomButtonBrush">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="CharacterCreation\button_random" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1.0" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.2" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.2" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Culture.Banner.Layer.4">
+    <Layers>
+      <BrushLayer Name="Default"  />
+    </Layers>
+    <Styles>
+      <Style Name="battania">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\battania_4" />
+      </Style>
+      <Style Name="empire">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\empire_4" />
+      </Style>
+      <Style Name="sturgia">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\sturgia_4" />
+      </Style>
+      <Style Name="aserai">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\aserai_4" />
+      </Style>
+      <Style Name="khuzait">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\khuzait_4" />
+      </Style>
+      <Style Name="vlandia">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\vlandia_4" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Culture.Banner.Layer.3">
+    <Layers>
+      <BrushLayer Name="Default"  />
+    </Layers>
+    <Styles>
+      <Style Name="battania">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\battania_3" />
+      </Style>
+      <Style Name="empire">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\empire_3" />
+      </Style>
+      <Style Name="sturgia">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\sturgia_3" />
+      </Style>
+      <Style Name="aserai">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\aserai_3" />
+      </Style>
+      <Style Name="khuzait">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\khuzait_3" />
+      </Style>
+      <Style Name="vlandia">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\vlandia_3" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Culture.Banner.Layer.2">
+    <Layers>
+      <BrushLayer Name="Default"  />
+    </Layers>
+    <Styles>
+      <Style Name="battania">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\battania_2" />
+      </Style>
+      <Style Name="empire">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\empire_2" />
+      </Style>
+      <Style Name="sturgia">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\sturgia_2" />
+      </Style>
+      <Style Name="aserai">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\aserai_2" />
+      </Style>
+      <Style Name="khuzait">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\khuzait_2" />
+      </Style>
+      <Style Name="vlandia">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\vlandia_2" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Culture.Banner.Layer.1">
+    <Layers>
+      <BrushLayer Name="Default"  />
+    </Layers>
+    <Styles>
+      <Style Name="battania">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\battania_1" />
+      </Style>
+      <Style Name="empire">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\empire_1" />
+      </Style>
+      <Style Name="sturgia">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\sturgia_1" />
+      </Style>
+      <Style Name="aserai">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\aserai_1" />
+      </Style>
+      <Style Name="khuzait">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\khuzait_1" />
+      </Style>
+      <Style Name="vlandia">
+        <BrushLayer Name="Default" Sprite="CharacterCreation\Culture\vlandia_1" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="CharacterCreation.GainedProperty.Active">
+    <Layers>
+      <BrushLayer Name="Active" Sprite="BlankWhiteSquare" Color="#ACAC48FF"/>
+    </Layers>
+    <Styles>
+      <Style Name="Default" AnimationToPlayOnBegin="GainedSkillAnimation">
+        <BrushLayer Name="Active" AlphaFactor="1" />
+      </Style>
+    </Styles>
+    <Animations>
+      <Animation Name="GainedSkillAnimation" Duration="2.2" Loop="true">
+        <AnimationProperty PropertyName="AlphaFactor" LayerName="Active">
+          <KeyFrame Time="0.0" Value="1.0" />
+          <KeyFrame Time="0.4" Value="1.0" />
+          <KeyFrame Time="0.6" Value="0" />
+          <KeyFrame Time="0.9" Value="0" />
+          <KeyFrame Time="1.1" Value="1.0" />
+          <KeyFrame Time="1.5" Value="1.0" />
+          <KeyFrame Time="1.7" Value="0" />
+          <KeyFrame Time="2" Value="0" />
+          <KeyFrame Time="2.2" Value="1.0" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+  
+  <Brush Name="Stage.Header" Font="Galahad" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default"  FontColor="#C6AC8DFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.1" TextGlowRadius="0" TextBlur="0.6" FontSize="42" />
+    </Styles>
+  </Brush>
+  <Brush Name="Stage.Title.Text" Font="Galahad" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#C6AC8DFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.1" TextGlowRadius="0" TextBlur="0.6" FontSize="42" />
+    </Styles>
+  </Brush>
+  <Brush Name="Stage.PositiveEffect.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#99DC30FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="30" />
+    </Styles>
+  </Brush>
+  <Brush Name="Stage.NegativeEffect.Text" Font="Galahad" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#E56B4FFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="30" />
+    </Styles>
+  </Brush>
+  <Brush Name="Stage.Selection.Description.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FDF3DEFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="23" />
+    </Styles>
+  </Brush>
+  <Brush Name="Stage.Description.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#F0E7D4FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="28" />
+    </Styles>
+  </Brush>
+  <Brush Name="Review.Title.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Right">
+    <Styles>
+      <Style Name="Default" FontColor="#EDBD71FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="26" />
+    </Styles>
+  </Brush>
+  <Brush Name="Review.Value.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#F9EAD2FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="26" />
+    </Styles>
+  </Brush>
+  <Brush Name="Review.Description.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#C5B498FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+    </Styles>
+  </Brush>
+  <Brush Name="Review.NameInput.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#F9EAD2FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="40" />
+    </Styles>
+  </Brush>
+</Brushes>

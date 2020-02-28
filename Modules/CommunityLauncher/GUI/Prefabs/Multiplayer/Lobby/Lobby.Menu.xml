@@ -1,0 +1,71 @@
+<Prefab>
+  <Constants>
+    <Constant Name="TopHeader.Width" BrushName="MPLobby.TopHeader.Background" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="TopHeader.Height" BrushName="MPLobby.TopHeader.Background" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="TopHeader.SettingsButton.Width" BrushName="MPLobby.TopHeader.SettingsButton" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="TopHeader.SettingsButton.Height" BrushName="MPLobby.TopHeader.SettingsButton" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="TopHeader.LeaveButton.Width" BrushName="MPLobby.TopHeader.LeaveButton" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="TopHeader.LeaveButton.Height" BrushName="MPLobby.TopHeader.LeaveButton" BrushLayer="Default" BrushValueType="Height"/>
+  </Constants>
+  <Window>
+    <MultiplayerLobbyMenuWidget SelectedItemIndex="@PageIndex" MenuItemListPanel="Panel\ButtonContainer" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!TopHeader.Height" HorizontalAlignment="Center" Brush="MPLobby.TopHeader.Background" MatchmakingButtonWidget="Panel\ButtonContainer\MatchmakingButton" ProfileButtonWidget="Panel\ButtonContainer\ProfileButtonWidget">
+      <Children>
+        <Widget Id="Panel" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="10" MarginRight="10" PositionYOffset="-5">
+          <Children>
+            
+            <ListPanel Id="ButtonContainer" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" DoNotAcceptEvents="true" MarginLeft="7" MarginRight="150">
+              <Children>
+                <ToggleStateWidget AllowSwitchOff="false" Command.Click="ExecuteOptions" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!TopHeader.SettingsButton.Width" SuggestedHeight="!TopHeader.SettingsButton.Height" VerticalAlignment="Center" Brush="MPLobby.TopHeader.SettingsButton" />
+
+                <ToggleStateWidget AllowSwitchOff="false" Command.Click="ExecuteHome" UpdateChildrenStates="true" HorizontalAlignment="Center" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="440" SuggestedHeight="70" MarginLeft="50" DoNotPassEventsToChildren="true" VerticalAlignment="Center" Brush="MPLobby.MenuItem.Sound.Brush">
+                  <Children>
+                    <TextWidget Text="@HomeText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPLobby.TopHeader.MiddleButtonText" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="27" SuggestedHeight="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" PositionYOffset="5" Sprite="MPLobby\Generic\top_header_notch" Brush.AlphaFactor="0.75" />
+                    <ImageWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="447" SuggestedHeight="89" HorizontalAlignment="Center" PositionYOffset="-2" Brush="MPLobby.TopHeader.HoverGlow.Centered" />
+                  </Children>
+                </ToggleStateWidget>
+
+                <ToggleStateWidget Id="MatchmakingButton" AllowSwitchOff="false" Command.Click="ExecuteMatchmaking" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="70" DoNotPassEventsToChildren="true" UpdateChildrenStates="true" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MPLobby.MenuItem.Sound.Brush">
+                  <Children>
+                    <TextWidget Text="@MatchmakingText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPLobby.TopHeader.MiddleButtonText" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="27" SuggestedHeight="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" PositionYOffset="5" Sprite="MPLobby\Generic\top_header_notch" Brush.AlphaFactor="0.6" />
+                    <ImageWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="447" SuggestedHeight="89" HorizontalAlignment="Center" PositionXOffset="15" PositionYOffset="-2" Brush="MPLobby.TopHeader.HoverGlow.Middle" />
+                  </Children>
+                </ToggleStateWidget>
+
+                <ToggleStateWidget UpdateChildrenStates="true" AllowSwitchOff="false" Command.Click="ExecuteArmory" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="70" DoNotPassEventsToChildren="true" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MPLobby.MenuItem.Sound.Brush">
+                  <Children>
+                    <TextWidget Text="@ArmoryText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPLobby.TopHeader.SideButtonText" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="27" SuggestedHeight="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" PositionYOffset="5" Sprite="MPLobby\Generic\top_header_notch" Brush.AlphaFactor="0.3" />
+                    <ImageWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="447" SuggestedHeight="89" HorizontalAlignment="Center" PositionXOffset="15" PositionYOffset="-2" Brush="MPLobby.TopHeader.HoverGlow.Middle" />
+                  </Children>
+                </ToggleStateWidget>
+
+                <ToggleStateWidget Id="ProfileButtonWidget" AllowSwitchOff="false" Command.Click="ExecuteProfile" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="70" DoNotPassEventsToChildren="true" UpdateChildrenStates="true" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MPLobby.MenuItem.Sound.Brush" >
+                  <Children>
+                    <TextWidget Text="@ProfileText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPLobby.TopHeader.MiddleButtonText" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="27" SuggestedHeight="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" PositionYOffset="5" Sprite="MPLobby\Generic\top_header_notch" Brush.AlphaFactor="0.6" />
+                    <ImageWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="447" SuggestedHeight="89" HorizontalAlignment="Center" PositionXOffset="15" PositionYOffset="-2" Brush="MPLobby.TopHeader.HoverGlow.Middle" />
+                  </Children>
+                </ToggleStateWidget>
+
+                <!--<ToggleStateWidget UpdateChildrenStates="true" AllowSwitchOff="false" IsDisabled="true" Command.Click="ExecuteStore" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="70" DoNotPassEventsToChildren="true" HorizontalAlignment="Center" VerticalAlignment="Center">
+									<Children>
+										<TextWidget Text="@StoreText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPLobby.TopHeader.SideButtonText" />
+										<Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="27" SuggestedHeight="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" PositionYOffset="5" Sprite="MPLobby\Generic\top_header_notch" Brush.AlphaFactor="0.3" />
+										<ImageWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="447" SuggestedHeight="89" HorizontalAlignment="Center" PositionXOffset="15" PositionYOffset="-2" Brush="MPLobby.TopHeader.HoverGlow.Middle" />
+									</Children>
+								</ToggleStateWidget>-->
+
+              </Children>
+            </ListPanel>
+
+            <ButtonWidget Command.Click="ExecuteExit" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!TopHeader.LeaveButton.Width" SuggestedHeight="!TopHeader.LeaveButton.Height" HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="10" Brush="MPLobby.TopHeader.LeaveButton"/>
+          </Children>
+        </Widget>
+      </Children>
+    </MultiplayerLobbyMenuWidget>
+  </Window>
+</Prefab>

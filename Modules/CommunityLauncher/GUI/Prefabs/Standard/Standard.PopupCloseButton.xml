@@ -1,0 +1,22 @@
+<Prefab>
+
+  <Constants>
+    <Constant Name="Standard.PopupCloseButton.Width" BrushName="Standard.PopupCloseButton" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Standard.PopupCloseButton.Height" BrushName="Standard.PopupCloseButton" BrushLayer="Default" BrushValueType="Height"/>
+  </Constants>
+
+  <Parameters>
+    <Parameter Name="ButtonText" DefaultValue="- Missing -" />
+    <Parameter Name="ButtonAction" DefaultValue="" />
+    <Parameter Name="IsEnabled" DefaultValue="true" />
+  </Parameters>
+
+  <Window>
+    <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="*ButtonAction" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Standard.PopupCloseButton.Width" SuggestedHeight="!Standard.PopupCloseButton.Height" HorizontalAlignment="Center" VerticalAlignment="Top" IsEnabled="*IsEnabled" Brush="Standard.PopupCloseButton" UpdateChildrenStates="true">
+      <Children>
+        <TextWidget Text="*ButtonText" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Standard.DialogCloseButtons.ButtonText" />
+      </Children>
+    </ButtonWidget>
+  </Window>
+
+</Prefab>

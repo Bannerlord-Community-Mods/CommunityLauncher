@@ -1,0 +1,13 @@
+<Prefab>
+  <Constants>
+  </Constants>
+  <VisualDefinitions>
+  </VisualDefinitions>
+  <Window>
+    <Widget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" Sprite="loading_05">
+      <Children>
+		<TextWidget HorizontalAlignment="Center" VerticalAlignment="Center" WidthSizePolicy = "CoverChildren" HeightSizePolicy = "CoverChildren" Text="@LoadingText" Brush.FontSize="50"/>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

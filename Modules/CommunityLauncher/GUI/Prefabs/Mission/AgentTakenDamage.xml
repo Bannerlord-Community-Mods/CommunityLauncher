@@ -1,0 +1,22 @@
+<Prefab>
+  <Constants>
+    <Constant Name="TakenDamage.Visual.Width.Horizontal" BrushName="Mission.TakenDamage" BrushLayer="HorizontalTop" BrushValueType="Width"/>
+    <Constant Name="TakenDamage.Visual.Height.Horizontal" BrushName="Mission.TakenDamage" BrushLayer="HorizontalTop" BrushValueType="Height"/>
+
+    <Constant Name="TakenDamage.Visual.Width.Vertical" BrushName="Mission.TakenDamage" BrushLayer="VerticalLeft" BrushValueType="Width"/>
+    <Constant Name="TakenDamage.Visual.Height.Vertical" BrushName="Mission.TakenDamage" BrushLayer="VerticalLeft" BrushValueType="Height"/>
+  </Constants>
+  <Window>
+    <Widget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" IsEnabled="false">
+      <Children>
+
+        <Widget DataSource="{TakenDamageList}" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent">
+          <ItemTemplate>
+            <TakenDamageItemWidget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" Brush="Mission.TakenDamage" DamageAmount="@Damage" IsBehind="@IsBehind" IsRanged="@IsRanged" ScreenPosOfAffectorAgent="@ScreenPosOfAffectorAgent" HorizontalHeight="!TakenDamage.Visual.Height.Horizontal" HorizontalWidth="!TakenDamage.Visual.Width.Horizontal" VerticalHeight="!TakenDamage.Visual.Height.Vertical" VerticalWidth="!TakenDamage.Visual.Width.Vertical" Command.OnRemove="ExecuteRemove" Brush.GlobalAlphaFactor="0.5" RangedOnScreenStayTime="0.3" MeleeOnScreenStayTime="0.7"/>
+          </ItemTemplate>
+        </Widget>
+        
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

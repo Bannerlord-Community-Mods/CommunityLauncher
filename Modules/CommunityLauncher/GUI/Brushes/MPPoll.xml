@@ -1,0 +1,19 @@
+<Brushes>
+  <Brush Name="MPPoll.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="MPClassLoadout\perks_frame" VerticalFlip="true" ExtendLeft="42" ExtendRight="42" ExtendBottom="42" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="MPPoll.QueryText" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F1D09CFF" TextAlphaFactor="0.7" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+</Brushes>

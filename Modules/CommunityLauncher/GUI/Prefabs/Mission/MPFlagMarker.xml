@@ -1,0 +1,47 @@
+<Prefab>
+  <Constants>
+    <Constant Name="FlagMarker.Width" Value="36"/>
+    <Constant Name="FlagMarker.Height" Value="69"/>
+  </Constants>
+<Window>
+  <NameMarkerScreenWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsMarkersEnabled="@IsEnabled" Sprite="BlankWhiteSquare_9" Brush.Color="#000000FF" TargetAlphaValue="0.0" Brush.AlphaFactor="0">
+    <Children>
+
+      <Widget DataSource="{Targets}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+        <ItemTemplate>
+
+          <FlagMarkerWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Position="@ScreenPosition" FlagWidget="FlagWidget" PeerWidget="PeerWidget" LayoutImp.LayoutMethod = "VerticalBottomToTop" IsMarkerEnabled="@IsEnabled" Distance="@Distance" MarkerType="@MarkerType" FarAlphaTarget="0.5" FarDistanceCutoff="250" CloseDistanceCutoff="25">
+            <Children>
+
+              <Widget Id="FlagWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="!FlagMarker.Height" SuggestedWidth="!FlagMarker.Width" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Children>
+                  <FillBarVerticalClipWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!FlagMarker.Width" SuggestedHeight="!FlagMarker.Height" FillWidget="ClipWidget\FillWidget" ClipWidget="ClipWidget" MaxAmountAsFloat="1" InitialAmountAsFloat="@FlagProgress" IsDirectionUpward="true">
+                    <Children>
+                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPHUD.PowerBar.Flag" />
+                      <Widget Id="ClipWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!FlagMarker.Width" SuggestedHeight="!FlagMarker.Height" >
+                        <Children>
+                          <Widget Id="FillWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!FlagMarker.Width" SuggestedHeight="!FlagMarker.Height" Brush="MPHUD.PowerBar.Flag" Brush.Color="@Color"/>
+                        </Children>
+                      </Widget>
+                    </Children>
+                  </FillBarVerticalClipWidget>
+                  <TextWidget Id="NameTextWidget" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Text="@Name" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="FlagMarker.TextBrush" Brush.FontColor="@Color2" OverrideDefaultStateSwitchingEnabled="true" ClipContents="false"/>
+                </Children>
+              </Widget>
+
+              <Widget Id="PeerWidget" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Children>
+                  <TextWidget Id="NameTextWidget" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Text="@Name" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="PeerMarker.TextBrush" Brush.FontColor="@Color2" OverrideDefaultStateSwitchingEnabled="true" ClipContents="false"/>
+                </Children>
+              </Widget>
+
+            </Children>
+          </FlagMarkerWidget>
+
+        </ItemTemplate>
+      </Widget>
+
+    </Children>
+  </NameMarkerScreenWidget>
+</Window>
+</Prefab>

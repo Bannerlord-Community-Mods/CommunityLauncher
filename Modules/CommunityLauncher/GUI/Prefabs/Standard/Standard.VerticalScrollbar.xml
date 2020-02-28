@@ -1,0 +1,36 @@
+<Prefab>
+  <Parameters>
+    <Parameter Name="ValueInt" DefaultValue="1" />
+    <Parameter Name="MaxValue" DefaultValue="100" />
+  </Parameters>
+  <Constants>
+    <Constant Name="Stopper.Top.Width" BrushLayer="Default" BrushName="Scrollbar.Vertical.Stopper.Top" BrushValueType="Width" />
+    <Constant Name="Stopper.Top.Height" BrushLayer="Default" BrushName="Scrollbar.Vertical.Stopper.Top" BrushValueType="Height" />
+
+    <Constant Name="Stopper.Bottom.Width" BrushLayer="Default" BrushName="Scrollbar.Vertical.Stopper.Bottom" BrushValueType="Width" />
+    <Constant Name="Stopper.Bottom.Height" BrushLayer="Default" BrushName="Scrollbar.Vertical.Stopper.Bottom" BrushValueType="Height" />
+  </Constants>
+  <Variables>
+  </Variables>
+  <VisualDefinitions>
+  </VisualDefinitions>
+  <Window>
+    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="22" SuggestedHeight="800" MaxValue="100" MinValue="0">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Stopper.Top.Width" SuggestedHeight="!Stopper.Top.Height" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Scrollbar.Vertical.Stopper.Top" IsDisabled="true" />
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Stopper.Top.Width" SuggestedHeight="!Stopper.Top.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom" Brush="Scrollbar.Vertical.Stopper.Bottom" IsDisabled="true" />
+
+        <Widget Id="ScrollbarBlocker" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="22" SuggestedHeight="800" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginTop="!Stopper.Top.Height" MarginBottom="!Stopper.Bottom.Height" Brush="Scrollbar.Vertical.Blocker" />
+
+        <ScrollbarWidget Id="Scrollbar" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="22" SuggestedHeight="800" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginTop="!Stopper.Top.Height" MarginBottom="!Stopper.Bottom.Height" Brush="Scrollbar.Vertical" AlignmentAxis="Vertical" Handle="ScrollbarHandle" MaxValue="100" MinValue="0" UpdateChildrenStates="true">
+          <Children>
+            <ImageWidget Id="ScrollbarHandle" WidthSizePolicy="Fixed" SuggestedWidth="20" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Scrollbar.Vertical.Handle" MinHeight="50" />
+          </Children>
+        </ScrollbarWidget>
+
+      </Children>
+    </Widget>
+
+
+  </Window>
+</Prefab>

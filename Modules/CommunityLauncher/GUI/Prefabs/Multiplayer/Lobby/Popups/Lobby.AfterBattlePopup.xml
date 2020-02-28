@@ -1,0 +1,66 @@
+<Prefab>
+	<Constants>
+		<Constant Name="AnimDelay" Value="1.0" />
+	
+		<Constant Name="Experience.AnimDelay" Value="0.2" />
+		<Constant Name="Experience.AnimationDuration" Value="2.0" />
+		
+		<Constant Name="CloseButton.Width" BrushLayer="Default" BrushName="MPLobby.Popup.CloseButton" BrushValueType="Width" />
+		<Constant Name="CloseButton.Height" BrushLayer="Default" BrushName="MPLobby.Popup.CloseButton" BrushValueType="Height" />
+		
+		<Constant Name="Experience.BarFrame.Width" BrushName="MPLobby.AfterBattle.Experience.BarFrame" BrushLayer="Default" BrushValueType="Width"/>
+		<Constant Name="Experience.BarFrame.Height" BrushName="MPLobby.AfterBattle.Experience.BarFrame" BrushLayer="Default" BrushValueType="Height"/>
+	</Constants>
+	<Window>
+		<MultiplayerLobbyAfterBattlePopupWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" AnimationDelay="!AnimDelay" IsActive="@IsEnabled" ExperiencePanel="Container\Experience" Sprite="BlankWhiteSquare_9" Brush.Color="#000000FF" Brush.AlphaFactor="0.8">
+			<Children>
+				<ListPanel Id="Container" LayoutImp.LayoutMethod="VerticalBottomToTop" WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="800" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Children>
+						<TextWidget Text="@Title" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginBottom="30" Brush="MPLobby.Popup.HeaderText" />
+						
+						<MultiplayerLobbyAfterBattleExperiencePanel Id="Experience" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="170" ExperienceFillBar="FillBar" EarnedExperienceTextWidget="Earned\AnimatedText" LevelTextWidget="LevelData\Value" >
+							<Children>
+								<ListPanel Id="Earned" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginTop="10">
+									<Children>
+										<TextWidget Text="You've earned" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginRight="5" Brush="MPLobby.AfterBattle.Experience.MessagePredecessor" />
+										<TextWidget Text="+" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Brush="MPLobby.AfterBattle.Experience.MessageSuccessor" />
+										<AnimatedNumberTextWidget Id="AnimatedText" IntText="0" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Number="@GainedExperience" ReferenceNumber="@LevelsExperienceRequirment" AnimationDelay="!Experience.AnimDelay" AnimationDuration="!Experience.AnimationDuration" Brush="MPLobby.AfterBattle.Experience.MessageSuccessor" />
+										<TextWidget Text=" exp" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Brush="MPLobby.AfterBattle.Experience.MessageSuccessor" />
+									</Children>
+								</ListPanel>
+								<MultiplayerScoreboardAnimatedFillBarWidget Id="FillBar" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Experience.BarFrame.Width" SuggestedHeight="!Experience.BarFrame.Height" FillWidget="FillArea\FillWidget" ChangeWidget="FillArea\ChangeWidget" ChangeOverlayWidget="ChangeOverlayWidget" MaxAmount="100" InitialAmount="@InitialRatio" CurrentAmount="@FinalRatio" AnimationDelay="!Experience.AnimDelay" TimesOfFullFill="@NumOfLevelUps" AnimationDuration="!Experience.AnimationDuration" HorizontalAlignment="Center" MarginTop="60">
+									<Children>
+										<Widget Id="FillArea" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="21" MarginRight="21">
+											<Children>
+												<Widget Id="ChangeWidget" ClipContents="true" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="5">
+													<Children>
+														<Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="672" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="MPLobby\Popup\level_progress_fill_gained_xp" />
+													</Children>
+												</Widget>
+												<Widget Id="FillWidget" ClipContents="true" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="5">
+													<Children>
+														<Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="672" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="MPLobby\Popup\level_progress_fill" />
+													</Children>
+												</Widget>
+											</Children>
+										</Widget>
+										<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPLobby.AfterBattle.Experience.BarFrame"/>
+										<Widget Id="ChangeOverlayWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="43" SuggestedHeight="82" VerticalAlignment="Center" MarginLeft="21" MarginRight="21" Sprite="MPLobby\Popup\level_progress_fill_gained_xp_glow" />
+									</Children>
+								</MultiplayerScoreboardAnimatedFillBarWidget>
+								<ListPanel Id="LevelData" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginTop="116">
+									<Children>
+										<TextWidget Text="Level" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginRight="10" Brush="MPLobby.AfterBattle.Experience.TargetLevel" />
+										<TextWidget Id="Value" IntText="@CurrentLevel" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Brush="MPLobby.AfterBattle.Experience.TargetLevel" />
+									</Children>
+								</ListPanel>
+							</Children>
+						</MultiplayerLobbyAfterBattleExperiencePanel>
+						
+						<ButtonWidget Command.Click="ExecuteClose" DoNotPassEventsToChildren="true" UpdateChildrenStates="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!CloseButton.Width" SuggestedHeight="!CloseButton.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginTop="30" Brush="MPLobby.Popup.CloseButton"/>
+					</Children>
+				</ListPanel>
+			</Children>
+		</MultiplayerLobbyAfterBattlePopupWidget>
+	</Window>
+</Prefab>

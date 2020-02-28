@@ -1,0 +1,38 @@
+<Brushes>
+  <Brush Name="BoundaryCrossing.FillBar.InnerCanvas">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Slider\slider_inner_canvas" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="BoundaryCrossing.FillBar.Fill">
+    <Layers>
+      <BrushLayer Name="EmptyFill" Sprite="Slider\slider_fill" ColorFactor="1" Color="#FFFFFF00" />
+      <BrushLayer Name="DefaultFill" Sprite="Slider\slider_fill" ColorFactor="1" Color="#FFFFFFFF" />
+      <BrushLayer Name="ChangeFill" Sprite="Slider\slider_fill" ColorFactor="1" Color="#FFFFFF00" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="BoundaryCrossing.WarningText">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D8BA86FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="42" />
+    </Styles>
+  </Brush>
+  <Brush Name="BoundaryCrossing.CountdownText">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="70" />
+    </Styles>
+  </Brush>
+</Brushes>

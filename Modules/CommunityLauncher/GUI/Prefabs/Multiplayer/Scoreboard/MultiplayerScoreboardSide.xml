@@ -1,0 +1,106 @@
+<Prefab>
+  <Parameters>
+    <Parameter Name="IsLeftSide" DefaultValue="false" />
+  </Parameters>
+  <Constants>
+    <Constant Name="NameColumn.WidthRatio" Value="1.5" />
+    <Constant Name="TitleRow.Height" Value="77" />
+    <Constant Name="Row.Height" Value="62" />
+
+    <Constant Name="SteamProfileFrame.Width" Additive="-18" BrushLayer="Default" BrushName="MPScoreboard.SteamProfileFrame" BrushValueType="Width" />
+    <Constant Name="SteamProfileFrame.Height" Additive="-18" BrushLayer="Default" BrushName="MPScoreboard.SteamProfileFrame" BrushValueType="Height" />
+
+    <Constant Name="PlayerIndicator.Width" BrushLayer="Default" BrushName="MPScoreboard.PlayerIndicator" BrushValueType="Width" />
+    <Constant Name="PlayerIndicator.Height" BrushLayer="Default" BrushName="MPScoreboard.PlayerIndicator" BrushValueType="Height" />
+
+    <Constant Name="ScoreText.HorizontalAlignment" BooleanCheck="*IsLeftSide" OnFalse="Left" OnTrue="Right" />
+    <Constant Name="ScoreText.PositionXOffset" BooleanCheck="*IsLeftSide" OnFalse="30" OnTrue="-30" />
+  </Constants>
+  <Window>
+    <MultiplayerScoreboardSideWidget Id="SideParentWidget" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9" BackgroundStripesListPanel="Container\BackgroundStripes" Brush.AlphaFactor="0.2" CultureId="@CultureId" MinHeight="1080" NameColumnWidthRatio="!NameColumn.WidthRatio" TitlesListPanel="Container\TitlesContainer\Titles" UseSecondary="@UseSecondary">
+      <Children>
+
+        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="65" HorizontalAlignment="Center" MarginTop="20" Brush="MPScoreboard.FactionText" Text="@Name" />
+
+        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="50" HorizontalAlignment="!ScoreText.HorizontalAlignment" PositionXOffset="!ScoreText.PositionXOffset" MarginTop="30" Brush="MPScoreboard.ScoreText" IntText="@RoundsWon" IsHidden="@IsSingleSide" />
+
+        <Widget Id="Container" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginTop="100">
+          <Children>
+            <!-- Titles -->
+            <Widget Id="TitlesContainer" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!TitleRow.Height">
+              <Children>
+                <ListPanel Id="Titles" DataSource="{EntryProperties}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" LayoutImp.LayoutMethod="HorizontalLeftToRight">
+                  <ItemTemplate>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPScoreboard.TitleText" Text="@Item" />
+                  </ItemTemplate>
+                  <ItemTemplate Type="First">
+                    <TextWidget Id="First" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPScoreboard.TitleText" Text="" />
+                  </ItemTemplate>
+                </ListPanel>
+              </Children>
+            </Widget>
+
+            <DimensionSyncWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" PositionYOffset="5" DimensionToSync="Vertical" MinHeight="980" WidgetToCopyHeightFrom="..\..\Container">
+              <Children>
+                <MultiplayerScoreboardStripedBackgroundWidget Id="BackgroundStripes" DataSource="{EntryProperties}" DoNotAcceptEvents="true" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" StripeBrush="MPScoreboard.Stripe">
+                  <ItemTemplate>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" />
+                  </ItemTemplate>
+                  <ItemTemplate Type="First">
+                    <Widget Id="First" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" />
+                  </ItemTemplate>
+                </MultiplayerScoreboardStripedBackgroundWidget>
+              </Children>
+            </DimensionSyncWidget>
+
+            <!-- Items -->
+            <ListPanel Id="PlayersList" DataSource="{Players}" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" VerticalAlignment="Top" MarginTop="80" LayoutImp.LayoutMethod="VerticalBottomToTop">
+              <ItemTemplate>
+                <ButtonWidget Id="PlayerItem" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!Row.Height" HorizontalAlignment="Center" Command.AlternateClick="ExecuteSelection" Command.Click="ExecuteSelection">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!PlayerIndicator.Width" SuggestedHeight="!PlayerIndicator.Height" HorizontalAlignment="Right" VerticalAlignment="Center" PositionXOffset="-1" Brush="MPScoreboard.PlayerIndicator" IsVisible="@IsPlayer" />
+
+                    <!-- Stats -->
+                    <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" IsDisabled="@IsDead" UpdateChildrenStates="true">
+                      <Children>
+                        <MultiplayerScoreboardStatsListWidget Id="Stats" DataSource="{Stats}" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" EvenBrush="MPScoreboard.ValueText.Even" LayoutImp.LayoutMethod="HorizontalLeftToRight" NameColumnWidthRatio="!NameColumn.WidthRatio" OddBrush="MPScoreboard.ValueText.Odd" UpdateChildrenStates="true">
+                          <ItemTemplate Type="Default">
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!Row.Height" UpdateChildrenStates="true">
+                              <Children>
+                                <MultiplayerPlayerBadgeVisualWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="60" SuggestedHeight="52.5" HorizontalAlignment="Center" VerticalAlignment="Center" BadgeId="@Item" IsVisible="@IsBadgeStat" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPScoreboard.ValueText.Even" IsHidden="@IsBadgeStat" Text="@Item" />
+                              </Children>
+                            </Widget>
+
+                          </ItemTemplate>
+                          <ItemTemplate Type="First">
+                            <!-- Avatar -->
+                            <Widget Id="First" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!Row.Height" VerticalAlignment="Center" PositionXOffset="-5" UpdateChildrenStates="true">
+                              <Children>
+                                <Widget DataSource="{..\..}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!SteamProfileFrame.Width" SuggestedHeight="!SteamProfileFrame.Height" HorizontalAlignment="Center" VerticalAlignment="Center" UpdateChildrenStates="true">
+                                  <Children>
+                                    <ImageIdentifierWidget DataSource="{Avatar}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Center" VerticalAlignment="Center" AdditionalArgs="@AdditionalArgs" ImageId="@Id" ImageTypeCode="@ImageTypeCode" MaterialAlphaFactor="0.7" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPScoreboard.SteamProfileFrame" />
+                                    <MultiplayerCompassElement DataSource="{CompassElement}" HorizontalAlignment="Right" VerticalAlignment="Top" PositionXOffset="15" PositionYOffset="-5" />
+                                    <!--Muted Icon-->
+                                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="25" SuggestedHeight="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Sprite="MPScoreboard\muted_icon" IsVisible="@IsMuted" />
+                                  </Children>
+                                </Widget>
+                              </Children>
+                            </Widget>
+                          </ItemTemplate>
+                        </MultiplayerScoreboardStatsListWidget>
+                      </Children>
+                    </ButtonWidget>
+                  </Children>
+                </ButtonWidget>
+              </ItemTemplate>
+            </ListPanel>
+          </Children>
+        </Widget>
+
+
+      </Children>
+    </MultiplayerScoreboardSideWidget>
+  </Window>
+</Prefab>

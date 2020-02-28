@@ -1,0 +1,97 @@
+<Prefab>
+  <Constants>
+    <Constant Name="Text.VerticalPadding" Value="0"/>
+    <Constant Name="CloseButton.Icon.Padding" Value="22"/>
+    <Constant Name="PanelContents.Margin.Left" Value="25"/>
+    <Constant Name="PanelContents.Margin.Right" Value="25"/>
+
+  </Constants>
+
+  <Window>
+    <TutorialPanelWidget HeightSizePolicy ="CoverChildren" WidthSizePolicy="CoverChildren" IsEnabled="@IsEnabled" TutorialPanel="TutorialPanel" UpdateChildrenStates="true" OverrideDefaultStateSwitchingEnabled="true" DoNotAcceptEvents="true">
+      <Children>
+
+        <ListPanel Id="TutorialPanel" HeightSizePolicy ="CoverChildren" WidthSizePolicy="Fixed" SuggestedWidth="320" Brush="TutorialPanelBrush" LayoutImp.LayoutMethod = "VerticalBottomToTop" MarginTop="29" MarginRight="20" MarginBottom="19" UpdateChildrenStates="true">
+          <Children>
+
+            <!--Tutorial Text-->
+            <TextWidget HeightSizePolicy ="CoverChildren" WidthSizePolicy="StretchToParent" SuggestedHeight="50"  Brush="Tutorial.Title.Text" Text="@TutorialTitleText" MarginTop="20" MarginLeft="!PanelContents.Margin.Left" MarginRight="!PanelContents.Margin.Right"/>
+
+            <!--Divider-->
+            <Widget HeightSizePolicy="Fixed" WidthSizePolicy="Fixed" SuggestedHeight="2" SuggestedWidth="280" MarginTop="5" Sprite="Tutorial\tutorial_divider" HorizontalAlignment="Center"/>
+
+            <!--Title Text-->
+            <TextWidget HeightSizePolicy ="CoverChildren" WidthSizePolicy="StretchToParent" Brush="TutorialItem.Title.Text" Text="@TitleText" MarginTop="24" MarginLeft="!PanelContents.Margin.Left" MarginRight="!PanelContents.Margin.Right"/>
+
+            <!--Description Text-->
+            <TextWidget Id="DescriptionText" HeightSizePolicy ="CoverChildren" WidthSizePolicy="StretchToParent" Brush="TutorialItem.Description.Text" Text="@DescriptionText" MarginTop="15" MarginBottom="33" MarginLeft="!PanelContents.Margin.Left" MarginRight="!PanelContents.Margin.Right" UpdateChildrenStates="true" OverrideDefaultStateSwitchingEnabled="true">
+              <Children>
+
+                <Widget HeightSizePolicy ="Fixed" WidthSizePolicy="StretchToParent" SuggestedHeight="119"/>
+
+              </Children>
+            </TextWidget>
+
+            <Widget HeightSizePolicy ="Fixed" WidthSizePolicy="StretchToParent" SuggestedHeight="38" UpdateChildrenStates="true">
+              <Children>
+
+                <Widget HeightSizePolicy ="CoverChildren" WidthSizePolicy="CoverChildren" MarginLeft="7" IsVisible="@RequiresMouse">
+                  <Children>
+
+                    <ListPanel HeightSizePolicy ="CoverChildren" WidthSizePolicy="CoverChildren">
+                      <Children>
+
+                        <!--Disable Tutorial Text-->
+                        <RichTextWidget HeightSizePolicy ="CoverChildren" WidthSizePolicy="CoverChildren" Text="@TutorialsEnabledText" HorizontalAlignment="Left" VerticalAlignment="Center"  Brush="TutorialItem.SubText.Text"/>
+
+                        <!--Disable Tutorial Button-->
+                        <ButtonWidget HeightSizePolicy ="Fixed" WidthSizePolicy="Fixed" Command.Click="ExecuteToggleDisableAllTutorials" SuggestedHeight="15" SuggestedWidth="15" HorizontalAlignment="Right" MarginLeft="10" VerticalAlignment="Center" Sprite="Tutorial\disable_tutorial_checkbox">
+                          <Children>
+                            <Widget HeightSizePolicy ="Fixed" WidthSizePolicy="Fixed" SuggestedHeight="15" SuggestedWidth="15" Sprite="Tutorial\disable_tutorial_checkbox_active" IsVisible="@AreTutorialsEnabled" IsEnabled="false"/>
+                          </Children>
+                        </ButtonWidget>
+
+                      </Children>
+                    </ListPanel>
+                    
+                    <HintWidget DataSource="{DisableAllTutorialsHint}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="50" SuggestedHeight="30" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+
+                  </Children>
+                </Widget>
+
+
+                <!--Previous Tutorial Button-->
+                <ButtonWidget HeightSizePolicy ="Fixed" WidthSizePolicy="Fixed" SuggestedHeight="16" SuggestedWidth="13" HorizontalAlignment="Right" MarginRight="80" MarginBottom="11" VerticalAlignment="Center" Brush="PrevTutorialButton" IsVisible="false"/>
+
+                <!--Step Count Text-->
+                <TextWidget HeightSizePolicy ="CoverChildren" WidthSizePolicy="CoverChildren" Text="@StepCountText" HorizontalAlignment="Right" MarginRight="40" Brush="TutorialItem.SubText.Text" IsVisible="false"/>
+
+                <!--Next Tutorial Button-->
+                <ButtonWidget HeightSizePolicy ="Fixed" WidthSizePolicy="Fixed" SuggestedHeight="16" SuggestedWidth="13" HorizontalAlignment="Right" MarginRight="10" MarginBottom="11" VerticalAlignment="Center" Brush="NextTutorialButton" IsVisible="false"/>
+
+              </Children>
+            </Widget>
+
+          </Children>
+        </ListPanel>
+
+        <!--Disable Current Tutorial Step Button-->
+        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteFinishTutorial" HeightSizePolicy ="Fixed" WidthSizePolicy="Fixed" SuggestedHeight="68" SuggestedWidth="68" HorizontalAlignment="Right" Brush="CloseTutorialButton" IsVisible="@RequiresMouse" IsEnabled="true" UpdateChildrenStates="true">
+          <Children>
+            <Widget HeightSizePolicy ="StretchToParent" WidthSizePolicy="StretchToParent" Sprite="StdAssets\bottom_cross_button" MarginTop="!CloseButton.Icon.Padding" MarginBottom="!CloseButton.Icon.Padding" MarginRight="!CloseButton.Icon.Padding" MarginLeft="!CloseButton.Icon.Padding" Brush.AlphaFactor="0.8"/>
+            <HintWidget DataSource="{DisableCurrentTutorialHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+          </Children>
+        </ButtonWidget>
+
+        <!--Disable All Tutorials Button-->
+        <!--<ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteDisableAllTutorials" HeightSizePolicy ="Fixed" WidthSizePolicy="Fixed" SuggestedHeight="68" SuggestedWidth="68" MarginTop="68" PositionXOffset="25" HorizontalAlignment="Right" Brush="DisableTutorialButton" IsVisible="@RequiresMouse" IsEnabled="true" UpdateChildrenStates="true">
+              <Children>
+                <Widget HeightSizePolicy ="StretchToParent" WidthSizePolicy="StretchToParent" Sprite="StdAssets\bottom_cross_button" MarginTop="!CloseButton.Icon.Padding" MarginBottom="!CloseButton.Icon.Padding" MarginRight="!CloseButton.Icon.Padding" MarginLeft="!CloseButton.Icon.Padding" Brush.AlphaFactor="0.8"/>
+                <HintWidget DataSource="{DisableAllTutorialsHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+              </Children>
+            </ButtonWidget>-->
+
+      </Children>
+    </TutorialPanelWidget>
+  </Window>
+</Prefab>

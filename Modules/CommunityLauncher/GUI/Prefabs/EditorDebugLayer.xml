@@ -1,0 +1,11 @@
+<Window>
+	<Widget SuggestedHeight="0" SuggestedWidth="0" HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" DoNotAcceptEvents="true" DoNotPassEventsToChildren="true" IsDisabled="True" IsEnabled="False">
+		<Children>
+			<Widget Id="DebugWidgetList" DataSource="{WidgetList}" HeightSizePolicy ="StretchToParent" WidthSizePolicy="StretchToParent">
+				<ItemTemplate>
+					<Widget Sprite="EditorSelector_9" SuggestedHeight="128" SuggestedWidth="128" />
+				</ItemTemplate>
+			</Widget>
+		</Children>
+	</Widget>
+</Window>

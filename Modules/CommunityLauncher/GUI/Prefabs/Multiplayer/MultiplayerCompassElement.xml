@@ -1,0 +1,19 @@
+<Prefab>
+  <Window>
+    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="40" SuggestedHeight="33">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Right" VerticalAlignment="Center">
+          <Children>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="31" SuggestedHeight="31" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="MPHud\banner_outline" Brush.Color="@Color2" Brush.AlphaFactor="0.8"/>
+            <ImageIdentifierWidget DataSource="{Banner}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Center" ImageId="@Id" AdditionalArgs="@AdditionalArgs" ImageTypeCode="@ImageTypeCode" CircularClipEnabled="true" CircularClipRadius="14"/>
+          </Children>
+        </Widget>
+        <MultiplayerTroopTypeIconWidget Id="IconContainer" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="25" SuggestedHeight="40" HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="15" ForegroundWidget="IconForeground" IconSpriteType="@IconSpriteType" Brush.Color="@Color" UseOriginalSize="false">
+          <Children>
+            <Widget Id="IconForeground" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush.Color="@Color2"/>
+          </Children>
+        </MultiplayerTroopTypeIconWidget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

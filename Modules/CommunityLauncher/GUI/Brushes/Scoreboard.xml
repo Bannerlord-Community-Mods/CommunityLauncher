@@ -1,0 +1,442 @@
+<Brushes>
+  <Brush Name="ScoreboardUnitRowBrush">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPScoreboard\hover_frame" Color="#FFFFFFFF" AlphaFactor="0.75" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Sprite="" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Sprite="SPScoreboard\hover_frame" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" Sprite="SPScoreboard\hover_frame" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Scoreboard.PowerLevelComparer.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="power_bar_frame_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Scoreboard.Flags.Success" TransitionDuration="0.25">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPScoreboard\banner" Color="#69F44AFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0" />
+      </Style>
+      <Style Name="Opened">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Scoreboard.Flags.Defeat" TransitionDuration="0.25">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPScoreboard\banner" Color="#FF5D4BFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0" />
+      </Style>
+      <Style Name="Opened">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Scoreboard.BattleResultContainer">
+    <Layers>
+      <BrushLayer Name="Default" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Opened">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+    <SoundProperties>
+      <StateSounds>
+        <StateSound StateName="Opened" Audio="panels/scoreboard_flags" />
+      </StateSounds>
+      <EventSounds>
+      </EventSounds>
+    </SoundProperties>
+  </Brush>
+  <Brush Name="Scoreboard.BattleRewards.ItemBackground">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPScoreboard\reward_band" AlphaFactor="0.8" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Opened">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+    <SoundProperties>
+      <StateSounds>
+        <StateSound StateName="Opened" Audio="panels/scoreboard_skill" />
+      </StateSounds>
+      <EventSounds>
+      </EventSounds>
+    </SoundProperties>
+  </Brush>
+  <Brush Name="ScoreboardControlButtonBrush" FontColor="#FAF4DEFF">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPScoreboard\bottom_button" Color="#FFFFFFFF" AlphaFactor="0.8" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1.0" Sprite="SPScoreboard\bottom_button" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.2" Sprite="SPScoreboard\bottom_button" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.85" Sprite="SPScoreboard\bottom_button" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.4" Sprite="SPScoreboard\bottom_button" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" ColorFactor="1.8" Sprite="SPScoreboard\bottom_button" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="ScoreboardFastForwardIconBrush" FontColor="#FAF4DEFF">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPScoreboard\SPScoreboard\bottom_fastforward_button" Color="#FFFFFFFF" AlphaFactor="0.5" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1.0" Sprite="SPScoreboard\bottom_fastforward_button" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.2" Sprite="SPScoreboard\bottom_fastforward_button" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.85" Sprite="SPScoreboard\bottom_fastforward_button" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.4" Sprite="SPScoreboard\bottom_fastforward_button" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" ColorFactor="1.8" Sprite="SPScoreboard\bottom_fastforward_button" />
+      </Style>
+    </Styles>
+  </Brush>
+  
+  <Brush Name="ScoreboardEndSimulationIconBrush" FontColor="#FAF4DEFF">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPScoreboard\bottom_fastforward_end_button" Color="#FFFFFFFF" AlphaFactor="0.5" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1.0" Sprite="SPScoreboard\bottom_fastforward_end_button" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.2" Sprite="SPScoreboard\bottom_fastforward_end_button" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.85" Sprite="SPScoreboard\bottom_fastforward_end_button" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.4" Sprite="SPScoreboard\bottom_fastforward_end_button" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" ColorFactor="1.8" Sprite="SPScoreboard\bottom_fastforward_end_button" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Scoreboard.ContextMenu.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#000000FF" AlphaFactor="0.6" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1.0"  />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.2"  />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.85" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.4"  />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" ColorFactor="1.8"  />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Scoreboard.ContextMenu.Icon">
+    <Layers>
+      <BrushLayer Name="Default" IsHidden="true"/>
+      <BrushLayer Name="Mute" Sprite="MPScoreboard\mute_icon" Color="#F4E1C4FF" IsHidden="true"/>
+      <BrushLayer Name="ViewProfile" Sprite="MPScoreboard\view_profile_icon" Color="#F4E1C4FF" IsHidden="true"/>
+      <BrushLayer Name="Report" Sprite="MPScoreboard\block_icon" Color="#F4E1C4FF" IsHidden="true"/>
+      <BrushLayer Name="Kick" Sprite="MPScoreboard\block_icon" Color="#F4E1C4FF" IsHidden="true"/>
+    </Layers>
+    <Styles>
+      <Style Name="Mute">
+        <BrushLayer Name="Mute" IsHidden="false"/>
+      </Style>
+      <Style Name="ViewProfile">
+        <BrushLayer Name="ViewProfile" IsHidden="false"/>
+      </Style>
+      <Style Name="Report">
+        <BrushLayer Name="Report" IsHidden="false"/>
+      </Style>
+      <Style Name="Kick">
+        <BrushLayer Name="Kick" IsHidden="false"/>
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Scoreboard.BattleResultTitleBackground.Victory" TransitionDuration="0.5">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPScoreboard\victory_band" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0" />
+      </Style>
+      <Style Name="Opened">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Scoreboard.BattleResultTitleBackground.Defeat" TransitionDuration="0.5">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="SPScoreboard\defeat_band" SaturationFactor="30" ValueFactor="-15" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0" />
+      </Style>
+      <Style Name="Opened">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="ScoreboardRemainingItem" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+      <BrushLayer Name="Default" Color="#C1F99BFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C1F99BFF" TextGlowColor="#C1F99BFF" TextOutlineAmount="0" TextBlur="0" TextGlowRadius="0" AnimationToPlayOnBegin="ValueChangeAnimation" FontSize="20">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+    <Animations>
+      <Animation Name="ValueChangeAnimation" Duration="0.6" Loop="false">
+        <AnimationProperty PropertyName="FontColor">
+          <KeyFrame Time="0.0" Value="#C1F99BFF" />
+          <KeyFrame Time="0.01" Value="#FFFFFFFF" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextBlur">
+          <KeyFrame Time="0.0" Value="0" />
+          <KeyFrame Time="0.01" Value="1" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextGlowRadius">
+          <KeyFrame Time="0.0" Value="0.0" />
+          <KeyFrame Time="0.01" Value="0.1" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+  <Brush Name="ScoreboardReadyToUpgradeItem" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+      <BrushLayer Name="Default" Color="#FAF4DEFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#FAF4DEFF" TextOutlineAmount="0" TextBlur="0" TextGlowRadius="0" AnimationToPlayOnBegin="ValueChangeAnimation" FontSize="20" />
+    </Styles>
+    <Animations>
+      <Animation Name="ValueChangeAnimation" Duration="0.6" Loop="false">
+        <AnimationProperty PropertyName="FontColor">
+          <KeyFrame Time="0.0" Value="#FAF4DEFF" />
+          <KeyFrame Time="0.01" Value="#FFFFFFFF" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextBlur">
+          <KeyFrame Time="0.0" Value="0" />
+          <KeyFrame Time="0.01" Value="1" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextGlowRadius">
+          <KeyFrame Time="0.0" Value="0.0" />
+          <KeyFrame Time="0.01" Value="0.1" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+  <Brush Name="ScoreboardKillItem" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+      <BrushLayer Name="Default" Color="#B2FDE8FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B2FDE8FF" TextGlowColor="#B2FDE8FF" TextOutlineAmount="0" TextBlur="0" TextGlowRadius="0" AnimationToPlayOnBegin="ValueChangeAnimation" FontSize="20" />
+    </Styles>
+    <Animations>
+      <Animation Name="ValueChangeAnimation" Duration="0.6" Loop="false">
+        <AnimationProperty PropertyName="FontColor">
+          <KeyFrame Time="0.0" Value="#B2FDE8FF" />
+          <KeyFrame Time="0.01" Value="#FFFFFFFF" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextBlur">
+          <KeyFrame Time="0.0" Value="0" />
+          <KeyFrame Time="0.01" Value="1" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextGlowRadius">
+          <KeyFrame Time="0.0" Value="0.0" />
+          <KeyFrame Time="0.01" Value="0.1" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+  <Brush Name="ScoreboardDeadItem" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+      <BrushLayer Name="Default" Color="#FFB3B3FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFB3B3FF" TextGlowColor="#FFB3B3FF" TextOutlineAmount="0" TextBlur="0" TextGlowRadius="0" AnimationToPlayOnBegin="ValueChangeAnimation" FontSize="20" />
+    </Styles>
+    <Animations>
+      <Animation Name="ValueChangeAnimation" Duration="0.6" Loop="false">
+        <AnimationProperty PropertyName="FontColor">
+          <KeyFrame Time="0.0" Value="#FFB3B3FF" />
+          <KeyFrame Time="0.01" Value="#FFFFFFFF" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextBlur">
+          <KeyFrame Time="0.0" Value="0" />
+          <KeyFrame Time="0.01" Value="1" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextGlowRadius">
+          <KeyFrame Time="0.0" Value="0.0" />
+          <KeyFrame Time="0.01" Value="0.1" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+  <Brush Name="ScoreboardWoundedItem" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+      <BrushLayer Name="Default" Color="#FFDBA6FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFDBA6FF" TextGlowColor="#FFDBA6FF" TextOutlineAmount="0" TextBlur="0" TextGlowRadius="0" AnimationToPlayOnBegin="ValueChangeAnimation" FontSize="20" />
+    </Styles>
+    <Animations>
+      <Animation Name="ValueChangeAnimation" Duration="0.6" Loop="false">
+        <AnimationProperty PropertyName="FontColor">
+          <KeyFrame Time="0.0" Value="#FFDBA6FF" />
+          <KeyFrame Time="0.01" Value="#FFFFFFFF" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextBlur">
+          <KeyFrame Time="0.0" Value="0" />
+          <KeyFrame Time="0.01" Value="1" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextGlowRadius">
+          <KeyFrame Time="0.0" Value="0.0" />
+          <KeyFrame Time="0.01" Value="0.1" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+  <Brush Name="ScoreboardRoutedItem" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+      <BrushLayer Name="Default" Color="#FFEFB0FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFEFB0FF" TextGlowColor="#FFEFB0FF" TextOutlineAmount="0" TextBlur="0" TextGlowRadius="0" AnimationToPlayOnBegin="ValueChangeAnimation" FontSize="20" />
+    </Styles>
+    <Animations>
+      <Animation Name="ValueChangeAnimation" Duration="0.6" Loop="false">
+        <AnimationProperty PropertyName="FontColor">
+          <KeyFrame Time="0.0" Value="#FFEFB0FF" />
+          <KeyFrame Time="0.01" Value="#FFFFFFFF" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextBlur">
+          <KeyFrame Time="0.0" Value="0" />
+          <KeyFrame Time="0.01" Value="1" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextGlowRadius">
+          <KeyFrame Time="0.0" Value="0.0" />
+          <KeyFrame Time="0.01" Value="0.1" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+  <Brush Name="ScoreboardRoutedItem.Banner">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Disabled" OverlayMethod="CoverWithTexture" OverlayYOffset="0" OverlayXOffset="130" />
+    </Layers>
+    <Styles>
+    </Styles>
+  </Brush>
+  <Brush Name="ScoreboardPrizeText" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#FF0000FF" TextOutlineColor="#FF0000FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+  <Brush Name="ScoreboardDefaultFontBrush" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#FF0000FF" TextOutlineColor="#FF0000FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+  <Brush Name="ScoreboardTitleFontBrush" TextHorizontalAlignment="Left" TransitionDuration="5.5">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="24" />
+      <Style Name="Opened" AnimationToPlayOnBegin="OpenedAnimation" />
+    </Styles>
+    <Animations>
+      <Animation Name="OpenedAnimation" Duration="0.3" Loop="false">
+        <AnimationProperty PropertyName="FontColor">
+          <KeyFrame Time="0.0" Value="#FFFFFF00" />
+          <KeyFrame Time="0.01" Value="#FFFFFFFF" />
+          <KeyFrame Time="0.02" Value="#FFFFFFFF" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextBlur">
+          <KeyFrame Time="0.0" Value="1" />
+          <KeyFrame Time="0.01" Value="1" />
+          <KeyFrame Time="0.02" Value="0" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextGlowRadius">
+          <KeyFrame Time="0.0" Value="0.5" />
+          <KeyFrame Time="0.01" Value="0.5" />
+          <KeyFrame Time="0.02" Value="0.0" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+
+  <Brush Name="Scoreboard.ContextMenu.ItemText" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#F4E1C4FF" TextGlowColor="#FF0000FF" TextOutlineColor="#FF0000FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="24" />
+      <Style Name="Hovered" FontColor="#F4E1C4FF" TextGlowColor="#FF0000FF" TextOutlineColor="#FF0000FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="30" />
+    </Styles>
+  </Brush>
+  
+  <Brush Name="Scoreboard.Time.Text" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#FF0000FF" TextOutlineColor="#FF0000FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="ShowMouse.Text" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#FF0000FF" TextOutlineColor="#FF0000FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="35" />
+    </Styles>
+  </Brush>
+</Brushes>

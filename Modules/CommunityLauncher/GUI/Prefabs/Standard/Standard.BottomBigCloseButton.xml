@@ -1,0 +1,35 @@
+<Prefab>
+
+  <Constants>
+    <Constant Name="Standard.BottomBigCloseButton.Frame.Width" BrushLayer="Default" BrushName="Standard.BottomBigCloseButton.Frame" BrushValueType="Width" />
+    <Constant Name="Standard.BottomBigCloseButton.Frame.Height" BrushLayer="Default" BrushName="Standard.BottomBigCloseButton.Frame" BrushValueType="Height" />
+
+    <Constant Name="Standard.BottomBigCloseButton.DoneButton.Width" BrushLayer="Default" BrushName="Standard.BottomBigCloseButton.DoneButton" BrushValueType="Width" />
+    <Constant Name="Standard.BottomBigCloseButton.DoneButton.Height" BrushLayer="Default" BrushName="Standard.BottomBigCloseButton.DoneButton" BrushValueType="Height" />
+  </Constants>
+
+  <Parameters>
+    <Parameter Name="DoneButtonText" DefaultValue="- Missing -" />
+    <Parameter Name="DoneButtonAction" DefaultValue="" />
+    <Parameter Name="DoneButtonDisabled" DefaultValue="false" />
+    <Parameter Name="DoneButtonEnabled" DefaultValue="false" />
+    <Parameter Name="DoneButtonHoverBegin" DefaultValue="" />
+    <Parameter Name="DoneButtonHoverEnd" DefaultValue="" />
+  </Parameters>
+
+  <Window>
+    <Widget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Standard.BottomBigCloseButton.Frame.Width" SuggestedHeight="!Standard.BottomBigCloseButton.Frame.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+      <Children>
+
+        <ButtonWidget Id="DoneButton" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Standard.BottomBigCloseButton.DoneButton.Width" SuggestedHeight="!Standard.BottomBigCloseButton.DoneButton.Height" HorizontalAlignment="Center" VerticalAlignment="Top" PositionXOffset="10" MarginTop="30" Brush="Standard.BottomBigCloseButton.DoneButton" Command.Click="*DoneButtonAction" Command.HoverBegin="*DoneButtonHoverBegin" Command.HoverEnd="*DoneButtonHoverEnd" IsDisabled="*DoneButtonDisabled" IsEnabled="*DoneButtonEnabled">
+          <Children>
+            <TextWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="7" Brush="Standard.BottomBigCloseButton.ButtonText" Text="*DoneButtonText" />
+          </Children>
+        </ButtonWidget>
+
+        <Widget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Standard.BottomBigCloseButton.Frame" />
+      </Children>
+    </Widget>
+  </Window>
+
+</Prefab>

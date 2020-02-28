@@ -1,0 +1,60 @@
+<Window>
+  <Widget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" MarginLeft="100" MarginRight="0" MarginTop="100" MarginBottom="200" VerticalAlignment = "Bottom">
+    <Children>
+      <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "250" SuggestedHeight = "250" HorizontalAlignment = "Left" VerticalAlignment = "Top" Sprite="frame_001_9">
+      </Widget>
+      <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "120" SuggestedHeight = "120" HorizontalAlignment = "Right" VerticalAlignment = "Bottom" Sprite="frame_001_9">
+      </Widget>
+      <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "120" SuggestedHeight = "120" HorizontalAlignment = "Left" VerticalAlignment = "Bottom" Sprite="frame_001_9">
+      </Widget>
+      <Widget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "Fixed" MarginLeft = "100" MarginRight = "200" SuggestedHeight = "120" HorizontalAlignment = "Center" VerticalAlignment = "Bottom" Sprite="frame_001_9">
+        <Children>
+          <TextWidget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" Text="ghjhj">
+          </TextWidget>
+        </Children>
+      </Widget>
+      <ButtonWidget DataSource = "{ItemsRoot}" Command.Click = "AddDummyItem" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" MarginLeft = "100" MarginTop = "100" SuggestedWidth = "360" SuggestedHeight = "120" HorizontalAlignment = "Left" VerticalAlignment = "Bottom" Brush = "ButtonBrush">
+      </ButtonWidget>
+      <ButtonWidget DataSource = "{ItemsRoot}" Command.Click = "RemoveDummyItem" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" MarginLeft = "100" MarginTop = "240" SuggestedWidth = "360" SuggestedHeight = "120" HorizontalAlignment = "Left" VerticalAlignment = "Bottom" Brush = "ButtonBrush">
+      </ButtonWidget>
+      <ButtonWidget Command.Click = "ResetItems" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" MarginLeft = "100" MarginTop = "380" SuggestedWidth = "120" SuggestedHeight = "120" HorizontalAlignment = "Left" VerticalAlignment = "Bottom" Brush = "ButtonBrush">
+      </ButtonWidget>
+      <ScrollbarWidget Id = "MyHorizontalScrollbar" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" MarginLeft = "250" MarginTop = "100" SuggestedWidth = "400" SuggestedHeight = "120" Sprite="frame_001_9" MinValue = "0" MaxValue = "100" Handle = "MyHandle">
+        <Children>
+          <Widget Id="MyHandle" WidthSizePolicy = "Fixed" HeightSizePolicy = "StretchToParent" SuggestedWidth = "100" HorizontalAlignment = "Left" VerticalAlignment = "Top" Sprite="frame_001_9">
+          </Widget>
+        </Children>
+      </ScrollbarWidget>
+      <ScrollbarWidget Id = "MyVerticalScrollbar" AlignmentAxis = "Vertical" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" MarginLeft = "650" MarginTop = "100" SuggestedWidth = "120" SuggestedHeight = "400" Sprite="frame_001_9" MinValue = "0" MaxValue = "100" Handle = "MyHandle">
+        <Children>
+          <Widget Id="MyHandle" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "Fixed" SuggestedHeight = "100" HorizontalAlignment = "Left" VerticalAlignment = "Top" Sprite="frame_001_9">
+          </Widget>
+        </Children>
+      </ScrollbarWidget>
+      <ScrollablePanel DataSource = "{ItemsRoot}" ClipRect="MyClipRect" InnerPanel = "MyClipRect\MyInnerPanel" HorizontalScrollbar = "..\MyHorizontalScrollbar" VerticalScrollbar = "..\MyVerticalScrollbar" WidthSizePolicy = "Fixed" HeightSizePolicy = "StretchToParent" SuggestedWidth = "400" MarginTop = "100"  MarginBottom = "100" Sprite="frame_001_9" HorizontalAlignment = "Right" VerticalAlignment = "Top" ClipContents = "true">
+        <Children>
+          <Widget Id="MyClipRect" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent">
+            <Children>
+              <ListPanel DataSource = "{MyItems}" Id="MyInnerPanel" LayoutImp.LayoutMethod = "VerticalTopToBottom" WidthSizePolicy = "Fixed" HeightSizePolicy = "CoverChildren" SuggestedWidth = "600" >
+                <ItemTemplate>
+                  <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "360" SuggestedHeight = "120" HorizontalAlignment = "Left" VerticalAlignment = "Bottom" >
+                    <Children>
+                      <ButtonWidget DoNotPassEventsToChildren="true" Command.Click = "TestItemLeftClick" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "180" SuggestedHeight = "120" HorizontalAlignment = "Left" VerticalAlignment = "Bottom" Brush = "ButtonBrush">
+                      </ButtonWidget>
+                      <ButtonWidget DoNotPassEventsToChildren="true" Command.Click = "TestItemRightClick" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" MarginLeft = "180" SuggestedWidth = "180" SuggestedHeight = "120" HorizontalAlignment = "Left" VerticalAlignment = "Bottom" Brush = "ButtonBrush">
+                        <Children>
+                          <TextWidget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" Text="@Name" Brush="BlackFontBrush">
+                          </TextWidget>
+                        </Children>
+                      </ButtonWidget>
+                    </Children>
+                  </Widget>
+                </ItemTemplate>
+              </ListPanel>
+            </Children>
+          </Widget>
+        </Children>
+      </ScrollablePanel>
+    </Children>
+  </Widget>
+</Window>

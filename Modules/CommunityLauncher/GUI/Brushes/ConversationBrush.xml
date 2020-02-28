@@ -1,0 +1,249 @@
+<Brushes>
+  <Brush Name="Conversation.Screen">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+      </Style>
+    </Styles>
+    <SoundProperties>
+      <StateSounds>
+      </StateSounds>
+      <EventSounds>
+        <EventSound EventName="ContinueClicked" Audio="conversation" />
+      </EventSounds>
+    </SoundProperties>
+  </Brush>
+  <Brush Name="ConversationItemBrush">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="dialog_option_canvas_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0.65" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="0.8" HueFactor="40" SaturationFactor="80" ValueFactor="15" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="1.0" HueFactor="40" SaturationFactor="80" ValueFactor="10" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.4" />
+      </Style>
+    </Styles>
+    <SoundProperties>
+      <StateSounds>
+      </StateSounds>
+      <EventSounds>
+        <EventSound EventName="Click" Audio="conversation" />
+      </EventSounds>
+    </SoundProperties>
+  </Brush>
+  <Brush Name="ConversationItemBrush.Simple" BaseBrush="ConversationItemBrush">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#000000B0" />
+    </Layers>
+    <SoundProperties>
+      <StateSounds>
+      </StateSounds>
+      <EventSounds>
+        <EventSound EventName="Click" Audio="conversation" />
+      </EventSounds>
+    </SoundProperties>
+  </Brush>
+  <Brush Name="ConversationItem.HoverIndicator">
+    <Layers>
+      <BrushLayer Name="HoverLayer" IsHidden="true" Sprite="Conversation\conversation_hover_indicator" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="HoverLayer" IsHidden="true" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="HoverLayer" IsHidden="true" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="HoverLayer" IsHidden="false" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="HoverLayer" IsHidden="false" ColorFactor="0.3" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.CritFail">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Conversation\persuation_critical_fail" VerticalFlip="true" Color="#BD1D1DFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.Fail">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Conversation\persuation_fail" VerticalFlip="true" Color="#BD1D1DFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.Success">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Conversation\persuation_success" Color="#ADAD49FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.CritSuccess">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Conversation\persuation_critical_success" Color="#ADAD49FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="ConversationTextContainer.Frame">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="npc_dialogue_panel_9" AlphaFactor="0.65" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="PersuasionPanel.Frame">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="conversation_frame_canvas_9" ExtendLeft="16" ExtendRight="16" ExtendTop="16" ExtendBottom="16" />
+      <BrushLayer Name="Frame" ExtendLeft="18" ExtendRight="18" ExtendTop="18" ExtendBottom="18" Sprite="conversation_frame_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Frame" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.PersuationProgress.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="persuation_extension_canvas_9" ExtendLeft="16" ExtendRight="16" ExtendTop="16" ExtendBottom="0" Color="#000000FF" />
+      <BrushLayer Name="Frame" ExtendLeft="4" ExtendRight="4" ExtendTop="9" ExtendBottom="9" Sprite="persuation_extension_frame_9" Color="#9C7839FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Frame" />
+      </Style>
+    </Styles>
+  </Brush>
+  
+  <Brush Name="ConversationItem.Text" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="24" />
+      <Style Name="Disabled" TextAlphaFactor="0.4" />
+      <Style Name="Hovered" FontColor="#FBC86AFF" />
+      <Style Name="Pressed" FontColor="#FBC86AFF" TextAlphaFactor="0.8" />
+      <Style Name="Conversation.Persuasion.Positive" FontColor="#00FF00FF" TextAlphaFactor="0.8" />
+      <Style Name="Conversation.Persuasion.Negative" FontColor="#FF0000FF" TextAlphaFactor="0.8" />
+      <Style Name="Conversation.Persuasion.Neutral" FontColor="#CCCCCCFF" TextAlphaFactor="0.8" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="Conversation.Persuasion.Progress.Text" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.3" TextGlowRadius="0" TextBlur="0" FontSize="35" />
+      <Style Name="Disabled" TextAlphaFactor="0.4" />
+      <Style Name="Hovered" FontColor="#FBC86AFF" />
+      <Style Name="Pressed" FontColor="#FBC86AFF" TextAlphaFactor="0.8" />
+      <Style Name="Conversation.Persuasion.Positive" FontColor="#ADAD41FF" TextAlphaFactor="0.8" />
+      <Style Name="Conversation.Persuasion.Negative" FontColor="#BD1D1DFF" TextAlphaFactor="0.8" />
+      <Style Name="Conversation.Persuasion.Neutral" FontColor="#CCCCCCFF" TextAlphaFactor="0.8" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="Conversation.PartySize.Text" Font="Galahad" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.4" TextGlowRadius="0" TextBlur="0.6" FontSize="25" />
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.HeaderText" Font="Galahad">
+    <Styles>
+      <Style Name="Default" FontColor="#E2AF54FF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0.1" FontSize="36" />
+      <Style Name="Hovered" TextColorFactor="1.2" TextBlur="0" />
+      <Style Name="Pressed" TextColorFactor="0.8" TextBlur="0" />
+      <Style Name="Disabled" TextColorFactor="1" TextAlphaFactor="1" TextBlur="0" />
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.PersuasionTitle.Text" Font="Galahad">
+    <Styles>
+      <Style Name="Default" FontColor="#E2AF54FF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0.1" FontSize="25" />
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.Relation.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Conversation\relation_bar_fill"/>
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.Relation.Handle">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Conversation\relation_bar_indicator" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.Relation.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="14" />
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.ConversedPartyLine.Text" TextVerticalAlignment="Center" TextHorizontalAlignment="Justify" BaseBrush="Info.Text">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="26" />
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.PersuasionItem.ChanceValue.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.Persuasion.Success.ChanceValue.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#B5CF64FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.Persuasion.Fail.ChanceValue.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#CF8F64FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.Persuasion.CritFail.ChanceValue.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#DF7250FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+    </Styles>
+  </Brush>
+  <Brush Name="Conversation.Persuasion.CritSuccess.ChanceValue.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#83E13EFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+    </Styles>
+  </Brush>
+</Brushes>
+<!--In PersuasionBarBrush, I'm using StartColor and EndColor BrushLayers only for their colors-->

@@ -1,0 +1,64 @@
+<Prefab>
+
+  <Constants>
+    <Constant Name="Standard.TripleDialogCloseButtons.Background.Width" BrushLayer="Default" BrushName="Standard.TripleDialogCloseButtons.Background" BrushValueType="Width" />
+    <Constant Name="Standard.TripleDialogCloseButtons.Background.Height" BrushLayer="Default" BrushName="Standard.TripleDialogCloseButtons.Background" BrushValueType="Height" />
+
+    <Constant Name="Standard.TripleDialogCloseButtons.CancelButton.Width" BrushLayer="Default" BrushName="Standard.TripleDialogCloseButtons.CancelButton" BrushValueType="Width" />
+    <Constant Name="Standard.TripleDialogCloseButtons.CancelButton.Height" BrushLayer="Default" BrushName="Standard.TripleDialogCloseButtons.CancelButton" BrushValueType="Height" />
+
+    <Constant Name="Standard.TripleDialogCloseButtons.ResetButton.Width" BrushLayer="Default" BrushName="Standard.TripleDialogCloseButtons.ResetButton" BrushValueType="Width" />
+    <Constant Name="Standard.TripleDialogCloseButtons.ResetButton.Height" BrushLayer="Default" BrushName="Standard.TripleDialogCloseButtons.ResetButton" BrushValueType="Height" />
+
+    <Constant Name="Standard.TripleDialogCloseButtons.DoneButton.Width" BrushLayer="Default" BrushName="Standard.TripleDialogCloseButtons.DoneButton" BrushValueType="Width" />
+    <Constant Name="Standard.TripleDialogCloseButtons.DoneButton.Height" BrushLayer="Default" BrushName="Standard.TripleDialogCloseButtons.DoneButton" BrushValueType="Height" />
+  </Constants>
+
+  <Parameters>
+    <Parameter Name="CancelButtonText" DefaultValue="- Missing -" />
+    <Parameter Name="DoneButtonText" DefaultValue="- Missing -" />
+
+    <Parameter Name="CancelButtonAction" DefaultValue="" />
+    <Parameter Name="ResetButtonAction" DefaultValue="" />
+    <Parameter Name="DoneButtonAction" DefaultValue="" />
+
+    <Parameter Name="DoneButtonDisabled" DefaultValue="false" />
+    <Parameter Name="CancelButtonDisabled" DefaultValue="false" />
+
+    <Parameter Name="ResetButtonHintDataSource" DefaultValue="" />
+    <Parameter Name="DoneButtonHintDataSource" DefaultValue="" />
+
+    <Parameter Name="DoneButtonHoverBegin" DefaultValue="" />
+    <Parameter Name="DoneButtonHoverEnd" DefaultValue="" />
+  </Parameters>
+
+  <Window>
+    <Widget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Standard.TripleDialogCloseButtons.Background.Width" SuggestedHeight="!Standard.TripleDialogCloseButtons.Background.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+      <Children>
+        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Standard.TripleDialogCloseButtons.CancelButton.Width" SuggestedHeight="!Standard.TripleDialogCloseButtons.CancelButton.Height" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="35" Brush="Standard.TripleDialogCloseButtons.CancelButton" Command.Click="*CancelButtonAction" IsDisabled="*CancelButtonDisabled" UpdateChildrenStates="true">
+          <Children>
+            <TextWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="7" Brush="Standard.TripleDialogCloseButtons.ButtonText" Text="*CancelButtonText" />
+          </Children>
+        </ButtonWidget>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Standard.TripleDialogCloseButtons.DoneButton.Width" SuggestedHeight="!Standard.TripleDialogCloseButtons.DoneButton.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="35">
+          <Children>
+            <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Standard.TripleDialogCloseButtons.DoneButton" Command.Click="*DoneButtonAction" Command.HoverBegin="*DoneButtonHoverBegin" Command.HoverEnd="*DoneButtonHoverEnd" IsDisabled="*DoneButtonDisabled" UpdateChildrenStates="true">
+              <Children>
+                <TextWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="7" Brush="Standard.TripleDialogCloseButtons.ButtonText" Text="*DoneButtonText" />
+              </Children>
+            </ButtonWidget>
+            <HintWidget DataSource="*DoneButtonHintDataSource" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+          </Children>
+        </Widget>
+        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Standard.TripleDialogCloseButtons.ResetButton.Width" SuggestedHeight="!Standard.TripleDialogCloseButtons.ResetButton.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom" Brush="Standard.TripleDialogCloseButtons.ResetButton" Command.Click="*ResetButtonAction" UpdateChildrenStates="true">
+          <Children>
+            <Widget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="41" SuggestedHeight="36" HorizontalAlignment="Center" VerticalAlignment="Center" PositionYOffset="-2" Sprite="StdAssets\icon_reset" Brush.AlphaFactor="0.8" />
+            <HintWidget DataSource="*ResetButtonHintDataSource" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsDisabled="true" />
+          </Children>
+        </ButtonWidget>
+        <Widget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Standard.TripleDialogCloseButtons.Background" />
+      </Children>
+    </Widget>
+  </Window>
+
+</Prefab>

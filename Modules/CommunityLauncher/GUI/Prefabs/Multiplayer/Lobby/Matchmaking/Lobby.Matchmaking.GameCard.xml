@@ -1,0 +1,48 @@
+<Prefab>
+  <Constants>
+    <Constant Name="CardButton.HeaderIndicator.Width" BrushName="MPLobby.Matchmaking.CardButton.HeaderIndicator.Left" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="CardButton.HeaderIndicator.Height" BrushName="MPLobby.Matchmaking.CardButton.HeaderIndicator.Left" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="CardButton.Checkbox.Width" BrushName="MPLobby.Matchmaking.CardButton.Checkbox" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="CardButton.Checkbox.Height" BrushName="MPLobby.Matchmaking.CardButton.Checkbox" BrushLayer="Default" BrushValueType="Height"/>
+  </Constants>
+  <Window>
+    <MultiplayerLobbyGameTypeCardButtonWidget IsSelected="@IsSelected" IsEnabled="@IsAvailable" Command.HoverBegin="ExecuteSetFocusItem" ButtonType="Toggle" UpdateChildrenStates="true" WidthSizePolicy="Fixed" HeightSizePolicy ="Fixed" SuggestedWidth="400" SuggestedHeight="570" MarginLeft="0" MarginRight="0" GameTypeId="@Type" GameTypeImageWidget="GameTypeImage" CheckboxWidget="Checkbox" >
+      <Children>
+        <ListPanel UpdateChildrenStates="true" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="60">
+          <Children>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" />
+
+            <ListPanel UpdateChildrenStates="true" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="60" HorizontalAlignment="Center">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!CardButton.HeaderIndicator.Width" SuggestedHeight="!CardButton.HeaderIndicator.Height" VerticalAlignment="Center" Brush="MPLobby.Matchmaking.CardButton.HeaderIndicator.Left" />
+                <TextWidget Text="@Name" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent" PositionYOffset="4" Brush="MPLobby.Matchmaking.CardButtonText" ClipContents="false"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!CardButton.HeaderIndicator.Width" SuggestedHeight="!CardButton.HeaderIndicator.Height" VerticalAlignment="Center" Brush="MPLobby.Matchmaking.CardButton.HeaderIndicator.Right" />
+              </Children>
+            </ListPanel>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" />
+
+          </Children>
+        </ListPanel>
+
+        <!--Image-->
+        <Widget Id="GameTypeImage" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="256" SuggestedHeight="429" HorizontalAlignment="Center" MarginTop="68" Brush="MPLobby.Matchmaking.CardButton.Image" />
+        
+        <Widget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="292" SuggestedHeight="465" HorizontalAlignment="Center" MarginTop="50" Brush="MPLobby.Matchmaking.CardButton"/>
+
+        <ListPanel UpdateChildrenStates="true" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!CardButton.Checkbox.Height"  VerticalAlignment="Bottom"  MarginBottom="0">
+          <Children>
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" />
+            <!--Widget Id="Checkbox" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="68" SuggestedHeight="67" HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="0" MarginBottom="40" Brush="MPLobby.Matchmaking.CardButton.Checkbox"/-->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" />
+          </Children>
+        </ListPanel>
+
+        <Widget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="68" SuggestedHeight="67" HorizontalAlignment="Center" VerticalAlignment="Center" MarginTop="400" Brush="MPLobby.Matchmaking.CardButton.Checkmark"/>
+      
+      </Children>
+    </MultiplayerLobbyGameTypeCardButtonWidget>
+  </Window>
+</Prefab>

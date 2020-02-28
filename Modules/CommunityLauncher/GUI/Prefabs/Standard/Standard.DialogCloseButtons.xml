@@ -1,0 +1,40 @@
+<Prefab>
+
+  <Constants>
+    <Constant Name="Standard.DialogCloseButtons.CancelButton.Width" BrushLayer="Default" BrushName="Standard.DialogCloseButtons.CancelButton" BrushValueType="Width" />
+    <Constant Name="Standard.DialogCloseButtons.CancelButton.Height" BrushLayer="Default" BrushName="Standard.DialogCloseButtons.CancelButton" BrushValueType="Height" />
+
+    <Constant Name="Standard.DialogCloseButtons.DoneButton.Width" BrushLayer="Default" BrushName="Standard.DialogCloseButtons.DoneButton" BrushValueType="Width" />
+    <Constant Name="Standard.DialogCloseButtons.DoneButton.Height" BrushLayer="Default" BrushName="Standard.DialogCloseButtons.DoneButton" BrushValueType="Height" />
+  </Constants>
+
+  <Parameters>
+    <Parameter Name="ShowCancel" DefaultValue="true" />
+
+    <Parameter Name="CancelButtonText" DefaultValue="- Missing -" />
+    <Parameter Name="DoneButtonText" DefaultValue="- Missing -" />
+
+    <Parameter Name="CancelButtonAction" DefaultValue="" />
+    <Parameter Name="DoneButtonAction" DefaultValue="" />
+
+    <Parameter Name="IsDoneEnabled" DefaultValue="true" />
+  </Parameters>
+
+  <Window>
+    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+      <Children>
+        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Standard.DialogCloseButtons.CancelButton.Width" SuggestedHeight="!Standard.DialogCloseButtons.CancelButton.Height" Brush="Standard.DialogCloseButtons.CancelButton" Command.Click="*CancelButtonAction" IsEnabled="*ShowCancel" IsVisible="*ShowCancel" UpdateChildrenStates="true">
+          <Children>
+            <TextWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="17" Brush="Standard.DialogCloseButtons.ButtonText" Text="*CancelButtonText" />
+          </Children>
+        </ButtonWidget>
+        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Standard.DialogCloseButtons.DoneButton.Width" SuggestedHeight="!Standard.DialogCloseButtons.DoneButton.Height" Brush="Standard.DialogCloseButtons.DoneButton" Command.Click="*DoneButtonAction" IsEnabled="*IsDoneEnabled" UpdateChildrenStates="true">
+          <Children>
+            <TextWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="17" Brush="Standard.DialogCloseButtons.ButtonText" Text="*DoneButtonText" />
+          </Children>
+        </ButtonWidget>
+      </Children>
+    </ListPanel>
+  </Window>
+
+</Prefab>

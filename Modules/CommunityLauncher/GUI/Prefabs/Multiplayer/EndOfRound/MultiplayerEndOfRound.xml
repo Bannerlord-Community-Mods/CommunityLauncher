@@ -1,0 +1,32 @@
+<Prefab>
+  <Constants>
+    <Constant Name="EndOfBattle.Banner.Right.Width" BrushName="MPTeamSelection.Banner.Right" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="EndOfBattle.Banner.Right.Height" BrushName="MPTeamSelection.Banner.Right" BrushLayer="Default" BrushValueType="Height"/>
+  </Constants>
+  <Window>
+    <MultiplayerEndOfRoundPanelWidget  IsRoundWinner="@IsRoundWinner" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPEndOfRound.Banner.SoundBrush">
+      <Children>
+
+        <TextWidget Text="@Title" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="50" HorizontalAlignment="Center" MarginTop="80" Brush="MPEndOfRound.Title" />
+        <TextWidget Text="@Description" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="110" HorizontalAlignment="Center" MarginTop="90" Brush="MPEndOfRound.Description" />
+
+        <MultiplayerFactionBannerWidget UpdateChildrenStates="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!EndOfBattle.Banner.Right.Width" SuggestedHeight="!EndOfBattle.Banner.Right.Height" HorizontalAlignment="Center" MarginTop="235" FactionCode="@CultureId" BannerWidget="Banner" IconWidget="Icon">
+          <Children>
+            <Widget Id="Banner" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPTeamSelection.Banner.Right" />
+            <Widget Id="Icon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="220" SuggestedHeight="220" HorizontalAlignment="Center" VerticalAlignment="Center" PositionYOffset="-30" Brush="MPTeamSelection.Banner.Icon" Sprite="MPTeamSelection\banner_icon_vlandia" />
+
+            <Widget IsHidden="@IsRoundWinner" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="MPScoreboard\loser_dirt" />
+          </Children>
+        </MultiplayerFactionBannerWidget>
+
+        <ListPanel WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="525" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="58">
+          <Children>
+            <MultiplayerEndOfRoundSide DataSource="{AllySide}" />
+            <MultiplayerEndOfRoundSide DataSource="{EnemySide}" />
+          </Children>
+        </ListPanel>
+
+      </Children>
+    </MultiplayerEndOfRoundPanelWidget>
+  </Window>
+</Prefab>

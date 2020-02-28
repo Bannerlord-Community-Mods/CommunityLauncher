@@ -1,0 +1,35 @@
+<Prefab>
+	<Constants>
+		<Constant Name="Background.Width" BrushName="MPHUD.Compass.Background" BrushLayer="Default" BrushValueType="Width"/>
+		<Constant Name="Background.Height" BrushName="MPHUD.Compass.Background" BrushLayer="Default" BrushValueType="Height"/>
+		
+		<Constant Name="PowerBar.Flag.Width" Value="18"/>
+		<Constant Name="PowerBar.Flag.Height" Value="35"/>
+	</Constants>
+	<Window>
+		<CompassWidget DataSource="{Compass}" IsVisible="@IsEnabled" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Background.Width" SuggestedHeight="!Background.Height" HorizontalAlignment="Center" MarginTop="12" ItemContainerPanel="ItemContainer" MarkerContainerPanel="MarkerContainer" Brush="MPHUD.Compass.Background">
+			<Children>
+				<Widget Id="ItemContainer" DataSource="{Targets}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+					<ItemTemplate>
+						<CompassElementWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="50" SuggestedWidth="50" HorizontalAlignment="Left" VerticalAlignment="Center" Position="@Position" Distance="@Distance" BannerWidget="BannerImageWidget" FlagWidget="FlagImageWidget">
+							<Children>
+								<MultiplayerCompassElement Id="BannerImageWidget" VerticalAlignment="Center" IsHidden="@IsFlag"/>         
+								<Widget Id="FlagImageWidget" IsVisible="@IsFlag" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!PowerBar.Flag.Width" SuggestedHeight="!PowerBar.Flag.Height" VerticalAlignment="Center">
+									<Children>
+										<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MPHUD.PowerBar.Flag" Brush.Color="@Color"/>
+										<TextWidget Text="@LetterCode" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MPHUD.Compass.FlagLetter" Brush.TextColor="@Color2"/>
+									</Children>
+								</Widget>
+							</Children>
+						</CompassElementWidget>
+					</ItemTemplate>
+				</Widget>
+				<Widget Id="MarkerContainer" DataSource="{Markers}" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="12" PositionYOffset="-10">
+					<ItemTemplate>
+						<CompassMarkerWidget Text="@Text" IsPrimary="@IsPrimary" Position="@Position" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" PrimaryBrush="MPHUD.Compass.PrimaryMarkerText" SecondaryBrush="MPHUD.Compass.SecondaryMarkerText" />
+					</ItemTemplate>
+				</Widget>
+			</Children>
+		</CompassWidget>
+	</Window>
+</Prefab>

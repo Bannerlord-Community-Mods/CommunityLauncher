@@ -1,0 +1,83 @@
+<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <!-- Spectator info -->
+    <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="90" Sprite="BlankWhiteSquare_9" Brush.AlphaFactor="0.5" Brush.Color="#000000FF" IsVisible="@IsSpectatingAgent">
+      <Children>
+        <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" LayoutImp.LayoutMethod="VerticalBottomToTop">
+          <Children>
+
+            <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginLeft="3" MarginRight="3" MarginTop="10">
+              <Children>
+                <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="3" MarginRight="3" IsVisible="@AgentHasCompassElement">
+                  <Children>
+                    <MultiplayerCompassElement DataSource="{CompassElement}" />
+                  </Children>
+                </Widget>
+                <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="3" MarginRight="3" Brush="MPHUD.SpectatorInfo.Text" Text="@SpectatedPlayerName" />
+              </Children>
+            </ListPanel>
+
+            <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginLeft="10" MarginRight="10" MarginTop="10">
+              <Children>
+
+                <!--Health Bar-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35" VerticalAlignment="Center" Sprite="Mission\hero_icon" IsVisible="@ShowAgentHealth" />
+
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="106" SuggestedHeight="26" VerticalAlignment="Center" Sprite="SelectionBorder@2x_9" Brush.ValueFactor="-50" Brush.SaturationFactor="-100" IsVisible="@ShowAgentHealth" MarginLeft="5">
+                  <Children>
+                    <SliderWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="20" VerticalAlignment="Center" HorizontalAlignment="Center" Filler="Filler" Handle="SliderHandle" Locked="false" MaxValueFloat="@SpectatedPlayerHealthLimit" MinValueFloat="0" ValueFloat="@SpectatedPlayerCurrentHealth">
+                      <Children>
+                        <Widget Id="Filler" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="20" VerticalAlignment="Center" Sprite="BlankWhiteSquare_9" Brush.Color="#C4392FFF" />
+                        <Widget Id="SliderHandle" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="38" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="SPOptions.Slider.Handle" IsVisible="false" />
+                      </Children>
+                    </SliderWidget>
+                  </Children>
+                </Widget>
+
+                <!--Mount Bar-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35" VerticalAlignment="Center" MarginLeft="10" Sprite="Mission\mount_icon" IsVisible="@AgentHasMount" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="106" SuggestedHeight="26" VerticalAlignment="Center" Sprite="SelectionBorder@2x_9" Brush.ValueFactor="-50" Brush.SaturationFactor="-100" IsVisible="@AgentHasMount" MarginLeft="5">
+                  <Children>
+                    <SliderWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="20" VerticalAlignment="Center" HorizontalAlignment="Center" Filler="Filler" Handle="SliderHandle" IsVisible="@AgentHasMount" Locked="false" MaxValueFloat="@SpectatedPlayerMountHealthLimit" MinValueInt="0" ValueFloat="@SpectatedPlayerMountCurrentHealth">
+                      <Children>
+                        <Widget Id="Filler" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="20" VerticalAlignment="Center" Sprite="BlankWhiteSquare_9" Brush.Color="#C4392FFF" />
+                        <Widget Id="SliderHandle" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="38" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="SPOptions.Slider.Handle" IsVisible="false" />
+                      </Children>
+                    </SliderWidget>
+                  </Children>
+                </Widget>
+
+                <!--Shield Bar-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35" VerticalAlignment="Center" MarginLeft="10" Sprite="Mission\shield_icon" IsVisible="@AgentHasShield" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="106" SuggestedHeight="26" VerticalAlignment="Center" Sprite="SelectionBorder@2x_9" Brush.ValueFactor="-50" Brush.SaturationFactor="-100" IsVisible="@AgentHasShield" MarginLeft="5">
+                  <Children>
+                    <SliderWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="20" VerticalAlignment="Center" HorizontalAlignment="Center" Filler="Filler" Handle="SliderHandle" IsVisible="@AgentHasShield" Locked="false" MaxValueFloat="@SpectatedPlayerShieldHealthLimit" MinValueInt="0" ValueFloat="@SpectatedPlayerShieldCurrentHealth">
+                      <Children>
+                        <Widget Id="Filler" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="20" VerticalAlignment="Center" Sprite="BlankWhiteSquare_9" Brush.Color="#EBA234FF" />
+                        <Widget Id="SliderHandle" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="38" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="SPOptions.Slider.Handle" IsVisible="false" />
+                      </Children>
+                    </SliderWidget>
+                  </Children>
+                </Widget>
+
+                <!--Ammo-->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35" VerticalAlignment="Center" MarginLeft="10" IsVisible="@AgentHasRangedWeapon">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="70" SuggestedHeight="74" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="MPClassLoadout\ItemIcons\Ammo" />
+                  </Children>
+                </Widget>
+                <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IntText="@SpectatedPlayerAmmoAmount" IsVisible="@AgentHasRangedWeapon" />
+
+              </Children>
+            </ListPanel>
+
+            <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginLeft="10" MarginRight="10" MarginTop="10" Brush="MPHUD.SpectatorInfo.Text" IsVisible="@CanTakeControlOfSpectatedAgent" Text="@TakeControlText" />
+          </Children>
+        </ListPanel>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

@@ -1,0 +1,32 @@
+<Prefab>
+  <Constants>
+    <Constant Name="UserProfile.Width" Value="47" />
+    <Constant Name="UserProfile.Height" Value="47" />
+
+    <Constant Name="AvatarFrame.Width" Additive="2" BrushLayer="Default" BrushName="MPEscapeMenu.AvatarFrame" BrushValueType="Width" />
+    <Constant Name="AvatarFrame.Height" Additive="2" BrushLayer="Default" BrushName="MPEscapeMenu.AvatarFrame" BrushValueType="Height" />
+  </Constants>
+  <Window>
+    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Top" MarginTop="16">
+      <ItemTemplate>
+        <MultiplayerTeamPlayerAvatarWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="90" SuggestedHeight="70" AvatarImage="AvatarImage" DeathAlphaFactor="0.5" IsDead="@IsDead" UpdateChildrenStates="true">
+          <Children>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AvatarFrame.Width" SuggestedHeight="!AvatarFrame.Height" HorizontalAlignment="Center" PositionYOffset="-9" Brush="MPEscapeMenu.AvatarFrame" />
+
+            <ImageIdentifierWidget Id="AvatarImage" DataSource="{Avatar}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!UserProfile.Width" SuggestedHeight="!UserProfile.Height" HorizontalAlignment="Center" AdditionalArgs="@AdditionalArgs" ImageId="@Id" ImageTypeCode="@ImageTypeCode" MaterialAlphaFactor="0.7" />
+            <FillBar WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!UserProfile.Width" SuggestedHeight="7" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="15" Brush="MPHUD.UserProfile.HealthBar" CurrentAmount="@ValuePercent" InitialAmount="@ValuePercent" IsVisible="@IsValueEnabled" MaxAmount="100" />
+            <Widget Id="NameParentWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="14" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="60">
+              <Children>
+                <AutoHideRichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="MPHUD.UserProfile.NameText" Sprite="BlankWhiteSquare_9" Brush.AlphaFactor="0.5" Brush.Color="#000000FF" Brush.TextHorizontalAlignment="Center" MaxWidth="100" Text="@Name" WidgetToHideIfEmpty="..\..\NameParentWidget" />
+              </Children>
+            </Widget>
+            <MultiplayerCompassElement DataSource="{CompassElement}" HorizontalAlignment="Center" VerticalAlignment="Top" PositionXOffset="-25" PositionYOffset="-10" />
+
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="16.5" SuggestedHeight="18.7" HorizontalAlignment="Center" VerticalAlignment="Bottom" PositionXOffset="26" PositionYOffset="-25" Brush="MPHUD.UserProfile.DeadIcon" IsVisible="@IsDead" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="11" SuggestedHeight="11" HorizontalAlignment="Center" VerticalAlignment="Bottom" PositionXOffset="-30" PositionYOffset="-25" Brush="MPHUD.UserProfile.SpawnActiveIcon" IsVisible="@IsSpawnActive" />
+          </Children>
+        </MultiplayerTeamPlayerAvatarWidget>
+      </ItemTemplate>
+    </ListPanel>
+  </Window>
+</Prefab>

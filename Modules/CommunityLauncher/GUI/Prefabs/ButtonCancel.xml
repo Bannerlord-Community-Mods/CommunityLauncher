@@ -1,0 +1,8 @@
+<Window>
+  <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="OnExecuteCancel" CommandParameter.Click="1" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "100" SuggestedHeight = "80" HorizontalAlignment = "Center" VerticalAlignment = "Center" Brush="ButtonBrush">
+    <Children>
+      <Widget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="Pause@2x">
+      </Widget>
+    </Children>
+  </ButtonWidget>
+</Window> 

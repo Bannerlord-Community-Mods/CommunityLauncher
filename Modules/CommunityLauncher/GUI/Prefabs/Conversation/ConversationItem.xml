@@ -1,0 +1,104 @@
+<Prefab>
+  <Parameters>
+  </Parameters>
+  <Constants>
+    <Constant Name="ValueText.Width" Value="65" />
+  </Constants>
+  <Window>
+    <ConversationOptionListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" OptionButtonWidget="OptionButtonParent\OptionButton">
+      <Children>
+
+        <HintWidget Id="OptionButtonParent" DataSource="{OptionHint}" WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="750" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" >
+          <Children>
+            <ButtonWidget Id="OptionButton" DataSource="{..}" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" Command.Click="ExecuteAction" Command.HoverBegin="SetCurrentAnswer" Command.HoverEnd="ResetCurrentAnswer" IsEnabled="@IsEnabled" UpdateChildrenStates="true">
+              <Children>
+                <ImageWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginTop="2.5" MarginBottom="2.5" Brush="ConversationItemBrush" UpdateChildrenStates="true">
+                  <Children>
+                    <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginTop="2.5" MarginBottom="2.5" MarginLeft="30" Brush="ConversationItem.Text" IsEnabled="@IsEnabled" Text="@ItemText" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="39" SuggestedHeight="20" HorizontalAlignment="Left" VerticalAlignment="Center" PositionXOffset="-15" Brush="ConversationItem.HoverIndicator" />
+                  </Children>
+                </ImageWidget>
+
+              </Children>
+            </ButtonWidget>
+          </Children>
+        </HintWidget>
+
+        <PersuasionResultChanceContainerListPanel DataSource="{PersuasionItem}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" CritFailWidget="CritFailParent" FailWidget="FailWidget" SuccessWidget="SuccessParent" CritSuccessParent="CritSuccessParent" Command.OnReadyToContinue="ExecuteReadyToContinue" IsResultReady="@IsPersuasionResultReady" ResultIndex="@PersuasionResultIndex" StayTime="2.5" MarginLeft="5" >
+          <Children>
+
+            <!--Crit Fail-->
+            <Widget Id="CritFailParent" DataSource="{CritFailHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint"  DoNotPassEventsToChildren="true" HorizontalAlignment="Left" VerticalAlignment="Center" >
+              <Children>
+                <PersuasionChanceVisualListPanel DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" ChanceValue="@CritFailChance" LayoutImp.LayoutMethod="VerticalBottomToTop" MinWidth="!ValueText.Width">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="32" HorizontalAlignment="Center" Brush="Conversation.CritFail" />
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" HorizontalAlignment="Center"  Brush="Conversation.PersuasionItem.ChanceValue.Text" Text="@CritFailChanceText" />
+                  </Children>
+                </PersuasionChanceVisualListPanel>
+              </Children>
+            </Widget>
+
+            <!--Fail-->
+            <Widget Id="FailParent" DataSource="{FailHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" HorizontalAlignment="Left" VerticalAlignment="Center" DoNotPassEventsToChildren="true" >
+              <Children>
+                <PersuasionChanceVisualListPanel DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"  ChanceValue="@FailChance" IsFailChance="true" LayoutImp.LayoutMethod="VerticalBottomToTop" MinWidth="!ValueText.Width">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="32" HorizontalAlignment="Center" Brush="Conversation.Fail" />
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" SuggestedWidth="!ValueText.Width" VerticalAlignment="Center" Brush="Conversation.PersuasionItem.ChanceValue.Text" Text="@FailChanceText" />
+                  </Children>
+                </PersuasionChanceVisualListPanel>
+              </Children>
+            </Widget>
+
+            <!--Success-->
+            <Widget Id="SuccessParent" DataSource="{SuccessHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" HorizontalAlignment="Left" VerticalAlignment="Center" DoNotPassEventsToChildren="true" >
+              <Children>
+                <PersuasionChanceVisualListPanel DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"  ChanceValue="@SuccessChance" LayoutImp.LayoutMethod="VerticalBottomToTop" MinWidth="!ValueText.Width">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="32" HorizontalAlignment="Center" Brush="Conversation.Success" />
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="Conversation.PersuasionItem.ChanceValue.Text" Text="@SuccessChanceText" />
+                  </Children>
+                </PersuasionChanceVisualListPanel>
+              </Children>
+            </Widget>
+
+            <!--Crit Success-->
+            <Widget Id="CritSuccessParent" DataSource="{CritSuccessHint}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" HorizontalAlignment="Left" VerticalAlignment="Center" DoNotPassEventsToChildren="true" >
+              <Children>
+                <PersuasionChanceVisualListPanel DataSource="{..}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" ChanceValue="@CritSuccessChance" LayoutImp.LayoutMethod="VerticalBottomToTop" MinWidth="!ValueText.Width">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="32"  Brush="Conversation.CritSuccess"  HorizontalAlignment="Center"/>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" SuggestedWidth="!ValueText.Width" VerticalAlignment="Center" Brush.TextHorizontalAlignment="Center" Brush="Conversation.PersuasionItem.ChanceValue.Text" Text="@CritSuccessChanceText" />
+                  </Children>
+                </PersuasionChanceVisualListPanel>
+              </Children>
+            </Widget>
+
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="!ValueText.Width" IsVisible="@IsABlockingOption">
+              <Children>
+                <Widget Id="BlockingParent" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="32" Sprite="Conversation\persuation_option_blocked" Brush.Color="#BD1D1DFF" HorizontalAlignment="Center"  VerticalAlignment="Center" >
+                  <Children>
+                    <HintWidget DataSource="{BlockingOptionHint}" WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="750" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="!ValueText.Width" IsVisible="@IsAProgressingOption">
+              <Children>
+                <Widget Id="ProgressingParent" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="33" SuggestedHeight="32" Sprite="Conversation\persuation_pass" Brush.Color="#FEC157FF" HorizontalAlignment="Center"  VerticalAlignment="Center" >
+                  <Children>
+                    <HintWidget DataSource="{ProgressingOptionHint}" WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="750" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+          </Children>
+        </PersuasionResultChanceContainerListPanel>
+
+      </Children>
+    </ConversationOptionListPanel>
+  </Window>
+</Prefab>

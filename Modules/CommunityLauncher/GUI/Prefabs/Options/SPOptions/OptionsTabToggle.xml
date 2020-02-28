@@ -1,0 +1,20 @@
+<Prefab>
+  <Parameters>
+    <Parameter Name="TabName" DefaultValue="" />
+    <Parameter Name="ButtonBrush" DefaultValue="Header.Tab.Center" />
+  </Parameters>
+  <Constants>
+    <Constant Name="Header.Tab.Width" BrushLayer="Default" BrushName="*ButtonBrush" BrushValueType="Width" />
+    <Constant Name="Header.Tab.Height" BrushLayer="Default" BrushName="*ButtonBrush" BrushValueType="Height" />
+
+    <Constant Name="Header.Tab.Width.Scaled" MultiplyResult="0.91" Value="!Header.Tab.Width" />
+    <Constant Name="Header.Tab.Height.Scaled" MultiplyResult="0.91" Value="!Header.Tab.Height" />
+  </Constants>
+  <Window>
+    <TabToggleWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteCancelProcess" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Header.Tab.Width.Scaled" SuggestedHeight="!Header.Tab.Height.Scaled" VerticalAlignment="Center" Brush="*ButtonBrush" TabControlWidget="..\..\..\MainSectionListPanel\CenterPanel\ScrollablePanel\MyClipRect\TabControl" TabName="*TabName" UpdateChildrenStates="true">
+      <Children>
+        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="1" Brush="Clan.TabControl.Text" Text="@Name"/>
+      </Children>
+    </TabToggleWidget>
+  </Window>
+</Prefab>

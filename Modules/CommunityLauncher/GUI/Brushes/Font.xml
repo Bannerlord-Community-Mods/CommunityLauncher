@@ -1,0 +1,37 @@
+<Brushes>
+  <Brush Name="RightAlignedFont" Font="Galahad" TextHorizontalAlignment="Right">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#000000FF" FontSize="20" />
+    </Styles>
+  </Brush>
+  <Brush Name="LeftAlignedFont" Font="Galahad" TextHorizontalAlignment="Left">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#000000FF" FontSize="20" />
+    </Styles>
+  </Brush>
+  <Brush Name="CenterAlignedFont" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#000000FF" FontSize="20" />
+    </Styles>
+  </Brush>
+  <Brush Name="CenterAlignedSmallFont" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#000000FF" FontSize="15" />
+    </Styles>
+  </Brush>
+  <Brush Name="CenterAlignedLargeFont" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#000000FF" FontSize="45" />
+    </Styles>
+  </Brush>
+</Brushes>

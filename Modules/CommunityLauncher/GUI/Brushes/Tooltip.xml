@@ -1,0 +1,101 @@
+<Brushes>
+  <Brush Name="Tooltip.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="1" TextShadowAngle="60" FontSize="16" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tooltip.Description.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#EED4A9CC" TextAlphaFactor="0.8" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="0" FontSize="16" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tooltip.ValueName.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Right">
+    <Styles>
+      <Style Name="Default" FontColor="#EED4A9CC" TextAlphaFactor="0.8" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="0" FontSize="16" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tooltip.Value.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#DFA84FCC" TextAlphaFactor="0.8" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="0" FontSize="18" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tooltip.EnemyTroop.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Right">
+    <Styles>
+      <Style Name="Default" FontColor="#ce4040CC" TextAlphaFactor="0.8" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="0" FontSize="16" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tooltip.AllyTroop.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Right">
+    <Styles>
+      <Style Name="Default" FontColor="#32ba30CC" TextAlphaFactor="0.8" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="0" FontSize="16" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tooltip.NeutralTroop.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Right">
+    <Styles>
+      <Style Name="Default" FontColor="#DFA84FCC" TextAlphaFactor="0.8" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="0" FontSize="16" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tooltip.SubText.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#EED4A966" TextAlphaFactor="0.6" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="0" FontSize="15" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tooltip.Title.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Left">
+    <Styles>
+      <Style Name="Default" FontColor="#DFA84FCB" TextAlphaFactor="0.9" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextShadowAngle="0" FontSize="24" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tooltip.Frame">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="TooltipHint\tooltip_frame" ExtendLeft="4" ExtendRight="4" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" />
+    </Styles>
+  </Brush>
+  <Brush Name="GameNotification">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="StdAssets\notification_popup" AlphaFactor="0.9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" />
+    </Styles>
+  </Brush>
+  <Brush Name="GameNotification.Text" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#000000FF" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextOutlineAmount="0.0" TextOutlineColor="#00000000" FontSize="25" />
+    </Styles>
+  </Brush>
+  <Brush Name="GameNotification.AnnoncerName.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextOutlineAmount="0.01" TextOutlineColor="#000000FF" FontSize="22" />
+    </Styles>
+  </Brush>
+  <Brush Name="MultiplayerGameNotification">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="mp_notification_popup_9" Color="#000000FF" AlphaFactor="0.6" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" />
+    </Styles>
+  </Brush>
+  <Brush Name="MultiplayerGameNotification.Text" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextOutlineAmount="0.0" TextOutlineColor="#00000000" FontSize="25" />
+    </Styles>
+  </Brush>
+  <Brush Name="MultiplayerGameNotification.AnnoncerName.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextOutlineAmount="0.01" TextOutlineColor="#000000FF" FontSize="22" />
+    </Styles>
+  </Brush>
+</Brushes>

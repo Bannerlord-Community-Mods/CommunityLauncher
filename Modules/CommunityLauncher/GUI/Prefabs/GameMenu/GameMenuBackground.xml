@@ -1,0 +1,3 @@
+<Window>
+  <Widget HeightSizePolicy ="StretchToParent" WidthSizePolicy="StretchToParent" Sprite="loading_08"/>
+</Window>

@@ -1,0 +1,275 @@
+<Brushes>
+  <Brush Name="Order.Troop.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Order\OrderTroopBackground" />
+      <BrushLayer Name="Highlight" Sprite="Order\OrderItemHighlight" HueFactor="-30" SaturationFactor="70" ExtendLeft="-10" ExtendRight="-10" ExtendTop="-10" ExtendBottom="-10" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Highlight" AlphaFactor="0" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Highlight" AlphaFactor="1" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.8" ColorFactor="0.5" />
+        <BrushLayer Name="Highlight" AlphaFactor="0" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Order.Item.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Order\OrderItem" />
+      <BrushLayer Name="Highlight" Sprite="Order\OrderItemHighlight" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Highlight" AlphaFactor="0" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.4" />
+        <BrushLayer Name="Highlight" AlphaFactor="0" />
+      </Style>
+      <Style Name="Active">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Highlight" AlphaFactor="1" HueFactor="-30" SaturationFactor="70" />
+      </Style>
+      <Style Name="PartiallyActive">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Highlight" AlphaFactor="1" HueFactor="-10" SaturationFactor="0" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Order.Troop.Icon">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Order\TroopIcons\Infantry" />
+    </Layers>
+    <Styles>
+      <Style Name="Infantry">
+        <BrushLayer Name="Default" Sprite="Order\TroopIcons\Infantry" />
+      </Style>
+      <Style Name="Ranged">
+        <BrushLayer Name="Default" Sprite="Order\TroopIcons\Ranged" />
+      </Style>
+      <Style Name="Cavalry">
+        <BrushLayer Name="Default" Sprite="Order\TroopIcons\Cavalry" />
+      </Style>
+      <Style Name="HorseArcher">
+        <BrushLayer Name="Default" Sprite="Order\TroopIcons\HorseArcher" />
+      </Style>
+      <Style Name="Mixed">
+        <BrushLayer Name="Default" Sprite="Order\TroopIcons\Generic" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Order.Troop.MoraleFillBar">
+    <Layers>
+      <BrushLayer Name="EmptyFill" Sprite="BlankWhiteSquare_9" ColorFactor="0.8" Color="#00000000" />
+      <BrushLayer Name="DefaultFill" Sprite="BlankWhiteSquare_9" ColorFactor="1" Color="#FFD98755" />
+      <BrushLayer Name="ChangeFill" Sprite="BlankWhiteSquare_9" ColorFactor="1.5" Color="#00000000" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Order.Transfer.Troop.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Order\MinimalOrderTroop" />
+      <BrushLayer Name="Highlight" Sprite="Order\OrderItemHighlight" HueFactor="-30" SaturationFactor="70" ExtendLeft="-10" ExtendRight="-10" ExtendTop="-5" ExtendBottom="-10" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Highlight" AlphaFactor="0" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.4" />
+        <BrushLayer Name="Highlight" AlphaFactor="0" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.4" />
+        <BrushLayer Name="Highlight" AlphaFactor="0" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" />
+        <BrushLayer Name="Highlight" AlphaFactor="1" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Order.Siege.Deployment.DeployPoint">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#000000FF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0.5" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.3" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="0.5" Color="#B58127FF" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="0.3" Color="#9B6F22FF" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="0.5" Color="#B26017FF" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Order.Siege.Deployment.MachineItem">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Order\SiegeItemBackground" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.4" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.4" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" HueFactor="150" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="Order.Siege.Deployment.MachineIcon">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Ballista" />
+    </Layers>
+    <Styles>
+      <Style Name="Ballista">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Ballista" />
+      </Style>
+      <Style Name="FireBallista">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Ballista-Fire" />
+      </Style>
+      <Style Name="Bricole">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Bricole" />
+      </Style>
+      <Style Name="Ladder">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Ladder" />
+      </Style>
+      <Style Name="Mangonel">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Mangonel" />
+      </Style>
+      <Style Name="FireMangonel">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Mangonel-Fire" />
+      </Style>
+      <Style Name="Onager">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Onager" />
+      </Style>
+      <Style Name="FireOnager">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Onager-Fire" />
+      </Style>
+      <Style Name="Ram">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Ram" />
+      </Style>
+      <Style Name="ImprovedRam">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Ram-Improved" />
+      </Style>
+      <Style Name="SiegeTower">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\SiegeTower" />
+      </Style>
+      <Style Name="Trebuchet">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Trebuchet" />
+      </Style>
+      <Style Name="Catapult">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Catapult" />
+      </Style>
+      <Style Name="FireCatapult">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Catapult-Fire" />
+      </Style>
+      <Style Name="None">
+        <BrushLayer Name="Default" Sprite="Order\ItemIcons\OIReturn" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Order.Siege.Deployment.TypeIcon">
+    <Layers>
+      <BrushLayer Name="Default" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Sprite="" />
+      </Style>
+      <Style Name="BatteringRam">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Ram" />
+      </Style>
+      <Style Name="TowerLadder">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\SiegeTower" />
+      </Style>
+      <Style Name="Breach">
+        <BrushLayer Name="Default" Sprite="" />
+      </Style>
+      <Style Name="Ranged">
+        <BrushLayer Name="Default" Sprite="Order\SiegeIcons\Mangonel" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Order.Troop.CountText" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowRadius="0" TextBlur="0.5" TextShadowOffset="0" TextOutlineAmount="0.6" TextGlowColor="#00000055" FontSize="20" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="Order.Troop.HotKeyText" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowRadius="0" TextBlur="0.0" TextShadowOffset="0" TextOutlineAmount="0.0" TextGlowColor="#00000055" FontSize="16" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="Order.Item.DescriptionText" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowRadius="0" TextBlur="0" TextShadowOffset="0" TextOutlineAmount="0.8" TextGlowColor="#00000055" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="Order.Item.ShortcutText" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center" TextVerticalAlignment="Top">
+    <Styles>
+      <Style Name="Default" FontColor="#222222FF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="16" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="Order.TransferPopup.FormationName" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center" TextVerticalAlignment="Top">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+  
+  <Brush Name="Order.TransferPopup.SliderValue" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Left" TextVerticalAlignment="Top">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+  
+  <Brush Name="Order.Siege.MainButton.Text" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="Order.Siege.Breaced.Text" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="1" TextOutlineColor="#000000FF" TextOutlineAmount="0.3" TextGlowRadius="0" FontSize="30" />
+    </Styles>
+  </Brush>
+  
+  <Brush Name="Order.Siege.DeploymentPointButton.Text" Font="ProximaNovaCond-Light" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+</Brushes>

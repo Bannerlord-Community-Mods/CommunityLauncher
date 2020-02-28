@@ -1,0 +1,23 @@
+<Prefab>
+  <Parameters>
+	<Parameter Name="Text" DefaultValue=""/>
+	<Parameter Name="HintEnabled" DefaultValue="false"/>
+	<Parameter Name="HintDataSource" DefaultValue=""/>
+  </Parameters>
+  <Constants>
+  </Constants>
+  <Variables>
+  </Variables>
+  <VisualDefinitions>
+  </VisualDefinitions>
+  <Window>
+  
+     <ButtonWidget DoNotPassEventsToChildren="true" Command.Click = "ExecuteAction" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "227" SuggestedHeight = "40" HorizontalAlignment = "Center" VerticalAlignment="Top" Brush = "ButtonBrush1">
+       <Children>
+         <TextWidget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" Text="*Text" />
+		 <HintWidget DataSource="*HintDataSource" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" IsVisible="*HintEnabled" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint"/>
+       </Children>
+     </ButtonWidget>
+
+  </Window>
+</Prefab>

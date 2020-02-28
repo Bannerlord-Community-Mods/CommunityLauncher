@@ -1,0 +1,68 @@
+<Window>
+  <!--Left Panel Gained Properties-->
+  <Widget DataSource="{GainedPropertiesController}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" MarginLeft="20">
+    <Children>
+
+      <ListPanel DataSource="{GainGroups}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" LayoutImp.LayoutMethod="VerticalBottomToTop">
+        <ItemTemplate>
+          <!--Gain Group-->
+          <ListPanel Id="GainGroupParent" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" LayoutImp.LayoutMethod="VerticalBottomToTop" MarginTop="5" MarginBottom="5">
+            <Children>
+              <SiblingIndexVisibilityWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="290" SuggestedHeight="2" Sprite="GradientDivider_9" Brush.Color="#CDA970FF" IndexToBeVisible="0" WatchType="BiggerThan" WidgetToWatch="..\." MarginBottom="5" />
+
+              <!--Attribute Name Text-->
+              <Widget DataSource="{Attribute}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" >
+                <Children>
+                  <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsHidden="@HasIncreasedInCurrentStage" Text="@NameText" ClipContents="false"/>
+                  <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsVisible="@HasIncreasedInCurrentStage">
+                    <Children>
+                      <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Brush.FontColor="#E3E172FF" Text="@NameText" ClipContents="false">
+                        <Children>
+                          <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="9" SuggestedHeight="13" PositionXOffset="15" VerticalAlignment="Center" HorizontalAlignment="Right" Sprite="CharacterCreation\increasing_icon" Brush.Color="#ACAC48FF" />
+                        </Children>
+                      </TextWidget>
+                    </Children>
+                  </ListPanel>
+                </Children>
+              </Widget>
+
+              <!--Skills-->
+              <ListPanel DataSource="{Skills}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginTop="10">
+                <ItemTemplate>
+                  <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="13" MarginRight="13" LayoutImp.LayoutMethod="VerticalBottomToTop">
+                    <Children>
+                      <SkillIconVisualWidget DataSource="{Skill}" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="61" SuggestedHeight="61" SkillId="@SkillId" UseSmallestVariation="true">
+                        <Children>
+                          <HintWidget DataSource="{Hint}" HeightSizePolicy ="StretchToParent" WidthSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint"/>
+                        </Children>
+                      </SkillIconVisualWidget>
+
+                      <ListPanel WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="63" SuggestedHeight="33" MarginTop="5">
+                        <Children>
+                          <ListPanel DataSource="{FocusPointGainList}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="63" SuggestedHeight="33" Sprite="CharacterCreation\focus_amount_frame" Brush.Color="#6E5324FF" ForcePixelPerfectPlacement="true">
+                            <ItemTemplate>
+                              <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="6" SuggestedHeight="24" MarginLeft="5" MarginRight="1" VerticalAlignment="Center">
+                                <Children>
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="CharacterCreation.GainedProperty.Active" IsVisible="@IsActive" />
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare" Brush.Color="#6B6A31FF" IsHidden="@IsActive" />
+                                </Children>
+                              </Widget>
+                            </ItemTemplate>
+                          </ListPanel>
+                          <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="9" SuggestedHeight="13" Sprite="CharacterCreation\increasing_icon" Brush.Color="#ACAC48FF" MarginLeft="5" IsVisible="@HasIncreasedInCurrentStage" VerticalAlignment="Center" />
+                        </Children>
+                      </ListPanel>
+                    </Children>
+                  </ListPanel>
+                </ItemTemplate>
+              </ListPanel>
+
+            </Children>
+          </ListPanel>
+
+        </ItemTemplate>
+      </ListPanel>
+
+    </Children>
+  </Widget>
+</Window>

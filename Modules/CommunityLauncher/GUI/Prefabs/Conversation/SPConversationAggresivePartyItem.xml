@@ -1,0 +1,24 @@
+<Prefab>
+  <Parameters>
+    <Parameter Name="Item.Width" DefaultValue="70" />
+  </Parameters>
+  <Constants>
+    <Constant Name="Item.Height" MultiplyResult="0.71" Value="*Item.Width" />
+  </Constants>
+  <Window>
+    <!--Party Container-->
+    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="*Item.Width" SuggestedHeight="*Item.Width" HorizontalAlignment="Left">
+      <Children>
+        <Widget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="*Item.Width" SuggestedHeight="!Item.Height" HorizontalAlignment="Center" Sprite="BlankWhiteSquare" CircularClipEnabled="true" CircularClipRadius="45" CircularClipSmoothingRadius="5" CircularClipXOffset="0" CircularClipYOffset="-25" IsVisible="false" />
+        <!--Party Leader Visual-->
+        <ImageIdentifierWidget DataSource="{LeaderVisual}" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="*Item.Width" SuggestedHeight="!Item.Height" HorizontalAlignment="Center" AdditionalArgs="@AdditionalArgs" CircularClipEnabled="true" CircularClipRadius="45" CircularClipSmoothingRadius="5" CircularClipXOffset="0" CircularClipYOffset="-25" ImageId="@Id" ImageTypeCode="@ImageTypeCode" />
+
+        <!--Party Healthy Size Text-->
+        <TextWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Bottom" Brush="Conversation.PartySize.Text" IntText="@HealthyAmount" />
+
+        <!--Party Hint-->
+        <HintWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteShowPartyTooltip" Command.HoverEnd="ExecuteHideTooltip" IsDisabled="true" />
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

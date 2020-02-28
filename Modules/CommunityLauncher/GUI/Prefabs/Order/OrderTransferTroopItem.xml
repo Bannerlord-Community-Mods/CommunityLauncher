@@ -1,0 +1,16 @@
+<Prefab>
+	<Constants>
+		<Constant Name="Troop.Background.Width" BrushName="Order.Transfer.Troop.Background" BrushLayer="Default" BrushValueType="Width" MultiplyResult="0.75"/>
+		<Constant Name="Troop.Background.Height" BrushName="Order.Transfer.Troop.Background" BrushLayer="Default" BrushValueType="Height" MultiplyResult="0.75"/>
+		
+		<Constant Name="Troop.Icon.Width" BrushName="Order.Troop.Icon" BrushLayer="Default" BrushValueType="Width" MultiplyResult="0.75"/>
+		<Constant Name="Troop.Icon.Height" BrushName="Order.Troop.Icon" BrushLayer="Default" BrushValueType="Height" MultiplyResult="0.75"/>
+	</Constants>
+	<Window>
+		<OrderTroopItemWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Troop.Background.Width" SuggestedHeight="!Troop.Background.Height" FormationClass="@FormationClass" FormationIconWidget="Icon">
+			<Children>
+				<Widget Id="Icon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Troop.Icon.Width" SuggestedHeight="!Troop.Icon.Height" PositionYOffset="-5" Brush="Order.Troop.Icon"/>
+			</Children>
+		</OrderTroopItemWidget>
+	</Window>
+</Prefab>

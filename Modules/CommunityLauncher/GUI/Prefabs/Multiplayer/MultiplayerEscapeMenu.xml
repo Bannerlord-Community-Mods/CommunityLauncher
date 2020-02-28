@@ -1,0 +1,67 @@
+<Prefab>
+	<Constants>
+		<Constant Name="ContextButton.Width" BrushName="ButtonBrush2" BrushLayer="Default" BrushValueType="Width"/>
+		<Constant Name="ContextButton.Height" BrushName="ButtonBrush2" BrushLayer="Default" BrushValueType="Height"/>
+	
+		<Constant Name="Divider.Width" BrushName="MPEscapeMenu.Divider" BrushLayer="Default" BrushValueType="Width"/>
+		<Constant Name="Divider.Height" BrushName="MPEscapeMenu.Divider" BrushLayer="Default" BrushValueType="Height"/>
+	</Constants>
+	<Window>
+		<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Brush.Color="#000000FF" Brush.AlphaFactor="0.4">
+			<Children>
+			
+				<Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="382" Sprite="escape_menu_gradient_9" />
+				<Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="382" HorizontalAlignment="Right" Sprite="escape_menu_gradient_9" Brush.HorizontalFlip="true" />
+
+				<Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="632" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MPEscapeMenu.Background">
+					<Children>
+						<Widget ClipContents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="533" MarginLeft="60" MarginRight="60" VerticalAlignment="Bottom">
+							<Children>
+								<Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="1377" Sprite="StdAssets\flat_panel_texture" />
+							</Children>
+						</Widget>
+			
+						<TextWidget Text="@Title" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="50" MarginTop="60" Brush="MPEscapeMenu.Title"/>
+			
+						<Widget ClipContents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginTop="120" MarginLeft="60" MarginRight="60" VerticalAlignment="Top">
+							<Children>
+								<Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Divider.Width" SuggestedHeight="!Divider.Height" HorizontalAlignment="Center" Brush="MPEscapeMenu.Divider" />
+							</Children>
+						</Widget>
+			
+						<ListPanel DataSource = "{MenuItems}" Id="MyInnerPanel" LayoutImp.LayoutMethod = "VerticalBottomToTop" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "CoverChildren" MarginTop="200" MarginBottom="115" >
+							<ItemTemplate>
+								<EscapeMenuButtonWidget DoNotPassEventsToChildren="true" UpdateChildrenStates="true" Command.Click="ExecuteAction" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Center" VerticalAlignment="Center" IsDisabled="@IsDisabled" MarginBottom="20">
+									<Children>
+										<TextWidget Text="@ActionText" WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent" MarginLeft="20" MarginRight="20" Brush="MPEscapeMenu.ButtonText"/>
+									</Children>
+								</EscapeMenuButtonWidget>
+							</ItemTemplate>
+						</ListPanel>
+					</Children>
+				</Widget>
+				
+				<!-- Left/Right side: Team avatars + class info -->
+				<MultiplayerTeamAvatarsSide DataSource="{Teammates}" HorizontalAlignment="Left" MarginLeft="30" Parameter.IsClickable="true"/>
+				<MultiplayerTeamAvatarsSide DataSource="{Enemies}" HorizontalAlignment="Right" MarginRight="30" Parameter.IsRightSide="true" Parameter.IsClickable="true" Parameter.ShowHealth="false"/>
+
+				<!--<ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" LayoutImp.LayoutMethod = "VerticalBottomToTop" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="165" MarginBottom="250">
+				  <Children>
+					<TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Text="Game Tip" Brush="Gamescom.Selection.CharacterSkills.Text" Brush.FontSize="50" HorizontalAlignment="Center"/>
+
+					<Widget DataSource="{Tips}" WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="400" HorizontalAlignment="Center" Brush="EscapeMenu.GameTip">
+					  <Children>
+						<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="150" IsEnabled="false"/>
+						<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" Sprite="deneme"/>
+						<TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" Brush="GameTip.Text" MarginTop="15" MarginBottom="15" MarginRight="55" MarginLeft="55" Text="@CurrentTip" VerticalAlignment="Center"/>
+						<ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="43" SuggestedHeight="56" HorizontalAlignment="Left" VerticalAlignment="Center" Command.Click="ExecutePreviousTip" Brush="ButtonRightArrowBrush1" MarginLeft="3" IsVisible="@NavigationButtonsEnabled"/>
+						<ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="43" SuggestedHeight="56" HorizontalAlignment="Right" VerticalAlignment="Center" Command.Click="ExecuteNextTip" Brush="ButtonLeftArrowBrush1" MarginRight="3" IsVisible="@NavigationButtonsEnabled"/>
+					  </Children>
+					</Widget>
+				  </Children>
+				</ListPanel>-->
+
+			</Children>
+		</Widget>
+	</Window>
+</Prefab>

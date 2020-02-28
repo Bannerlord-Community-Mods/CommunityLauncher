@@ -1,0 +1,45 @@
+<Brushes>
+	<Brush Name="DefaultBrush" FontSize="30"  >
+	<Layers>
+		<BrushLayer Name="Default" Color="#FFFFFFFF"/>
+		</Layers>
+		<Styles>
+			<Style Name="Default" FontColor="#FAF4DEFF"/>
+		</Styles>
+	</Brush>
+	<Brush Name="CheckBox">
+		<Layers>
+			<BrushLayer Name="Default" Sprite = "checkbox_default" Color="#FFFFFFFF" />
+			<BrushLayer Name="Pressed" Sprite = "checkbox_default" Color="#FFFFFFFF"/>
+			<BrushLayer Name="Disabled" Sprite = "checkbox_default" Color="#FFFFFFFF"/>
+		</Layers>
+		<Styles>
+			<Style Name="Default">
+				<BrushLayer Name="Pressed" IsHidden="true" />
+				<BrushLayer Name="Disabled" IsHidden="true" />
+			</Style>
+			<Style Name="Pressed">
+				<BrushLayer Name="Default" IsHidden="true" />
+				<BrushLayer Name="Disabled" IsHidden="true" />
+			</Style>
+			<Style Name="Disabled">
+				<BrushLayer Name="Default" IsHidden="true" />
+				<BrushLayer Name="Pressed" IsHidden="true" />
+			</Style>
+		</Styles>
+	</Brush>	
+	<Brush Name="ArrowUp">
+		<Layers>
+			<BrushLayer Name="Default" Sprite = "arrow_up" Color="#FFFFFFFF" FontColor="#FAF4DEFF"/>
+		</Layers>
+		<Styles>
+		</Styles>
+	</Brush>
+	<Brush Name="ArrowDown">
+		<Layers>
+			<BrushLayer Name="Default" Sprite = "arrow_down" Color="#FFFFFFFF" FontColor="#FAF4DEFF"/>
+		</Layers>
+		<Styles>
+		</Styles>
+	</Brush>
+</Brushes>

@@ -1,0 +1,18 @@
+<Config>
+	<SpriteCategory Name="ui_textures">
+		<PackAllSpritesToUniqueTextures/>
+	</SpriteCategory>
+  <SpriteCategory Name="ui_loading">
+    <PackAllSpritesToUniqueTextures/>
+    <NoAlphaChannel/>
+  </SpriteCategory>
+	<SpriteCategory Name="ui_fonts">,
+		<PackAllSpritesToUniqueTextures/>
+		<SingleChannel/>
+		<EdgeSize Value="0" />
+	</SpriteCategory>
+  <SpriteCategory Name="ui_fullbackgrounds">
+    <PackAllSpritesToUniqueTextures/>
+    <NoAlphaChannel/>
+  </SpriteCategory>
+</Config>

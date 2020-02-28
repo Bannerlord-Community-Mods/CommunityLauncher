@@ -1,0 +1,121 @@
+<Brushes>
+  <Brush Name="DefaultBrush" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#000000FF" FontSize="30" />
+    </Styles>
+    <SoundProperties>
+      <StateSounds>
+      </StateSounds>
+      <EventSounds>
+        <EventSound EventName="Click" Audio="default" />
+        <EventSound EventName="DragBegin" Audio="inventory/pickup" />
+        <EventSound EventName="DragEnd" Audio="inventory/onehanded" />
+      </EventSounds>
+    </SoundProperties>
+  </Brush>
+  <Brush Name="DefaultHighlightableTextBrush" Font="ProximaNovaCond" FontSize="30">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Highlight" FontColor="#FF00FFFF" TextGlowColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" />
+    </Styles>
+    <SoundProperties>
+      <StateSounds>
+      </StateSounds>
+      <EventSounds>
+        <EventSound EventName="Click" Audio="default" />
+        <EventSound EventName="DragBegin" Audio="inventory/pickup" />
+        <EventSound EventName="DragEnd" Audio="inventory/onehanded" />
+      </EventSounds>
+    </SoundProperties>
+  </Brush>
+  <Brush Name="DefaultBrushLiberation" Font="LiberationSans">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#000000FF" FontSize="30" />
+    </Styles>
+  </Brush>
+  <Brush Name="BlackFontBrush">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#000000FF" TextGlowColor="#FFFFFFFF" FontSize="10" />
+    </Styles>
+  </Brush>
+  <Brush Name="EmptyBrush">
+    <Layers>
+    </Layers>
+    <Styles>
+    </Styles>
+  </Brush>
+  <Brush Name="DefaultRichText" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#0000FFFF" FontSize="30" />
+      <Style Name="Link" FontColor="#0000FFFF" TextGlowColor="#000000FF" />
+      <Style Name="Link.Highlight" FontColor="#FF00FFFF" TextGlowColor="#000000FF" />
+      <Style Name="Link.MouseOver" FontColor="#00FF00FF" TextGlowColor="#000000FF" />
+      <Style Name="Link.MouseDown" FontColor="#FF0000FF" TextGlowColor="#000000FF" />
+    </Styles>
+  </Brush>
+  <Brush Name="DefaultRichText2" Font="ProximaNovaCond-Light">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#1ABDB5FF" TextGlowColor="#000000FF" TextGlowRadius="0" TextBlur="0" TextOutlineColor="#FFFF00FF" TextOutlineAmount="0" FontSize="16" />
+      <Style Name="Link" FontColor="#0000FFFF" TextGlowColor="#000000FF" />
+      <Style Name="Link.Highlight" FontColor="#FF00FFFF" TextGlowColor="#000000FF" />
+      <Style Name="Link.MouseOver" FontColor="#00FF00FF" TextGlowColor="#000000FF" />
+      <Style Name="Link.MouseDown" FontColor="#FF0000FF" TextGlowColor="#000000FF" />
+    </Styles>
+  </Brush>
+  <Brush Name="DefaultRichText3" Font="ProximaNovaCond-Light">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextGlowRadius="0.2" TextBlur="0.4" TextOutlineAmount="0" FontSize="32" />
+      <Style Name="Link" FontColor="#0000FFFF" TextGlowColor="#000000FF" />
+      <Style Name="Link.Highlight" FontColor="#FF00FFFF" TextGlowColor="#000000FF" />
+      <Style Name="Link.MouseOver" FontColor="#00FF00FF" TextGlowColor="#000000FF" />
+      <Style Name="Link.MouseDown" FontColor="#FF0000FF" TextGlowColor="#000000FF" />
+    </Styles>
+  </Brush>
+  <Brush Name="DropdownBaseBrush">
+    <Layers>
+    </Layers>
+    <Styles>
+    </Styles>
+  </Brush>
+  <Brush Name="Info.Text" Font="Galahad" TextHorizontalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FAF4DEFF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="22" />
+      <Style Name="Link" FontColor="#00CCFFFF" TextGlowColor="#111111FF" />
+      <Style Name="Link.MouseOver" FontColor="#00FF00BB" TextGlowColor="#111111FF" />
+      <Style Name="Link.MouseDown" FontColor="#00AA00FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Settlement" FontColor="#aa7449FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Settlement.MouseOver" TextColorFactor="1.5" FontColor="#aa7449BB" TextGlowColor="#111111FF" />
+      <Style Name="Link.Settlement.MouseDown" TextColorFactor="0.7" FontColor="#aa7449FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Hero" TextColorFactor="1" FontColor="#76A5B5FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Hero.MouseOver" TextColorFactor="1.5" FontColor="#377A91BB" TextGlowColor="#111111FF" />
+      <Style Name="Link.Hero.MouseDown" TextColorFactor="0.7" FontColor="#377A91FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Unit" FontColor="#A65B51FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Unit.MouseOver" TextColorFactor="1.5" FontColor="#8d4b42BB" TextGlowColor="#111111FF" />
+      <Style Name="Link.Unit.MouseDown" TextColorFactor="0.7" FontColor="#8d4b42FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Concept" FontColor="#6EB2B6FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Concept.MouseOver" TextColorFactor="1.5" FontColor="#00FF00BB" TextGlowColor="#111111FF" />
+      <Style Name="Link.Concept.MouseDown" TextColorFactor="0.7" FontColor="#00AA00FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Kingdom" FontColor="#878CABFF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Kingdom.MouseOver" TextColorFactor="1.5" FontColor="#7e829aBB" TextGlowColor="#111111FF" />
+      <Style Name="Link.Kingdom.MouseDown" TextColorFactor="0.7" FontColor="#7e829aFF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Clan" FontColor="#5876A3FF" TextGlowColor="#111111FF" />
+      <Style Name="Link.Clan.MouseOver" TextColorFactor="1.5" FontColor="#516c94BB" TextGlowColor="#111111FF" />
+      <Style Name="Link.Clan.MouseDown" TextColorFactor="0.7" FontColor="#5876A3FF" TextGlowColor="#111111FF" />
+    </Styles>
+  </Brush>
+</Brushes>

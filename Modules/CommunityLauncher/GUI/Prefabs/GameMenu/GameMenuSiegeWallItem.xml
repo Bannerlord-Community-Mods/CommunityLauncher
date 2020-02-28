@@ -1,0 +1,21 @@
+<Prefab>
+  <Window>
+    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="39" SuggestedHeight="88" IsEnabled="false">
+      <Children>
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="Siege\Wall" Brush.HorizontalFlip="true">
+          <Children>
+
+            <!--Vertical HP Bar-->
+            <FillBarVerticalWidget WidthSizePolicy="Fixed" SuggestedWidth="10" HeightSizePolicy="StretchToParent" MaxAmount="100" InitialAmountAsFloat="@HitPoint" FillWidget="FillWidget" IsDirectionUpward="true" Sprite="BlankWhiteSquare_9" Brush.Color="#000000DD" MarginTop="5" MarginBottom="5" HorizontalAlignment="Right">
+              <Children>
+                <Widget Id="FillWidget" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" Sprite="BlankWhiteSquare_9" Brush.Color="#348220FF"/>
+              </Children>
+            </FillBarVerticalWidget>
+
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="52" SuggestedHeight="52" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="Siege\broken" IsEnabled="false" IsVisible="@IsBroken" />
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

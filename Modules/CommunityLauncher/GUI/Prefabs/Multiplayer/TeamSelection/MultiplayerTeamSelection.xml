@@ -1,0 +1,52 @@
+<Prefab>
+  <Constants>
+    <Constant Name="Background.Width" Value="880"/>
+
+    <Constant Name="Divider.Width" BrushName="MPTeamSelection.Divider" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="Divider.Height" BrushName="MPTeamSelection.Divider" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="CloseButton.Width" BrushName="CloseButton.Flat" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="CloseButton.Height" BrushName="CloseButton.Flat" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="AutoAssignButton.Width" BrushName="MPTeamSelection.AutoAssignButton" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="AutoAssignButton.Height" BrushName="MPTeamSelection.AutoAssignButton" BrushLayer="Default" BrushValueType="Height"/>
+
+    <Constant Name="SpectateButton.Width" BrushName="WideButton.Flat" BrushLayer="Default" BrushValueType="Width"/>
+    <Constant Name="SpectateButton.Height" BrushName="WideButton.Flat" BrushLayer="Default" BrushValueType="Height"/>
+  </Constants>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Brush.Color="#000000CC">
+      <Children>
+        <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "StretchToParent" SuggestedWidth = "!Background.Width" HorizontalAlignment = "Center" Brush = "MPTeamSelection.Background">
+          <Children>
+            <Widget ClipContents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="533" MarginLeft="60" MarginRight="60" VerticalAlignment="Bottom">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="1377" Sprite="StdAssets\flat_panel_texture" />
+              </Children>
+            </Widget>
+
+            <TextWidget Text="@TeamSelectTitle" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "500" SuggestedHeight = "50" VerticalAlignment = "Top" HorizontalAlignment = "Center" MarginTop="20" Brush="MPTeamSelection.HeaderText" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Divider.Width" SuggestedHeight="!Divider.Height" HorizontalAlignment="Center" MarginTop="70" Brush="MPTeamSelection.Divider" />
+            <TextWidget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "500" SuggestedHeight = "50" VerticalAlignment = "Top" HorizontalAlignment = "Center" MarginTop="87" Text="@GamemodeLbl"  Brush="MPTeamSelection.SubHeaderText"/>
+            <TextWidget IsVisible="@IsRoundCountdownAvailable" Text="@RemainingRoundTime" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="200" SuggestedHeight="30" HorizontalAlignment="Center" MarginTop="140" Brush="MPHUD.CountdownText" />
+
+            <MultiplayerTeamSelectionItem DataSource="{Team1}" VerticalAlignment = "Top" HorizontalAlignment = "Left" MarginTop="164" MarginLeft="48" Parameter.IsAtLeft="true"/>
+            <MultiplayerTeamSelectionItem DataSource="{Team2}" VerticalAlignment = "Top" HorizontalAlignment = "Right" MarginTop="164" MarginRight="48" Parameter.IsAtLeft="false"/>
+
+            <ButtonWidget DoNotPassEventsToChildren="true" UpdateChildrenStates="true" Command.Click="OnExecuteAutoAssign" CommandParameter.Click="1" SuggestedWidth="!AutoAssignButton.Width" SuggestedHeight="!AutoAssignButton.Height" HorizontalAlignment = "Center" VerticalAlignment = "Bottom" MarginBottom="120" Brush="MPTeamSelection.AutoAssignButton">
+              <Children>
+                <TextWidget Text="@AutoassignLbl" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "200" SuggestedHeight = "100" VerticalAlignment = "Bottom" HorizontalAlignment = "Center" PositionYOffset="60" Brush="MPTeamSelection.AutoAssignButton.Text"/>
+              </Children>
+            </ButtonWidget>
+            <ButtonWidget DataSource="{TeamSpectators}" DoNotPassEventsToChildren="true" UpdateChildrenStates="true" Command.Click="ExecuteSelectTeam" CommandParameter.Click="1" SuggestedWidth="!SpectateButton.Width" SuggestedHeight="!SpectateButton.Height" HorizontalAlignment = "Center" VerticalAlignment = "Bottom" MarginBottom="5" Brush="WideButton.Flat">
+              <Children>
+                <TextWidget Text="@DisplayedPrimary" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "200" SuggestedHeight = "50" VerticalAlignment = "Center" HorizontalAlignment = "Center" Brush="MPTeamSelection.SpectateButton.Text"/>
+              </Children>
+            </ButtonWidget>
+            <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="OnExecuteCancel" CommandParameter.Click="1" SuggestedWidth = "!CloseButton.Width" SuggestedHeight = "!CloseButton.Height" HorizontalAlignment = "Right" VerticalAlignment = "Top" MarginTop="10" MarginRight="55" Brush="CloseButton.Flat" IsHidden="@IsCancelDisabled"/>
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

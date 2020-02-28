@@ -1,0 +1,27 @@
+<Prefab>
+  <Parameters>
+  </Parameters>
+  <Constants>
+  </Constants>
+  <Variables>
+  </Variables>
+  <VisualDefinitions>
+  </VisualDefinitions>
+  <Window>
+    <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren">
+      <Children>
+        <CircleLoadingAnimWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" CircleRadius="16" NumOfCirclesInASecond="0.75" StaySeconds="-1">
+          <Children>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" Sprite="MapMenuUnread@2x" Brush.AlphaFactor="0.6" Brush.Color="#F2AF48FF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" Sprite="MapMenuUnread@2x" Brush.AlphaFactor="0.6" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" Sprite="MapMenuUnread@2x" Brush.AlphaFactor="0.6" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" Sprite="MapMenuUnread@2x" Brush.AlphaFactor="0.6" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" Sprite="MapMenuUnread@2x" Brush.AlphaFactor="0.6" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" Sprite="MapMenuUnread@2x" Brush.AlphaFactor="0.6" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" Sprite="MapMenuUnread@2x" Brush.AlphaFactor="0.6" />
+          </Children>
+        </CircleLoadingAnimWidget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

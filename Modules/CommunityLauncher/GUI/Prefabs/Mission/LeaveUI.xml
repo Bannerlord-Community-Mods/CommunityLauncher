@@ -1,0 +1,25 @@
+<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <Widget HeightSizePolicy ="CoverChildren" WidthSizePolicy="CoverChildren"  HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="150" IsEnabled="false">
+      <Children>
+
+        <MissionLeaveBarWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="290" SuggestedHeight="33.6" VerticalAlignment="Center" Filler="Filler" Handle="SliderHandle" Locked="false" MaxValueFloat="@MaxTime" MinValueFloat="0" ValueFloat="@CurrentTime" FadeInMultiplier="10">
+          <Children>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="290" SuggestedHeight="30" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="SPOptions\standart_slider_canvas" IsEnabled="false" />
+            <Widget Id="Filler" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="276" SuggestedHeight="30" VerticalAlignment="Center" Sprite="SPOptions\standart_slider_fill" ClipContents="true">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="276" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="SPOptions\standart_slider_fill" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="320" SuggestedHeight="52" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="SPOptions\standart_slider_frame" IsEnabled="false" />
+            <Widget Id="SliderHandle" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="38" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="SPOptions.Slider.Handle" IsVisible="false" />
+            <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" PositionYOffset="-40" Text="@LeaveText" ClipContents="false"/>
+          </Children>
+        </MissionLeaveBarWidget>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

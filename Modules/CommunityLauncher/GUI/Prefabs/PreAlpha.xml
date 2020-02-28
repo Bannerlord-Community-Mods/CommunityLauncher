@@ -1,0 +1,27 @@
+<Prefab>
+  <Variables>
+  </Variables>
+  <VisualDefinitions>
+  </VisualDefinitions>
+  <Window>
+    <Widget WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" IsEnabled="false">
+      <Children>
+        <TextWidget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="240" SuggestedHeight="25" Text="@WorkInProgressText" Brush.TextHorizontalAlignment="Left" Brush.TextVerticalAlignment="Center" Brush.FontSize="24" Brush.TextAlphaFactor="0.4" HorizontalAlignment="Left" MarginLeft = "10" MarginTop="5" ClipContents="false"/>
+        <TextWidget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="240" SuggestedHeight="10" Text="@VersionText" Brush.TextHorizontalAlignment="Left" Brush.TextVerticalAlignment="Center" Brush.TextAlphaFactor="0.4" Brush.FontSize="12" HorizontalAlignment="Left" MarginLeft = "10"  MarginTop="30" ClipContents="false"/>
+        <MouseWidget WidthSizePolicy = "CoverChildren" HeightSizePolicy = "CoverChildren" IsVisible="@KeyDebugEnabled" MarginLeft="10" MarginTop="50" LeftMouseButton = "LeftMouseButton" RightMouseButton = "RightMouseButton" MiddleMouseButton="MiddleMouseButton" MouseX1Button="MouseX1Button" MouseX2Button="MouseX2Button" MouseScrollUp = "MouseScrollUp" MouseScrollDown = "MouseScrollDown" KeyboardKeys="KeyboardKeys"  >
+          <Children>
+            <Widget Id="LeftMouseButton" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="10" SuggestedHeight="10" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Brush.GlobalAlphaFactor="0.8"/>
+            <Widget Id="MiddleMouseButton" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="5" SuggestedHeight="10" HorizontalAlignment="Left" MarginLeft = "12" Sprite="BlankWhiteSquare" Brush.GlobalAlphaFactor="0.8"/>
+            <Widget Id="RightMouseButton" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="10" SuggestedHeight="10" HorizontalAlignment="Left" MarginLeft = "19" Sprite="BlankWhiteSquare" Brush.GlobalAlphaFactor="0.8"/>
+            <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="29" SuggestedHeight="30" HorizontalAlignment="Left" MarginTop="12" Sprite="BlankWhiteSquare" Brush.GlobalAlphaFactor="0.8"/>
+            <Widget Id="MouseX2Button" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="3" SuggestedHeight="10" HorizontalAlignment="Left" MarginLeft="-5" MarginTop="12" Sprite="BlankWhiteSquare" Brush.GlobalAlphaFactor="0.8"/>
+            <Widget Id="MouseX1Button" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="3" SuggestedHeight="10" HorizontalAlignment="Left" MarginLeft="-5" MarginTop="24" Sprite="BlankWhiteSquare" Brush.GlobalAlphaFactor="0.8"/>
+            <Widget Id="MouseScrollUp" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="7.5" SuggestedHeight="30" HorizontalAlignment="Left" MarginLeft="11" MarginTop="-12" Brush="Crosshair.Arrow.Bottom" Brush.Color ="#FFAA00FF" Brush.GlobalAlphaFactor="1"/>
+            <Widget Id="MouseScrollDown" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="7.5" SuggestedHeight="30" HorizontalAlignment="Left" MarginLeft="11" MarginTop="-12" Brush="Crosshair.Arrow.Top" Brush.Color ="#FFAA00FF" Brush.GlobalAlphaFactor="1"/>
+            <TextWidget Id="KeyboardKeys" WidthSizePolicy = "CoverChildren" HeightSizePolicy = "CoverChildren" Brush="PreAlpha.Text" Brush.FontSize="22" Brush.TextHorizontalAlignment="Left" Brush.TextVerticalAlignment="Center" HorizontalAlignment="Left" MarginLeft = "31"  MarginTop="24" ClipContents="false"/>
+          </Children>
+        </MouseWidget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

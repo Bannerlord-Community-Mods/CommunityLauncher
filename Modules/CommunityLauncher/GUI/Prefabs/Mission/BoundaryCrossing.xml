@@ -1,0 +1,25 @@
+<Prefab>
+	<Constants>
+        <Constant Name="BoundaryCrossing.FillBar.Fill.Height" BrushName="BoundaryCrossing.FillBar.Fill" BrushLayer="DefaultFill" BrushValueType="Height"/>
+	</Constants>
+	<Window>
+		<Widget HeightSizePolicy ="Fixed" WidthSizePolicy="Fixed" SuggestedWidth="600" SuggestedHeight="250" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="60" Brush="Frame1Brush" IsVisible="@Show">
+			<Children>
+				<!--Warning Text-->
+				<TextWidget HeightSizePolicy ="Fixed" WidthSizePolicy="StretchToParent" SuggestedHeight="50" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="30" Text="@WarningText" Brush="BoundaryCrossing.WarningText"/>
+
+				<!--Timer Bar-->
+				<Widget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="510" SuggestedHeight="20" VerticalAlignment="Center" HorizontalAlignment="Center">
+					<Children>
+						<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" VerticalAlignment="Center" Brush="BoundaryCrossing.FillBar.InnerCanvas" />
+						<FillBar WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!BoundaryCrossing.FillBar.Fill.Height" VerticalAlignment="Center" PositionYOffset="2" MaxAmount="100" CurrentAmount="@WarningIntProgress" InitialAmount="@WarningIntProgress" Brush="BoundaryCrossing.FillBar.Fill" />			
+						<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Slider"/>
+					</Children>
+				</Widget>
+				
+				<!--Countdown Text-->
+				<TextWidget IntText="@Countdown" HeightSizePolicy="Fixed" WidthSizePolicy="StretchToParent" SuggestedHeight="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="0" Brush="BoundaryCrossing.CountdownText"/>
+			</Children>
+		</Widget>
+	</Window>
+</Prefab>

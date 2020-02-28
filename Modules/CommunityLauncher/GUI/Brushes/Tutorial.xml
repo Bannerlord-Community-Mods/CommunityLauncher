@@ -1,0 +1,184 @@
+<Brushes>
+  <Brush Name="TutorialPanelBrush">
+    <Layers>
+      <BrushLayer Name="Shadow" Sprite="Tutorial\shadow_large" ExtendLeft="65" ExtendRight="65" ExtendTop="65" ExtendBottom="65" />
+      <BrushLayer Name="Canvas" Sprite="tutorial_canvas_9" Color="#07112DFF" />
+      <BrushLayer Name="Frame" Sprite="tutorial_frame_9" ExtendLeft="16" ExtendRight="16" ExtendTop="13" ExtendBottom="14" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" AnimationToPlayOnBegin="TutorialPanelAnimation">
+        <BrushLayer Name="Shadow" />
+        <BrushLayer Name="Canvas" ValueFactor="-20" AlphaFactor="0.8" />
+        <BrushLayer Name="Frame" AlphaFactor="0" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Shadow" AlphaFactor="0" />
+        <BrushLayer Name="Default" AlphaFactor="0" />
+        <BrushLayer Name="Frame" AlphaFactor="0" />
+      </Style>
+    </Styles>
+    <Animations>
+      <Animation Name="TutorialPanelAnimation" Duration="2.2" Loop="true">
+        <AnimationProperty PropertyName="Color" LayerName="Frame">
+          <KeyFrame Time="0.0" Value="#CA9923FF" />
+          <KeyFrame Time="0.6" Value="#CA9923FF" />
+          <KeyFrame Time="0.9" Value="#CA9923FF" />
+          <KeyFrame Time="1.7" Value="#CA9923FF" />
+          <KeyFrame Time="2" Value="#CA9923FF" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="AlphaFactor" LayerName="Frame">
+          <KeyFrame Time="0.0" Value="1.0" />
+          <KeyFrame Time="0.4" Value="1.0" />
+          <KeyFrame Time="0.6" Value="0" />
+          <KeyFrame Time="0.9" Value="0" />
+          <KeyFrame Time="1.1" Value="1.0" />
+          <KeyFrame Time="1.5" Value="1.0" />
+          <KeyFrame Time="1.7" Value="0" />
+          <KeyFrame Time="2" Value="0" />
+          <KeyFrame Time="2.2" Value="1.0" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="ValueFactor" LayerName="Frame">
+          <KeyFrame Time="0.0" Value="80" />
+          <KeyFrame Time="0.4" Value="80" />
+          <KeyFrame Time="0.6" Value="0" />
+          <KeyFrame Time="0.9" Value="0" />
+          <KeyFrame Time="1.1" Value="80" />
+          <KeyFrame Time="1.5" Value="80" />
+          <KeyFrame Time="1.7" Value="0" />
+          <KeyFrame Time="2" Value="0" />
+          <KeyFrame Time="2.2" Value="80" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+  <Brush Name="CloseTutorialButton">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Tutorial\tutorial_close_canvas" IsHidden="true" />
+      <BrushLayer Name="Hovered" Sprite="Tutorial\tutorial_close_canvas_hover" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" IsHidden="false" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Hovered" ColorFactor="0.8" IsHidden="false" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Hovered" IsHidden="false" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.1" IsHidden="false" AlphaFactor="0" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="DisableTutorialButton">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Tutorial\tutorial_close_canvas" IsHidden="true" />
+      <BrushLayer Name="Hovered" Sprite="Tutorial\tutorial_close_canvas_hover" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" IsHidden="false" ValueFactor="75" HueFactor="200" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Hovered" ColorFactor="0.8" IsHidden="false" ValueFactor="75" HueFactor="200" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Hovered" IsHidden="false" HueFactor="200" ValueFactor="75" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.1" IsHidden="false" HueFactor="200" ValueFactor="75" AlphaFactor="0" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="PrevTutorialButton">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Tutorial\tutorial_arrow_right" HorizontalFlip="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" HorizontalFlip="true" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" HorizontalFlip="true" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.1" HorizontalFlip="true" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" ColorFactor="0.1" HorizontalFlip="true" AlphaFactor="0" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="NextTutorialButton">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Tutorial\tutorial_arrow_right" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" ColorFactor="0.8" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" ColorFactor="1.1" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0" ColorFactor="0.1" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="TutorialHighlightBrush">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="highlight_gradient_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" AnimationToPlayOnBegin="TutorialHighlightAnimation">
+        <BrushLayer Name="Default" />
+      </Style>
+	  <Style Name="Disabled">
+        <BrushLayer Name="Default" IsHidden="true" />
+      </Style>
+    </Styles>
+    <Animations>
+      <Animation Name="TutorialHighlightAnimation" Duration="2.2" Loop="true">
+        <AnimationProperty PropertyName="AlphaFactor" LayerName="Default">
+          <KeyFrame Time="0.0" Value="1.0" />
+          <KeyFrame Time="0.4" Value="1.0" />
+          <KeyFrame Time="0.6" Value="0" />
+          <KeyFrame Time="0.9" Value="0" />
+          <KeyFrame Time="1.1" Value="1.0" />
+          <KeyFrame Time="1.5" Value="1.0" />
+          <KeyFrame Time="1.7" Value="0" />
+          <KeyFrame Time="2" Value="0" />
+          <KeyFrame Time="2.2" Value="1.0" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+  <Brush Name="TutorialItem.Title.Text" Font="ProximaNovaCond-Light" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#D5B88BFF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="30" />
+      <Style Name="Disabled" FontColor="#D5B88B00" TextGlowColor="#00000000" />
+    </Styles>
+  </Brush>
+  <Brush Name="Tutorial.Title.Text" Font="ProximaNovaCond-Light" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="48" />
+      <Style Name="Disabled" FontColor="#FFFFFF00" TextGlowColor="#00000000" />
+    </Styles>
+  </Brush>
+  <Brush Name="TutorialItem.Description.Text" Font="ProximaNovaCond-Light" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#E1E1E1FF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" GlobalAlphaFactor="1" FontSize="25" />
+      <Style Name="Disabled" FontColor="#E1E1E100" TextGlowColor="#00000000" GlobalAlphaFactor="0" />
+    </Styles>
+  </Brush>
+  <Brush Name="TutorialItem.SubText.Text" Font="ProximaNovaCond-Light" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#E1E1E1FF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" GlobalAlphaFactor="1" FontSize="15" />
+      <Style Name="Disabled" FontColor="#E1E1E100" TextGlowColor="#00000000" GlobalAlphaFactor="0" />
+    </Styles>
+  </Brush>
+</Brushes>

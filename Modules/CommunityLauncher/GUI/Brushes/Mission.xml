@@ -1,0 +1,628 @@
+<Brushes>
+  <Brush Name="NameMarker.VisualBrush">
+    <Layers>
+      <BrushLayer Name="Arena" Sprite="Mission\arena" IsHidden="true" />
+      <BrushLayer Name="CommonArea" Sprite="Mission\common_area" IsHidden="true" />
+      <BrushLayer Name="Dungeon" Sprite="Mission\dungeon" IsHidden="true" />
+      <BrushLayer Name="LordsHall" Sprite="Mission\lords_hall" IsHidden="true" />
+      <BrushLayer Name="Tavern" Sprite="Mission\tavern" IsHidden="true" />
+      <BrushLayer Name="Brewery" Sprite="Mission\brewery" IsHidden="true" />
+      <BrushLayer Name="Butcher" Sprite="Mission\butcher" IsHidden="true" />
+      <BrushLayer Name="EmptyShop" Sprite="Mission\emptyshop" IsHidden="true" />
+      <BrushLayer Name="Mill" Sprite="Mission\mill" IsHidden="true" />
+      <BrushLayer Name="OlivePress" Sprite="Mission\olivepress" IsHidden="true" />
+      <BrushLayer Name="Pottery" Sprite="Mission\pottery" IsHidden="true" />
+      <BrushLayer Name="Smithy" Sprite="Mission\smithy" IsHidden="true" />
+      <BrushLayer Name="Stable" Sprite="Mission\stable" IsHidden="true" />
+      <BrushLayer Name="Tannery" Sprite="Mission\tannery" IsHidden="true" />
+      <BrushLayer Name="Weavery" Sprite="Mission\weavery" IsHidden="true" />
+      <BrushLayer Name="WeaveryLinen" Sprite="Mission\weaverylinen" IsHidden="true" />
+      <BrushLayer Name="WeaveryVelvet" Sprite="Mission\weaveryvelvet" IsHidden="true" />
+      <BrushLayer Name="WoodWorkshop" Sprite="Mission\woodworkshop" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Empty">
+        <BrushLayer Name="Arena" IsHidden="true" />
+      </Style>
+      <Style Name="Arena">
+        <BrushLayer Name="Arena" IsHidden="false" />
+      </Style>
+      <Style Name="CommonArea">
+        <BrushLayer Name="CommonArea" IsHidden="false" />
+      </Style>
+      <Style Name="Dungeon">
+        <BrushLayer Name="Dungeon" IsHidden="false" />
+      </Style>
+      <Style Name="LordsHall">
+        <BrushLayer Name="LordsHall" IsHidden="false" />
+      </Style>
+      <Style Name="Tavern">
+        <BrushLayer Name="Tavern" IsHidden="false" />
+      </Style>
+      <Style Name="Brewery">
+        <BrushLayer Name="Brewery" IsHidden="false" />
+      </Style>
+      <Style Name="Butcher">
+        <BrushLayer Name="Butcher" IsHidden="false" />
+      </Style>
+      <Style Name="EmptyShop">
+        <BrushLayer Name="EmptyShop" IsHidden="false" />
+      </Style>
+      <Style Name="Mill">
+        <BrushLayer Name="Mill" IsHidden="false" />
+      </Style>
+      <Style Name="OlivePress">
+        <BrushLayer Name="OlivePress" IsHidden="false" />
+      </Style>
+      <Style Name="Pottery">
+        <BrushLayer Name="Pottery" IsHidden="false" />
+      </Style>
+      <Style Name="Smithy">
+        <BrushLayer Name="Smithy" IsHidden="false" />
+      </Style>
+      <Style Name="Stable">
+        <BrushLayer Name="Stable" IsHidden="false" />
+      </Style>
+      <Style Name="Tannery">
+        <BrushLayer Name="Tannery" IsHidden="false" />
+      </Style>
+      <Style Name="Weavery">
+        <BrushLayer Name="Weavery" IsHidden="false" />
+      </Style>
+      <Style Name="WeaveryLinen">
+        <BrushLayer Name="WeaveryLinen" IsHidden="false" />
+      </Style>
+      <Style Name="WeaveryVelvet">
+        <BrushLayer Name="WeaveryVelvet" IsHidden="false" />
+      </Style>
+      <Style Name="WoodWorkshop">
+        <BrushLayer Name="WoodWorkshop" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="NameMarker.TextBrush" FontSize="32" Font="ProximaNovaCond-Light">
+    <Styles>
+      <Style Name="Normal" FontColor="#F7ECB2FF" TextGlowColor="#000000FF" TextOutlineColor="#00000000" TextOutlineAmount="0.6" TextGlowRadius="0" TextBlur="1" />
+      <Style Name="Passage" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#00000000" TextOutlineAmount="0.6" TextGlowRadius="0" TextBlur="1" />
+      <Style Name="Noble" FontColor="#FFDF00FF" TextGlowColor="#000000FF" TextOutlineColor="#00000000" TextOutlineAmount="0.6" TextGlowRadius="0" TextBlur="1" />
+      <Style Name="Enemy" FontColor="#DD5454FF" TextGlowColor="#000000FF" TextOutlineColor="#00000000" TextOutlineAmount="0.6" TextGlowRadius="0" TextBlur="1" />
+      <Style Name="Friendly" FontColor="#4EE04CFF" TextGlowColor="#000000FF" TextOutlineColor="#00000000" TextOutlineAmount="0.6" TextGlowRadius="0" TextBlur="1" />
+      <Style Name="Disabled" FontColor="#00000000" TextGlowColor="#000000FF" TextOutlineColor="#00000000" TextOutlineAmount="0.6" TextGlowRadius="0" TextBlur="1" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="NameMarker.QuestBrush">
+    <Layers>
+      <BrushLayer Name="None" Sprite="Icons\icon_quest_taken" IsHidden="true" />
+      <BrushLayer Name="Normal" Sprite="Icons\icon_quest_available" IsHidden="true" />
+      <BrushLayer Name="Active" Sprite="Icons\icon_quest_active" IsHidden="true" />
+      <BrushLayer Name="Completed" Sprite="Icons\icon_quest_done" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="None">
+        <BrushLayer Name="None" IsHidden="true" />
+      </Style>
+      <Style Name="Normal">
+        <BrushLayer Name="Normal" IsHidden="false" />
+      </Style>
+      <Style Name="Active">
+        <BrushLayer Name="Active" IsHidden="false" />
+      </Style>
+      <Style Name="Completed">
+        <BrushLayer Name="Completed" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="NameMarker.IssueBrush">
+    <Layers>
+      <BrushLayer Name="None" Sprite="Icons\icon_issue_active" IsHidden="true" />
+      <BrushLayer Name="Normal" Sprite="Icons\icon_issue_available" IsHidden="true" />
+      <BrushLayer Name="Active" Sprite="Icons\icon_issue_active" IsHidden="true" />
+      <BrushLayer Name="Completed" Sprite="Icons\icon_issue_done" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="None">
+        <BrushLayer Name="None" IsHidden="true" />
+      </Style>
+      <Style Name="Normal">
+        <BrushLayer Name="Normal" IsHidden="false" />
+      </Style>
+      <Style Name="Active">
+        <BrushLayer Name="Active" IsHidden="false" />
+      </Style>
+      <Style Name="Completed">
+        <BrushLayer Name="Completed" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="FormationMarker.TeamType">
+    <Layers>
+      <BrushLayer Name="Ally" Sprite="compass\target_background" Color="#42F456CC" IsHidden="true" />
+      <BrushLayer Name="Player" Sprite="compass\target_background" Color="#41F4E2CC" IsHidden="true" />
+      <BrushLayer Name="Enemy" Sprite="compass\target_background" Color="#f44141CC" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Ally">
+        <BrushLayer Name="Ally" IsHidden="false" />
+      </Style>
+      <Style Name="Player">
+        <BrushLayer Name="Player" IsHidden="false" />
+      </Style>
+      <Style Name="Enemy">
+        <BrushLayer Name="Enemy" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.TakenDamage">
+    <Layers>
+      <BrushLayer Name="HorizontalTop" Sprite="Mission\DamageTakenHorizontal" Color="#93130DFF" IsHidden="true" />
+      <BrushLayer Name="HorizontalBottom" Sprite="Mission\DamageTakenHorizontal" VerticalFlip="true" Color="#93130DFF" IsHidden="true" />
+      <BrushLayer Name="VerticalLeft" Sprite="Mission\DamageTakenVertical" Color="#93130DFF" IsHidden="true" />
+      <BrushLayer Name="VerticalRight" Sprite="Mission\DamageTakenVertical" HorizontalFlip="true" Color="#93130DFF" IsHidden="true" />
+      <BrushLayer Name="Melee" Sprite="Mission\DamageTakenMelee" Color="#93130DFF" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="HorizontalTop">
+        <BrushLayer Name="HorizontalTop" IsHidden="false" />
+      </Style>
+      <Style Name="HorizontalBottom">
+        <BrushLayer Name="HorizontalBottom" IsHidden="false" />
+      </Style>
+      <Style Name="VerticalLeft">
+        <BrushLayer Name="VerticalLeft" IsHidden="false" />
+      </Style>
+      <Style Name="VerticalRight">
+        <BrushLayer Name="VerticalRight" IsHidden="false" />
+      </Style>
+      <Style Name="Melee">
+        <BrushLayer Name="Melee" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="FlagMarker.TextBrush" FontSize="48" Font="ProximaNovaCond">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#00000000" TextOutlineAmount="0.0" TextSoftBorder="0" TextGlowRadius="0" TextBlur="0"/>
+    </Styles>
+  </Brush>
+
+  <Brush Name="PeerMarker.TextBrush" FontSize="24" Font="ProximaNovaCond">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#00000000" TextOutlineAmount="0.0" TextSoftBorder="0" TextGlowRadius="0" TextBlur="0"/>
+    </Styles>
+  </Brush>
+
+  <Brush Name="AgentAmmoCount.Text" Font="Galahad">
+    <Layers>
+      <BrushLayer Name="Default" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.1" TextGlowRadius="0" TextBlur="0.5" FontSize="30" />
+      <Style Name="Alert" FontColor="#E55454FF" />
+    </Styles>
+    <Animations>
+      <Animation Name="AmmoAlertAnimation" Duration="0.6" Loop="true">
+        <AnimationProperty PropertyName="FontColor">
+          <KeyFrame Time="0.0" Value="#FFFFFFFF" />
+          <KeyFrame Time="0.01" Value="#D62626FF" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextBlur">
+          <KeyFrame Time="0.0" Value="0" />
+          <KeyFrame Time="0.01" Value="1" />
+        </AnimationProperty>
+        <AnimationProperty PropertyName="TextGlowRadius">
+          <KeyFrame Time="0.0" Value="0" />
+          <KeyFrame Time="0.01" Value="0.5" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+
+  <Brush Name="PlayerRoleSelection.Formation.Item" TransitionDuration="0.05">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="StdAssets\Popup\verical_card_default" ExtendLeft="10" ExtendTop="9" ExtendRight="7" ExtendBottom="7"/>
+      <BrushLayer Name="Hovered" Sprite="StdAssets\Popup\verical_card_selected" ExtendLeft="10" ExtendTop="9" ExtendRight="7" ExtendBottom="7"/>
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" ColorFactor="1" />
+        <BrushLayer Name="Hovered" ColorFactor="1" AlphaFactor="0" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="0" />
+        <BrushLayer Name="Hovered" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="0" />
+        <BrushLayer Name="Hovered" ColorFactor="0.8" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="0" />
+        <BrushLayer Name="Hovered" ColorFactor="1.3" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="1" ColorFactor="0.5" SaturationFactor="-40" />
+        <BrushLayer Name="Hovered" AlphaFactor="0" />
+      </Style>
+    </Styles>
+    <SoundProperties>
+      <StateSounds>
+      </StateSounds>
+      <EventSounds>
+        <EventSound EventName="HoverBegin" Audio="tab" />
+      </EventSounds>
+    </SoundProperties>
+  </Brush>
+
+  <Brush Name="Mission.Radial.Item.Background" TransitionDuration="0.3">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="RadialMenu\radial_menu_item_background"/>
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0.6" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" AlphaFactor="1" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="0.8"/>
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="0" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.3" />
+      </Style>
+    </Styles>
+    <SoundProperties>
+      <StateSounds >
+        <StateSound StateName="Selected" Audio="tab"/>
+      </StateSounds>
+    </SoundProperties>
+  </Brush>
+
+  <Brush Name="Mission.Radial.Item.Glow" TransitionDuration="0.3">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="RadialMenu\radial_menu_item_glow"/>
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" AlphaFactor="0.6" />
+      </Style>
+      <Style Name="Selected">
+        <BrushLayer Name="Default" Color="#FEC157FF" AlphaFactor="1" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" AlphaFactor="0.8"/>
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" AlphaFactor="0" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" AlphaFactor="0.3" />
+      </Style>
+    </Styles>
+    <SoundProperties>
+      <StateSounds >
+        <StateSound StateName="Selected" Audio="tab"/>
+      </StateSounds>
+    </SoundProperties>
+  </Brush>
+
+  <Brush Name="Mission.Agent.CouchLance.State">
+    <Layers>
+      <BrushLayer Name="ConditionsNotMet" Sprite="Mission\couch-lance-deactive" Color="#F3DCB8FF" AlphaFactor="1" IsHidden="true" />
+      <BrushLayer Name="Possible" Sprite="Mission\couch-lance-deactive" Color="#F3DCB8FF" IsHidden="true" />
+      <BrushLayer Name="Active" Sprite="Mission\couch-lance-active" Color="#F3DCB8FF" IsHidden="true" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+      </Style>
+      <Style Name="Active">
+        <BrushLayer Name="Active" IsHidden="false" />
+      </Style>
+      <Style Name="Possible">
+        <BrushLayer Name="Possible" IsHidden="false" />
+      </Style>
+      <Style Name="ConditionsNotMet">
+        <BrushLayer Name="ConditionsNotMet" IsHidden="true" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="PlayerRoleSelection.OuterFrame" TransitionDuration="0.070">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Crafting\left_card_frame_default" IsHidden="true" ExtendBottom="18" ExtendLeft="18" ExtendRight="18" ExtendTop="18"/>
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" IsHidden="false" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.HeroHealthBar.Icon">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\hero_icon" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.HeroHealthBar.Frame">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\health_bar_frame" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.HeroHealthBar.Canvas">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\hero_canvas" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.HeroHealthBar.Fill">
+    <Layers>
+      <BrushLayer Name="DefaultFill" Sprite="mission_health_bar_fill_9" Color="#FFFFFFFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.HeroHealthBar.FillChange">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="mission_health_bar_fill_damage_9" Color="#FBB1B1FF" SaturationFactor="-65" ValueFactor="50" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.HeroHealthBar.FillGlow">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\health_bar_fill_glow" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.MountHealthBar.Icon">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\mount_icon" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.MountHealthBar.Frame">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\horse_frame" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.MountHealthBar.Canvas">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\horse_canvas" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.MountHealthBar.Fill">
+    <Layers>
+      <BrushLayer Name="DefaultFill" Sprite="mission_health_bar_fill_small_9" Color="#FFFFFFFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.MountHealthBar.FillChange">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="mission_health_bar_fill_damage_small_9" Color="#FBB1B1FF" SaturationFactor="-65" ValueFactor="50" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.MountHealthBar.FillGlow">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\health_bar_fill_glow_small" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.ShieldHealthBar.Icon">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\shield_icon" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.ShieldHealthBar.Frame">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\shield_frame" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.ShieldHealthBar.Canvas">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\shield_canvas" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.ShieldHealthBar.Fill">
+    <Layers>
+      <BrushLayer Name="DefaultFill" Sprite="mission_health_bar_fill_small_9" HueFactor="27" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.ShieldHealthBar.FillChange">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="mission_health_bar_fill_damage_small_9" Color="#FBB1B1FF" SaturationFactor="-65" ValueFactor="50" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.ShieldHealthBar.FillGlow">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\health_bar_fill_glow_small" HueFactor="27" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.TakenDamageFeed.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="Mission\damage_taken_background" Color="#740F0FFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="SPHUD.KillNotification.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="MPHud\kill_notification" AlphaFactor="0.6" Color="#46321BFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  <Brush Name="SPHUD.KillFeed.Background">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="sp_kill_notification_9" AlphaFactor="0.5" Color="#46321BFF" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" />
+      </Style>
+    </Styles>
+  </Brush>
+  
+  <Brush Name="SPHUD.KillNotification.MessageText" Font="ProximaNovaCond" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="0" TextOutlineAmount="0.4" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+  <Brush Name="SPHUD.KillFeed.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" TextBlur="0" TextOutlineAmount="0" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+  <Brush Name="NameMarker.Distance.Text" Font="ProximaNovaCond-Light">
+    <Styles>
+      <Style Name="Default" FontColor="#E8E8E8FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.05" TextGlowRadius="0" TextBlur="0" FontSize="22" />
+    </Styles>
+  </Brush>
+  <Brush Name="AgentHUD.Interaction.Text" Font="ProximaNovaCond-Light">
+    <Styles>
+      <Style Name="Default" FontColor="#E8E8E8FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.2" TextGlowRadius="0" TextBlur="0" FontSize="30" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="PlayerRoleSelection.Title.Text" Font="Galahad" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#D7AC6FFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="40" />
+      <Style Name="Disabled" FontColor="#D7AC6FFF" TextColorFactor="0.5" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="35" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="PlayerRoleSelection.Hero.Name.Text" Font="ProximaNovaCond" TextHorizontalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#C6BBA7FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.01" TextGlowRadius="0" TextBlur="0" FontSize="40" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.MainAgentHUD.TakenDamageFeed.Text" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Styles>
+      <Style Name="Default" FontColor="#FFFFFFFF" FontSize="24" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="Mission.DropCircle.ItemText" Font="Galahad">
+    <Styles>
+      <Style Name="Default" FontColor="#fFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="30" />
+      <Style Name="Hovered" TextColorFactor="1.2" TextBlur="0" />
+      <Style Name="Pressed" TextColorFactor="0.8" TextBlur="0" />
+      <Style Name="Selected" FontColor="#FF00FFFF" TextColorFactor="0.8" TextBlur="0" />
+      <Style Name="Disabled" TextColorFactor="1" TextAlphaFactor="1" TextBlur="0" />
+    </Styles>
+  </Brush>
+
+</Brushes>

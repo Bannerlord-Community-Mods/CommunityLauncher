@@ -1,0 +1,10 @@
+<Prefab>
+	<Window>
+		<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren">
+			<Children>
+				<TextWidget Text="@FactionName" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="48" HorizontalAlignment="Center" Brush="MPEndOfRound.Faction" />
+				<TextWidget IntText="@Score" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="42" HorizontalAlignment="Center" MarginTop="48" Brush="MPEndOfRound.Score" />
+			</Children>
+		</Widget>
+	</Window>
+</Prefab>

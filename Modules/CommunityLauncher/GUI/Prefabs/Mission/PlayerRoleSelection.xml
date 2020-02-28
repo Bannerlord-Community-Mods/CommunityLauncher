@@ -1,0 +1,115 @@
+<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Brush.Color="#000000CC" IsVisible="@IsEnabled">
+      <Children>
+
+        <!--Done Button-->
+        <Standard.PopupCloseButton HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="862" Command.Click="ExecuteDone" Parameter.ButtonText="@DoneText" Parameter.IsEnabled="@IsDoneEnabled"/>
+
+        <Widget Id="PopupParent" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="StdAssets\Popup\canvas_dark">
+          <Children>
+
+            <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="15" MarginRight="15" MarginTop="15" LayoutImp.LayoutMethod="VerticalBottomToTop">
+              <Children>
+
+                <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginLeft="15" MarginRight="15" MarginTop="5" Brush="PlayerRoleSelection.Title.Text" Text="@TitleText" />
+
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="850" SuggestedHeight="35" Sprite="CharacterCreation\stone_divider_thin" HorizontalAlignment="Center" Brush.SaturationFactor="-30" Brush.ValueFactor="10"/>
+
+                <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginTop="5" MarginBottom="15" LayoutImp.LayoutMethod="VerticalBottomToTop">
+                  <Children>
+
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" Brush="PlayerRoleSelection.Hero.Name.Text" Brush.FontSize="32" Text="@CommanderText" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="135" SuggestedHeight="99" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                      <Children>
+                        <ImageIdentifierWidget Id="CharacterImage" DataSource="{CommanderVisual}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedHeight="70" SuggestedWidth="97" HorizontalAlignment="Center" VerticalAlignment="Center" AdditionalArgs="@AdditionalArgs" ImageId="@Id" ImageTypeCode="@ImageTypeCode" />
+                      </Children>
+                    </Widget>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" Brush="PlayerRoleSelection.Hero.Name.Text" Brush.FontSize="20" MarginTop="5" Text="@CommanderName" />
+
+                  </Children>
+                </ListPanel>
+
+                <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center">
+                  <Children>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" Text="@ChooseText" Brush="PlayerRoleSelection.Title.Text" IsHidden="@IsPlayerGeneral"/>
+                  </Children>
+                </Widget>
+                
+                <!--Formations-->
+                <ListPanel DataSource="{Formations}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="15" MarginRight="15" MarginTop="15" MarginBottom="45">
+                  <ItemTemplate>
+
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="150" SuggestedHeight="350" MarginLeft="5" MarginRight="5" Command.HoverBegin="ExecuteShowTooltip" Command.HoverEnd="ExecuteHideTooltip">
+                      <Children>
+
+                        <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="150" SuggestedHeight="350" Command.Click="ExecuteSelection" Command.HoverBegin="ExecuteShowTooltip" Command.HoverEnd="ExecuteHideTooltip" IsEnabled="@IsEnabled" IsSelected="@IsPlayerLeader" UpdateChildrenStates="true">
+                          <Children>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="2" LayoutImp.LayoutMethod="VerticalBottomToTop" UpdateChildrenStates="true">
+                              <Children>
+
+                                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" MarginTop="25" LayoutImp.LayoutMethod="VerticalBottomToTop" >
+                                  <Children>
+                                    <ImageIdentifierWidget Id="CharacterImage" DataSource="{LeaderVisual}" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="97" SuggestedHeight="70" HorizontalAlignment="Center" VerticalAlignment="Center" AdditionalArgs="@AdditionalArgs" ImageId="@Id" ImageTypeCode="@ImageTypeCode" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22" VerticalAlignment="Center" MarginTop="10" Brush="PlayerRoleSelection.Hero.Name.Text" Brush.FontColor="#8CDBC4FF" Brush.FontSize="20" ClipContents="false" IsVisible="@IsPlayerLeader" Text="@LeaderName" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22" VerticalAlignment="Center" MarginTop="10" Brush="PlayerRoleSelection.Hero.Name.Text" Brush.FontSize="20" ClipContents="false" IsHidden="@IsPlayerLeader" Text="@LeaderName" />
+                                  </Children>
+                                </ListPanel>
+
+                                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="14" LayoutImp.LayoutMethod="VerticalBottomToTop" Brush="PlayerRoleSelection.Formation.Item">
+                                  <Children>
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="44" VerticalAlignment="Bottom" MarginTop="10" Brush="Popup.Button.Text" Brush.FontSize="30" ClipContents="false" Text="@ClassName" Brush.FontColor="#E3D7BFFF" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="3" Sprite="BlankWhiteSquare_9" Brush.Color="#444444CC" MarginTop="7"/>
+                                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" LayoutImp.LayoutMethod="VerticalBottomToTop" MarginTop="5">
+                                      <Children>
+                                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="Popup.Button.Text" ClipContents="false" IntText="@Size" Brush.FontColor="#E3D7BFFF" Brush.FontSize="32"/>
+                                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="37" SuggestedHeight="32" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="Icons\Party@2x" />
+                                      </Children>
+                                    </ListPanel>
+
+                                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="47" SuggestedHeight="47" HorizontalAlignment="Center" MarginTop="15">
+                                      <Children>
+                                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="StdAssets\lock_closed" IsHidden="@IsEnabled" />
+                                      </Children>
+                                    </Widget>
+
+                                  </Children>
+                                </ListPanel>
+
+                              </Children>
+                            </ListPanel>
+                          </Children>
+                        </ButtonWidget>
+
+                      </Children>
+                    </Widget>
+
+                  </ItemTemplate>
+                </ListPanel>
+
+                <!--<ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="400" SuggestedHeight="64" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginTop="5" MarginBottom="5" Brush="Popup.Done.Button.NineGrid" Command.Click="ExecuteDone" UpdateChildrenStates="true" IsEnabled="@IsDoneEnabled">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Button.Text" Text="@DoneText" />
+                  </Children>
+                </ButtonWidget>-->
+
+              </Children>
+            </ListPanel>
+
+            <DimensionSyncWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" DimensionToSync="HorizontalAndVertical" IsEnabled="false" WidgetToCopyHeightFrom="..\..\PopupParent">
+              <Children>
+                <!--Frame Border-->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Popup.Frame" IsEnabled="false" />
+              </Children>
+            </DimensionSyncWidget>
+
+          </Children>
+        </Widget>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

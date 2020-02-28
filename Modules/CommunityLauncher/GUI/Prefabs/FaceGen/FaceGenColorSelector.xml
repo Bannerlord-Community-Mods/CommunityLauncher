@@ -1,0 +1,19 @@
+<Window>
+  <SelectorWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" CurrentSelectedIndex="@SelectedIndex" Container="ColorGrid">
+    <Children>
+
+      <GridWidget Id="ColorGrid" DataSource = "{ItemList}" WidthSizePolicy = "CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" HorizontalAlignment="Center" ColumnCount="12" DefaultCellHeight="45" DefaultCellWidth="45">
+        <ItemTemplate>
+
+          <ColorButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" MarginLeft="1" MarginRight="1" Brush="Creation.ColorCard" ColorToApply="@StringItem" ButtonType="Radio" UpdateChildrenStates="true">
+            <Children>
+              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Creation.ColorCard.Selection"/>
+            </Children>
+          </ColorButtonWidget>
+
+        </ItemTemplate>
+      </GridWidget>
+
+    </Children>
+  </SelectorWidget>
+</Window>

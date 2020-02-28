@@ -1,0 +1,9 @@
+<Window>
+  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" LayoutImp.LayoutMethod="VerticalBottomToTop">
+    <Children>
+      <FaceGenColorSelector DataSource="{TattooColorSelector}" MarginTop="10" />
+      <Widget WidthSizePolicy="Fixed" SuggestedWidth="581" HeightSizePolicy="Fixed" SuggestedHeight="14" HorizontalAlignment="Center" Sprite="CharacterCreation\stone_divider" />
+      <FaceGenGrid WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="3" Parameter.GridDataSource="{TaintTypes}" />
+    </Children>
+  </ListPanel>
+</Window>

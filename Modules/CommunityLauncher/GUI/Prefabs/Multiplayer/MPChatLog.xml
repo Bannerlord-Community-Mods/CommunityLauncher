@@ -1,0 +1,87 @@
+<Prefab>
+  <Constants>
+    <Constant Name="TypingArea.MarginBottom" Value="9" />
+    <Constant Name="TypingArea.Height" Value="31" />
+    <Constant Name="TypingArea.VerticalSpace" Additive="!TypingArea.MarginBottom" Value="!TypingArea.Height" />
+    <Constant Name="TypingArea.Width" Value="443" />
+  </Constants>
+  <Window>
+    <Widget Id="ChatLogWidgetParent" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <!--Command.FocusGained="StartTyping" Command.FocusLost="StopTyping"-->
+      <Children>
+
+        <ChatLogWidget Id="ChatLogWidget" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="460" SuggestedHeight="254" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="40" MarginBottom="10" FullyShowChat="@IsInspectingMessages" FullyShowChatWithTyping="@IsTypingText" ScrollablePanel="ScrollablePanelContainer\ScrollablePanelMessages" Scrollbar="ScrollablePanelContainer\VerticalScrollbar" TextInputWidget="ChatInputParent\ChatTextBackground\ChatTextInputParent\ChatTextInputLayout\ChatInputWidget">
+          <Children>
+
+            <Widget Id="ChatLogInnerPanel" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginBottom="!TypingArea.VerticalSpace" Sprite="BlankWhiteSquare_9" Brush.AlphaFactor="0.3" Brush.Color="#0000004C" IsVisible="@IsInspectingMessages" />
+
+            <!-- This widget is invisible when the chat is not fully active-->
+            <Widget Id="ChatInputParent" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" VerticalAlignment="Bottom" IsVisible="@IsTypingText">
+              <Children>
+
+                <Widget Id="ChatTextBackground" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginBottom="34" Sprite="mp_chat_background_9">
+                  <Children>
+                    <Widget Id="ChatTextInputParent" DoNotAcceptEvents="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!TypingArea.Width" SuggestedHeight="!TypingArea.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="!TypingArea.MarginBottom" Sprite="mp_chat_textbox_9">
+                      <Children>
+                        <ListPanel Id="ChatTextInputLayout" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="5" MarginRight="2" MarginTop="2" MarginBottom="2">
+                          <Children>
+                            <EditableTextWidget Id="ChatInputWidget" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MP.ChatLog.Text" Text="@WrittenText" Brush.FontColor="@ActiveChannelColor"/>
+                            <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent" SuggestedWidth="100" Brush="MP.ChatLog.Text" IsEnabled="false" MaxWidth="100" Text="@ActiveChannelNameText" Brush.FontColor="@ActiveChannelColor" />
+                          </Children>
+                        </ListPanel>
+                      </Children>
+                    </Widget>
+                  </Children>
+                </Widget>
+
+                <!--Include Battle Log-->
+                <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Brush="MP.ChatLog.Filter.Button" ButtonType="Toggle" IsSelected="@IncludeCombatLog">
+                  <Children>
+                    <TextWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="MP.ChatLog.Text" Brush.TextHorizontalAlignment="Center" Text="Combat" />
+                  </Children>
+                </ButtonWidget>
+              </Children>
+            </Widget>
+
+            <!-- This widget is always visible, even when the chat is not active -->
+            <Widget Id="ScrollablePanelContainer" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="5" MarginBottom="77">
+              <Children>
+
+                <ScrollablePanel Id="ScrollablePanelMessages" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" ClipRect="MyClipRect" InnerPanel="MyClipRect\InnerPanel" UpdateScrollbarVisibility="false" VerticalScrollbar="..\VerticalScrollbar">
+                  <Children>
+                    <Widget Id="MyClipRect" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" Brush.GlobalAlphaFactor="0.75" ClipContents="true">
+                      <Children>
+
+                        <ListPanel Id="InnerPanel" DataSource="{MessageHistory}" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom" ClipContents="true" LayoutImp.LayoutMethod="VerticalBottomToTop">
+                          <ItemTemplate>
+                            <ChatLogItemWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginLeft="5" MarginRight="5" ChatLine="@ChatLine" ChatLogWidget="..\..\..\..\..\..\ChatLogWidget" CollapsableWidget="ChatCollapsableListPanel" OneLineTextWidget="OneLineTextWidget">
+                              <Children>
+                                <RichTextWidget Id="OneLineTextWidget" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginTop="-2" MarginBottom="-2" Brush="MP.ChatLog.Text" Brush.FontColor="@Color" Brush.GlobalAlphaFactor="@Alpha" Brush.TextHorizontalAlignment="Left" Brush.TextVerticalAlignment="Center" ClipContents="false" />
+
+                                <ChatCollapsableListPanel Id="ChatCollapsableListPanel" DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" Alpha="@Alpha" ClipContents="false" Color="@Color" LayoutImp.LayoutMethod="VerticalBottomToTop" />
+                              </Children>
+                            </ChatLogItemWidget>
+                          </ItemTemplate>
+                        </ListPanel>
+
+                      </Children>
+                    </Widget>
+                  </Children>
+                </ScrollablePanel>
+
+                <ScrollbarWidget Id="VerticalScrollbar" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4" HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="6" MarginBottom="5" AlignmentAxis="Vertical" Handle="VerticalScrollbarHandle" IsVisible="@IsInspectingMessages" MaxValue="100" MinValue="0">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="2" HorizontalAlignment="Center" Sprite="MPLobby\CustomServer\lobby_slider_bed" Brush.AlphaFactor="0.4" />
+                    <ImageWidget Id="VerticalScrollbarHandle" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="4" SuggestedHeight="10" HorizontalAlignment="Center" Brush="FaceGen.Scrollbar.Handle" />
+                  </Children>
+                </ScrollbarWidget>
+
+              </Children>
+            </Widget>
+
+          </Children>
+        </ChatLogWidget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

@@ -1,0 +1,27 @@
+<Prefab>
+  <Constants>
+  </Constants>
+  <Parameters>
+    <Parameter Name="Title" DefaultValue="--NO TITLE--"/>
+  </Parameters>
+  <VisualDefinitions>
+  </VisualDefinitions>
+  <Window>
+    <Widget Id="TopPanel" HeightSizePolicy="Fixed" WidthSizePolicy="StretchToParent" SuggestedHeight="188" Sprite="StdAssets\top_header" DoNotAcceptEvents="true">
+      <Children>
+        <!--Top Bar-->
+        <Widget  HeightSizePolicy="Fixed" WidthSizePolicy="Fixed" SuggestedHeight="150" SuggestedWidth="887" VerticalAlignment="Top" HorizontalAlignment="Center" Sprite="StdAssets\tabbar_long">
+          <Children>
+            <!--Name Container-->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="440" SuggestedHeight="47" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="10" Sprite="StdAssets\tabbar_long_namebox">
+              <Children>
+                <!--Name-->
+                <RichTextWidget HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" Brush="Clan.NameTitle.Text" Text="*Title" MarginBottom="7"/>
+              </Children>
+            </Widget>
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

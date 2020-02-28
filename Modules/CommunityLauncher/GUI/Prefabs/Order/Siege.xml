@@ -1,0 +1,58 @@
+<Prefab>
+  <Constants>
+    <Constant Name="MachineItem.Width" BrushLayer="Default" BrushName="Order.Siege.Deployment.MachineItem" BrushValueType="Width" MultiplyResult="0.5" />
+    <Constant Name="MachineItem.Height" BrushLayer="Default" BrushName="Order.Siege.Deployment.MachineItem" BrushValueType="Height" MultiplyResult="0.5" />
+
+    <Constant Name="DoneButton.Width" BrushLayer="Default" BrushName="ButtonBrush1" BrushValueType="Width" />
+    <Constant Name="DoneButton.Height" BrushLayer="Default" BrushName="ButtonBrush1" BrushValueType="Height" />
+
+    <Constant Name="DeployAllButton.Width" BrushLayer="Default" BrushName="ButtonBrush2" BrushValueType="Width" />
+    <Constant Name="DeployAllButton.Height" BrushLayer="Default" BrushName="ButtonBrush2" BrushValueType="Height" />
+  </Constants>
+  <Window>
+    <OrderSiegeDeploymentScreenWidget Id="Screen" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.SelectNone="ExecuteCancelSelectedDeploymentPoint" DeploymentListPanel="DeploymentConatiner\DeploymentList" IsVisible="@IsDeployment">
+      <Children>
+        <Widget DataSource="{DeploymentTargets}" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center">
+          <ItemTemplate>
+            <OrderSiegeDeploymentItemWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MachineItem.Width" SuggestedHeight="!MachineItem.Height" Brush="Order.Siege.Deployment.DeployPoint" BreachedTextWidget="BreachedText" Command.Click="ExecuteAction" Command.HoverBegin="ExecuteFocusBegin" Command.HoverEnd="ExecuteFocusEnd" IsInFront="@IsInFront" IsInsideWindow="@IsInside" IsSelected="@IsSelected" PointType="@Type" Position="@Position" ScreenWidget="..\..\." TypeIconWidget="TypeIcon" UpdateChildrenStates="true">
+              <Children>
+                <OrderSiegeMachineItemWidget Id="MachineItemWidget" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MachineItem.Width" SuggestedHeight="!MachineItem.Height" Brush="Order.Siege.Deployment.MachineItem" IsDisabled="true" MachineClass="@MachineClass" MachineIconWidget="Icon">
+                  <Children>
+                    <Widget Id="Icon" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Order.Siege.Deployment.MachineIcon" />
+                  </Children>
+                </OrderSiegeMachineItemWidget>
+                <ImageWidget Id="TypeIcon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="70" SuggestedHeight="70" HorizontalAlignment="Right" PositionXOffset="35" PositionYOffset="-35" Brush="Order.Siege.Deployment.TypeIcon" OverrideDefaultStateSwitchingEnabled="true" />
+                <TextWidget Id="BreachedText" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="Order.Siege.Breaced.Text" Text="BREACHED" />
+                <!--<TextWidget Text="@MachineClass" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Order.Siege.DeploymentPointButton.Text"/>-->
+              </Children>
+            </OrderSiegeDeploymentItemWidget>
+          </ItemTemplate>
+        </Widget>
+        <Widget Id="DeploymentConatiner" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" IsVisible="@IsSiegeDeploymentListActive">
+          <Children>
+            <ListPanel Id="DeploymentList" DataSource="{SiegeDeploymentList}" DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" PositionXOffset="-7">
+              <ItemTemplate>
+                <OrderSiegeMachineItemWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!MachineItem.Width" SuggestedHeight="!MachineItem.Height" Brush="Order.Siege.Deployment.MachineItem" ButtonType="Radio" Command.Click="ExecuteAction" IsDisabled="true" IsSelected="@IsSelected" MachineClass="@MachineClass" MachineIconWidget="Icon" RemainingCount="@RemainingCount" RemainingCountWidget="RemainingCountText">
+                  <Children>
+                    <Widget Id="Icon" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Order.Siege.Deployment.MachineIcon" />
+                    <TextWidget Id="RemainingCountText" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="10" MarginBottom="10" Brush.FontSize="14" IntText="@RemainingCount" />
+                  </Children>
+                </OrderSiegeMachineItemWidget>
+              </ItemTemplate>
+            </ListPanel>
+          </Children>
+        </Widget>
+        <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!DeployAllButton.Width" SuggestedHeight="!DeployAllButton.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="20" MarginBottom="80" Brush="ButtonBrush2" Command.Click="ExecuteDeployAll">
+          <Children>
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Order.Siege.MainButton.Text" Text="@DeployAllLbl" />
+          </Children>
+        </ButtonWidget>
+        <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!DoneButton.Width" SuggestedHeight="!DoneButton.Height" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="20" MarginBottom="20" Brush="ButtonBrush1" Command.Click="ExecuteBeginSiege">
+          <Children>
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Order.Siege.MainButton.Text" Text="@DoneLbl" />
+          </Children>
+        </ButtonWidget>
+      </Children>
+    </OrderSiegeDeploymentScreenWidget>
+  </Window>
+</Prefab>

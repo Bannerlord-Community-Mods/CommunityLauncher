@@ -1,0 +1,38 @@
+<Prefab>
+  <Constants>
+    <Constant Name="HingesTopBottomMargin" Value="280" />
+    <Constant Name="Text.Width" Value="850" />
+    <Constant Name="InfoPanel.Width" Additive="!Text.Width" Value="50" />
+    <Constant Name="SiegeMachine.Image.Dimension" Value="52" />
+  </Constants>
+  <VisualDefinitions>
+    <VisualDefinition Name="Menu" TransitionDuration="0.45" EaseIn="true">
+      <VisualState PositionXOffset="12" State="Default" />
+      <VisualState PositionXOffset="-550" State="Disabled" />
+    </VisualDefinition>
+    <VisualDefinition Name="InfoPanel" TransitionDuration="0.45" EaseIn="true">
+      <VisualState SuggestedWidth="!InfoPanel.Width" SuggestedHeight="170" PositionXOffset="50" State="Default" />
+      <VisualState SuggestedWidth="!InfoPanel.Width" SuggestedHeight="0" PositionXOffset="50" State="Disabled" />
+    </VisualDefinition>
+  </VisualDefinitions>
+  <Window>
+    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!SiegeMachine.Image.Dimension" SuggestedHeight="!SiegeMachine.Image.Dimension">
+      <Children>
+
+        <MapSiegeMachineButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!SiegeMachine.Image.Dimension" SuggestedHeight="!SiegeMachine.Image.Dimension" Brush="SiegeMachineBaseBrush" ColoredImageClipWidget="ColoredImageClip" MachineID="@Machine" Progress="@Progress" UncompletedImageWidget="UncompletedImageWidget" UpdateChildrenStates="true">
+          <Children>
+            <Widget Id="UncompletedImageWidget" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="SiegeMachineNotCompletedBrush" />
+            <Widget Id="ColoredImageClip" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!SiegeMachine.Image.Dimension" SuggestedHeight="!SiegeMachine.Image.Dimension" VerticalAlignment="Bottom" ClipContents="true" UpdateChildrenStates="true">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!SiegeMachine.Image.Dimension" SuggestedHeight="!SiegeMachine.Image.Dimension" VerticalAlignment="Bottom" Brush="SiegeMachineButtonBrush" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="52" SuggestedHeight="52" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsEnabled="false" Sprite="Siege\broken" IsVisible="@Broken"/>
+            <HintWidget DataSource="{Hint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" />
+          </Children>
+        </MapSiegeMachineButtonWidget>
+        
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

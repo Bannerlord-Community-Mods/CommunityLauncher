@@ -1,0 +1,46 @@
+<Prefab>
+  <Parameters>
+    <Parameter Name="PanelBrush" DefaultValue="InnerFrame1Brush" />
+    <Parameter Name="OverlayShadowBrush" DefaultValue="InnerFrameShadow1Brush" />
+    <Parameter Name="ScrollbarVisible" DefaultValue="true" />
+    <Parameter Name="ScrollbarValueInt" DefaultValue="0" />
+	<Parameter Name="InnerPanelVerticalAlignment" DefaultValue="Top" />
+  </Parameters>
+  <Constants>
+  </Constants>
+  <Variables>
+  </Variables>
+  <VisualDefinitions>
+  </VisualDefinitions>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+
+        <ScrollablePanel Id="ScrollablePanel" HeightSizePolicy ="StretchToParent" WidthSizePolicy="StretchToParent" InnerPanel="ClipRect\InnerPanel" ClipRect="ClipRect" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalScrollbar="..\ScrollbarContainer\Scrollbar" MarginLeft="25" MarginTop="20" MarginBottom="10" Brush="*PanelBrush" AutoHideScrollBars="true">
+          <Children>
+            <Widget Id="ClipRect" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" ClipContents = "true" MarginTop="5" MarginBottom="5">
+              <Children>
+                <Widget Id="InnerPanel" WidthSizePolicy = "StretchToParent" HeightSizePolicy="CoverChildren" VerticalAlignment="*InnerPanelVerticalAlignment" HorizontalAlignment="Center" MarginLeft="15" MarginRight="15">
+                  <LogicalChildrenLocation />
+                </Widget>
+              </Children>
+            </Widget>
+          </Children>
+        </ScrollablePanel>
+
+        <Widget HeightSizePolicy ="StretchToParent" WidthSizePolicy="StretchToParent" MarginLeft="25" MarginTop="20" MarginBottom="10" Brush="*OverlayShadowBrush" IsDisabled="true"/>
+
+        <Widget HeightSizePolicy ="StretchToParent" WidthSizePolicy="CoverChildren" Id="ScrollbarContainer" IsVisible="*ScrollbarVisible">
+          <Children >
+            <ScrollbarWidget Id="Scrollbar" HeightSizePolicy ="StretchToParent" WidthSizePolicy="Fixed" MinValue = "0" MaxValue = "100" SuggestedWidth="20" MarginLeft="0" MarginBottom="10" AlignmentAxis="Vertical" HorizontalAlignment="Left" MarginTop="20" VerticalAlignment="Top" Sprite="scrollbar_9" Handle = "ScrollbarHandle" ValueInt="*ScrollbarValueInt" >
+              <Children>
+                <Widget Id="ScrollbarHandle" WidthSizePolicy = "Fixed" HeightSizePolicy="Fixed" SuggestedWidth="20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Sprite="scroll_button_9" />
+              </Children>
+            </ScrollbarWidget>
+          </Children>
+        </Widget>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

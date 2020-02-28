@@ -1,0 +1,24 @@
+<Prefab>
+	<Constants>
+		<Constant Name="Background.Width" BrushName="MPDuel.Background" BrushLayer="Default" BrushValueType="Width"/>
+		<Constant Name="Background.Height" BrushName="MPDuel.Background" BrushLayer="Default" BrushValueType="Height"/>
+		<Constant Name="HiddenXOffset" Value="-357"/>
+	</Constants>
+	<VisualDefinitions>
+		<VisualDefinition Name="Background" TransitionDuration="0.2">
+			<VisualState PositionXOffset="!HiddenXOffset" State="Default" />
+			<VisualState PositionXOffset="0" State="Visible" />
+		</VisualDefinition>
+	</VisualDefinitions>
+	<Window>
+		<BoolStateChanger DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Top" MarginTop="44" BooleanCheck="@IsDuelCountdownActive" TrueState="Visible" FalseState="Default" TargetWidget="DuelInfoPanel">
+			<Children>
+				<Widget Id="DuelInfoPanel" VisualDefinition="Background" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Background.Width" SuggestedHeight="!Background.Height" PositionXOffset="!HiddenXOffset" Brush="MPDuel.Background">
+					<Children> 
+						<TextWidget Text="@DuelCountdownMessage" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="23" MarginRight="23" Brush="MPDuel.Text" />
+					</Children>
+				</Widget>
+			</Children>
+		</BoolStateChanger>
+	</Window>
+</Prefab>

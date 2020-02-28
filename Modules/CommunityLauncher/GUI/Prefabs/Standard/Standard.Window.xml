@@ -1,0 +1,35 @@
+<Prefab>
+  <Parameters>
+    <Parameter Name="Title" DefaultValue="Title Goes Here"/>
+    <Parameter Name="Brush" DefaultValue="Frame1Brush"/>
+  </Parameters>
+  <Constants>
+  </Constants>
+  <Variables>
+  </Variables>
+  <VisualDefinitions>
+  </VisualDefinitions>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="*Brush" MarginTop="30">
+          <Children>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="60" MarginLeft="10" MarginRight="10" MarginBottom="10">
+              <LogicalChildrenLocation />
+            </Widget>
+          </Children>
+        </Widget>
+
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" Brush="TitleHeader1" MarginTop="0" HorizontalAlignment="Center" VerticalAlignment="Top" SuggestedWidth="615" SuggestedHeight="114">
+          <Children>
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="CenterAlignedLargeFont" Text="*Title" />
+          </Children>
+        </Widget>
+
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

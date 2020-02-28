@@ -1,0 +1,38 @@
+<Prefab>
+  <Window>
+    <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "StretchToParent" SuggestedWidth= "477" Sprite="InitialMenu\main_menu_texture">
+      <Children>
+        <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "StretchToParent" SuggestedWidth = "477" VerticalAlignment="Center" MarginBottom="0" Sprite="main_menu_texture">
+          <Children>
+            <Widget WidthSizePolicy ="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="38">
+              <Children>
+                <ListPanel DataSource = "{MenuOptions}" Id="MyInnerPanel" LayoutImp.LayoutMethod = "VerticalBottomToTop" WidthSizePolicy = "CoverChildren"  SuggestedHeight = "800" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="330">
+                  <ItemTemplate>
+                    <Widget WidthSizePolicy = "CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="50" HorizontalAlignment = "Center" MarginTop="18">
+                      <Children>
+
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click = "ExecuteAction" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" Brush="InitialMenuButtonBrush" SuggestedWidth = "338" SuggestedHeight = "47" HorizontalAlignment = "Center" VerticalAlignment="Center" UpdateChildrenStates="true" IsDisabled="@IsDisabled">
+                          <Children>
+                            <TextWidget WidthSizePolicy = "CoverChildren" HeightSizePolicy = "StretchToParent" Text="@NameText" Brush="InitialMenuButtonBrush" UpdateChildrenStates="true" HorizontalAlignment = "Center" ClipContents="false">
+                              <Children>
+                                <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed"  SuggestedWidth = "46" SuggestedHeight = "20" PositionXOffset= "-55" VerticalAlignment="Center" MarginBottom="2" HorizontalAlignment= "Left"  Brush="HoverIndicatorBrush"/>
+                                <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed"  SuggestedWidth = "46" SuggestedHeight = "20" PositionXOffset= "55" VerticalAlignment="Center" HorizontalAlignment = "Right" MarginBottom="2" Brush="HoverIndicatorBrushFlipped"/>
+                              </Children>
+                            </TextWidget>
+                          </Children>
+                        </ButtonWidget>
+
+                      </Children>
+                    </Widget>
+                  </ItemTemplate>
+                </ListPanel>
+
+                <Widget WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth = "416" SuggestedHeight = "103" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="115" PositionXOffset="-12" Sprite="InitialMenu\main_menu_logo"/>
+              </Children>
+            </Widget>
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>
