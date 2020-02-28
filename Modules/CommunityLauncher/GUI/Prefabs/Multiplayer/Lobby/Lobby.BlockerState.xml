@@ -1,9 +1,0 @@
-<Prefab>
-  <Window>
-    <Widget IsVisible="@IsEnabled" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Brush.Color="#000000FF" Brush.AlphaFactor="0.7">
-      <Children>
-        <TextWidget Text="@Description" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MPLobby.StateBlocker.Text" />
-      </Children>
-    </Widget>
-  </Window>
-</Prefab>

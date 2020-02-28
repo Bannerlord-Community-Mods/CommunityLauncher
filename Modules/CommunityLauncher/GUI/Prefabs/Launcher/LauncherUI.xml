@@ -92,7 +92,7 @@
                             <TabToggleWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="100" TabControlWidget="..\..\..\..\ContentPanel" TabName="GetModsPage" UpdateChildrenStates="true">
                               <Children>
                                 <LauncherBoolBrushWidget BoolVariable="@IsMultiplayer" OnFalseBrush="Launcher.SubMenuButton.SingleplayerText" OnTrueBrush="Launcher.SubMenuButton.MultiplayerText" TargetWidget="..\SubMenuText" />
-                                <TextWidget Id="SubMenuText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Text="Get Mods Now!" />
+                                <TextWidget Id="SubMenuText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Text="Grab Mods" />
                               </Children>
                             </TabToggleWidget>
                           </Children>

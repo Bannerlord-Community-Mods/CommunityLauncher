@@ -1,9 +1,0 @@
-<Prefab>
-  <Window>
-    <MultiplayerItemTabWidget DoNotPassEventsToChildren="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="1" MarginLeft="5" MarginRight="5" ButtonType="Radio" Command.Click="OnSelect" IconWidget="Icon" IsSelected="@IsSelected" IsVisible="@IsValid" ItemType="@TypeAsString" UpdateChildrenStates="true" UseLobbyAsSource="true">
-      <Children>
-        <Widget Id="Icon" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="66" SuggestedHeight="71" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="MPClassLoadout.ItemTab" />
-      </Children>
-    </MultiplayerItemTabWidget>
-  </Window>
-</Prefab>

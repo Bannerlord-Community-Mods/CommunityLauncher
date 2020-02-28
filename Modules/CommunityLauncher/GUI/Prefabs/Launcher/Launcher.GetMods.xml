@@ -1,13 +1,13 @@
 <Prefab>
 	<Constants>
-		<Constant Name="PresetButton.Background.Width" BrushName="Launcher.Mods.PresetButton.Background" BrushLayer="Default" BrushValueType="Width"/>
-		<Constant Name="PresetButton.Background.Height" BrushName="Launcher.Mods.PresetButton.Background" BrushLayer="Default" BrushValueType="Height"/>
-		
-		<Constant Name="ModToggle.Width" BrushName="Launcher.Mods.ModToggle" BrushLayer="Default" BrushValueType="Width"/>
-		<Constant Name="ModToggle.Height" BrushName="Launcher.Mods.ModToggle" BrushLayer="Default" BrushValueType="Height"/>
-		
-		<Constant Name="ModSorter.Width" BrushName="Launcher.Mods.ModSorter" BrushLayer="Default" BrushValueType="Width"/>
-		<Constant Name="ModSorter.Height" BrushName="Launcher.Mods.ModSorter" BrushLayer="Default" BrushValueType="Height"/>
+		<Constant Name="PresetButton.Background.Width" BrushName="Launcher.Mods.PresetButton.Background" BrushLayer="Default" BrushValueType="Width" />
+		<Constant Name="PresetButton.Background.Height" BrushName="Launcher.Mods.PresetButton.Background" BrushLayer="Default" BrushValueType="Height" />
+
+		<Constant Name="ModToggle.Width" BrushName="Launcher.Mods.ModToggle" BrushLayer="Default" BrushValueType="Width" />
+		<Constant Name="ModToggle.Height" BrushName="Launcher.Mods.ModToggle" BrushLayer="Default" BrushValueType="Height" />
+
+		<Constant Name="ModSorter.Width" BrushName="Launcher.Mods.ModSorter" BrushLayer="Default" BrushValueType="Width" />
+		<Constant Name="ModSorter.Height" BrushName="Launcher.Mods.ModSorter" BrushLayer="Default" BrushValueType="Height" />
 	</Constants>
 	<Window>
 		<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
@@ -53,40 +53,50 @@
 				</Widget>
 				
 				<Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="2" MarginLeft="74" Sprite="top_header_divider" Brush.AlphaFactor="0.7" />-->
-				
-				<ScrollablePanel Id="ScrollablePanel" HeightSizePolicy ="StretchToParent" WidthSizePolicy="StretchToParent" InnerPanel="MyClipRect\InnerPanel" ClipRect="MyClipRect" MarginLeft="30" MarginTop="23" MarginBottom="23" VerticalScrollbar="..\Scrollbar" AutoHideScrollBars="true">
-					<Children>	
-						<Widget Id="MyClipRect" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" HorizontalAlignment="Center" ClipContents="true" Brush.GlobalAlphaFactor="0.75">
-							<Children>	
+
+				<ScrollablePanel Id="ScrollablePanel" HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" InnerPanel="MyClipRect\InnerPanel" ClipRect="MyClipRect" MarginLeft="30" MarginTop="23" MarginBottom="23" VerticalScrollbar="..\Scrollbar" AutoHideScrollBars="true">
+					<Children>
+						<Widget Id="MyClipRect" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" ClipContents="true" Brush.GlobalAlphaFactor="0.75">
+							<Children>
 								<ListPanel Id="InnerPanel" DataSource="{Mods}" LayoutImp.LayoutMethod="VerticalBottomToTop" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren">
 									<ItemTemplate>
-
-										<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="128" MarginBottom="10">
+										<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="26" MarginBottom="10">
 											<Children>
-												<ButtonWidget IsDisabled="@IsDisabled" IsSelected="@IsSelected" ButtonType="Toggle" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModToggle.Width" SuggestedHeight="!ModToggle.Height" VerticalAlignment="Center" Brush="Launcher.Mods.ModToggle">
+												<ListPanel LayoutImp.LayoutMethod="HorizontalLeftToRight" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren">
 													<Children>
-														<ImageWidget IsDisabled="@IsDisabled" IsVisible="@IsSelected" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Launcher.Mods.ModToggle.Checkmark" />
+														<ButtonWidget IsDisabled="@IsDisabled" IsSelected="@IsSelected" ButtonType="Toggle" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModToggle.Width" SuggestedHeight="!ModToggle.Height" VerticalAlignment="Center" Brush="Launcher.Mods.ModToggle">
+															<Children>
+																<ImageWidget IsDisabled="@IsDisabled" IsVisible="@IsSelected" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Launcher.Mods.ModToggle.Checkmark" />
+															</Children>
+														</ButtonWidget>
+														<ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModSorter.Width" SuggestedHeight="!ModSorter.Height" VerticalAlignment="Center" MarginLeft="55" Brush="Launcher.Mods.ModSorter" />
+														<TextWidget Text="@Name" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
+														<TextWidget Text="@Summary" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
+
 													</Children>
-												</ButtonWidget>
-												<ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModSorter.Width" SuggestedHeight="!ModSorter.Height" VerticalAlignment="Center" MarginLeft="55" Brush="Launcher.Mods.ModSorter" />
-												
-												<TextWidget Text="@Name" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="80" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" /> 
-												<TextWidget Text="@Description" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="320" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" /> 
+
+												</ListPanel>
 											</Children>
 										</Widget>
 									</ItemTemplate>
 								</ListPanel>
+
 							</Children>
-						</Widget>  
+						</Widget>
+						<ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" Command.Click="*DoneButtonAction">
+							<Children>
+								<TextWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="7" Brush="Standard.BottomBigCloseButton.ButtonText" Text="DownloadButton" />
+							</Children>
+						</ButtonWidget>
 					</Children>
 				</ScrollablePanel>
 
-				<ScrollbarWidget Id="Scrollbar" UpdateChildrenStates="true" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginTop="23" MarginBottom="23" MarginRight="80" AlignmentAxis="Vertical" Handle="ScrollbarHandle" MaxValue="100" MinValue="0" Sprite="friends_list_slider_bed_9" Brush.AlphaFactor="0.2" >
+				<ScrollbarWidget Id="Scrollbar" UpdateChildrenStates="true" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginTop="23" MarginBottom="23" MarginRight="80" AlignmentAxis="Vertical" Handle="ScrollbarHandle" MaxValue="100" MinValue="0" Sprite="friends_list_slider_bed_9" Brush.AlphaFactor="0.2">
 					<Children>
 						<ImageWidget Id="ScrollbarHandle" WidthSizePolicy="Fixed" SuggestedWidth="4" HorizontalAlignment="Center" VerticalAlignment="Top" Brush="Launcher.Mods.ScrollHandle" MinHeight="50" />
 					</Children>
 				</ScrollbarWidget>
-				
+
 			</Children>
 		</Widget>
 	</Window>

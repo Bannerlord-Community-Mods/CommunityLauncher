@@ -1,8 +1,0 @@
-
-
-tooltip title: proxima, 18, dfa84f, alfa 90
-tooltip description ve tooltip stats names: proxima, 12, eed4a9, alfa 80
-tooltip stats number values: proxima, 12, dfa84f, alfa 80
-tooltip sub text: proxima, 12, eed4a9, alfa 40
-
-default genislik: 205

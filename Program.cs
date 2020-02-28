@@ -19,37 +19,8 @@ using TaleWorlds.TwoDimension.Standalone.Native.Windows;
 
 namespace CommunityLauncher
 {
-	internal static class MBDotNet
-	{
-		public const string MainDllName = "Rgl.dll";
-		public const string DotNetLibraryDllName = "FairyTale.DotNet.dll";
+	
 
-		[SuppressUnmanagedCodeSecurity]
-		[DllImport("Rgl.dll", EntryPoint = "WotsMain", CallingConvention = CallingConvention.StdCall)]
-		public static extern int WotsMainDotNet(string args);
-
-		[SuppressUnmanagedCodeSecurity]
-		[DllImport("FairyTale.DotNet.dll", EntryPoint = "pass_controller_methods", CallingConvention = CallingConvention.StdCall)]
-		public static extern void PassControllerMethods(Delegate currentDomainInitializer);
-
-		[SuppressUnmanagedCodeSecurity]
-		[DllImport("FairyTale.DotNet.dll", EntryPoint = "pass_managed_initialize_method_pointer", CallingConvention = CallingConvention.StdCall)]
-		public static extern void PassManagedInitializeMethodPointerDotNet([MarshalAs(UnmanagedType.FunctionPtr)] Delegate initalizer);
-
-		[SuppressUnmanagedCodeSecurity]
-		[DllImport("FairyTale.DotNet.dll", EntryPoint = "pass_managed_library_callback_method_pointers", CallingConvention = CallingConvention.StdCall)]
-		public static extern void PassManagedEngineCallbackMethodPointersDotNet([MarshalAs(UnmanagedType.FunctionPtr)] Delegate methodDelegate);
-
-		[SuppressUnmanagedCodeSecurity]
-		[DllImport("Kernel32.dll", CallingConvention = CallingConvention.StdCall)]
-		public static extern int SetCurrentDirectory(string args);
-	}
-	class NopGame : GameType
-	{
-		protected override void DoLoadingForGameType(GameTypeLoadingStates gameTypeLoadingState, out GameTypeLoadingStates nextState)
-			=> nextState = GameTypeLoadingStates.None;
-		public override void OnDestroy() {}
-	}
     internal class Program
     {
 		private static WindowsFramework _windowsFramework;
@@ -63,11 +34,7 @@ namespace CommunityLauncher
 		private static LauncherUIDomain _standaloneUIDomain;
 
 		private static bool _gameStarted;
-		private delegate void ControllerDelegate(Delegate currentDomainInitializer);
 
-		private delegate void InitializerDelegate(Delegate argument);
-
-		private delegate void StartMethodDelegate(string args);
 		private static void Main(string[] args)
 		{
 
@@ -76,7 +43,10 @@ namespace CommunityLauncher
 			CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 			CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
 			ResourceDepot resourceDepot = new ResourceDepot(BasePath.Name);
-			resourceDepot.AddLocation("Modules/CommunityLauncher/GUI/GauntletUI/");
+		
+			resourceDepot.AddLocation("GUI/GauntletUI/");
+			resourceDepot.AddLocation("Modules/Native/GUI/");
+			
 			resourceDepot.AddLocation("Modules/CommunityLauncher/GUI/");
 			resourceDepot.CollectResources();
 			Program._args = args.ToList<string>();
