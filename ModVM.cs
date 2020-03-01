@@ -3,8 +3,11 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using CommunityLauncher.ModIO;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 
 namespace CommunityLauncher
@@ -79,11 +82,12 @@ namespace CommunityLauncher
             communityLauncherVm.CanLaunch = true;
         }
 
-        private static async Task DownloadMod(ModVM mod)
+        private  async Task DownloadMod(ModVM mod)
         {
             
             HttpClient client = new HttpClient();
             var zipPath = string.Format(BasePath.Name + "Modules/{0}", mod.Mod.Modfile.Filename);
+            File.Delete(zipPath);
             var response = await client.GetAsync(mod.Mod.Modfile.Download.BinaryUrl);
             using (var fs = new FileStream(
                 zipPath,
@@ -92,16 +96,52 @@ namespace CommunityLauncher
                 await response.Content.CopyToAsync(fs);
             }
 
+            if (!DeleteOldMod(mod, zipPath))
+            {
+                DeleteModZip(zipPath);
+                return;
+            }
             ExtractModZip(zipPath);
             DeleteModZip(zipPath);
         }
 
-        private static void DeleteModZip(string zipPath)
+        private bool DeleteOldMod(ModVM mod, string zipPath)
+        {
+            var zipFile = ZipFile.OpenRead(zipPath);
+            var listOfZipFolders = zipFile.Entries.Where(x => x.FullName.EndsWith("/")).ToList();
+            zipFile.Dispose();
+            var updatedAllFiles = true;
+            foreach (var folder in listOfZipFolders)
+            {
+                var modulePath = $"{BasePath.Name}/Modules/{folder}";
+                if (Directory.Exists(modulePath))
+                {
+                    if(MessageBox.Show($"Mod: {mod.Name} Remove Folder to Update mod? {modulePath}","Delete Folder?",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Directory.Delete(modulePath,true);
+                        
+                    }
+                    else
+                    {
+                        updatedAllFiles = false;
+                    }
+                }
+            }
+            if(!updatedAllFiles )
+            {
+                MessageBox.Show($"User cancelled Installation of Mod: {mod.Name}", "Mod not Installed",
+                    MessageBoxButtons.OK);
+
+            }
+            return updatedAllFiles;
+        }
+
+        private  void DeleteModZip(string zipPath)
         {
             File.Delete(zipPath);
         }
 
-        private static void ExtractModZip(string zipPath)
+        private  void ExtractModZip(string zipPath)
         {
             ZipFile.ExtractToDirectory(zipPath, BasePath.Name + "Modules/");
         }
