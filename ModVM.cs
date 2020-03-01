@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using CommunityLauncher.ModIO;
 using TaleWorlds.Library;
-using TaleWorlds.MountAndBlade.Launcher;
-
 
 namespace CommunityLauncher
 {
@@ -18,84 +16,97 @@ namespace CommunityLauncher
 
         public ModsVM(CommunityLauncherVM communityLauncherVm)
         {
-            this.Mods = new MBBindingList<ModVM>();
-           
+            Mods = new MBBindingList<ModVM>();
+
             this.communityLauncherVm = communityLauncherVm;
         }
+
         [DataSourceProperty]
         public MBBindingList<ModVM> Mods
         {
-            get
-            {
-                return this._mods;
-            }
+            get { return _mods; }
             set
             {
-                if (value == this._mods)
+                if (value == _mods)
                     return;
-                this._mods = value;
-                this.OnPropertyChanged(nameof (Mods));
+                _mods = value;
+                OnPropertyChanged(nameof(Mods));
             }
         }
+
         private void ChangeLoadingOrderOf(ModVM targetModule, int insertIndex)
         {
-            int index = this.Mods.IndexOf(targetModule);
-            this.Mods.RemoveAt(index);
-            this.Mods.Insert(insertIndex, targetModule);
+            int index = Mods.IndexOf(targetModule);
+            Mods.RemoveAt(index);
+            Mods.Insert(insertIndex, targetModule);
         }
 
         private void ChangeIsSelectedOf(ModVM targetModule)
         {
-            this.communityLauncherVm.PlayText = string.Empty;
-            this.communityLauncherVm.PlayText =  Mods.Any(m => m.IsSelected) ? "Download & Play" : "P L A Y";
-           
+            communityLauncherVm.PlayText = string.Empty;
+            communityLauncherVm.PlayText = Mods.Any(m => m.IsSelected) ? "Download & Install" : "P L A Y";
         }
 
-        public  void Refresh()
+        public void Refresh()
         {
             var httpClient = new HttpClient();
             var result =
                 httpClient.GetStringAsync(
-                    "https://api.test.mod.io/v1/games/436/mods?_sort=-rating&api_key=7f33236a5397c6ff5288cea9182f6c89").Result;
-            var modList = CommunityLauncher.ModIO.ModList.FromJson(result);
-            this.Mods.Clear();
+                        "https://api.mod.io/v1/games/324/mods?_sort=-rating&api_key=f3312601170f0cbf46d0f786552402ef")
+                    .Result;
+            var modList = ModList.FromJson(result);
+            Mods.Clear();
             foreach (var mod in modList.Data)
             {
-                this.Mods.Add(new ModVM(mod,new Action<ModVM, int>(this.ChangeLoadingOrderOf),new Action<ModVM>(this.ChangeIsSelectedOf) ));
+                Mods.Add(new ModVM(mod, ChangeLoadingOrderOf, ChangeIsSelectedOf));
             }
-			
-
         }
 
 
-
-
-        public async void  Install()
+        public async void Install()
         {
-            HttpClient client = new HttpClient();
+            communityLauncherVm.CanLaunch = false;
+            communityLauncherVm.PlayText = "Downloading";
             foreach (var mod in Mods)
             {
-                if (mod.IsSelected)
-                {
-                    var response = await client.GetAsync(mod.Mod.Modfile.Download.BinaryUrl);
-                    using (var fs = new FileStream(
-                        string.Format(BasePath.Name+"Modules/{0}", mod.Mod.Modfile.Filename), 
-                        FileMode.CreateNew))
-                    {
-                        await response.Content.CopyToAsync(fs);
-                        fs.Close();
-                        ZipFile.ExtractToDirectory(string.Format(BasePath.Name+"Modules/{0}", mod.Mod.Modfile.Filename),BasePath.Name+"Modules/");
-                        this.communityLauncherVm.DlcData.Refresh(this.communityLauncherVm.IsMultiplayer);
-                        this.communityLauncherVm.ModsData.Refresh(this.communityLauncherVm.IsMultiplayer);
-                    }
-                }
+                if (!mod.IsSelected) continue;
+                await DownloadMod(mod);
             }
 
-            
-                
+            communityLauncherVm.DlcData.Refresh(communityLauncherVm.IsMultiplayer);
+            communityLauncherVm.ModsData.Refresh(communityLauncherVm.IsMultiplayer);
+            communityLauncherVm.PlayText = "P L A Y";
+            communityLauncherVm.CanLaunch = true;
         }
-        
+
+        private static async Task DownloadMod(ModVM mod)
+        {
+            
+            HttpClient client = new HttpClient();
+            var zipPath = string.Format(BasePath.Name + "Modules/{0}", mod.Mod.Modfile.Filename);
+            var response = await client.GetAsync(mod.Mod.Modfile.Download.BinaryUrl);
+            using (var fs = new FileStream(
+                zipPath,
+                FileMode.CreateNew))
+            {
+                await response.Content.CopyToAsync(fs);
+            }
+
+            ExtractModZip(zipPath);
+            DeleteModZip(zipPath);
+        }
+
+        private static void DeleteModZip(string zipPath)
+        {
+            File.Delete(zipPath);
+        }
+
+        private static void ExtractModZip(string zipPath)
+        {
+            ZipFile.ExtractToDirectory(zipPath, BasePath.Name + "Modules/");
+        }
     }
+
     public class ModVM : ViewModel
     {
         private Mod _mod;
@@ -105,47 +116,43 @@ namespace CommunityLauncher
         private readonly Action<ModVM> _onSelect;
         private bool _isSelected;
         private bool _isDisabled;
+
         [DataSourceProperty]
         public string Name
         {
-            get
-            {
-                return this._mod.Name;
-            } 
+            get { return _mod.Name; }
         }
-        public Mod  Mod => this._mod;
 
-        [DataSourceProperty] public string Description{
-            get
-            {
-                return this._mod.Description;
-            } 
-        } 
-        [DataSourceProperty] public string Summary{
-            get
-            {
-                return this._mod.Summary;
-            } 
-        } 
-        [DataSourceProperty] public string Logo{
-            get
-            {
-                return this._mod.Logo.Original.AbsoluteUri;
-            } 
+        public Mod Mod => _mod;
+
+        [DataSourceProperty]
+        public string Description
+        {
+            get { return _mod.Description; }
         }
+
+        [DataSourceProperty]
+        public string Summary
+        {
+            get { return _mod.Summary; }
+        }
+
+        [DataSourceProperty]
+        public string Logo
+        {
+            get { return _mod.Logo.Original.AbsoluteUri; }
+        }
+
         [DataSourceProperty]
         public bool IsDisabled
         {
-            get
-            {
-                return this._isDisabled;
-            }
+            get { return _isDisabled; }
             set
             {
-                if (value != this._isDisabled)
+                if (value != _isDisabled)
                 {
-                    this._isDisabled = value;
-                    base.OnPropertyChanged("IsDisabled");
+                    _isDisabled = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -153,26 +160,23 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public bool IsSelected
         {
-            get
-            {
-                return this._isSelected;
-            }
+            get { return _isSelected; }
             set
             {
-               
-                if (value != this._isSelected)
+                if (value != _isSelected)
                 {
-                    this._isSelected = value;
-                    base.OnPropertyChanged("IsSelected");
-                    this._onSelect(this);
+                    _isSelected = value;
+                    OnPropertyChanged();
+                    _onSelect(this);
                 }
             }
         }
-        public ModVM(Mod mod,Action<ModVM, int> onChangeLoadingOrder, Action<ModVM> onSelect)
+
+        public ModVM(Mod mod, Action<ModVM, int> onChangeLoadingOrder, Action<ModVM> onSelect)
         {
-            this._onChangeLoadingOrder = onChangeLoadingOrder;
-            this._onSelect = onSelect;
-            this._mod = mod;
+            _onChangeLoadingOrder = onChangeLoadingOrder;
+            _onSelect = onSelect;
+            _mod = mod;
         }
     }
 }

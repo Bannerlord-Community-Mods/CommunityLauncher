@@ -60,7 +60,7 @@
 							<Children>
 								<ListPanel Id="InnerPanel" DataSource="{Mods}" LayoutImp.LayoutMethod="VerticalBottomToTop" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren">
 									<ItemTemplate>
-										<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="26" MarginBottom="10">
+										<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="128" MarginBottom="10">
 											<Children>
 												<ListPanel LayoutImp.LayoutMethod="HorizontalLeftToRight" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren">
 													<Children>
@@ -69,7 +69,7 @@
 																<ImageWidget IsDisabled="@IsDisabled" IsVisible="@IsSelected" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Launcher.Mods.ModToggle.Checkmark" />
 															</Children>
 														</ButtonWidget>
-														<ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModSorter.Width" SuggestedHeight="!ModSorter.Height" VerticalAlignment="Center" MarginLeft="55" Brush="Launcher.Mods.ModSorter" />
+														<ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModSorter.Width" SuggestedHeight="!ModSorter.Height" VerticalAlignment="Center" MarginLeft="0" Brush="Launcher.Mods.ModSorter" />
 														<TextWidget Text="@Name" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
 														<TextWidget Text="@Summary" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
 

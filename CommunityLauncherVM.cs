@@ -23,11 +23,11 @@ namespace CommunityLauncher
         private LauncherNewsVM _news;
 
         private LauncherModsVM _dlcData;
-		
+
         private ModsVM _getModsData;
-		
+
         private LauncherModsVM _modsData;
-		
+
         private string _playText;
 
         private string _singleplayerText;
@@ -46,7 +46,7 @@ namespace CommunityLauncher
         {
             get
             {
-                if (!this.IsMultiplayer)
+                if (!IsMultiplayer)
                 {
                     return "/singleplayer";
                 }
@@ -57,52 +57,53 @@ namespace CommunityLauncher
 
         public CommunityLauncherVM(UserDataManager userDataManager, Action onClose, Action onMinimize)
         {
-            this._userDataManager = userDataManager;
-            this._onClose = onClose;
-            this._onMinimize = onMinimize;
-            this.PlayText = "P L A Y";
-            this.SingleplayerText = "Singleplayer";
-            this.MultiplayerText = "Multiplayer";
-            this.NewsText = "News";
-            this.DlcText = "DLC";
-            this.ModsText = "Mods";
-            this.VersionText = ApplicationVersion.FromParametersFile().ToString();
-            this.News = new LauncherNewsVM();
-            this.DlcData = new LauncherModsVM(this._userDataManager.UserData, true);
-            this.ModsData = new LauncherModsVM(this._userDataManager.UserData, false);
-            this.GetModsData = new ModsVM(this);
-            this.IsSingleplayerAvailable = this.GameModExists("Sandbox");
-            this.IsMultiplayer = (!this.IsSingleplayerAvailable ||
-                                  this._userDataManager.UserData.GameType == GameType.Multiplayer);
+            _userDataManager = userDataManager;
+            _onClose = onClose;
+            _onMinimize = onMinimize;
+            PlayText = "P L A Y";
+            SingleplayerText = "Singleplayer";
+            MultiplayerText = "Multiplayer";
+            NewsText = "News";
+            DlcText = "DLC";
+            ModsText = "Mods";
+            CanLaunch = true;
 
-            this.Refresh();
-            this._isInitialized = true;
+            VersionText = ApplicationVersion.FromParametersFile().ToString();
+            News = new LauncherNewsVM();
+            DlcData = new LauncherModsVM(_userDataManager.UserData, true);
+            ModsData = new LauncherModsVM(_userDataManager.UserData, false);
+            GetModsData = new ModsVM(this);
+            IsSingleplayerAvailable = GameModExists("Sandbox");
+            IsMultiplayer = (!IsSingleplayerAvailable ||
+                             _userDataManager.UserData.GameType == GameType.Multiplayer);
+
+            Refresh();
+            _isInitialized = true;
         }
-
 
 
         private void UpdateAndSaveUserModsData(bool isMultiplayer)
         {
-            UserData userData = this._userDataManager.UserData;
+            UserData userData = _userDataManager.UserData;
             UserGameTypeData userGameTypeData = isMultiplayer ? userData.MultiplayerData : userData.SingleplayerData;
             userGameTypeData.DlcDatas.Clear();
             userGameTypeData.ModDatas.Clear();
-            foreach (LauncherModuleVM launcherModuleVM in this.DlcData.Modules)
+            foreach (LauncherModuleVM launcherModuleVM in DlcData.Modules)
             {
                 userGameTypeData.DlcDatas.Add(new UserModData(launcherModuleVM.Info.Id, launcherModuleVM.IsSelected));
             }
 
-            foreach (LauncherModuleVM launcherModuleVM2 in this.ModsData.Modules)
+            foreach (LauncherModuleVM launcherModuleVM2 in ModsData.Modules)
             {
                 userGameTypeData.ModDatas.Add(new UserModData(launcherModuleVM2.Info.Id, launcherModuleVM2.IsSelected));
             }
 
-            this._userDataManager.SaveUserData();
+            _userDataManager.SaveUserData();
         }
 
         private bool GameModExists(string modId)
         {
-            List<ModuleInfo> list = ModuleInfo.GetModules().ToList<ModuleInfo>();
+            List<ModuleInfo> list = ModuleInfo.GetModules().ToList();
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i].Id == modId)
@@ -116,73 +117,63 @@ namespace CommunityLauncher
 
         private void OnBeforeGameTypeChange(bool preSelectionIsMultiplayer, bool newSelectionIsMultiplayer)
         {
-            if (!this._isInitialized)
+            if (!_isInitialized)
             {
                 return;
             }
 
-            this._userDataManager.UserData.GameType =
+            _userDataManager.UserData.GameType =
                 (newSelectionIsMultiplayer ? GameType.Multiplayer : GameType.Singleplayer);
-            this.UpdateAndSaveUserModsData(preSelectionIsMultiplayer);
+            UpdateAndSaveUserModsData(preSelectionIsMultiplayer);
         }
 
         private void ExecuteStartGame()
         {
-            switch (this.PlayText)
+            switch (PlayText)
             {
                 case "Download & Install":
-                    this.GetModsData.Install();
+                    GetModsData.Install();
                     break;
-                    default:
-                        
-                        this.UpdateAndSaveUserModsData(this.IsMultiplayer);
-                        Program.StartRPGame();
-                        break;
+                default:
+
+                    UpdateAndSaveUserModsData(IsMultiplayer);
+                    Program.StartRPGame();
+                    break;
             }
         }
 
         private void ExecuteClose()
         {
-            this.UpdateAndSaveUserModsData(this.IsMultiplayer);
-            Action onClose = this._onClose;
-            if (onClose == null)
-            {
-                return;
-            }
+            UpdateAndSaveUserModsData(IsMultiplayer);
+            Action onClose = _onClose;
 
-            onClose();
+            onClose?.Invoke();
         }
 
         private void ExecuteMinimize()
         {
-            /*Action onMinimize = this._onMinimize;
-            if (onMinimize == null)
-            {
-                return;
-            }
+            Action onMinimize = _onMinimize;
 
-            onMinimize();*/
-            
-            this.PlayText =  "Testttttt";
+            onMinimize?.Invoke();
         }
 
         private void Refresh()
         {
-            this.News.Refresh(this.IsMultiplayer);
-            this.DlcData.Refresh(this.IsMultiplayer);
-            this.ModsData.Refresh(this.IsMultiplayer);
-            this.GetModsData.Refresh();
+            News.Refresh(IsMultiplayer);
+            DlcData.Refresh(IsMultiplayer);
+            ModsData.Refresh(IsMultiplayer);
+            GetModsData.Refresh();
         }
 
         [DataSourceProperty]
         public bool IsSingleplayer
         {
-            get { return !this._isMultiplayer; }
+            get => !_isMultiplayer;
             set
             {
-                if (this._isMultiplayer != !value)
+                if (_isMultiplayer != !value)
                 {
-                    this.IsMultiplayer = !value;
+                    IsMultiplayer = !value;
                 }
             }
         }
@@ -190,16 +181,16 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public bool IsMultiplayer
         {
-            get { return this._isMultiplayer; }
+            get => _isMultiplayer;
             set
             {
-                if (this._isMultiplayer != value)
+                if (_isMultiplayer != value)
                 {
-                    this.OnBeforeGameTypeChange(this._isMultiplayer, value);
-                    this._isMultiplayer = value;
-                    base.OnPropertyChanged("IsMultiplayer");
-                    base.OnPropertyChanged("IsSingleplayer");
-                    this.Refresh();
+                    OnBeforeGameTypeChange(_isMultiplayer, value);
+                    _isMultiplayer = value;
+                    OnPropertyChanged();
+                    OnPropertyChanged("IsSingleplayer");
+                    Refresh();
                 }
             }
         }
@@ -207,13 +198,13 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public bool IsSingleplayerAvailable
         {
-            get { return this._isSingleplayerAvailable; }
+            get => _isSingleplayerAvailable;
             set
             {
-                if (value != this._isSingleplayerAvailable)
+                if (value != _isSingleplayerAvailable)
                 {
-                    this._isSingleplayerAvailable = value;
-                    base.OnPropertyChanged("IsSingleplayerAvailable");
+                    _isSingleplayerAvailable = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -221,81 +212,77 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public string VersionText
         {
-            get { return this._versionText; }
+            get => _versionText;
             set
             {
-                if (value != this._versionText)
-                {
-                    this._versionText = value;
-                    base.OnPropertyChanged("VersionText");
-                }
+                if (value == _versionText) return;
+                _versionText = value;
+                OnPropertyChanged();
             }
         }
 
         [DataSourceProperty]
         public LauncherNewsVM News
         {
-            get { return this._news; }
+            get => _news;
             set
             {
-                if (value != this._news)
-                {
-                    this._news = value;
-                    base.OnPropertyChanged("News");
-                }
+                if (value == _news) return;
+                _news = value;
+                OnPropertyChanged();
             }
         }
 
         [DataSourceProperty]
         public LauncherModsVM DlcData
         {
-            get { return this._dlcData; }
+            get => _dlcData;
             set
             {
-                if (value != this._dlcData)
-                {
-                    this._dlcData = value;
-                    base.OnPropertyChanged("DlcData");
-                }
+                if (value == _dlcData) return;
+                _dlcData = value;
+                OnPropertyChanged();
             }
         }
 
         [DataSourceProperty]
         public LauncherModsVM ModsData
         {
-            get { return this._modsData; }
+            get { return _modsData; }
             set
             {
-                if (value != this._modsData)
+                if (value != _modsData)
                 {
-                    this._modsData = value;
-                    base.OnPropertyChanged("ModsData");
+                    _modsData = value;
+                    OnPropertyChanged();
                 }
             }
         }
+
         [DataSourceProperty]
         public ModsVM GetModsData
         {
-            get { return this._getModsData; }
+            get { return _getModsData; }
             set
             {
-                if (value != this._getModsData)
+                if (value != _getModsData)
                 {
-                    this._getModsData = value;
-                    base.OnPropertyChanged("GetModsData");
+                    _getModsData = value;
+                    OnPropertyChanged();
                 }
             }
         }
+
         [DataSourceProperty]
         public string PlayText
         {
-            get { return this._playText; }
+            get { return _playText; }
             set
             {
-                if (this._playText != value)
+                if (_playText != value)
                 {
-                    this._playText = value;
-                    base.OnPropertyChanged("PlayText");
+                    _playText = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -303,13 +290,13 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public string SingleplayerText
         {
-            get { return this._singleplayerText; }
+            get { return _singleplayerText; }
             set
             {
-                if (this._singleplayerText != value)
+                if (_singleplayerText != value)
                 {
-                    this._singleplayerText = value;
-                    base.OnPropertyChanged("SingleplayerText");
+                    _singleplayerText = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -317,13 +304,13 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public string MultiplayerText
         {
-            get { return this._multiplayerText; }
+            get { return _multiplayerText; }
             set
             {
-                if (this._multiplayerText != value)
+                if (_multiplayerText != value)
                 {
-                    this._multiplayerText = value;
-                    base.OnPropertyChanged("MultiplayerText");
+                    _multiplayerText = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -331,13 +318,13 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public string NewsText
         {
-            get { return this._newsText; }
+            get { return _newsText; }
             set
             {
-                if (this._newsText != value)
+                if (_newsText != value)
                 {
-                    this._newsText = value;
-                    base.OnPropertyChanged("NewsText");
+                    _newsText = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -345,13 +332,13 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public string DlcText
         {
-            get { return this._dlcText; }
+            get { return _dlcText; }
             set
             {
-                if (this._dlcText != value)
+                if (_dlcText != value)
                 {
-                    this._dlcText = value;
-                    base.OnPropertyChanged("DlcText");
+                    _dlcText = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -359,15 +346,27 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public string ModsText
         {
-            get { return this._modsText; }
+            get { return _modsText; }
             set
             {
-                if (this._modsText != value)
+                if (_modsText != value)
                 {
-                    this._modsText = value;
-                    base.OnPropertyChanged("ModsText");
+                    _modsText = value;
+                    OnPropertyChanged();
                 }
             }
+        }
+
+        private bool _canLaunch;
+        [DataSourceProperty] public bool CanLaunch
+        {
+            get => _canLaunch;
+            set
+        {
+            if (_canLaunch == value) return;
+            _canLaunch = value;
+            OnPropertyChanged();
+        }
         }
     }
 }
