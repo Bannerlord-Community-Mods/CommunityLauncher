@@ -3,6 +3,11 @@
 - Find Mods
 - Download Mods
 - Delete Mods
+## How to Install
+- Extract Latest Release into games Folder
+
+## How to Upload/Rate/Comment Mods etc
+https://bannerlord.mod.io/
 
 # CommunityLauncher
 
