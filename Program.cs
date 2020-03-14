@@ -17,11 +17,11 @@ using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.TwoDimension.Standalone;
 using TaleWorlds.TwoDimension.Standalone.Native.Windows;
 
+
+	
 namespace CommunityLauncher
 {
-	
-
-    internal class Program
+	internal class Program
     {
 		private static WindowsFramework _windowsFramework;
 

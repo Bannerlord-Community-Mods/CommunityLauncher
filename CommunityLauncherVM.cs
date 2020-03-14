@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using HarmonyLib;
 using TaleWorlds.Library;
 using TaleWorlds.Library.NewsManager;
 using TaleWorlds.MountAndBlade.Launcher;
@@ -20,7 +21,7 @@ namespace CommunityLauncher
         private bool _isMultiplayer;
 
         private bool _isSingleplayerAvailable;
-
+        private bool _useCommunityLobbyServer;
         private LauncherNewsVM _news;
 
         private LauncherModsVM _dlcData;
@@ -74,7 +75,7 @@ namespace CommunityLauncher
             DlcData = new LauncherModsVM(_userDataManager.UserData, true);
             ModsData = new LauncherModsVM(_userDataManager.UserData, false);
             GetModsData = new ModsVM(this);
-            IsSingleplayerAvailable = GameModExists("Sandbox");
+            IsSingleplayerAvailable = true;
             IsMultiplayer = (!IsSingleplayerAvailable ||
                              _userDataManager.UserData.GameType == GameType.Multiplayer);
 
@@ -136,13 +137,36 @@ namespace CommunityLauncher
                     GetModsData.Install();
                     break;
                 default:
-
+                    if (this.UseCommunityLobbyServer)
+                        PatchFunctions();
                     UpdateAndSaveUserModsData(IsMultiplayer);
                     Program.StartRPGame();
                     break;
             }
         }
-
+        public static Harmony patcher = new Harmony("NameCanBeAnything");
+        private void PatchFunctions()
+        {
+            patcher.PatchAll();
+        }
+        [HarmonyPatch(typeof(VirtualFolders))]
+        [HarmonyPatch("GetVirtualFileContent")]
+        public class Patch_VirtualFolders
+        {
+            // Remove all IL instructions from old method
+            
+            //execute your new method after the old method (which was essentially removed)
+            static void  Postfix(ref string __result, string filePath)
+            {
+                if (filePath.Contains("LobbyClient.xml"))
+                {
+                    __result =
+                        "<Configuration>\t<SessionProvider Type=\"Rest\" />\t<Clients>\t\t<Client Type=\"LobbyClient\" />\t</Clients>\t<Parameters>\t\t<Parameter Name=\"LobbyClient.Address\" Value=\"78.47.238.35\" />\t\t<Parameter Name=\"LobbyClient.Port\" Value=\"80\" />\t</Parameters></Configuration>"; }
+                // Copy paste code from original method
+                // return your result
+              
+            }
+        }
         private void ExecuteClose()
         {
             UpdateAndSaveUserModsData(IsMultiplayer);
@@ -368,6 +392,17 @@ namespace CommunityLauncher
             _canLaunch = value;
             OnPropertyChanged();
         }
+        }
+        [DataSourceProperty]
+        public bool UseCommunityLobbyServer
+        {
+            get => _useCommunityLobbyServer;
+            set
+            {
+                if (_useCommunityLobbyServer == value) return;
+                _useCommunityLobbyServer = value;
+                OnPropertyChanged();
+            }
         }
     }
 }
