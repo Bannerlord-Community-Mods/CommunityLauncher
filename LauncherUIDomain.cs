@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using TaleWorlds.GauntletUI;
 using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
@@ -21,7 +22,7 @@ namespace CommunityLauncher
 		private UIContext _gauntletUIContext;
 
 		private TwoDimensionContext _twoDimensionContext;
-
+		private SingleThreadedSynchronizationContext _synchronizationContext;
 		private RPLauncherUI _launcherUI;
 
 		private readonly ResourceDepot _resourceDepot;
@@ -37,6 +38,11 @@ namespace CommunityLauncher
 
 		public override void Update()
 		{
+			if (this._synchronizationContext == null)
+			{
+				this._synchronizationContext = new SingleThreadedSynchronizationContext();
+				SynchronizationContext.SetSynchronizationContext(this._synchronizationContext);
+			}
 			if (!this._initialized)
 			{
 				this.UserDataManager.LoadUserData();
@@ -46,45 +52,39 @@ namespace CommunityLauncher
 				TwoDimensionPlatform twoDimensionPlatform = new TwoDimensionPlatform(this._graphicsForm);
 				this._twoDimensionContext = new TwoDimensionContext(twoDimensionPlatform, twoDimensionPlatform, this._resourceDepot);
 				StandaloneInputService inputService = new StandaloneInputService(this._graphicsForm);
-				InputContext inputContext = new InputContext();
-				inputContext.MouseOnMe = true;
-				inputContext.IsKeysAllowed = true;
-				inputContext.IsMouseButtonAllowed = true;
-				inputContext.IsMouseWheelAllowed = true;
-				this._gauntletUIContext = new UIContext(this._twoDimensionContext, inputContext, inputService);
+				
+				this._gauntletUIContext = new UIContext(this._twoDimensionContext, (IInputContext) new InputContext()
+				{
+					MouseOnMe = true,
+					IsKeysAllowed = true,
+					IsMouseButtonAllowed = true,
+					IsMouseWheelAllowed = true
+				}, (IInputService) new StandaloneInputService(this._graphicsForm));
 				this._gauntletUIContext.IsDynamicScaleEnabled = false;
 				this._gauntletUIContext.Initialize();
 				this._launcherUI = new RPLauncherUI(this.UserDataManager, this._gauntletUIContext, new Action(this.OnCloseRequest), new Action(this.OnMinimizeRequest));
 				this._launcherUI.Initialize();
 				this._initialized = true;
 			}
+			this._synchronizationContext.Tick();
 			bool mouseOverDragArea = this._launcherUI.CheckMouseOverWindowDragArea();
 			this._graphicsForm.UpdateInput(mouseOverDragArea);
 			this._graphicsForm.BeginFrame();
 			Input.Update();
 			this._graphicsForm.Update();
 			this._gauntletUIContext.UpdateInput(InputType.MouseButton | InputType.MouseWheel | InputType.Key);
-			this._gauntletUIContext.Update(0.0166666675f);
+			this._gauntletUIContext.Update(0.01666667f);
 			this._launcherUI.Update();
-			this._gauntletUIContext.LateUpdate(0.0166666675f);
+			this._gauntletUIContext.LateUpdate(0.01666667f);
 			this._graphicsForm.PostRender();
 			this._graphicsContext.SwapBuffers();
 		}
 
-		public string AdditionalArgs
-		{
-			get
-			{
-				if (this._launcherUI == null)
-				{
-					return "";
-				}
-				return this._launcherUI.AdditionalArgs;
-			}
-		}
+		public string AdditionalArgs => this._launcherUI == null ? "" : this._launcherUI.AdditionalArgs;
 
 		public override void Destroy()
 		{
+			this._synchronizationContext = null;
 			this._initialized = false;
 			this._graphicsContext.DestroyContext();
 			this._gauntletUIContext = null;

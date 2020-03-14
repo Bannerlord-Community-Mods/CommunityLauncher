@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -111,20 +112,16 @@ namespace CommunityLauncher
             var listOfZipFolders = zipFile.Entries.Where(x => x.FullName.EndsWith("/")).ToList();
             zipFile.Dispose();
             var updatedAllFiles = true;
-            foreach (var folder in listOfZipFolders)
+            foreach (var modulePath in listOfZipFolders.Select(folder => $"{BasePath.Name}/Modules/{folder}").Where(Directory.Exists))
             {
-                var modulePath = $"{BasePath.Name}/Modules/{folder}";
-                if (Directory.Exists(modulePath))
+                if (MessageBox.Show($"Mod: {mod.Name} Remove Folder to Update mod? {modulePath}", "Delete Folder?",
+                    MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
-                    if(MessageBox.Show($"Mod: {mod.Name} Remove Folder to Update mod? {modulePath}","Delete Folder?",MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        Directory.Delete(modulePath,true);
-                        
-                    }
-                    else
-                    {
-                        updatedAllFiles = false;
-                    }
+                    updatedAllFiles = false;
+                }
+                else
+                {
+                    Directory.Delete(modulePath, true);
                 }
             }
             if(!updatedAllFiles )

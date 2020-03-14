@@ -44,8 +44,8 @@ namespace CommunityLauncher
 			CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
 			ResourceDepot resourceDepot = new ResourceDepot(BasePath.Name);
 		
-			resourceDepot.AddLocation("GUI/GauntletUI/");
-			resourceDepot.AddLocation("Modules/Native/GUI/");
+			resourceDepot.AddLocation("GUI/Launcher/");
+			resourceDepot.AddLocation("Modules/Native/LauncherGUI/");
 			
 			resourceDepot.AddLocation("Modules/CommunityLauncher/GUI/");
 			resourceDepot.CollectResources();

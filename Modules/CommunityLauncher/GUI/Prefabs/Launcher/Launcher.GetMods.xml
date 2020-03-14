@@ -83,11 +83,7 @@
 
 							</Children>
 						</Widget>
-						<ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" Command.Click="*DoneButtonAction">
-							<Children>
-								<TextWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="7" Brush="Standard.BottomBigCloseButton.ButtonText" Text="DownloadButton" />
-							</Children>
-						</ButtonWidget>
+						
 					</Children>
 				</ScrollablePanel>
 

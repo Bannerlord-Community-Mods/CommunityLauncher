@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.Library;
+using TaleWorlds.Library.NewsManager;
 using TaleWorlds.MountAndBlade.Launcher;
 using TaleWorlds.MountAndBlade.Launcher.UserDatas;
 
@@ -69,7 +70,7 @@ namespace CommunityLauncher
             CanLaunch = true;
 
             VersionText = ApplicationVersion.FromParametersFile().ToString();
-            News = new LauncherNewsVM();
+            News = new LauncherNewsVM(new NewsManager());
             DlcData = new LauncherModsVM(_userDataManager.UserData, true);
             ModsData = new LauncherModsVM(_userDataManager.UserData, false);
             GetModsData = new ModsVM(this);
@@ -152,8 +153,8 @@ namespace CommunityLauncher
 
         private void ExecuteMinimize()
         {
+         
             Action onMinimize = _onMinimize;
-
             onMinimize?.Invoke();
         }
 
@@ -276,7 +277,7 @@ namespace CommunityLauncher
         [DataSourceProperty]
         public string PlayText
         {
-            get { return _playText; }
+            get => _playText;
             set
             {
                 if (_playText != value)

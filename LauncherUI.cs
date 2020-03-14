@@ -55,7 +55,6 @@ namespace CommunityLauncher
 		{
 			this._spriteData = this._context.SpriteData;
 			this._spriteData.SpriteCategories["ui_launcher"].Load(this._twoDimensionContext.ResourceContext, this._twoDimensionContext.ResourceDepot);
-			this._spriteData.SpriteCategories["ui_group1"].Load(this._twoDimensionContext.ResourceContext, this._twoDimensionContext.ResourceDepot);
 			this._spriteData.SpriteCategories["ui_fonts"].Load(this._twoDimensionContext.ResourceContext, this._twoDimensionContext.ResourceDepot);
 			this._material = new PrimitivePolygonMaterial(new Color(0.5f, 0.5f, 0.5f, 1f));
 			this._widgetFactory = new WidgetFactory(this._context.ResourceDepot, "Prefabs");
