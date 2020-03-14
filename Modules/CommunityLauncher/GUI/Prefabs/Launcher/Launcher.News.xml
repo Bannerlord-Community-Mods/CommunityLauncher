@@ -1,0 +1,18 @@
+<Prefab>
+	<Constants>
+		<Constant Name="ButtonBig.Width" BrushName="Launcher.News.ButtonBig" BrushLayer="Default" BrushValueType="Width"/>
+		<Constant Name="ButtonBig.Height" BrushName="Launcher.News.ButtonBig" BrushLayer="Default" BrushValueType="Height"/>
+		
+		<Constant Name="ButtonSmall.Width" BrushName="Launcher.News.ButtonSmall" BrushLayer="Default" BrushValueType="Width"/>
+		<Constant Name="ButtonSmall.Height" BrushName="Launcher.News.ButtonSmall" BrushLayer="Default" BrushValueType="Height"/>
+	</Constants>
+	<Window>
+		<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+			<Children>
+				<ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center">
+					
+				</ListPanel>
+			</Children>
+		</Widget>
+	</Window>
+</Prefab>
