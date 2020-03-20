@@ -30,13 +30,13 @@ namespace CommunityLauncher
 
 		private static List<string> _args;
 
-		private static string _additioanlArgs;
+		private static string _addionalArgs;
 
 		private static LauncherUIDomain _standaloneUIDomain;
 
 		private static bool _gameStarted;
 
-		private static async Task Main(string[] args)
+		private static void  Main(string[] args)
 		{
 
 
@@ -77,8 +77,8 @@ namespace CommunityLauncher
 
 		public static void StartGame()
 		{
-			Program._additioanlArgs = Program._standaloneUIDomain.AdditionalArgs;
-			Program._args.Add(Program._additioanlArgs);
+			Program._addionalArgs = Program._standaloneUIDomain.AdditionalArgs;
+			Program._args.Add(Program._addionalArgs);
 			Program._gameStarted = true;
 			Program._windowsFramework.UnRegisterMessageCommunicator(Program._graphicsForm);
 			Program._graphicsForm.Destroy();
