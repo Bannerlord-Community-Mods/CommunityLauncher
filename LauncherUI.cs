@@ -72,7 +72,7 @@ namespace CommunityLauncher
 				{
 					return "";
 				}
-				return this._viewModel.GameTypeArgument + " " + this._viewModel.DlcData.ModulesListCode;
+				return this._viewModel.GameTypeArgument + " " + this._viewModel.ModsData.ModulesListCode;
 			}
 		}
 

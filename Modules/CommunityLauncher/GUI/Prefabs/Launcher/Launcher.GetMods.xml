@@ -53,37 +53,59 @@
 				</Widget>
 				
 				<Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="2" MarginLeft="74" Sprite="top_header_divider" Brush.AlphaFactor="0.7" />-->
+				<ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="26" MarginTop="10" MarginLeft="30">
+					<Children>
+						<Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModToggle.Width" SuggestedHeight="!ModToggle.Height" VerticalAlignment="Center">
+							<Children></Children>
+						</Widget>
+						<Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModSorter.Width" SuggestedHeight="!ModSorter.Height" VerticalAlignment="Center" MarginLeft="10" />
+						<Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="34" SuggestedHeight="25" MarginLeft="3" />
+						<TextWidget Text="Name" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="10" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" Brush.TextHorizontalAlignment="Left" />
+						<TextWidget Text="Description" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
+						<TextWidget Text="" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
 
-				<ScrollablePanel Id="ScrollablePanel" HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" InnerPanel="MyClipRect\InnerPanel" ClipRect="MyClipRect" MarginLeft="30" MarginTop="23" MarginBottom="23" VerticalScrollbar="..\Scrollbar" AutoHideScrollBars="true">
+					</Children>
+				</ListPanel>
+				<ScrollablePanel Id="ScrollablePanel" HeightSizePolicy="StretchToParent" WidthSizePolicy="StretchToParent" InnerPanel="MyClipRect\InnerPanel" ClipRect="MyClipRect" MarginLeft="30" MarginTop="42" MarginBottom="23" VerticalScrollbar="..\Scrollbar" AutoHideScrollBars="true">
 					<Children>
 						<Widget Id="MyClipRect" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" ClipContents="true" Brush.GlobalAlphaFactor="0.75">
 							<Children>
-								<ListPanel Id="InnerPanel" DataSource="{Mods}" LayoutImp.LayoutMethod="VerticalBottomToTop" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren">
+
+								<ListPanel Id="InnerPanel" DataSource="{Mods}" LayoutImp.LayoutMethod="VerticalBottomToTop" WidthSizePolicy="Fixed" SuggestedWidth="900" HeightSizePolicy="CoverChildren">
 									<ItemTemplate>
-										<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="128" MarginBottom="10">
+									
+										<ListPanel SuggestedHeight="150" LayoutImp.LayoutMethod="HorizontalLeftToRight" WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed">
+											
 											<Children>
-												<ListPanel LayoutImp.LayoutMethod="HorizontalLeftToRight" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren">
+												
+												
+												<ButtonWidget MarginRight="20" IsDisabled="@IsDisabled" IsSelected="@IsSelected" ButtonType="Toggle" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModToggle.Width" SuggestedHeight="!ModToggle.Height" VerticalAlignment="Center" Brush="Launcher.Mods.ModToggle">
 													<Children>
-														<ButtonWidget IsDisabled="@IsDisabled" IsSelected="@IsSelected" ButtonType="Toggle" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModToggle.Width" SuggestedHeight="!ModToggle.Height" VerticalAlignment="Center" Brush="Launcher.Mods.ModToggle">
-															<Children>
-																<ImageWidget IsDisabled="@IsDisabled" IsVisible="@IsSelected" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Launcher.Mods.ModToggle.Checkmark" />
-															</Children>
-														</ButtonWidget>
-														<ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!ModSorter.Width" SuggestedHeight="!ModSorter.Height" VerticalAlignment="Center" MarginLeft="0" Brush="Launcher.Mods.ModSorter" />
-														<TextWidget Text="@Name" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
-														<TextWidget Text="@Summary" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
-
+														<ImageWidget IsDisabled="@IsDisabled" IsVisible="@IsSelected" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Launcher.Mods.ModToggle.Checkmark" />
 													</Children>
+												</ButtonWidget>
+												<TextWidget Text="@Name" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
+												<TextWidget Text="@Summary" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="2" Brush="Launcher.Mods.ModNameText" />
+												<Widget SuggestedHeight="150" SuggestedWidth="400" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" ClipContents="true">
+													<Children>
+														<LauncherOnlineImageTextureWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" HorizontalAlignment="Center" VerticalAlignment="Center" Brush.MaterialAlphaFactor="0.6" ImageSizePolicy="ScaleToBiggerDimension" LoadingIconWidget="LoadingIconWidget" OnlineImageSourceUrl="@Logo">
+															<Children>
+																<Standard.CircleLoadingWidget Id="LoadingIconWidget" HorizontalAlignment="Center" VerticalAlignment="Center" />
+															</Children>
+														</LauncherOnlineImageTextureWidget>
+													</Children>
+												</Widget>
+												
 
-												</ListPanel>
 											</Children>
-										</Widget>
+										</ListPanel>
+								
 									</ItemTemplate>
 								</ListPanel>
 
 							</Children>
 						</Widget>
-						
+
 					</Children>
 				</ScrollablePanel>
 

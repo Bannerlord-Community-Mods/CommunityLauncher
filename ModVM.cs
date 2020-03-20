@@ -40,7 +40,7 @@ namespace CommunityLauncher
 
         private void ChangeLoadingOrderOf(ModVM targetModule, int insertIndex)
         {
-            int index = Mods.IndexOf(targetModule);
+            var index = Mods.IndexOf(targetModule);
             Mods.RemoveAt(index);
             Mods.Insert(insertIndex, targetModule);
         }
@@ -77,7 +77,6 @@ namespace CommunityLauncher
                 await DownloadMod(mod);
             }
 
-            communityLauncherVm.DlcData.Refresh(communityLauncherVm.IsMultiplayer);
             communityLauncherVm.ModsData.Refresh(communityLauncherVm.IsMultiplayer);
             communityLauncherVm.PlayText = "P L A Y";
             communityLauncherVm.CanLaunch = true;
@@ -86,7 +85,7 @@ namespace CommunityLauncher
         private  async Task DownloadMod(ModVM mod)
         {
             
-            HttpClient client = new HttpClient();
+            var client = new HttpClient();
             var zipPath = string.Format(BasePath.Name + "Modules/{0}", mod.Mod.Modfile.Filename);
             File.Delete(zipPath);
             var response = await client.GetAsync(mod.Mod.Modfile.Download.BinaryUrl);

@@ -22,9 +22,9 @@ namespace CommunityLauncher
 
         private bool _isSingleplayerAvailable;
         private bool _useCommunityLobbyServer;
+        
         private LauncherNewsVM _news;
 
-        private LauncherModsVM _dlcData;
 
         private ModsVM _getModsData;
 
@@ -66,14 +66,12 @@ namespace CommunityLauncher
             SingleplayerText = "Singleplayer";
             MultiplayerText = "Multiplayer";
             NewsText = "News";
-            DlcText = "DLC";
             ModsText = "Mods";
             CanLaunch = true;
 
             VersionText = ApplicationVersion.FromParametersFile().ToString();
             News = new LauncherNewsVM(new NewsManager());
-            DlcData = new LauncherModsVM(_userDataManager.UserData, true);
-            ModsData = new LauncherModsVM(_userDataManager.UserData, false);
+            ModsData = new LauncherModsVM(_userDataManager.UserData);
             GetModsData = new ModsVM(this);
             IsSingleplayerAvailable = true;
             IsMultiplayer = (!IsSingleplayerAvailable ||
@@ -86,16 +84,12 @@ namespace CommunityLauncher
 
         private void UpdateAndSaveUserModsData(bool isMultiplayer)
         {
-            UserData userData = _userDataManager.UserData;
-            UserGameTypeData userGameTypeData = isMultiplayer ? userData.MultiplayerData : userData.SingleplayerData;
-            userGameTypeData.DlcDatas.Clear();
+            var userData = _userDataManager.UserData;
+            var userGameTypeData = isMultiplayer ? userData.MultiplayerData : userData.SingleplayerData;
             userGameTypeData.ModDatas.Clear();
-            foreach (LauncherModuleVM launcherModuleVM in DlcData.Modules)
-            {
-                userGameTypeData.DlcDatas.Add(new UserModData(launcherModuleVM.Info.Id, launcherModuleVM.IsSelected));
-            }
+            
 
-            foreach (LauncherModuleVM launcherModuleVM2 in ModsData.Modules)
+            foreach (var launcherModuleVM2 in ModsData.Modules)
             {
                 userGameTypeData.ModDatas.Add(new UserModData(launcherModuleVM2.Info.Id, launcherModuleVM2.IsSelected));
             }
@@ -105,8 +99,8 @@ namespace CommunityLauncher
 
         private bool GameModExists(string modId)
         {
-            List<ModuleInfo> list = ModuleInfo.GetModules().ToList();
-            for (int i = 0; i < list.Count; i++)
+            var list = ModuleInfo.GetModules().ToList();
+            for (var i = 0; i < list.Count; i++)
             {
                 if (list[i].Id == modId)
                 {
@@ -137,10 +131,16 @@ namespace CommunityLauncher
                     GetModsData.Install();
                     break;
                 default:
-                    if (this.UseCommunityLobbyServer)
-                        PatchFunctions();
+                   
+
                     UpdateAndSaveUserModsData(IsMultiplayer);
-                    Program.StartRPGame();
+                    if (this.UseCommunityLobbyServer)
+                    {
+                        PatchFunctions();
+                        this._modsData.Modules.First(x => x.Name == "CommunityLauncher").IsSelected = true;
+                    }
+
+                    Program.StartGame();
                     break;
             }
         }
@@ -160,8 +160,14 @@ namespace CommunityLauncher
             {
                 if (filePath.Contains("LobbyClient.xml"))
                 {
+                    #if DEBUG
+                    __result =
+                        "<Configuration>\t<SessionProvider Type=\"Rest\" />\t<Clients>\t\t<Client Type=\"LobbyClient\" />\t</Clients>\t<Parameters>\t\t<Parameter Name=\"LobbyClient.Address\" Value=\"127.0.0.1\" />\t\t<Parameter Name=\"LobbyClient.Port\" Value=\"5000\" />\t</Parameters></Configuration>"; }
+
+                    #else
                     __result =
                         "<Configuration>\t<SessionProvider Type=\"Rest\" />\t<Clients>\t\t<Client Type=\"LobbyClient\" />\t</Clients>\t<Parameters>\t\t<Parameter Name=\"LobbyClient.Address\" Value=\"78.47.238.35\" />\t\t<Parameter Name=\"LobbyClient.Port\" Value=\"80\" />\t</Parameters></Configuration>"; }
+                    #endif
                 // Copy paste code from original method
                 // return your result
               
@@ -170,7 +176,7 @@ namespace CommunityLauncher
         private void ExecuteClose()
         {
             UpdateAndSaveUserModsData(IsMultiplayer);
-            Action onClose = _onClose;
+            var onClose = _onClose;
 
             onClose?.Invoke();
         }
@@ -178,14 +184,13 @@ namespace CommunityLauncher
         private void ExecuteMinimize()
         {
          
-            Action onMinimize = _onMinimize;
+            var onMinimize = _onMinimize;
             onMinimize?.Invoke();
         }
 
         private void Refresh()
         {
             News.Refresh(IsMultiplayer);
-            DlcData.Refresh(IsMultiplayer);
             ModsData.Refresh(IsMultiplayer);
             GetModsData.Refresh();
         }
@@ -258,18 +263,7 @@ namespace CommunityLauncher
             }
         }
 
-        [DataSourceProperty]
-        public LauncherModsVM DlcData
-        {
-            get => _dlcData;
-            set
-            {
-                if (value == _dlcData) return;
-                _dlcData = value;
-                OnPropertyChanged();
-            }
-        }
-
+    
         [DataSourceProperty]
         public LauncherModsVM ModsData
         {

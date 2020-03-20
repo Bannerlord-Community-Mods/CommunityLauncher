@@ -49,9 +49,9 @@ namespace CommunityLauncher
 				Input.Initialize(new StandaloneInputManager(this._graphicsForm), null);
 				this._graphicsForm.InitializeGraphicsContext(this._resourceDepot);
 				this._graphicsContext = this._graphicsForm.GraphicsContext;
-				TwoDimensionPlatform twoDimensionPlatform = new TwoDimensionPlatform(this._graphicsForm);
+				var twoDimensionPlatform = new TwoDimensionPlatform(this._graphicsForm);
 				this._twoDimensionContext = new TwoDimensionContext(twoDimensionPlatform, twoDimensionPlatform, this._resourceDepot);
-				StandaloneInputService inputService = new StandaloneInputService(this._graphicsForm);
+				var inputService = new StandaloneInputService(this._graphicsForm);
 				
 				this._gauntletUIContext = new UIContext(this._twoDimensionContext, (IInputContext) new InputContext()
 				{
@@ -67,7 +67,9 @@ namespace CommunityLauncher
 				this._initialized = true;
 			}
 			this._synchronizationContext.Tick();
-			bool mouseOverDragArea = this._launcherUI.CheckMouseOverWindowDragArea();
+			
+			_resourceDepot.CheckForChanges(); 
+			var mouseOverDragArea = this._launcherUI.CheckMouseOverWindowDragArea();
 			this._graphicsForm.UpdateInput(mouseOverDragArea);
 			this._graphicsForm.BeginFrame();
 			Input.Update();

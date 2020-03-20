@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Xml;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -35,25 +36,26 @@ namespace CommunityLauncher
 
 		private static bool _gameStarted;
 
-		private static void Main(string[] args)
+		private static async Task Main(string[] args)
 		{
+
 
 			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 			Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
 			CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 			CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
-			ResourceDepot resourceDepot = new ResourceDepot(BasePath.Name);
+			var resourceDepot = new ResourceDepot(BasePath.Name);
 		
 			resourceDepot.AddLocation("GUI/Launcher/");
 			resourceDepot.AddLocation("Modules/Native/LauncherGUI/");
 			
 			resourceDepot.AddLocation("Modules/CommunityLauncher/GUI/");
 			resourceDepot.CollectResources();
+			resourceDepot.StartWatchingChangesInDepot(); 
 			Program._args = args.ToList<string>();
-			string name = "M&B II: Bannerlord Community Launcher";
+			var name = "M&B II: Bannerlord Community Launcher";
 			Program._graphicsForm = new GraphicsForm(1154, 701, resourceDepot, true, true, true, name);
-			Program._windowsFramework = new WindowsFramework();
-			Program._windowsFramework.ThreadConfig = WindowsFrameworkThreadConfig.SingleThread;
+			Program._windowsFramework = new WindowsFramework {ThreadConfig = WindowsFrameworkThreadConfig.SingleThread};
 			Program._standaloneUIDomain = new LauncherUIDomain(Program._graphicsForm, resourceDepot);
 			Program._windowsFramework.Initialize(new FrameworkDomain[]
 			{
@@ -73,7 +75,7 @@ namespace CommunityLauncher
 
 		#endregion
 
-		public static void StartRPGame()
+		public static void StartGame()
 		{
 			Program._additioanlArgs = Program._standaloneUIDomain.AdditionalArgs;
 			Program._args.Add(Program._additioanlArgs);

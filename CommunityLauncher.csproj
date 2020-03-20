@@ -11,6 +11,7 @@
         <AssemblyName>CommunityLauncher</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>x64</PlatformTarget>
@@ -42,8 +43,13 @@
           <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\ManagedStarter.exe</HintPath>
           <Private>False</Private>
         </Reference>
-        <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-          <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\Newtonsoft.Json.dll</HintPath>
+        <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+          <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Onova, Version=2.5.2.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\packages\Onova.2.5.2\lib\net46\Onova.dll</HintPath>
+          <Private>True</Private>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
