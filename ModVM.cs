@@ -6,11 +6,13 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using CommunityLauncher.ModIO;
 using TaleWorlds.Engine;
+using System.Windows.Forms;
 using TaleWorlds.Library;
-
+using Modio;
+using Modio.Filters;
+using Modio.Models;
+using File = System.IO.File;
 namespace CommunityLauncher
 {
     public class ModsVM : ViewModel
@@ -51,16 +53,13 @@ namespace CommunityLauncher
             communityLauncherVm.PlayText = Mods.Any(m => m.IsSelected) ? "Download & Install" : "P L A Y";
         }
 
-        public void Refresh()
+        public async void Refresh()
         {
-            var httpClient = new HttpClient();
-            var result =
-                httpClient.GetStringAsync(
-                        "https://api.mod.io/v1/games/324/mods?_sort=-rating&api_key=f3312601170f0cbf46d0f786552402ef")
-                    .Result;
-            var modList = ModList.FromJson(result);
+            var client = new Client(new Credentials("f3312601170f0cbf46d0f786552402ef"/*, "token"*/));
+            var filter = ModFilter.Rating.Desc();
+             var mods = await client.Games[324].Mods.Search(filter).ToList();
             Mods.Clear();
-            foreach (var mod in modList.Data)
+            foreach (var mod in mods)
             {
                 Mods.Add(new ModVM(mod, ChangeLoadingOrderOf, ChangeIsSelectedOf));
             }
@@ -168,21 +167,15 @@ namespace CommunityLauncher
         }
 
         [DataSourceProperty]
-        public string Summary
-        {
-            get { return _mod.Summary; }
-        }
+        public string Summary => _mod.Summary;
 
         [DataSourceProperty]
-        public string Logo
-        {
-            get { return _mod.Logo.Original.AbsoluteUri; }
-        }
+        public string Logo => _mod.Logo.Original.AbsoluteUri;
 
         [DataSourceProperty]
         public bool IsDisabled
         {
-            get { return _isDisabled; }
+            get => _isDisabled;
             set
             {
                 if (value != _isDisabled)

@@ -160,7 +160,7 @@ namespace CommunityLauncher
             {
                 if (filePath.Contains("LobbyClient.xml"))
                 {
-                    #if DEBUG
+                    #if DEBUG && LOCAL
                     __result =
                         "<Configuration>\t<SessionProvider Type=\"Rest\" />\t<Clients>\t\t<Client Type=\"LobbyClient\" />\t</Clients>\t<Parameters>\t\t<Parameter Name=\"LobbyClient.Address\" Value=\"127.0.0.1\" />\t\t<Parameter Name=\"LobbyClient.Port\" Value=\"5000\" />\t</Parameters></Configuration>"; }
 

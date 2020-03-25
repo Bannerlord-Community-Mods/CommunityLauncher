@@ -10,7 +10,7 @@
 		<SubModule>
 			<Name value = "CommunityLauncher"/>
 			<Version value = "a1.0.0"/>
-			<DLLName value = "../../Modules/CommunityLauncher/bin/CommunityLauncherModule.dll"/>
+			<DLLName value = "CommunityLauncher.exe"/>
 			<SubModuleClassType value = "CommunityLauncherModule.SubModule"/>
 			<Tags>
 			</Tags>

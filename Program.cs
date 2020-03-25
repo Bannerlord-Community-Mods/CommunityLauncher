@@ -10,7 +10,12 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
+using log4net;
+using log4net.Appender;
+using log4net.Config;
+using log4net.Layout;
 using TaleWorlds.Core;
+using TaleWorlds.Diamond;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Launcher;
@@ -35,10 +40,13 @@ namespace CommunityLauncher
 		private static LauncherUIDomain _standaloneUIDomain;
 
 		private static bool _gameStarted;
-
+		private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 		private static void  Main(string[] args)
 		{
-
+			BasicConfigurator.Configure(appender: new FileAppender(new PatternLayout("%date [%thread] %-5level %logger %ndc - %message%newline"),"CommunityLauncher.log" ));
+			AppDomain currentDomain = AppDomain.CurrentDomain;
+			currentDomain.UnhandledException += 
+				new UnhandledExceptionEventHandler(OnUnhandledException);
 
 			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 			Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
@@ -67,6 +75,17 @@ namespace CommunityLauncher
 			{
 				ManagedStarter.Program.Main(Program._args.ToArray());
 			}
+		}
+
+		private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+		{
+			string exceptionStr = e.ExceptionObject.ToString();
+                //Should be Logger.LogFatal(exceptionStr);
+                log.Fatal(((Exception) e.ExceptionObject).StackTrace);
+                
+                log.Fatal(((Exception) e.ExceptionObject).Data);
+                log.Fatal(((Exception) e.ExceptionObject).HResult);
+                log.Fatal(exceptionStr);
 		}
 
 		#region dostuffwithoutlaunch
