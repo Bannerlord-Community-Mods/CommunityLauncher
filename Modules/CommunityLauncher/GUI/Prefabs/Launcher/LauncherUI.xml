@@ -111,7 +111,7 @@
                 <TabControl Id="ContentPanel" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="1" MarginRight="!ContentMargin.Right" MarginTop="90" MarginBottom="116">
                   <Children>
                     <Launcher.Mods Id="ModsPage" DataSource="{ModsData}" />
-                    <Launcher.GetMods Id="GetModsPage" DataSource="{GetModsData}" />
+                    <Launcher.GetMods Id="GetModsPage" DataSource="{GetDownloadModsData}" />
                   </Children>
                 </TabControl>
 

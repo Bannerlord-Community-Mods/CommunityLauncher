@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
+using TaleWorlds.Core.ViewModelCollection;
+using TaleWorlds.Diamond.Rest;
 using TaleWorlds.Library;
 using TaleWorlds.Library.NewsManager;
 using TaleWorlds.MountAndBlade.Launcher;
 using TaleWorlds.MountAndBlade.Launcher.UserDatas;
+using TaleWorlds.Network;
 
 namespace CommunityLauncher
 {
@@ -21,12 +24,11 @@ namespace CommunityLauncher
         private bool _isMultiplayer;
 
         private bool _isSingleplayerAvailable;
-        private bool _useCommunityLobbyServer;
+        private bool _useCommunityLobbyServer = true;
         
         private LauncherNewsVM _news;
 
-
-        private ModsVM _getModsData;
+        private DownloadModsVM _getDownloadModsData;
 
         private LauncherModsVM _modsData;
 
@@ -72,7 +74,7 @@ namespace CommunityLauncher
             VersionText = ApplicationVersion.FromParametersFile().ToString();
             News = new LauncherNewsVM(new NewsManager());
             ModsData = new LauncherModsVM(_userDataManager.UserData);
-            GetModsData = new ModsVM(this);
+            GetDownloadModsData = new DownloadModsVM(this);
             IsSingleplayerAvailable = true;
             IsMultiplayer = (!IsSingleplayerAvailable ||
                              _userDataManager.UserData.GameType == GameType.Multiplayer);
@@ -128,7 +130,7 @@ namespace CommunityLauncher
             switch (PlayText)
             {
                 case "Download & Install":
-                    GetModsData.Install();
+                    GetDownloadModsData.Install();
                     break;
                 default:
                    
@@ -149,8 +151,20 @@ namespace CommunityLauncher
         {
             patcher.PatchAll();
         }
+
+        [HarmonyPatch(typeof(HttpPostRequest),MethodType.Constructor, new[]{typeof(string),typeof(string)})]
+        public class PatchSSL
+        {
+            static void Postfix(HttpPostRequest __instance, ref string ____address)
+            {
+                ____address = ____address.Replace("http", "https");
+
+            }
+        }
+
         [HarmonyPatch(typeof(VirtualFolders))]
         [HarmonyPatch("GetVirtualFileContent")]
+        
         public class Patch_VirtualFolders
         {
             // Remove all IL instructions from old method
@@ -166,7 +180,7 @@ namespace CommunityLauncher
 
                     #else
                     __result =
-                        "<Configuration>\t<SessionProvider Type=\"Rest\" />\t<Clients>\t\t<Client Type=\"LobbyClient\" />\t</Clients>\t<Parameters>\t\t<Parameter Name=\"LobbyClient.Address\" Value=\"78.47.238.35\" />\t\t<Parameter Name=\"LobbyClient.Port\" Value=\"80\" />\t</Parameters></Configuration>"; }
+                        "<Configuration>\t<SessionProvider Type=\"Rest\" />\t<Clients>\t\t<Client Type=\"LobbyClient\" />\t</Clients>\t<Parameters>\t\t<Parameter Name=\"LobbyClient.Address\" Value=\"bannerlord.h0st.space\" />\t\t<Parameter Name=\"LobbyClient.Port\" Value=\"443\" />\t</Parameters></Configuration>"; }
                     #endif
                 // Copy paste code from original method
                 // return your result
@@ -192,7 +206,7 @@ namespace CommunityLauncher
         {
             News.Refresh(IsMultiplayer);
             ModsData.Refresh(IsMultiplayer);
-            GetModsData.Refresh();
+            GetDownloadModsData.Refresh();
         }
 
         [DataSourceProperty]
@@ -279,14 +293,14 @@ namespace CommunityLauncher
         }
 
         [DataSourceProperty]
-        public ModsVM GetModsData
+        public DownloadModsVM GetDownloadModsData
         {
-            get { return _getModsData; }
+            get { return _getDownloadModsData; }
             set
             {
-                if (value != _getModsData)
+                if (value != _getDownloadModsData)
                 {
-                    _getModsData = value;
+                    _getDownloadModsData = value;
                     OnPropertyChanged();
                 }
             }

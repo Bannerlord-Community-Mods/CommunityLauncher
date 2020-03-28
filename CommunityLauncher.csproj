@@ -16,8 +16,7 @@
 
   <ItemGroup>
     <Reference Include="ManagedStarter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\ManagedStarter.exe</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\Bannerlord.exe</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\Newtonsoft.Json.dll</HintPath>
@@ -36,10 +35,6 @@
     </Reference>
     <Reference Include="TaleWorlds.Core.ViewModelCollection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\TaleWorlds.Core.ViewModelCollection.dll</HintPath>
-       <Private>False</Private>
-    </Reference>
-    <Reference Include="TaleWorlds.DataCenter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\TaleWorlds.DataCenter.dll</HintPath>
        <Private>False</Private>
     </Reference>
     <Reference Include="TaleWorlds.Diamond, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -138,10 +133,6 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.Launcher.exe</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="TaleWorlds.MountAndBlade.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.Test.dll</HintPath>
-       <Private>False</Private>
-    </Reference>
     <Reference Include="TaleWorlds.MountAndBlade.View, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.View.dll</HintPath>
        <Private>False</Private>
@@ -192,10 +183,6 @@
     </Reference>
     <Reference Include="TaleWorlds.TwoDimension.Standalone, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\TaleWorlds.TwoDimension.Standalone.dll</HintPath>
-       <Private>False</Private>
-    </Reference>
-    <Reference Include="TaleWorlds.WebServices.Library, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord - Beta\bin\Win64_Shipping_Client\TaleWorlds.WebServices.Library.dll</HintPath>
        <Private>False</Private>
     </Reference>
   </ItemGroup>

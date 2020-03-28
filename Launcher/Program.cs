@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 using log4net;
 using log4net.Appender;
@@ -41,14 +42,29 @@ namespace CommunityLauncher
 
 		private static bool _gameStarted;
 		private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-		private static void  Main(string[] args)
-		{
-			BasicConfigurator.Configure(appender: new FileAppender(new PatternLayout("%date [%thread] %-5level %logger %ndc - %message%newline"),"CommunityLauncher.log" ));
-			AppDomain currentDomain = AppDomain.CurrentDomain;
-			currentDomain.UnhandledException += 
-				new UnhandledExceptionEventHandler(OnUnhandledException);
+		private static string StarterExecutable = "Bannerlord.exe";
+		static Program()
+		{BasicConfigurator.Configure(appender: new FileAppender(
+				new PatternLayout("%date [%thread] %-5level %logger %ndc - %message%newline"),
+				"CommunityLauncher.log"));
 
-			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+			AppDomain.CurrentDomain.AssemblyResolve += Program.OnAssemblyResolve;
+			if (!AppDomain.CurrentDomain.FriendlyName.EndsWith("vshost.exe"))
+			{
+				Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+
+
+				AppDomain currentDomain = AppDomain.CurrentDomain;
+				currentDomain.UnhandledException +=
+					new UnhandledExceptionEventHandler(OnUnhandledException);
+				Application.ThreadException += OnUnhandledThreadException;
+			}
+		}
+		private static void Main(string[] args)
+		{
+			
+
+		Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 			Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
 			CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 			CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
@@ -75,6 +91,17 @@ namespace CommunityLauncher
 			{
 				ManagedStarter.Program.Main(Program._args.ToArray());
 			}
+		}
+
+		private static void OnUnhandledThreadException(object sender, ThreadExceptionEventArgs e)
+		{
+			string exceptionStr = e.Exception.ToString();
+			//Should be Logger.LogFatal(exceptionStr);
+			log.Fatal(((Exception) e.Exception).StackTrace);
+                
+			log.Fatal(((Exception) e.Exception).Data);
+			log.Fatal(((Exception) e.Exception).HResult);
+			log.Fatal(exceptionStr);
 		}
 
 		private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -106,6 +133,14 @@ namespace CommunityLauncher
 			Program._graphicsForm = null;
 			User32.SetForegroundWindow(Kernel32.GetConsoleWindow());
 			
+		}
+		private static Assembly OnAssemblyResolve(object sender, ResolveEventArgs args)
+		{
+			if (args.Name.Contains("ManagedStarter"))
+			{
+				return Assembly.LoadFrom(Program.StarterExecutable);
+			}
+			return null;
 		}
     }
 }

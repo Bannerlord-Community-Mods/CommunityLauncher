@@ -12,56 +12,85 @@ using TaleWorlds.Library;
 using Modio;
 using Modio.Filters;
 using Modio.Models;
+using TaleWorlds.Core.ViewModelCollection;
+using TaleWorlds.MountAndBlade.ViewModelCollection.Multiplayer.Lobby.HostGame.HostGameOptions;
 using File = System.IO.File;
 namespace CommunityLauncher
 {
-    public class ModsVM : ViewModel
+    public class DownloadModsVM : ViewModel
     {
-        private MBBindingList<ModVM> _mods;
+        private MBBindingList<ModVM> _downloadableMods;
+        [DataSourceProperty]
+        public SelectorVM<SelectorItemVM> SortBySelection  ;
+        [DataSourceProperty]
+        public SelectorVM<SelectorItemVM> FilterBySelection;
+
         private CommunityLauncherVM communityLauncherVm;
+        private Client _client;
 
-        public ModsVM(CommunityLauncherVM communityLauncherVm)
+        public DownloadModsVM(CommunityLauncherVM communityLauncherVm)
         {
-            Mods = new MBBindingList<ModVM>();
-
+            _client = new Client(new Credentials("f3312601170f0cbf46d0f786552402ef"/*, "token"*/));
+            DownloadableMods = new MBBindingList<ModVM>();
+            SortBySelection = new SelectorVM<SelectorItemVM>(new List<string>(){"Rating","Downloads","Popularity","Newest"},3,onSortChanged );
             this.communityLauncherVm = communityLauncherVm;
         }
 
-        [DataSourceProperty]
-        public MBBindingList<ModVM> Mods
+        private void onSortChanged(SelectorVM<SelectorItemVM> obj)
         {
-            get { return _mods; }
+            
+        }
+
+        [DataSourceProperty]
+        public MBBindingList<ModVM> DownloadableMods
+        {
+            get { return _downloadableMods; }
             set
             {
-                if (value == _mods)
+                if (value == _downloadableMods)
                     return;
-                _mods = value;
-                OnPropertyChanged(nameof(Mods));
+                _downloadableMods = value;
+                OnPropertyChanged(nameof(DownloadableMods));
             }
         }
 
         private void ChangeLoadingOrderOf(ModVM targetModule, int insertIndex)
         {
-            var index = Mods.IndexOf(targetModule);
-            Mods.RemoveAt(index);
-            Mods.Insert(insertIndex, targetModule);
+            var index = DownloadableMods.IndexOf(targetModule);
+            DownloadableMods.RemoveAt(index);
+            DownloadableMods.Insert(insertIndex, targetModule);
         }
 
-        private void ChangeIsSelectedOf(ModVM targetModule)
+        private async void ChangeIsSelectedOf(ModVM targetModule)
         {
+            foreach (var mod in DownloadableMods)
+            {
+                if (!mod.IsSelected) continue;
+                var dependencies = await  _client.Games[324].Mods[mod.Mod.Id].Dependencies.Get();
+                foreach (Dependency dep in dependencies)
+                {
+                    var depMod = DownloadableMods.FirstOrDefault(x => x.Mod.Id == dep.ModId);
+                    if (depMod != default)
+                    {
+                        depMod.IsSelected = true;
+                    }
+                }
+            }
             communityLauncherVm.PlayText = string.Empty;
-            communityLauncherVm.PlayText = Mods.Any(m => m.IsSelected) ? "Download & Install" : "P L A Y";
+            communityLauncherVm.PlayText = DownloadableMods.Any(m => m.IsSelected) ? "Download & Install" : "P L A Y";
+
+      ;
         }
 
         public async void Refresh()
         {
-            var client = new Client(new Credentials("f3312601170f0cbf46d0f786552402ef"/*, "token"*/));
+            
             var filter = ModFilter.Rating.Desc();
-             var mods = await client.Games[324].Mods.Search(filter).ToList();
-            Mods.Clear();
+             var mods = await _client.Games[324].Mods.Search(filter).ToList();
+            DownloadableMods.Clear();
             foreach (var mod in mods)
             {
-                Mods.Add(new ModVM(mod, ChangeLoadingOrderOf, ChangeIsSelectedOf));
+                DownloadableMods.Add(new ModVM(mod, ChangeLoadingOrderOf, ChangeIsSelectedOf));
             }
         }
 
@@ -70,10 +99,13 @@ namespace CommunityLauncher
         {
             communityLauncherVm.CanLaunch = false;
             communityLauncherVm.PlayText = "Downloading";
-            foreach (var mod in Mods)
+            
+
+            foreach (var mod in DownloadableMods)
             {
                 if (!mod.IsSelected) continue;
-                await DownloadMod(mod);
+                
+                await DownloadMod(mod); 
             }
 
             communityLauncherVm.ModsData.Refresh(communityLauncherVm.IsMultiplayer);

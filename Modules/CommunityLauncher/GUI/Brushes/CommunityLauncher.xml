@@ -1,0 +1,24 @@
+﻿<Brushes>
+    <Brush Name="CommunityLauncher.ScrollBar">
+        <Layers>
+            <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#3C2A20FF" />
+        </Layers>
+        <Styles>
+            <Style Name="Default">
+                <BrushLayer Name="Default" ColorFactor="1" AlphaFactor="0.8" />
+            </Style>
+            <Style Name="Hovered">
+                <BrushLayer Name="Default" ColorFactor="1.2" AlphaFactor="1" />
+            </Style>
+            <Style Name="Pressed">
+                <BrushLayer Name="Default" ColorFactor="0.8" />
+            </Style>
+            <Style Name="Selected">
+                <BrushLayer Name="Default" ColorFactor="1.2" />
+            </Style>
+            <Style Name="Disabled">
+                <BrushLayer Name="Default" AlphaFactor="0.5" />
+            </Style>
+        </Styles>
+    </Brush>  
+</Brushes>

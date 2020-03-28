@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Xml;
 using TaleWorlds.Core;
 using TaleWorlds.InputSystem;
@@ -8,6 +9,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Messages;
 using TaleWorlds.MountAndBlade.View.Missions;
+using Module = TaleWorlds.MountAndBlade.Module;
 
 namespace TaleWorlds.MountAndBlade
 {
@@ -137,7 +139,7 @@ namespace CommunityLauncherModule
         }
     }
 
-    public class debughotkey : MissionView
+    public class EnableDebugHotkeys : MissionView
     {
         public override void OnMissionTick(float dt)
         {
@@ -155,6 +157,13 @@ public class SubModule : MBSubModuleBase
         {
             Debug.DebugManager = new HTMLDebugManager();
             base.OnSubModuleLoad();
+        }
+
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
+        {
+            
+            typeof(Module).GetField("_splashScreenPlayed",BindingFlags.NonPublic| BindingFlags.Instance).SetValue(Module.CurrentModule,true);
+            base.OnBeforeInitialModuleScreenSetAsRoot();
         }
 
         public override void OnGameLoaded(Game game, object initializerObject)
@@ -228,16 +237,19 @@ public class SubModule : MBSubModuleBase
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             // @todo: HERE
-            /*var handler = mission.GetMissionBehaviour<debughotkey>();
-            if (handler == null)
+            if (GameNetwork.IsServer)
             {
-                
-                
-                mission.AddMissionBehaviour(new debughotkey());
-            }*/
-            
-         
-         base.OnMissionBehaviourInitialize(mission);
+                var handler = mission.GetMissionBehaviour<EnableDebugHotkeys>();
+                if (handler == null)
+                {
+
+
+                    mission.AddMissionBehaviour(new EnableDebugHotkeys());
+                }
+            }
+
+
+            base.OnMissionBehaviourInitialize(mission);
         }
 
     }
