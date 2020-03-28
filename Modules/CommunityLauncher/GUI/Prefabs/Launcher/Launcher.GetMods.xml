@@ -130,9 +130,9 @@
                                                 <TextWidget Text="@Name" WidthSizePolicy="StretchToParent"
                                                             HeightSizePolicy="StretchToParent" PositionYOffset="2"
                                                             Brush="Launcher.Mods.ModNameText"/>
-                                                <TextWidget Text="@Summary" WidthSizePolicy="StretchToParent"
+                                                <RichTextWidget Text="@Summary" WidthSizePolicy="StretchToParent"
                                                             HeightSizePolicy="StretchToParent" PositionYOffset="2"
-                                                            Brush="Launcher.Mods.ModNameText"/>
+                                                            Brush="Launcher.Mods.ModNameText"  Brush.FontSize="15"/>
                                                 <Widget SuggestedHeight="155" SuggestedWidth="400"
                                                         WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
                                                         ClipContents="true">
