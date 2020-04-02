@@ -11,6 +11,7 @@ using log4net.Appender;
 using log4net.Config;
 using log4net.Layout;
 using log4net.Repository.Hierarchy;
+using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.TwoDimension.Standalone;
 using TaleWorlds.TwoDimension.Standalone.Native.Windows;
@@ -37,7 +38,6 @@ namespace CommunityLauncher
         static Program()
         {
 
-            WalkDirectoryTree(new DirectoryInfo(BasePath.Name + "Modules/"));
             var fileappender = new FileAppender();
             fileappender.Layout = new PatternLayout("%date [%thread] %-5level %logger %ndc - %message%newline");
             fileappender.AppendToFile = false;
@@ -110,11 +110,11 @@ namespace CommunityLauncher
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
+            WalkDirectoryTree(new DirectoryInfo(BasePath.Name + "Modules/Native"));
             var resourceDepot = new ResourceDepot(BasePath.Name);
 
             resourceDepot.AddLocation("GUI/Launcher/");
             resourceDepot.AddLocation("Modules/Native/LauncherGUI/");
-
             resourceDepot.AddLocation("Modules/CommunityLauncher/GUI/");
             resourceDepot.CollectResources();
             resourceDepot.StartWatchingChangesInDepot();
@@ -131,6 +131,8 @@ namespace CommunityLauncher
             Program._windowsFramework.Start();
             if (Program._gameStarted)
             {
+                
+               
                 ManagedStarter.Program.Main(Program._args.ToArray());
             }
         }

@@ -1,8 +1,8 @@
 
-bin/
+packages/
 
 obj/
 
-packages/
+bin/
 
 .idea/

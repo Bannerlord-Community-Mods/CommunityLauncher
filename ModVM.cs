@@ -6,35 +6,36 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using CommunityLauncher.ModIO;
 using TaleWorlds.Core.ViewModelCollection;
 using File = System.IO.File;
+
 namespace CommunityLauncher
 {
     public class DownloadModsVM : ViewModel
     {
         private MBBindingList<ModVM> _downloadableMods;
-        [DataSourceProperty]
-        public SelectorVM<SelectorItemVM> SortBySelection  ;
-        [DataSourceProperty]
-        public SelectorVM<SelectorItemVM> FilterBySelection;
+        [DataSourceProperty] public SelectorVM<SelectorItemVM> SortBySelection;
+        [DataSourceProperty] public SelectorVM<SelectorItemVM> FilterBySelection;
 
         private CommunityLauncherVM communityLauncherVm;
-       // private Client _client;
+        // private Client _client;
 
         public DownloadModsVM(CommunityLauncherVM communityLauncherVm)
         {
-         //   _client = new Client(new Credentials("f3312601170f0cbf46d0f786552402ef"/*, "token"*/));
+            //   _client = new Client(new Credentials("f3312601170f0cbf46d0f786552402ef"/*, "token"*/));
             DownloadableMods = new MBBindingList<ModVM>();
-            SortBySelection = new SelectorVM<SelectorItemVM>(new List<string>(){"Rating","Downloads","Popularity","Newest"},3,onSortChanged );
+            SortBySelection =
+                new SelectorVM<SelectorItemVM>(new List<string>() {"Rating", "Downloads", "Popularity", "Newest"}, 3,
+                    onSortChanged);
             this.communityLauncherVm = communityLauncherVm;
         }
 
         private void onSortChanged(SelectorVM<SelectorItemVM> obj)
         {
-            
         }
 
         [DataSourceProperty]
@@ -57,7 +58,7 @@ namespace CommunityLauncher
             DownloadableMods.Insert(insertIndex, targetModule);
         }
 
-        private  void ChangeIsSelectedOf(ModVM targetModule)
+        private void ChangeIsSelectedOf(ModVM targetModule)
         {
             /*foreach (var mod in DownloadableMods)
             {
@@ -75,17 +76,16 @@ namespace CommunityLauncher
             communityLauncherVm.PlayText = string.Empty;
             communityLauncherVm.PlayText = DownloadableMods.Any(m => m.IsSelected) ? "Download & Install" : "P L A Y";
 
-      ;
+            ;
         }
 
         public async void Refresh()
         {
-
             var httpClient = new HttpClient();
             var result = await
-                httpClient.GetStringAsync(
+                    httpClient.GetStringAsync(
                         "https://api.mod.io/v1/games/324/mods?_sort=-rating&api_key=f3312601170f0cbf46d0f786552402ef")
-                    ;
+                ;
             var modList = ModList.FromJson(result);
             DownloadableMods.Clear();
             foreach (var mod in modList.Data)
@@ -99,13 +99,13 @@ namespace CommunityLauncher
         {
             communityLauncherVm.CanLaunch = false;
             communityLauncherVm.PlayText = "Downloading";
-            
+
 
             foreach (var mod in DownloadableMods)
             {
                 if (!mod.IsSelected) continue;
-                
-                await DownloadMod(mod); 
+
+                await DownloadMod(mod);
             }
 
             communityLauncherVm.ModsData.Refresh(communityLauncherVm.IsMultiplayer);
@@ -113,9 +113,8 @@ namespace CommunityLauncher
             communityLauncherVm.CanLaunch = true;
         }
 
-        private  async Task DownloadMod(ModVM mod)
+        private async Task DownloadMod(ModVM mod)
         {
-            
             var client = new HttpClient();
             var zipPath = string.Format(BasePath.Name + "Modules/{0}", mod.Mod.Modfile.Filename);
             File.Delete(zipPath);
@@ -127,13 +126,41 @@ namespace CommunityLauncher
                 await response.Content.CopyToAsync(fs);
             }
 
-            if (!DeleteOldMod(mod, zipPath))
+            try
             {
-                DeleteModZip(zipPath);
+                var deleteOldMod = DeleteOldMod(mod, zipPath);
+                if (!deleteOldMod)
+                {
+                    DeleteModZip(zipPath);
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Could not Delete Mod ZIP {e.Message}");
                 return;
             }
-            ExtractModZip(zipPath);
-            DeleteModZip(zipPath);
+
+            try
+            {
+                ExtractModZip(zipPath);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Could not Extract Mod ZIP {e.Message}");
+                return;
+            }
+
+            try
+            {
+                DeleteModZip(zipPath);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Could not Delete Mod ZIP {e.Message}");
+                return;
+                throw;
+            }
         }
 
         private bool DeleteOldMod(ModVM mod, string zipPath)
@@ -142,34 +169,36 @@ namespace CommunityLauncher
             var listOfZipFolders = zipFile.Entries.Where(x => x.FullName.EndsWith("/")).ToList();
             zipFile.Dispose();
             var updatedAllFiles = true;
-            foreach (var modulePath in listOfZipFolders.Select(folder => $"{BasePath.Name}/Modules/{folder}").Where(Directory.Exists))
+            foreach (var modulePath in listOfZipFolders.Select(folder => $"{BasePath.Name}/Modules/{folder}")
+                .Where(Directory.Exists))
             {
-                //TODO: Fix Net Standard Override Mod Updates
-               /* if (MessageBox.Show($"Mod: {mod.Name} Remove Folder to Update mod? {modulePath}", "Delete Folder?",
+                if (MessageBox.Show($"Mod: {mod.Name} Remove Folder to Update mod? {modulePath}", "Delete Folder?",
                     MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     updatedAllFiles = false;
+                    break;
                 }
-                else*/
+                else
                 {
                     Directory.Delete(modulePath, true);
                 }
             }
-            if(!updatedAllFiles )
+
+            if (!updatedAllFiles)
             {
-              /*  MessageBox.Show($"User cancelled Installation of Mod: {mod.Name}", "Mod not Installed",
+                MessageBox.Show($"User cancelled Installation of Mod: {mod.Name}", "Mod not Installed",
                     MessageBoxButtons.OK);
-*/
             }
+
             return updatedAllFiles;
         }
 
-        private  void DeleteModZip(string zipPath)
+        private void DeleteModZip(string zipPath)
         {
             File.Delete(zipPath);
         }
 
-        private  void ExtractModZip(string zipPath)
+        private void ExtractModZip(string zipPath)
         {
             ZipFile.ExtractToDirectory(zipPath, BasePath.Name + "Modules/");
         }
@@ -199,11 +228,9 @@ namespace CommunityLauncher
             get { return _mod.Description; }
         }
 
-        [DataSourceProperty]
-        public string Summary => _mod.Summary;
+        [DataSourceProperty] public string Summary => _mod.Summary;
 
-        [DataSourceProperty]
-        public string Logo => _mod.Logo.Original.AbsoluteUri;
+        [DataSourceProperty] public string Logo => _mod.Logo.Original.AbsoluteUri;
 
         [DataSourceProperty]
         public bool IsDisabled
