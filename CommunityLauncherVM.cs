@@ -6,6 +6,7 @@ using TaleWorlds.Core.ViewModelCollection;
 using TaleWorlds.Diamond.Rest;
 using TaleWorlds.Library;
 using TaleWorlds.Library.NewsManager;
+using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Launcher;
 using TaleWorlds.MountAndBlade.Launcher.UserDatas;
 using TaleWorlds.Network;

@@ -3,6 +3,7 @@ using System.Threading;
 using TaleWorlds.GauntletUI;
 using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Launcher;
 using TaleWorlds.MountAndBlade.Launcher.UserDatas;
 using TaleWorlds.TwoDimension;
@@ -31,6 +32,7 @@ namespace CommunityLauncher
 
 		public LauncherUIDomain(GraphicsForm graphicsForm, ResourceDepot resourceDepot)
 		{
+			
 			this._graphicsForm = graphicsForm;
 			this._resourceDepot = resourceDepot;
 			this.UserDataManager = new UserDataManager();

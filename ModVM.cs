@@ -7,13 +7,9 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TaleWorlds.Engine;
-using System.Windows.Forms;
 using TaleWorlds.Library;
-using Modio;
-using Modio.Filters;
-using Modio.Models;
+using CommunityLauncher.ModIO;
 using TaleWorlds.Core.ViewModelCollection;
-using TaleWorlds.MountAndBlade.ViewModelCollection.Multiplayer.Lobby.HostGame.HostGameOptions;
 using File = System.IO.File;
 namespace CommunityLauncher
 {
@@ -26,11 +22,11 @@ namespace CommunityLauncher
         public SelectorVM<SelectorItemVM> FilterBySelection;
 
         private CommunityLauncherVM communityLauncherVm;
-        private Client _client;
+       // private Client _client;
 
         public DownloadModsVM(CommunityLauncherVM communityLauncherVm)
         {
-            _client = new Client(new Credentials("f3312601170f0cbf46d0f786552402ef"/*, "token"*/));
+         //   _client = new Client(new Credentials("f3312601170f0cbf46d0f786552402ef"/*, "token"*/));
             DownloadableMods = new MBBindingList<ModVM>();
             SortBySelection = new SelectorVM<SelectorItemVM>(new List<string>(){"Rating","Downloads","Popularity","Newest"},3,onSortChanged );
             this.communityLauncherVm = communityLauncherVm;
@@ -61,9 +57,9 @@ namespace CommunityLauncher
             DownloadableMods.Insert(insertIndex, targetModule);
         }
 
-        private async void ChangeIsSelectedOf(ModVM targetModule)
+        private  void ChangeIsSelectedOf(ModVM targetModule)
         {
-            foreach (var mod in DownloadableMods)
+            /*foreach (var mod in DownloadableMods)
             {
                 if (!mod.IsSelected) continue;
                 var dependencies = await  _client.Games[324].Mods[mod.Mod.Id].Dependencies.Get();
@@ -75,7 +71,7 @@ namespace CommunityLauncher
                         depMod.IsSelected = true;
                     }
                 }
-            }
+            }*/
             communityLauncherVm.PlayText = string.Empty;
             communityLauncherVm.PlayText = DownloadableMods.Any(m => m.IsSelected) ? "Download & Install" : "P L A Y";
 
@@ -84,11 +80,15 @@ namespace CommunityLauncher
 
         public async void Refresh()
         {
-            
-            var filter = ModFilter.Rating.Desc();
-             var mods = await _client.Games[324].Mods.Search(filter).ToList();
+
+            var httpClient = new HttpClient();
+            var result = await
+                httpClient.GetStringAsync(
+                        "https://api.mod.io/v1/games/324/mods?_sort=-rating&api_key=f3312601170f0cbf46d0f786552402ef")
+                    ;
+            var modList = ModList.FromJson(result);
             DownloadableMods.Clear();
-            foreach (var mod in mods)
+            foreach (var mod in modList.Data)
             {
                 DownloadableMods.Add(new ModVM(mod, ChangeLoadingOrderOf, ChangeIsSelectedOf));
             }
@@ -144,21 +144,22 @@ namespace CommunityLauncher
             var updatedAllFiles = true;
             foreach (var modulePath in listOfZipFolders.Select(folder => $"{BasePath.Name}/Modules/{folder}").Where(Directory.Exists))
             {
-                if (MessageBox.Show($"Mod: {mod.Name} Remove Folder to Update mod? {modulePath}", "Delete Folder?",
+                //TODO: Fix Net Standard Override Mod Updates
+               /* if (MessageBox.Show($"Mod: {mod.Name} Remove Folder to Update mod? {modulePath}", "Delete Folder?",
                     MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     updatedAllFiles = false;
                 }
-                else
+                else*/
                 {
                     Directory.Delete(modulePath, true);
                 }
             }
             if(!updatedAllFiles )
             {
-                MessageBox.Show($"User cancelled Installation of Mod: {mod.Name}", "Mod not Installed",
+              /*  MessageBox.Show($"User cancelled Installation of Mod: {mod.Name}", "Mod not Installed",
                     MessageBoxButtons.OK);
-
+*/
             }
             return updatedAllFiles;
         }

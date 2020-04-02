@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Xml;
 using TaleWorlds.Core;
 using TaleWorlds.InputSystem;
@@ -9,6 +10,7 @@ using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Messages;
 using TaleWorlds.MountAndBlade.View.Missions;
+using TaleWorlds.MountAndBlade.View.Screen;
 using Module = TaleWorlds.MountAndBlade.Module;
 
 namespace TaleWorlds.MountAndBlade
@@ -153,8 +155,12 @@ namespace CommunityLauncherModule
     }
 public class SubModule : MBSubModuleBase
     {
+            [DllImport("Rgl.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "?toggle_imgui_console_visibility@rglCommand_line_manager@@QEAAXXZ")]
+        public static extern void toggle_imgui_console_visibility(UIntPtr x);
         protected override void OnSubModuleLoad()
         {
+
+            toggle_imgui_console_visibility(new UIntPtr());
             Debug.DebugManager = new HTMLDebugManager();
             base.OnSubModuleLoad();
         }

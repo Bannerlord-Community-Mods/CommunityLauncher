@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+using System.Windows.Forms;
 using log4net;
 using log4net.Appender;
 using log4net.Config;
@@ -35,6 +36,8 @@ namespace CommunityLauncher
 
         static Program()
         {
+
+            WalkDirectoryTree(new DirectoryInfo(BasePath.Name + "Modules/"));
             var fileappender = new FileAppender();
             fileappender.Layout = new PatternLayout("%date [%thread] %-5level %logger %ndc - %message%newline");
             fileappender.AppendToFile = false;
@@ -47,7 +50,7 @@ namespace CommunityLauncher
                 AppDomain currentDomain = AppDomain.CurrentDomain;
                 currentDomain.UnhandledException +=
                     new UnhandledExceptionEventHandler(OnUnhandledException);
-                //AppDomain.ThreadException += OnUnhandledThreadException;
+                Application.ThreadException += OnUnhandledThreadException;
             }
         }
 
@@ -84,7 +87,9 @@ namespace CommunityLauncher
                     // want to open, delete or modify the file, then
                     // a try-catch block is required here to handle the case
                     // where the file has been deleted since the call to TraverseTree().
-                    AssemblyLoader.LoadFrom(fi.FullName);
+                    var assembly = Assembly.LoadFrom(fi.FullName);
+                    
+                    Console.Write(assembly.FullName);
                     Console.WriteLine(fi.FullName);
                 }
 
@@ -101,7 +106,6 @@ namespace CommunityLauncher
 
         private static void Main(string[] args)
         {
-            WalkDirectoryTree(new DirectoryInfo(BasePath.Name + "Modules/"));
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
@@ -176,7 +180,24 @@ namespace CommunityLauncher
             {
                 return Assembly.LoadFrom(Program.StarterExecutable);
             }
+            var canfind = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().FullName== args.Name);
+            if (canfind != default)
+            {
+                return canfind;
+            }
+            try
+            {
+                if (args.Name.Contains("System.Threading.Tasks.Extensions"))
+                {
 
+                    return Assembly.LoadFrom("System.Threading.Tasks.Extensions.dll");
+                }
+                    
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
             return null;
         }
     }
