@@ -46,16 +46,16 @@ namespace CommunityLauncher
             BasicConfigurator.Configure(new Hierarchy(),fileappender);
 
             AppDomain.CurrentDomain.AssemblyResolve += Program.OnAssemblyResolve;
-            //if (!AppDomain.CurrentDomain.FriendlyName.EndsWith("vshost.exe"))
-            //{
-#if TRUE
+            if (!AppDomain.CurrentDomain.FriendlyName.EndsWith("vshost.exe"))
+            {
+
                 AppDomain currentDomain = AppDomain.CurrentDomain;
                 currentDomain.UnhandledException +=
                     new UnhandledExceptionEventHandler(OnUnhandledException);
                 currentDomain.FirstChanceException += FirstChanceException;
                 Application.ThreadException += OnUnhandledThreadException;
-#endif
-            //}
+
+            }
         }
 
         static void WalkDirectoryTree(System.IO.DirectoryInfo root)
@@ -145,7 +145,7 @@ namespace CommunityLauncher
         {
             if (e.Exception.Message.Contains("TaleWorlds.MountAndBlade.Launcher.XmlSerializers")) return;
             if (e.Exception.Message.Contains("TaleWorlds.PSAI.XmlSerializers")) return;
-            if (e.Exception.Message.Contains("Illegal characters in path.")) return; //THIS ONLY TRIGGERS ON BANNERLORD TWEAK. Why is that?
+            if (e.Exception.Message.Contains("Illegal characters in ")) return; //THIS ONLY TRIGGERS ON BANNERLORD TWEAK. Why is that?
             ErrorHandler(e.Exception);
         }
 
