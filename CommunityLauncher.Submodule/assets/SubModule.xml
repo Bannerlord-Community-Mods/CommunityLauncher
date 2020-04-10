@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Module>
-	<Name value="CommunityLauncher" />
-	<Id value="CommunityLauncher" />
-	<Version value="a1.0.0" />
-	<SingleplayerModule value="true "/>
-	<MultiplayerModule value="true "/>
+	<Name value = "CommunityLauncher"/>
+	<Id value = "CommunityLauncher"/>
+	<Version value = "a1.0.0"/>
+	<SingleplayerModule value="true"/>
+	<MultiplayerModule value="true"/>
 	<DependedModules/>
 	<SubModules>
 		<SubModule>
-			<Name value="CommunityLauncher"/>
-			<Version value="a1.0.0"/>
-			<DLLName value="CommunityLauncher.Submodule.dll"/>
-			<SubModuleClassType value="CommunityLauncherModule.SubModule"/>
+			<Name value = "CommunityLauncher"/>
+			<Version value = "a1.0.0"/>
+			<DLLName value = "CommunityLauncher.dll"/>
+			<SubModuleClassType value = "CommunityLauncherModule.SubModule"/>
 			<Tags>
 			</Tags>
 		</SubModule>
+		
 	</SubModules>
+	
+
 </Module>

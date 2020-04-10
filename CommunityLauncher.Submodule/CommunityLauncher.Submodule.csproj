@@ -8,6 +8,7 @@
     <LangVersion>8.0</LangVersion>
     <GameFolder>E:\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</GameFolder>
     <Configurations>Release</Configurations>
+    <AssemblyName>CommunityLauncher</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,7 +35,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;assets&quot; &quot;$(GameFolder)\Modules\CommunityLauncher&quot; /E /H /C /I&#xD;&#xA;xcopy &quot;bin\Release\netstandard2.0\$(AssemblyName).dll&quot; &quot;$(GameFolder)\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot; /Y /I" />
+    <Exec Command="xcopy &quot;assets&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)&quot; /E /H /C /I&#xD;&#xA;xcopy &quot;bin\Release\netstandard2.0\$(AssemblyName).dll&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)\bin\Win64_Shipping_Client\&quot; /Y /I" />
   </Target>
 
 </Project>

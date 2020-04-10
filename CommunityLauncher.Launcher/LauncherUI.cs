@@ -77,13 +77,6 @@ namespace CommunityLauncher
 
 		public void Update()
 		{
-			//DrawObject2D.CreateTriangleTopologyMeshWithPolygonCoordinates(new List<Vector2>
-			//{
-			//	new Vector2(0f, 0f),
-			//	new Vector2(0f, this._twoDimensionContext.Height),
-			//	new Vector2(this._twoDimensionContext.Width, this._twoDimensionContext.Height),
-			//	new Vector2(this._twoDimensionContext.Width, 0f)
-			//});
 			this._movie.Update();
 			this._widgetFactory.CheckForUpdates();
 		}

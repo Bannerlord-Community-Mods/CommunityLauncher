@@ -9,6 +9,7 @@
     <IsPackable>false</IsPackable>
     <OutputType>Exe</OutputType>
     <Configurations>Release</Configurations>
+    <AssemblyName>CommunityLauncher</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
