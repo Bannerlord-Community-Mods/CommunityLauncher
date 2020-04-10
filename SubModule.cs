@@ -160,7 +160,7 @@ public class SubModule : MBSubModuleBase
         protected override void OnSubModuleLoad()
         {
 
-            toggle_imgui_console_visibility(new UIntPtr());
+            //toggle_imgui_console_visibility(new UIntPtr());
             Debug.DebugManager = new HTMLDebugManager();
             base.OnSubModuleLoad();
         }
