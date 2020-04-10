@@ -139,24 +139,30 @@ namespace CommunityLauncher
 
         private static void OnUnhandledThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            string exceptionStr = e.Exception.ToString();
-            //Should be Logger.LogFatal(exceptionStr);
-            log.Fatal(((Exception) e.Exception).StackTrace);
-
-            log.Fatal(((Exception) e.Exception).Data);
-            log.Fatal(((Exception) e.Exception).HResult);
-            log.Fatal(exceptionStr);
+            ErrorHandler(e.Exception);
         }
 
         private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            string exceptionStr = e.ExceptionObject.ToString();
-            //Should be Logger.LogFatal(exceptionStr);
-            log.Fatal(((Exception) e.ExceptionObject).StackTrace);
+            ErrorHandler((Exception)e.ExceptionObject);
+        }
 
-            log.Fatal(((Exception) e.ExceptionObject).Data);
-            log.Fatal(((Exception) e.ExceptionObject).HResult);
+        private static void ErrorHandler(Exception e)
+        {
+            string exceptionStr = e.ToString();
+            //Should be Logger.LogFatal(exceptionStr);
+            log.Fatal(e.StackTrace);
+
+            log.Fatal(e.Data);
+            log.Fatal(e.HResult);
             log.Fatal(exceptionStr);
+            ErrorWindow.errorString = e.Message; 
+            ErrorWindow.faultingSource = e.Source;
+            ErrorWindow.fullStackString = e.StackTrace;
+
+            var window = new ErrorWindow();
+                window.ShowDialog();
+            
         }
 
         #region dostuffwithoutlaunch

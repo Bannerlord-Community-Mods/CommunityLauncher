@@ -12,6 +12,7 @@ using TaleWorlds.Library;
 using CommunityLauncher.ModIO;
 using TaleWorlds.Core.ViewModelCollection;
 using File = System.IO.File;
+using System.Net;
 
 namespace CommunityLauncher
 {
@@ -82,6 +83,8 @@ namespace CommunityLauncher
         public async void Refresh()
         {
             var httpClient = new HttpClient();
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             var result = await
                     httpClient.GetStringAsync(
                         "https://api.mod.io/v1/games/324/mods?_sort=-rating&api_key=f3312601170f0cbf46d0f786552402ef")
