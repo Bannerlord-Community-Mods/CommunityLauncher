@@ -110,5 +110,4 @@ namespace CommunityLauncher
 			this._graphicsForm.MinimizeWindow();
 		}
 	}
-    
 }

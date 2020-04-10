@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
-using CommunityLauncher.ModIO;
 using TaleWorlds.Core.ViewModelCollection;
 using File = System.IO.File;
+using Modio.Filters;
+using Modio;
+using Modio.Models;
 
 namespace CommunityLauncher
 {
@@ -22,11 +24,11 @@ namespace CommunityLauncher
         [DataSourceProperty] public SelectorVM<SelectorItemVM> FilterBySelection;
 
         private CommunityLauncherVM communityLauncherVm;
-        // private Client _client;
+        private Client _client;
 
         public DownloadModsVM(CommunityLauncherVM communityLauncherVm)
         {
-            //   _client = new Client(new Credentials("f3312601170f0cbf46d0f786552402ef"/*, "token"*/));
+            _client = new Client(new Credentials("f3312601170f0cbf46d0f786552402ef"/*, "token"*/));
             DownloadableMods = new MBBindingList<ModVM>();
             SortBySelection =
                 new SelectorVM<SelectorItemVM>(new List<string>() {"Rating", "Downloads", "Popularity", "Newest"}, 3,
@@ -75,20 +77,15 @@ namespace CommunityLauncher
             }*/
             communityLauncherVm.PlayText = string.Empty;
             communityLauncherVm.PlayText = DownloadableMods.Any(m => m.IsSelected) ? "Download & Install" : "P L A Y";
-
-            ;
         }
 
         public async void Refresh()
         {
+            var filter = ModFilter.Rating.Desc();
             var httpClient = new HttpClient();
-            var result = await
-                    httpClient.GetStringAsync(
-                        "https://api.mod.io/v1/games/324/mods?_sort=-rating&api_key=f3312601170f0cbf46d0f786552402ef")
-                ;
-            var modList = ModList.FromJson(result);
+            var mods = await _client.Games[324].Mods.Search(filter).ToList();
             DownloadableMods.Clear();
-            foreach (var mod in modList.Data)
+            foreach (var mod in mods)
             {
                 DownloadableMods.Add(new ModVM(mod, ChangeLoadingOrderOf, ChangeIsSelectedOf));
             }
