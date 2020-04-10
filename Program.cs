@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Windows.Forms;
 using log4net;
@@ -45,13 +46,15 @@ namespace CommunityLauncher
             BasicConfigurator.Configure(new Hierarchy(),fileappender);
 
             AppDomain.CurrentDomain.AssemblyResolve += Program.OnAssemblyResolve;
-            if (!AppDomain.CurrentDomain.FriendlyName.EndsWith("vshost.exe"))
-            {
+            //if (!AppDomain.CurrentDomain.FriendlyName.EndsWith("vshost.exe"))
+            //{
+
                 AppDomain currentDomain = AppDomain.CurrentDomain;
                 currentDomain.UnhandledException +=
                     new UnhandledExceptionEventHandler(OnUnhandledException);
+                currentDomain.FirstChanceException += FirstChanceException;
                 Application.ThreadException += OnUnhandledThreadException;
-            }
+            //}
         }
 
         static void WalkDirectoryTree(System.IO.DirectoryInfo root)
@@ -135,6 +138,13 @@ namespace CommunityLauncher
                
                 ManagedStarter.Program.Main(Program._args.ToArray());
             }
+        }
+
+        private static void FirstChanceException(object sender, FirstChanceExceptionEventArgs e)
+        {
+            if (e.Exception.Message.Contains("TaleWorlds.MountAndBlade.Launcher.XmlSerializers")) return;
+            if (e.Exception.Message.Contains("TaleWorlds.PSAI.XmlSerializers")) return;
+            ErrorHandler(e.Exception);
         }
 
         private static void OnUnhandledThreadException(object sender, ThreadExceptionEventArgs e)
