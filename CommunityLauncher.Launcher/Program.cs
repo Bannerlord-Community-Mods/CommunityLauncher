@@ -14,6 +14,7 @@ using log4net.Repository.Hierarchy;
 using TaleWorlds.Library;
 using TaleWorlds.TwoDimension.Standalone;
 using TaleWorlds.TwoDimension.Standalone.Native.Windows;
+using Trinet.Core.IO.Ntfs;
 
 namespace CommunityLauncher.Launcher
 {
@@ -52,7 +53,7 @@ namespace CommunityLauncher.Launcher
             }
         }
 
-        static void WalkDirectoryTree(System.IO.DirectoryInfo root)
+        static void ApplyToModuleDLLs(System.IO.DirectoryInfo root, Action<string> functor)
         {
             System.IO.FileInfo[] files = null;
             System.IO.DirectoryInfo[] subDirs = null;
@@ -85,10 +86,7 @@ namespace CommunityLauncher.Launcher
                     // want to open, delete or modify the file, then
                     // a try-catch block is required here to handle the case
                     // where the file has been deleted since the call to TraverseTree().
-                    var assembly = Assembly.LoadFrom(fi.FullName);
-                    
-                    Console.Write(assembly.FullName);
-                    Console.WriteLine(fi.FullName);
+                    functor(fi.FullName);
                 }
 
                 // Now find all the subdirectories under this directory.
@@ -97,7 +95,7 @@ namespace CommunityLauncher.Launcher
                 foreach (System.IO.DirectoryInfo dirInfo in subDirs)
                 {
                     // Resursive call for each subdirectory.
-                    WalkDirectoryTree(dirInfo);
+                    ApplyToModuleDLLs(dirInfo,functor);
                 }
             }
         }
@@ -108,7 +106,7 @@ namespace CommunityLauncher.Launcher
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
-            WalkDirectoryTree(new DirectoryInfo(BasePath.Name + "Modules/Native"));
+            ApplyToModuleDLLs(new DirectoryInfo(BasePath.Name + "Modules/Native"),x=>Assembly.LoadFrom(x));
             var resourceDepot = new ResourceDepot(BasePath.Name);
 
             resourceDepot.AddLocation("GUI/Launcher/");
@@ -129,6 +127,7 @@ namespace CommunityLauncher.Launcher
             Program._windowsFramework.Start();
             if (Program._gameStarted)
             {
+                
                 ManagedStarter.Program.Main(Program._args.ToArray());
             }
         }
@@ -161,6 +160,13 @@ namespace CommunityLauncher.Launcher
 
         public static void StartGame()
         {
+
+            ApplyToModuleDLLs(new DirectoryInfo(BasePath.Name + "Modules/"), assembly =>
+            {
+                var fileinfo = new FileInfo(assembly);
+                fileinfo.DeleteAlternateDataStream("Zone.Identifier");
+
+            });
             Program._addionalArgs = Program._standaloneUIDomain.AdditionalArgs;
             Program._args.Add(Program._addionalArgs);
             Program._gameStarted = true;
