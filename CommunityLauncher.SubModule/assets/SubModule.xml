@@ -11,7 +11,7 @@
 			<Name value = "CommunityLauncher"/>
 			<Version value = "a1.0.0"/>
 			<DLLName value = "CommunityLauncher.dll"/>
-			<SubModuleClassType value = "CommunityLauncherModule.SubModule"/>
+			<SubModuleClassType value = "CommunityLauncher.SubModule.SubModule"/>
 			<Tags>
 			</Tags>
 		</SubModule>

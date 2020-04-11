@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using CommunityLauncher.Launcher;
 using HarmonyLib;
 using TaleWorlds.Library;
 using TaleWorlds.Library.NewsManager;

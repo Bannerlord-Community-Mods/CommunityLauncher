@@ -13,7 +13,7 @@ using TaleWorlds.MountAndBlade.View.Missions;
 using TaleWorlds.MountAndBlade.View.Screen;
 using Module = TaleWorlds.MountAndBlade.Module;
 
-namespace TaleWorlds.MountAndBlade
+namespace CommunityLauncher.SubModule
 {
     public sealed class SyncXMLServer : GameNetworkMessage
     {
@@ -56,11 +56,8 @@ namespace TaleWorlds.MountAndBlade
             return $"Received XML File: {name}";
         }
     }
-}
 
-namespace CommunityLauncherModule
-{
-    public class XMLSync : MissionNetwork
+public class XMLSync : MissionNetwork
     {
         public override void AfterStart()
         {
