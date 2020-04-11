@@ -8,8 +8,9 @@
     <LangVersion>8.0</LangVersion>
     <IsPackable>false</IsPackable>
     <OutputType>Exe</OutputType>
-    <Configurations>Release</Configurations>
+    <Configurations>Release;Debug</Configurations>
     <AssemblyName>CommunityLauncher</AssemblyName>
+    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -53,7 +54,9 @@
 
     <Exec Command="IF not exist &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot; md  &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot;" />
     <Exec Command="xcopy &quot;../CommunityLauncher.SubModule/assets&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher&quot; /Y /E /H /C /I&#xD;&#xA; " />
-    <Exec Command="xcopy &quot;bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).exe&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client\&quot; /Y /I"/>
-    <Exec Command="xcopy &quot;../CommunityLauncher.SubModule/bin\$(Configuration)\netstandard2.0\$(AssemblyName).dll&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot; /Y /I"/>
+    <Exec Command="xcopy &quot;bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).exe&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client\&quot; /Y /I" />
+    <Exec Command="xcopy &quot;bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).exe&quot; &quot;$(GameFolder)\bin\Win64_Shipping_Client\&quot; /Y /I" />
+    <Exec Command="xcopy &quot;bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).pdb&quot; &quot;$(GameFolder)\bin\Win64_Shipping_Client\&quot; /Y /I" />
+    <Exec Command="xcopy &quot;../CommunityLauncher.SubModule/bin\$(Configuration)\netstandard2.0\$(AssemblyName).dll&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot; /Y /I" />
   </Target>
 </Project>
