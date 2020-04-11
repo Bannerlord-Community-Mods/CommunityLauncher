@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\developer.props" />
   <PropertyGroup>
     <TargetFramework>net4.7.2</TargetFramework>
     <PlatformTarget>x64</PlatformTarget>
     <Nullable>enable</Nullable>
     <LangVersion>8.0</LangVersion>
-    <GameFolder>E:\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</GameFolder>
     <IsPackable>false</IsPackable>
     <OutputType>Exe</OutputType>
     <Configurations>Release</Configurations>
@@ -47,5 +47,13 @@
   <ItemGroup>
     <ProjectReference Include="..\submodules\modio.net\Modio\Modio.csproj" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
 
+    <Exec Command="IF not exist &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client&quot; md  &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client&quot;" />
+
+    <Exec Command="IF not exist &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot; md  &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot;" />
+    <Exec Command="xcopy &quot;../CommunityLauncher.SubModule/assets&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher&quot; /Y /E /H /C /I&#xD;&#xA; " />
+    <Exec Command="xcopy &quot;bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).exe&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client\&quot; /Y /I"/>
+    <Exec Command="xcopy &quot;../CommunityLauncher.SubModule/bin\$(Configuration)\netstandard2.0\$(AssemblyName).dll&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot; /Y /I"/>
+  </Target>
 </Project>

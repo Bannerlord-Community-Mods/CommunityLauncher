@@ -19,7 +19,7 @@ namespace CommunityLauncher
 }
 
 
-    public class RPLauncherUI 
+    public class LauncherUI 
     {
        private Material _material;
 
@@ -41,7 +41,7 @@ namespace CommunityLauncher
 
 		private readonly Action _onMinimize;
 
-		public RPLauncherUI(UserDataManager userDataManager, UIContext context, Action onClose, Action onMinimize)
+		public LauncherUI(UserDataManager userDataManager, UIContext context, Action onClose, Action onMinimize)
 		{
 			this._context = context;
 			this._twoDimensionContext = this._context.TwoDimensionContext;

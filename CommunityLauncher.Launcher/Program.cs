@@ -15,7 +15,7 @@ using TaleWorlds.Library;
 using TaleWorlds.TwoDimension.Standalone;
 using TaleWorlds.TwoDimension.Standalone.Native.Windows;
 
-namespace CommunityLauncher
+namespace CommunityLauncher.Launcher
 {
     internal class Program
     {

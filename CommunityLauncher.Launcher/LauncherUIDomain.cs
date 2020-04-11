@@ -24,7 +24,7 @@ namespace CommunityLauncher
 
 		private TwoDimensionContext _twoDimensionContext;
 		private SingleThreadedSynchronizationContext _synchronizationContext;
-		private RPLauncherUI _launcherUI;
+		private LauncherUI _launcherUI;
 
 		private readonly ResourceDepot _resourceDepot;
 
@@ -64,7 +64,7 @@ namespace CommunityLauncher
 				}, (IInputService) new StandaloneInputService(this._graphicsForm));
 				this._gauntletUIContext.IsDynamicScaleEnabled = false;
 				this._gauntletUIContext.Initialize();
-				this._launcherUI = new RPLauncherUI(this.UserDataManager, this._gauntletUIContext, new Action(this.OnCloseRequest), new Action(this.OnMinimizeRequest));
+				this._launcherUI = new LauncherUI(this.UserDataManager, this._gauntletUIContext, new Action(this.OnCloseRequest), new Action(this.OnMinimizeRequest));
 				this._launcherUI.Initialize();
 				this._initialized = true;
 			}
