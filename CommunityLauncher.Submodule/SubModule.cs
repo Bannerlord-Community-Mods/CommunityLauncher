@@ -60,14 +60,14 @@ namespace TaleWorlds.MountAndBlade
 
 namespace CommunityLauncherModule
 {
-    
-    public class XMLSync : MissionNetwork {
+    public class XMLSync : MissionNetwork
+    {
         public override void AfterStart()
         {
-            
+
             AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
             GameNetwork.AddNetworkHandler(this);
-            
+
             base.AfterStart();
         }
         private void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)
@@ -78,25 +78,25 @@ namespace CommunityLauncherModule
                 (new GameNetworkMessage.ServerMessageHandlerDelegate<SyncXMLServer>(HandleXMLFileEventServer)));
         }
 
-       
+
 
         public void HandleXMLFileEventServer(SyncXMLServer gameNetworkMessage)
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(gameNetworkMessage.xmlfile);
-            MBObjectManager.Instance.LoadXml(doc,null );
+            MBObjectManager.Instance.LoadXml(doc, null);
         }
         public bool HandleXMLFileClient(NetworkCommunicator peer, SyncXMLServer message)
         {
-            
+
             // Create the XmlDocument.
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(message.xmlfile);
-            MBObjectManager.Instance.LoadXml(doc,null );
+            MBObjectManager.Instance.LoadXml(doc, null);
             return true;
         }
 
-       // [CommandLineFunctionality.CommandLineArgumentFunction("sync_xml", "mp_host")]
+        // [CommandLineFunctionality.CommandLineArgumentFunction("sync_xml", "mp_host")]
         public static string MPHostHelp(List<string> strings)
         {
             var component = Mission.Current.GetMissionBehaviour<XMLSync>();
@@ -119,9 +119,9 @@ namespace CommunityLauncherModule
                 return "Not enough arguments";
 
             }
-            
+
             return "Component Missing";
-            
+
         }
 
         public override void OnMissionTick(float dt)
@@ -147,15 +147,16 @@ namespace CommunityLauncherModule
         {
             if (!MissionScreen.SceneLayer.Input.IsCategoryRegistered(HotKeyManager.GetCategory("Debug")))
             {
-                
+
                 MissionScreen.SceneLayer.Input.RegisterHotKeyCategory(HotKeyManager.GetCategory("Debug"));
             }
             base.OnMissionTick(dt);
         }
     }
-public class SubModule : MBSubModuleBase
+
+    public class SubModule : MBSubModuleBase
     {
-            [DllImport("Rgl.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "?toggle_imgui_console_visibility@rglCommand_line_manager@@QEAAXXZ")]
+        [DllImport("Rgl.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "?toggle_imgui_console_visibility@rglCommand_line_manager@@QEAAXXZ")]
         public static extern void toggle_imgui_console_visibility(UIntPtr x);
         protected override void OnSubModuleLoad()
         {
@@ -167,20 +168,20 @@ public class SubModule : MBSubModuleBase
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-            
-            typeof(Module).GetField("_splashScreenPlayed",BindingFlags.NonPublic| BindingFlags.Instance).SetValue(Module.CurrentModule,true);
+
+            typeof(Module).GetField("_splashScreenPlayed", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(Module.CurrentModule, true);
             base.OnBeforeInitialModuleScreenSetAsRoot();
         }
 
         public override void OnGameLoaded(Game game, object initializerObject)
         {
-            
+
             base.OnGameLoaded(game, initializerObject);
         }
 
         public override void OnMultiplayerGameStart(Game game, object starterObject)
         {
-           // ReloadMPCLasses();
+            // ReloadMPCLasses();
             base.OnMultiplayerGameStart(game, starterObject);
         }
 
@@ -188,7 +189,7 @@ public class SubModule : MBSubModuleBase
         private static string ReloadMPCLasses(List<string> strings)
         {
             if (strings.Count != 1) return "Invalid Arguments";
-            Type type ;
+            Type type;
             string filename;
             switch (strings[0])
             {
@@ -221,7 +222,7 @@ public class SubModule : MBSubModuleBase
             {
                 return $"File not Found {filePath}";
             }
-            
+
             MBObjectManager.Instance.ClearAllObjectsWithType(type);
             XmlDocument doc = new XmlDocument();
             doc.Load(filePath);
@@ -231,13 +232,13 @@ public class SubModule : MBSubModuleBase
 
         protected override void OnApplicationTick(float dt)
         {
-            
+
             //var x = Input.DebugInput;
             base.OnApplicationTick(dt);
-           /* if (Input.IsKeyReleased(InputKey.Numpad5))
-            {
-                ReloadMPCLasses();
-            }*/
+            /* if (Input.IsKeyReleased(InputKey.Numpad5))
+             {
+                 ReloadMPCLasses();
+             }*/
         }
 
         public override void OnMissionBehaviourInitialize(Mission mission)
@@ -254,9 +255,7 @@ public class SubModule : MBSubModuleBase
                 }
             }
 
-
             base.OnMissionBehaviourInitialize(mission);
         }
-
     }
 }

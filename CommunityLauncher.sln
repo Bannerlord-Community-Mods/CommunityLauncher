@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunityLauncher.Submodule", "CommunityLauncher.Submodule\CommunityLauncher.Submodule.csproj", "{61070299-B687-4076-B2AE-3F992FBF35A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunityLauncher.Launcher", "CommunityLauncher.Launcher\CommunityLauncher.Launcher.csproj", "{A6D25227-7256-4B1B-97B3-A75B1A9D0D20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modio", "submodules\modio.net\Modio\Modio.csproj", "{E444AD86-2494-4F94-B863-948B97A3FA31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Submodules", "Submodules", "{3E786B7F-6224-41E2-A4D0-B1A0D1667B87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61070299-B687-4076-B2AE-3F992FBF35A1}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{61070299-B687-4076-B2AE-3F992FBF35A1}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A6D25227-7256-4B1B-97B3-A75B1A9D0D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D25227-7256-4B1B-97B3-A75B1A9D0D20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E444AD86-2494-4F94-B863-948B97A3FA31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E444AD86-2494-4F94-B863-948B97A3FA31}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E444AD86-2494-4F94-B863-948B97A3FA31} = {3E786B7F-6224-41E2-A4D0-B1A0D1667B87}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {254651A8-27F2-4450-9F78-E7BB50900C44}
+	EndGlobalSection
+EndGlobal

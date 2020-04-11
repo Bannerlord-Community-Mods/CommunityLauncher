@@ -11,11 +11,9 @@ using log4net.Appender;
 using log4net.Config;
 using log4net.Layout;
 using log4net.Repository.Hierarchy;
-using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 using TaleWorlds.TwoDimension.Standalone;
 using TaleWorlds.TwoDimension.Standalone.Native.Windows;
-
 
 namespace CommunityLauncher
 {
@@ -131,8 +129,6 @@ namespace CommunityLauncher
             Program._windowsFramework.Start();
             if (Program._gameStarted)
             {
-                
-               
                 ManagedStarter.Program.Main(Program._args.ToArray());
             }
         }
