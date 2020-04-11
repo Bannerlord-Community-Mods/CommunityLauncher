@@ -2,6 +2,8 @@
 using System.Linq;
 using CommunityLauncher.Launcher;
 using HarmonyLib;
+using TaleWorlds.GauntletUI;
+using TaleWorlds.GauntletUI.Data;
 using TaleWorlds.Library;
 using TaleWorlds.Library.NewsManager;
 using TaleWorlds.MountAndBlade.Launcher;
@@ -43,7 +45,7 @@ namespace CommunityLauncher
         private string _modsText;
 
         private string _versionText;
-
+        private GauntletMovie _movie;
         public string GameTypeArgument
         {
             get
@@ -77,10 +79,15 @@ namespace CommunityLauncher
             IsMultiplayer = (!IsSingleplayerAvailable ||
                              _userDataManager.UserData.GameType == GameType.Multiplayer);
 
+           
+        }
+
+        public void Init(GauntletMovie movie)
+        {
+            this._movie = movie;
             Refresh();
             _isInitialized = true;
         }
-
 
         private void UpdateAndSaveUserModsData(bool isMultiplayer)
         {
@@ -88,7 +95,6 @@ namespace CommunityLauncher
             var userGameTypeData = isMultiplayer ? userData.MultiplayerData : userData.SingleplayerData;
             userGameTypeData.ModDatas.Clear();
             
-
             foreach (var launcherModuleVM2 in ModsData.Modules)
             {
                 userGameTypeData.ModDatas.Add(new UserModData(launcherModuleVM2.Info.Id, launcherModuleVM2.IsSelected));
@@ -123,16 +129,35 @@ namespace CommunityLauncher
             UpdateAndSaveUserModsData(preSelectionIsMultiplayer);
         }
 
-        private void ExecuteStartGame()
+        private async  void ExecuteStartGame()
         {
             switch (PlayText)
             {
                 case "Download & Install":
-                    GetDownloadModsData.Install();
+                    CanLaunch = false;
+                    PlayText = "Downloading";
+
+                     await GetDownloadModsData.Install();
+                    ModsData.Refresh(IsMultiplayer);
+                    PlayText = "P L A Y";
+                    CanLaunch = true;
+
+                    if (_movie.Context.Root.FindChild("ContentPanel",true) is TabControl tab)
+                    {
+                        tab.SetActiveTab("ModsPage");
+                        foreach (var modVm in GetDownloadModsData.DownloadableMods.Where(x=>x.IsSelected))
+                        {
+                            ModsData.Modules.Where(x => x.Name.Contains(modVm.Name)).ToList()
+                                .ForEach(x => x.IsSelected = true);
+                        }
+                    }
+                    
+                    UpdateAndSaveUserModsData(IsMultiplayer);
+
                     break;
                 default:
                    
-
+                    
                     UpdateAndSaveUserModsData(IsMultiplayer);
                     if (this.UseCommunityLobbyServer)
                     {

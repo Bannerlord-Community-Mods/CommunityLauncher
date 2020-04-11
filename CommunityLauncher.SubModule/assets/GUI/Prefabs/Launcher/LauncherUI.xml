@@ -71,7 +71,13 @@
 
                         <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="30" HorizontalAlignment="Center" MarginTop="52">
                           <Children>
-                            <TabToggleWidget IsSelected="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="100" TabControlWidget="..\..\..\..\ContentPanel" TabName="ModsPage" UpdateChildrenStates="true">
+                            <TabToggleWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="100" IsSelected="true" TabControlWidget="..\..\..\..\ContentPanel" TabName="NewsPage" UpdateChildrenStates="true">
+                              <Children>
+                                <LauncherBoolBrushWidget BoolVariable="@IsMultiplayer" OnFalseBrush="Launcher.SubMenuButton.SingleplayerText" OnTrueBrush="Launcher.SubMenuButton.MultiplayerText" TargetWidget="..\SubMenuText" />
+                                <TextWidget Id="SubMenuText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Text="@NewsText" />
+                              </Children>
+                            </TabToggleWidget>
+                            <TabToggleWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="100" TabControlWidget="..\..\..\..\ContentPanel" TabName="ModsPage" UpdateChildrenStates="true" IsHidden="@IsMultiplayer">
                               <Children>
                                 <LauncherBoolBrushWidget BoolVariable="@IsMultiplayer" OnFalseBrush="Launcher.SubMenuButton.SingleplayerText" OnTrueBrush="Launcher.SubMenuButton.MultiplayerText" TargetWidget="..\SubMenuText" />
                                 <TextWidget Id="SubMenuText" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Text="@ModsText" />
@@ -110,14 +116,15 @@
 
                 <TabControl Id="ContentPanel" DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="1" MarginRight="!ContentMargin.Right" MarginTop="90" MarginBottom="116">
                   <Children>
-                    <Launcher.Mods Id="ModsPage" DataSource="{ModsData}" />
+                    <Launcher.News Id="NewsPage" DataSource="{News}"/>
+                    <Launcher.Mods Id="ModsPage" DataSource="{ModsData}"/>
                     <Launcher.GetMods Id="GetModsPage" DataSource="{GetDownloadModsData}" />
                   </Children>
                 </TabControl>
 
                 <Widget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" MarginLeft="2" MarginRight="2" MarginBottom="113" Sprite="launcher_divider" Brush.AlphaFactor="0.5" />
 
-                <ButtonWidget Id="PlayButton" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!PlayButton.Frame.Width" SuggestedHeight="!PlayButton.Frame.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsEnabled="@CanLaunch" MarginBottom="48" Command.Click="ExecuteStartGame" UpdateChildrenStates="true">
+                <ButtonWidget Id="PlayButton" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!PlayButton.Frame.Width" SuggestedHeight="!PlayButton.Frame.Height" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="48" Command.Click="ExecuteStartGame" UpdateChildrenStates="true">
                   <Children>
                     <LauncherBoolBrushWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!PlayButton.Inner.Width" SuggestedHeight="!PlayButton.Inner.Height" HorizontalAlignment="Center" VerticalAlignment="Center" BoolVariable="@IsMultiplayer" OnFalseBrush="Launcher.PlayButton.Inner.Singleplayer" OnTrueBrush="Launcher.PlayButton.Inner.Multiplayer" />
                     <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="11" MarginRight="11" MarginTop="11" MarginBottom="11" ClipContents="true">
@@ -137,7 +144,7 @@
                 </ButtonWidget>
                 <TextWidget IsVisible="@IsMultiplayer" PositionYOffset="-22" Brush="Launcher.Version.Text" PositionXOffset="0" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Use CommunityLobbyServer" />
 
-                <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Bottom" Brush="Launcher.Version.Text" MarginLeft="7" MarginBottom="5" Text="@VersionText" />
+                <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Bottom" Brush="Launcher.Version.Text" MarginLeft="7" MarginBottom="5" Text="@VersionText"/>
 
               </Children>
             </Widget>

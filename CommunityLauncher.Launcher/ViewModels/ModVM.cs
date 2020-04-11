@@ -53,28 +53,20 @@ namespace CommunityLauncher
             }
         }
 
-        private void ChangeLoadingOrderOf(ModVM targetModule, int insertIndex)
-        {
-            var index = DownloadableMods.IndexOf(targetModule);
-            DownloadableMods.RemoveAt(index);
-            DownloadableMods.Insert(insertIndex, targetModule);
-        }
+      
 
-        private void ChangeIsSelectedOf(ModVM targetModule)
+        private async void ChangeIsSelectedOf(ModVM targetModule)
         {
-            /*foreach (var mod in DownloadableMods)
+            foreach (var mod in DownloadableMods)
             {
                 if (!mod.IsSelected) continue;
                 var dependencies = await  _client.Games[324].Mods[mod.Mod.Id].Dependencies.Get();
                 foreach (Dependency dep in dependencies)
                 {
                     var depMod = DownloadableMods.FirstOrDefault(x => x.Mod.Id == dep.ModId);
-                    if (depMod != default)
-                    {
-                        depMod.IsSelected = true;
-                    }
+                    depMod.IsSelected = true;
                 }
-            }*/
+            }
             communityLauncherVm.PlayText = string.Empty;
             communityLauncherVm.PlayText = DownloadableMods.Any(m => m.IsSelected) ? "Download & Install" : "P L A Y";
         }
@@ -87,15 +79,13 @@ namespace CommunityLauncher
             DownloadableMods.Clear();
             foreach (var mod in mods)
             {
-                DownloadableMods.Add(new ModVM(mod, ChangeLoadingOrderOf, ChangeIsSelectedOf));
+                DownloadableMods.Add(new ModVM(mod, ChangeIsSelectedOf));
             }
         }
 
 
-        public async void Install()
+        public async Task Install()
         {
-            communityLauncherVm.CanLaunch = false;
-            communityLauncherVm.PlayText = "Downloading";
 
 
             foreach (var mod in DownloadableMods)
@@ -104,10 +94,8 @@ namespace CommunityLauncher
 
                 await DownloadMod(mod);
             }
-
-            communityLauncherVm.ModsData.Refresh(communityLauncherVm.IsMultiplayer);
-            communityLauncherVm.PlayText = "P L A Y";
-            communityLauncherVm.CanLaunch = true;
+            
+     
         }
 
         private async Task DownloadMod(ModVM mod)
@@ -205,7 +193,6 @@ namespace CommunityLauncher
     {
         private Mod _mod;
 
-        private readonly Action<ModVM, int> _onChangeLoadingOrder;
 
         private readonly Action<ModVM> _onSelect;
         private bool _isSelected;
@@ -258,9 +245,8 @@ namespace CommunityLauncher
             }
         }
 
-        public ModVM(Mod mod, Action<ModVM, int> onChangeLoadingOrder, Action<ModVM> onSelect)
+        public ModVM(Mod mod, Action<ModVM> onSelect)
         {
-            _onChangeLoadingOrder = onChangeLoadingOrder;
             _onSelect = onSelect;
             _mod = mod;
         }

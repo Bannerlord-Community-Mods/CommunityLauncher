@@ -61,6 +61,7 @@ namespace CommunityLauncher
 			this._widgetFactory.Initialize();
 			this._viewModel = new CommunityLauncherVM(this._userDataManager, this._onClose, this._onMinimize);
 			this._movie = GauntletMovie.Load(this._context, this._widgetFactory, "LauncherUI", this._viewModel);
+			this._viewModel.Init(this._movie);
 		}
 
 		public string AdditionalArgs
