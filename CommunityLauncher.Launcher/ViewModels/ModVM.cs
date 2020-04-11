@@ -100,23 +100,18 @@ namespace CommunityLauncher
 
         private async Task DownloadMod(ModVM mod)
         {
-            var client = new HttpClient();
             var zipPath = string.Format(BasePath.Name + "Modules/{0}", mod.Mod.Modfile.Filename);
+            
             File.Delete(zipPath);
-            var response = await client.GetAsync(mod.Mod.Modfile.Download.BinaryUrl);
-            using (var fs = new FileStream(
-                zipPath,
-                FileMode.CreateNew))
-            {
-                await response.Content.CopyToAsync(fs);
-            }
+            var fileInfo = new FileInfo(zipPath);
+            await _client.Download(mod.Mod, fileInfo);
 
             try
             {
-                var deleteOldMod = DeleteOldMod(mod, zipPath);
+                var deleteOldMod = DeleteOldMod(mod, fileInfo);
                 if (!deleteOldMod)
                 {
-                    DeleteModZip(zipPath);
+                    DeleteModZip(fileInfo);
                     return;
                 }
             }
@@ -128,7 +123,7 @@ namespace CommunityLauncher
 
             try
             {
-                ExtractModZip(zipPath);
+                ExtractModZip(fileInfo);
             }
             catch (Exception e)
             {
@@ -138,7 +133,7 @@ namespace CommunityLauncher
 
             try
             {
-                DeleteModZip(zipPath);
+                DeleteModZip(fileInfo);
             }
             catch (Exception e)
             {
@@ -148,9 +143,9 @@ namespace CommunityLauncher
             }
         }
 
-        private bool DeleteOldMod(ModVM mod, string zipPath)
+        private bool DeleteOldMod(ModVM mod, FileSystemInfo zipPath)
         {
-            var zipFile = ZipFile.OpenRead(zipPath);
+            var zipFile = ZipFile.OpenRead(zipPath.FullName);
             var listOfZipFolders = zipFile.Entries.Where(x => x.FullName.EndsWith("/")).ToList();
             zipFile.Dispose();
             var updatedAllFiles = true;
@@ -178,14 +173,14 @@ namespace CommunityLauncher
             return updatedAllFiles;
         }
 
-        private void DeleteModZip(string zipPath)
+        private void DeleteModZip(FileInfo zipPath)
         {
-            File.Delete(zipPath);
+            File.Delete(zipPath.FullName);
         }
 
-        private void ExtractModZip(string zipPath)
+        private void ExtractModZip(FileInfo zipPath)
         {
-            ZipFile.ExtractToDirectory(zipPath, BasePath.Name + "Modules/");
+            ZipFile.ExtractToDirectory(zipPath.FullName, BasePath.Name + "Modules/");
         }
     }
 

@@ -25,7 +25,7 @@ namespace CommunityLauncher
 
         private bool _isSingleplayerAvailable;
         private bool _useCommunityLobbyServer = true;
-        
+
         private LauncherNewsVM _news;
 
         private DownloadModsVM _getDownloadModsData;
@@ -46,6 +46,7 @@ namespace CommunityLauncher
 
         private string _versionText;
         private GauntletMovie _movie;
+
         public string GameTypeArgument
         {
             get
@@ -78,8 +79,6 @@ namespace CommunityLauncher
             IsSingleplayerAvailable = true;
             IsMultiplayer = (!IsSingleplayerAvailable ||
                              _userDataManager.UserData.GameType == GameType.Multiplayer);
-
-           
         }
 
         public void Init(GauntletMovie movie)
@@ -94,7 +93,7 @@ namespace CommunityLauncher
             var userData = _userDataManager.UserData;
             var userGameTypeData = isMultiplayer ? userData.MultiplayerData : userData.SingleplayerData;
             userGameTypeData.ModDatas.Clear();
-            
+
             foreach (var launcherModuleVM2 in ModsData.Modules)
             {
                 userGameTypeData.ModDatas.Add(new UserModData(launcherModuleVM2.Info.Id, launcherModuleVM2.IsSelected));
@@ -129,7 +128,7 @@ namespace CommunityLauncher
             UpdateAndSaveUserModsData(preSelectionIsMultiplayer);
         }
 
-        private async  void ExecuteStartGame()
+        private async void ExecuteStartGame()
         {
             switch (PlayText)
             {
@@ -137,27 +136,20 @@ namespace CommunityLauncher
                     CanLaunch = false;
                     PlayText = "Downloading";
 
-                     await GetDownloadModsData.Install();
+                    await GetDownloadModsData.Install();
                     ModsData.Refresh(IsMultiplayer);
                     PlayText = "P L A Y";
                     CanLaunch = true;
+                    SelectNewDownloadedMaps();
 
-                    if (_movie.Context.Root.FindChild("ContentPanel",true) is TabControl tab)
-                    {
-                        tab.SetActiveTab("ModsPage");
-                        foreach (var modVm in GetDownloadModsData.DownloadableMods.Where(x=>x.IsSelected))
-                        {
-                            ModsData.Modules.Where(x => x.Name.Contains(modVm.Name)).ToList()
-                                .ForEach(x => x.IsSelected = true);
-                        }
-                    }
-                    
+                    SwitchToTab("ModsPage");
+
                     UpdateAndSaveUserModsData(IsMultiplayer);
 
                     break;
                 default:
-                   
-                    
+
+
                     UpdateAndSaveUserModsData(IsMultiplayer);
                     if (this.UseCommunityLobbyServer)
                     {
@@ -169,47 +161,65 @@ namespace CommunityLauncher
                     break;
             }
         }
+
+        private void SelectNewDownloadedMaps()
+        {
+            foreach (var modVm in GetDownloadModsData.DownloadableMods.Where(x => x.IsSelected))
+            {
+                ModsData.Modules.Where(x => x.Name.Contains(modVm.Name)).ToList()
+                    .ForEach(x => x.IsSelected = true);
+            }
+        }
+
+        private void SwitchToTab(string toTab)
+        {
+            if (_movie.Context.Root.FindChild("ContentPanel", true) is TabControl tab)
+            {
+                tab.SetActiveTab(toTab);
+            }
+        }
+
         public static Harmony patcher = new Harmony("NameCanBeAnything");
+
         private void PatchFunctions()
         {
             patcher.PatchAll();
         }
 
-        [HarmonyPatch(typeof(HttpPostRequest),MethodType.Constructor, new[]{typeof(string),typeof(string)})]
+        [HarmonyPatch(typeof(HttpPostRequest), MethodType.Constructor, new[] {typeof(string), typeof(string)})]
         public class PatchSSL
         {
             static void Postfix(HttpPostRequest __instance, ref string ____address)
             {
                 ____address = ____address.Replace("http", "https");
-
             }
         }
 
         [HarmonyPatch(typeof(VirtualFolders))]
         [HarmonyPatch("GetVirtualFileContent")]
-        
         public class Patch_VirtualFolders
         {
             // Remove all IL instructions from old method
-            
+
             //execute your new method after the old method (which was essentially removed)
-            static void  Postfix(ref string __result, string filePath)
+            static void Postfix(ref string __result, string filePath)
             {
                 if (filePath.Contains("LobbyClient.xml"))
                 {
-                    #if DEBUG && LOCAL
+#if DEBUG && LOCAL
                     __result =
                         "<Configuration>\t<SessionProvider Type=\"Rest\" />\t<Clients>\t\t<Client Type=\"LobbyClient\" />\t</Clients>\t<Parameters>\t\t<Parameter Name=\"LobbyClient.Address\" Value=\"127.0.0.1\" />\t\t<Parameter Name=\"LobbyClient.Port\" Value=\"5000\" />\t</Parameters></Configuration>"; }
 
-                    #else
+#else
                     __result =
-                        "<Configuration>\t<SessionProvider Type=\"Rest\" />\t<Clients>\t\t<Client Type=\"LobbyClient\" />\t</Clients>\t<Parameters>\t\t<Parameter Name=\"LobbyClient.Address\" Value=\"bannerlord.h0st.space\" />\t\t<Parameter Name=\"LobbyClient.Port\" Value=\"443\" />\t</Parameters></Configuration>"; }
-                    #endif
+                        "<Configuration>\t<SessionProvider Type=\"Rest\" />\t<Clients>\t\t<Client Type=\"LobbyClient\" />\t</Clients>\t<Parameters>\t\t<Parameter Name=\"LobbyClient.Address\" Value=\"bannerlord.h0st.space\" />\t\t<Parameter Name=\"LobbyClient.Port\" Value=\"443\" />\t</Parameters></Configuration>";
+                }
+#endif
                 // Copy paste code from original method
                 // return your result
-              
             }
         }
+
         private void ExecuteClose()
         {
             UpdateAndSaveUserModsData(IsMultiplayer);
@@ -220,7 +230,6 @@ namespace CommunityLauncher
 
         private void ExecuteMinimize()
         {
-         
             var onMinimize = _onMinimize;
             onMinimize?.Invoke();
         }
@@ -300,7 +309,7 @@ namespace CommunityLauncher
             }
         }
 
-    
+
         [DataSourceProperty]
         public LauncherModsVM ModsData
         {
@@ -414,16 +423,19 @@ namespace CommunityLauncher
         }
 
         private bool _canLaunch;
-        [DataSourceProperty] public bool CanLaunch
+
+        [DataSourceProperty]
+        public bool CanLaunch
         {
             get => _canLaunch;
             set
-        {
-            if (_canLaunch == value) return;
-            _canLaunch = value;
-            OnPropertyChanged();
+            {
+                if (_canLaunch == value) return;
+                _canLaunch = value;
+                OnPropertyChanged();
+            }
         }
-        }
+
         [DataSourceProperty]
         public bool UseCommunityLobbyServer
         {
