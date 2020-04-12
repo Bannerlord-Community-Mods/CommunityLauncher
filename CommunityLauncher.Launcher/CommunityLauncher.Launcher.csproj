@@ -43,6 +43,7 @@
     </PackageReference>
     <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="Lib.Harmony" Version="2.0.0.9" />
+    <PackageReference Include="System.Reflection.DispatchProxy" Version="4.7.0"/>
     <PackageReference Include="Trinet.Core.IO.Ntfs" Version="4.1.1" />
   </ItemGroup>
 

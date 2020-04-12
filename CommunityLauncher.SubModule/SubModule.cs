@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Xml;
+using CommunityLauncher.Submodule;
 using TaleWorlds.Core;
 using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
@@ -19,6 +20,7 @@ namespace CommunityLauncher.SubModule
     {
         public string name;
         public string xmlfile;
+
         public SyncXMLServer(string name, string xmlfile)
         {
             this.name = name;
@@ -35,14 +37,14 @@ namespace CommunityLauncher.SubModule
             name = ReadStringFromPacket(ref result);
 
             xmlfile = ReadStringFromPacket(ref result);
-            
+
             return result;
         }
 
         protected override void OnWrite()
         {
             WriteStringToPacket(name);
-          
+
             WriteStringToPacket(xmlfile);
         }
 
@@ -57,24 +59,25 @@ namespace CommunityLauncher.SubModule
         }
     }
 
-public class XMLSync : MissionNetwork
+    public class XMLSync : MissionNetwork
     {
         public override void AfterStart()
         {
-
             AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
             GameNetwork.AddNetworkHandler(this);
 
             base.AfterStart();
         }
+
         private void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)
         {
-            GameNetwork.NetworkMessageHandlerRegisterer networkMessageHandlerRegisterer = new GameNetwork.NetworkMessageHandlerRegisterer(mode);
-            networkMessageHandlerRegisterer.Register((new GameNetworkMessage.ClientMessageHandlerDelegate<SyncXMLServer>(HandleXMLFileClient)));
+            GameNetwork.NetworkMessageHandlerRegisterer networkMessageHandlerRegisterer =
+                new GameNetwork.NetworkMessageHandlerRegisterer(mode);
+            networkMessageHandlerRegisterer.Register(
+                (new GameNetworkMessage.ClientMessageHandlerDelegate<SyncXMLServer>(HandleXMLFileClient)));
             networkMessageHandlerRegisterer.Register(
                 (new GameNetworkMessage.ServerMessageHandlerDelegate<SyncXMLServer>(HandleXMLFileEventServer)));
         }
-
 
 
         public void HandleXMLFileEventServer(SyncXMLServer gameNetworkMessage)
@@ -83,9 +86,9 @@ public class XMLSync : MissionNetwork
             doc.LoadXml(gameNetworkMessage.xmlfile);
             MBObjectManager.Instance.LoadXml(doc, null);
         }
+
         public bool HandleXMLFileClient(NetworkCommunicator peer, SyncXMLServer message)
         {
-
             // Create the XmlDocument.
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(message.xmlfile);
@@ -114,16 +117,13 @@ public class XMLSync : MissionNetwork
                 }
 
                 return "Not enough arguments";
-
             }
 
             return "Component Missing";
-
         }
 
         public override void OnMissionTick(float dt)
         {
-
             base.OnMissionTick(dt);
         }
 
@@ -144,19 +144,22 @@ public class XMLSync : MissionNetwork
         {
             if (!MissionScreen.SceneLayer.Input.IsCategoryRegistered(HotKeyManager.GetCategory("Debug")))
             {
-
                 MissionScreen.SceneLayer.Input.RegisterHotKeyCategory(HotKeyManager.GetCategory("Debug"));
             }
+
             base.OnMissionTick(dt);
         }
     }
 
     public class SubModule : MBSubModuleBase
     {
-        [DllImport("Rgl.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "?toggle_imgui_console_visibility@rglCommand_line_manager@@QEAAXXZ")]
+        [DllImport("Rgl.dll", CallingConvention = CallingConvention.Cdecl,
+            EntryPoint = "?toggle_imgui_console_visibility@rglCommand_line_manager@@QEAAXXZ")]
         public static extern void toggle_imgui_console_visibility(UIntPtr x);
+
         protected override void OnSubModuleLoad()
         {
+            MultiplayerPatch.PatchFunctions();
 
             toggle_imgui_console_visibility(new UIntPtr());
             Debug.DebugManager = new HTMLDebugManager();
@@ -165,14 +168,13 @@ public class XMLSync : MissionNetwork
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-
-            typeof(Module).GetField("_splashScreenPlayed", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(Module.CurrentModule, true);
+            typeof(Module).GetField("_splashScreenPlayed", BindingFlags.NonPublic | BindingFlags.Instance)
+                .SetValue(Module.CurrentModule, true);
             base.OnBeforeInitialModuleScreenSetAsRoot();
         }
 
         public override void OnGameLoaded(Game game, object initializerObject)
         {
-
             base.OnGameLoaded(game, initializerObject);
         }
 
@@ -229,7 +231,6 @@ public class XMLSync : MissionNetwork
 
         protected override void OnApplicationTick(float dt)
         {
-
             //var x = Input.DebugInput;
             base.OnApplicationTick(dt);
             /* if (Input.IsKeyReleased(InputKey.Numpad5))
@@ -246,8 +247,6 @@ public class XMLSync : MissionNetwork
                 var handler = mission.GetMissionBehaviour<EnableDebugHotkeys>();
                 if (handler == null)
                 {
-
-
                     mission.AddMissionBehaviour(new EnableDebugHotkeys());
                 }
             }

@@ -68,9 +68,18 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Reflection.DispatchProxy" Version="4.7.0"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\submodules\Hazel-Networking\Hazel\Hazel.csproj"/>
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;assets&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)&quot; /Y /E /H /C /I&#xD;&#xA; " />
-    <Exec Command="xcopy &quot;bin\$(Configuration)\netstandard2.0\$(AssemblyName).dll&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)\bin\Win64_Shipping_Client\&quot; /Y /I" />
+    <Exec Command="xcopy &quot;assets&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)&quot; /Y /E /H /C /I&#xD;&#xA; "/>
+    <Exec Command="xcopy &quot;bin\$(Configuration)\netstandard2.0\$(AssemblyName).dll&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)\bin\Win64_Shipping_Client\&quot; /Y /I"/>
+    <Exec Command="xcopy &quot;bin\$(Configuration)\netstandard2.0\Hazel.dll&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)\bin\Win64_Shipping_Client\&quot; /Y /I"/>
   </Target>
 
 </Project>
