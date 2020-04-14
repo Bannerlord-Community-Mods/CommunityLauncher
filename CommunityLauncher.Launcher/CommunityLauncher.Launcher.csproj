@@ -12,6 +12,9 @@
     <AssemblyName>CommunityLauncher</AssemblyName>
     <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">
@@ -51,7 +54,7 @@
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
 
-    <Exec Command="IF not exist &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client&quot; md  &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client&quot;" />
+    <Exec Command="IF not exist &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client&quot; md  &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client&quot;; xcopy /F /R /Y /I /E $(OutDir) $(GameFolder)\bin\Win64_Shipping_Client" />
 
     <Exec Command="IF not exist &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot; md  &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot;" />
     <Exec Command="xcopy &quot;../CommunityLauncher.SubModule/assets&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher&quot; /Y /E /H /C /I&#xD;&#xA; " />

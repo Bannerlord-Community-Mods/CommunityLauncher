@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
@@ -36,7 +37,7 @@ namespace CommunityLauncher.Launcher
 
         static Program()
         {
-
+            
             var fileappender = new FileAppender();
             fileappender.Layout = new PatternLayout("%date [%thread] %-5level %logger %ndc - %message%newline");
             fileappender.AppendToFile = false;
@@ -51,6 +52,12 @@ namespace CommunityLauncher.Launcher
                     new UnhandledExceptionEventHandler(OnUnhandledException);
                 Application.ThreadException += OnUnhandledThreadException;
             }
+
+
+            //admiralnelson: windows7 workaround
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
         }
 
         static void ApplyToModuleDLLs(System.IO.DirectoryInfo root, Action<string> functor)
