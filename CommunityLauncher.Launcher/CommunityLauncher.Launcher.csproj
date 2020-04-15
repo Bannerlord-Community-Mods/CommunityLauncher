@@ -2,7 +2,7 @@
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\developer.props" />
   <PropertyGroup>
-    <TargetFramework>net4.7.2</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <PlatformTarget>x64</PlatformTarget>
     <Nullable>enable</Nullable>
     <LangVersion>8.0</LangVersion>
@@ -64,6 +64,6 @@
     <Exec Command="xcopy &quot;bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).exe&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\bin\Win64_Shipping_Client\&quot; /Y /I" />
     <Exec Command="xcopy &quot;bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).exe&quot; &quot;$(GameFolder)\bin\Win64_Shipping_Client\&quot; /Y /I" />
     <Exec Command="xcopy &quot;bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).pdb&quot; &quot;$(GameFolder)\bin\Win64_Shipping_Client\&quot; /Y /I" />
-    <Exec Command="xcopy &quot;../CommunityLauncher.SubModule/bin\$(Configuration)\netstandard2.0\$(AssemblyName).dll&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot; /Y /I" />
+    <Exec Command="xcopy &quot;../CommunityLauncher.SubModule/bin/$(Configuration)\$(TargetFramework)\$(AssemblyName).dll&quot; &quot;$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\Publish\Modules\CommunityLauncher\bin\Win64_Shipping_Client\&quot; /Y /I" />
   </Target>
 </Project>

@@ -67,11 +67,16 @@
       <HintPath>$(GameFolder)\Modules\Native\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.View.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="..\CommunityLauncher.Launcher\bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).exe">
+      <HintPath>%(Identity)</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CommunityLauncher.Launcher\CommunityLauncher.Launcher.csproj" />
-  </ItemGroup>
+
+
+
+
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy &quot;assets&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)&quot; /Y /E /H /C /I&#xD;&#xA; " />
