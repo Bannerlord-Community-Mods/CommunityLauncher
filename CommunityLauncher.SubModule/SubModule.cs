@@ -170,7 +170,7 @@ public class XMLSync : MissionNetwork
 
             };
 
-            toggle_imgui_console_visibility(new UIntPtr());
+            //toggle_imgui_console_visibility(new UIntPtr());
             Debug.DebugManager = new HTMLDebugManager();
             base.OnSubModuleLoad();
         }
