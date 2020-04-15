@@ -13,11 +13,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: recursive
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
     - name: Install dependencies
       run: dotnet restore
+    - name: Create File
+      run: 'echo $DEVPROPS > developer.props'
+      shell: bash
+      env:
+        DEVPROPS: ${{secrets.devprops}}
+
     - name: Build
       run: dotnet build --configuration Release --no-restore
