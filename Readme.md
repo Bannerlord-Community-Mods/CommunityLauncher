@@ -1,3 +1,5 @@
+![.NET Core](https://github.com/Bannerlord-Community-Mods/CommunityLauncher/workflows/.NET%20Core/badge.svg)
+
 ### Work in Progress Features
 
 - Delete Mods
