@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -38,7 +38,6 @@ namespace CommunityLauncher.Launcher
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         private static string StarterExecutable = "Bannerlord.exe";
 
-        private static bool debugged;
         //for displaying console
         [DllImport("kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -119,11 +118,6 @@ namespace CommunityLauncher.Launcher
 
         private static void Main(string[] args)
         {
-            if(Debugger.IsAttached)
-            {
-                Console.WriteLine("Is being debugged!");
-                debugged = true;
-            }
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
@@ -184,10 +178,6 @@ namespace CommunityLauncher.Launcher
             ErrorWindow.Display(e.Message, e.Source, e.StackTrace);
 
         }
-
-        #region dostuffwithoutlaunch
-
-        #endregion
 
         public static void StartGame()
         {

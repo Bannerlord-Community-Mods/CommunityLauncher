@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace CommunityLauncher.Launcher
 {
 #if !NETSTANDARD
-    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+    
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public class ErrorWindow : Form
     {
