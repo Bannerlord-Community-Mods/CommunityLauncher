@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore
     - name: Create File
       run: 'echo $DEVPROPS > developer.props'
-      shell: bash
+      shell: cmd
       env:
         DEVPROPS: ${{secrets.devprops}}
 
