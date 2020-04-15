@@ -157,6 +157,18 @@ public class XMLSync : MissionNetwork
         public static extern void toggle_imgui_console_visibility(UIntPtr x);
         protected override void OnSubModuleLoad()
         {
+            var x = AppDomain.CurrentDomain;
+            x.UnhandledException += (x, e) => {
+
+#if NETSTANDARD
+                Console.WriteLine(e.ExceptionObject.ToString());
+#else
+                Exception ex = (Exception) e.ExceptionObject;
+                ErrorWindow.Display(ex.Message, ex.Source, ex.StackTrace);
+                Console.WriteLine(e.ExceptionObject.ToString());
+#endif
+
+            };
 
             toggle_imgui_console_visibility(new UIntPtr());
             Debug.DebugManager = new HTMLDebugManager();

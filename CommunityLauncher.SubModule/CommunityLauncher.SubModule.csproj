@@ -2,7 +2,8 @@
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),developer.props))\developer.props" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net4.7.2</TargetFramework>
+    <!--TargetFramework>netstandard2.0</TargetFramework-->
     <RunPostBuildEvent>Always</RunPostBuildEvent>
     <PlatformTarget>x64</PlatformTarget>
     <Nullable>enable</Nullable>
@@ -34,6 +35,7 @@
       <HintPath>%(Identity)</HintPath>
       <Private>False</Private>
     </Reference>
+    <PackageReference Include="Lib.Harmony" Version="2.0.0.9" />
     <Reference Include="TaleWorlds.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.Core.dll</HintPath>
       <Private>False</Private>
@@ -68,9 +70,18 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ErrorWindow.cs" Condition="'$(TargetFramework)' != 'netstandard2.0'">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;assets&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)&quot; /Y /E /H /C /I&#xD;&#xA; " />
-    <Exec Command="xcopy &quot;bin\$(Configuration)\netstandard2.0\$(AssemblyName).dll&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)\bin\Win64_Shipping_Client\&quot; /Y /I" />
+    <Exec Command="xcopy &quot;assets&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)&quot; /Y /E /H /C /I &#xD;&#xA;xcopy &quot;$(TargetPath)&quot; &quot;$(GameFolder)\Modules\$(AssemblyName)\bin\Win64_Shipping_Client\&quot; /Y /E /H /C /I" />
   </Target>
 
 </Project>

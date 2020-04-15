@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using HarmonyLib;
 using log4net;
 using log4net.Appender;
 using log4net.Config;
@@ -35,6 +38,12 @@ namespace CommunityLauncher.Launcher
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         private static string StarterExecutable = "Bannerlord.exe";
 
+        private static bool debugged;
+        //for displaying console
+        [DllImport("kernel32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
+
         static Program()
         {
             
@@ -45,20 +54,21 @@ namespace CommunityLauncher.Launcher
             BasicConfigurator.Configure(new Hierarchy(),fileappender);
 
             AppDomain.CurrentDomain.AssemblyResolve += Program.OnAssemblyResolve;
-            if (!AppDomain.CurrentDomain.FriendlyName.EndsWith("vshost.exe"))
+            if (!Debugger.IsAttached)
             {
+                Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
                 AppDomain currentDomain = AppDomain.CurrentDomain;
                 currentDomain.UnhandledException +=
                     new UnhandledExceptionEventHandler(OnUnhandledException);
-                Application.ThreadException += OnUnhandledThreadException;
+                Application.ThreadException += 
+                    new ThreadExceptionEventHandler(OnUnhandledThreadException);
             }
-
-
-            //admiralnelson: windows7 workaround
+            //admiralnelson: windows7 SSL bug workaround
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
         }
+
 
         static void ApplyToModuleDLLs(System.IO.DirectoryInfo root, Action<string> functor)
         {
@@ -109,6 +119,11 @@ namespace CommunityLauncher.Launcher
 
         private static void Main(string[] args)
         {
+            if(Debugger.IsAttached)
+            {
+                Console.WriteLine("Is being debugged!");
+                debugged = true;
+            }
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
@@ -122,6 +137,15 @@ namespace CommunityLauncher.Launcher
             resourceDepot.CollectResources();
             resourceDepot.StartWatchingChangesInDepot();
             Program._args = args.ToList<string>();
+            if(_args.Contains("/console"))
+            {
+                AllocConsole();
+                Console.WriteLine("args: ");
+                foreach (var item in _args)
+                {
+                    Console.WriteLine(item);
+                }
+            }
             var name = "M&B II: Bannerlord Community Launcher";
             Program._graphicsForm = new GraphicsForm(1154, 701, resourceDepot, true, true, true, name);
             Program._windowsFramework = new WindowsFramework {ThreadConfig = WindowsFrameworkThreadConfig.SingleThread};
@@ -133,32 +157,32 @@ namespace CommunityLauncher.Launcher
             Program._windowsFramework.RegisterMessageCommunicator(Program._graphicsForm);
             Program._windowsFramework.Start();
             if (Program._gameStarted)
-            {
-                
+            {                
                 ManagedStarter.Program.Main(Program._args.ToArray());
             }
         }
-
+        
         private static void OnUnhandledThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            string exceptionStr = e.Exception.ToString();
-            //Should be Logger.LogFatal(exceptionStr);
-            log.Fatal(((Exception) e.Exception).StackTrace);
-
-            log.Fatal(((Exception) e.Exception).Data);
-            log.Fatal(((Exception) e.Exception).HResult);
-            log.Fatal(exceptionStr);
+            ErrorHandler(e.Exception, true);
         }
 
         private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            string exceptionStr = e.ExceptionObject.ToString();
-            //Should be Logger.LogFatal(exceptionStr);
-            log.Fatal(((Exception) e.ExceptionObject).StackTrace);
+            ErrorHandler((Exception)e.ExceptionObject, true);
+        }
 
-            log.Fatal(((Exception) e.ExceptionObject).Data);
-            log.Fatal(((Exception) e.ExceptionObject).HResult);
+        private static void ErrorHandler(Exception e, bool unhandled)
+        {
+            string exceptionStr = e.ToString();
+            log.Fatal(e.StackTrace);
+
+            log.Fatal(e.Data);
+            log.Fatal(e.HResult);
             log.Fatal(exceptionStr);
+
+            ErrorWindow.Display(e.Message, e.Source, e.StackTrace);
+
         }
 
         #region dostuffwithoutlaunch
