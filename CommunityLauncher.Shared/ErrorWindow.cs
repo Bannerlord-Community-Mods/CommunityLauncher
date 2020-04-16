@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 #if !NETSTANDARD
 using System.Windows.Forms;
 #endif
 
-namespace CommunityLauncher.Launcher
+namespace CommunityLauncher.Shared
 {
 #if !NETSTANDARD
     
@@ -160,6 +154,7 @@ namespace CommunityLauncher.Launcher
             html = html.Replace("{fullStackString}", fullStackString);
             widget.DocumentText = html;
         }
+
         public void CloseProgram()
         {
             var pid = Process.GetCurrentProcess().Id;

@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using HarmonyLib;
+using CommunityLauncher.Shared;
 using log4net;
 using log4net.Appender;
 using log4net.Config;

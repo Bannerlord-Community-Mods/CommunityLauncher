@@ -1,10 +1,10 @@
-﻿using System;
+﻿using CommunityLauncher.Shared;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Xml;
-using CommunityLauncher.Launcher;
 using TaleWorlds.Core;
 using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
