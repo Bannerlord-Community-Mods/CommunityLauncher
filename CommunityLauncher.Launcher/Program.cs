@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using HarmonyLib;
+using CommunityLauncher.Shared;
 using log4net;
 using log4net.Appender;
 using log4net.Config;
@@ -45,7 +45,6 @@ namespace CommunityLauncher.Launcher
 
         static Program()
         {
-            
             var fileappender = new FileAppender();
             fileappender.Layout = new PatternLayout("%date [%thread] %-5level %logger %ndc - %message%newline");
             fileappender.AppendToFile = false;
@@ -65,9 +64,7 @@ namespace CommunityLauncher.Launcher
             //admiralnelson: windows7 SSL bug workaround
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
         }
-
 
         static void ApplyToModuleDLLs(System.IO.DirectoryInfo root, Action<string> functor)
         {
@@ -176,12 +173,10 @@ namespace CommunityLauncher.Launcher
             log.Fatal(exceptionStr);
 
             ErrorWindow.Display(e.Message, e.Source, e.StackTrace);
-
         }
 
         public static void StartGame()
         {
-
             ApplyToModuleDLLs(new DirectoryInfo(BasePath.Name + "Modules/"), assembly =>
             {
                 var fileinfo = new FileInfo(assembly);
@@ -199,7 +194,7 @@ namespace CommunityLauncher.Launcher
             User32.SetForegroundWindow(Kernel32.GetConsoleWindow());
         }
 
-        private static Assembly OnAssemblyResolve(object sender, ResolveEventArgs args)
+        private static Assembly? OnAssemblyResolve(object sender, ResolveEventArgs args)
         {
             if (args.Name.Contains("ManagedStarter"))
             {
