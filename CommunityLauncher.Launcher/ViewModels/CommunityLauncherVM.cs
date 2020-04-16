@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using CommunityLauncher.Launcher;
 using HarmonyLib;
 using TaleWorlds.GauntletUI;
 using TaleWorlds.GauntletUI.Data;
@@ -10,7 +9,7 @@ using TaleWorlds.MountAndBlade.Launcher;
 using TaleWorlds.MountAndBlade.Launcher.UserDatas;
 using TaleWorlds.Network;
 
-namespace CommunityLauncher
+namespace CommunityLauncher.Launcher.ViewModels
 {
     public class CommunityLauncherVM : ViewModel
     {

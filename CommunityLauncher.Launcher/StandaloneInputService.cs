@@ -1,7 +1,7 @@
 ﻿using TaleWorlds.GauntletUI;
 using TaleWorlds.TwoDimension.Standalone;
 
-namespace CommunityLauncher
+namespace CommunityLauncher.Launcher
 {
     internal class StandaloneInputService : IInputService
     {
