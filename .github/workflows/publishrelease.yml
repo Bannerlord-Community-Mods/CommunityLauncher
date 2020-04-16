@@ -1,0 +1,48 @@
+  
+name: PublishRelease
+
+on:
+  push:
+    branches: [ release ]
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Create developer.props
+      run: |
+        xcopy ..\..\developer.props .
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Build Release ZIP
+      run: |      
+        7z a CommunityLauncher.zip Publish
+    - name: Create Release
+      id: create_release
+      if: 
+      uses: actions/create-release@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: true
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./CommunityLauncher.zip 
+          asset_name: CommunityLauncher.zip  
+          asset_content_type: application/zip
