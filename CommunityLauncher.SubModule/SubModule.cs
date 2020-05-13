@@ -9,6 +9,7 @@ using CommunityLauncher.Submodule;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.ObjectSystem;
 using Module = TaleWorlds.MountAndBlade.Module;
 
 namespace CommunityLauncher.SubModule
